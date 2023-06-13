@@ -1,0 +1,436 @@
+﻿/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="select"] {
+    max-width: 280px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        margin-top: 20px;
+    }
+    .body-content {
+        padding: 0;
+    }
+}
+
+/****************************/
+
+#txtdate1, #txtdate2 {
+    width: 60%;
+}
+
+.ui-datepicker {
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #4479ba
+}
+
+.ui-datepicker-multi-3 .ui-datepicker-group {
+    width: 33.3%
+}
+
+.ui-datepicker-multi .ui-datepicker-group {
+    float: left
+}
+
+.ui-datepicker-calendar td {
+    padding: 2px
+}
+
+    .ui-datepicker-calendar td a {
+        padding: 2px 5px;
+        border: 1px solid #fff;
+    }
+
+.ui-datepicker-header {
+    background-color: #e9f2fe;
+    padding: 1px 2px;
+}
+
+    .ui-datepicker-header a {
+        border: none !important;
+    }
+
+.ui-datepicker-prev, .ui-datepicker-next {
+    cursor: pointer;
+}
+
+.ui-datepicker-next {
+    float: right;
+}
+
+.ui-datepicker-title {
+    text-align: center;
+    font-weight: bold;
+}
+
+a.ui-state-default {
+    text-decoration: none !important;
+}
+
+.ui-state-highlight {
+    border: 1px solid silver !important;
+    padding: 1px;
+}
+
+.ui-state-active {
+    border: 1px solid #fdc18c !important;
+    padding: 1px;
+}
+
+.ui-state-hover {
+    border: 1px solid #0f75bc !important;
+}
+
+.ui-state-disabled {
+    background-color: #f7f7f7;
+}
+
+.ui-datepicker-calendar th span {
+    font-size: 12px;
+}
+
+.aspNetDisabled, a.aspNetDisabled, .dnnDisabled, a.dnnDisabled {
+    color: dimgray;
+}
+
+.ui-datepicker-month, .ui-datepicker-year {
+    width: 120px;
+}
+
+
+/*table resp*/
+.clr {
+    clear: both;
+}
+
+table.tblresp {
+    border: 1px solid #ccc;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+    table.tblresp tr {
+        border: 1px solid #ddd;
+        padding: 5px;
+    }
+
+    table.tblresp th, table.tblresp td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    table.tblresp th {
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+@media screen and (max-width: 600px) {
+
+    table.tblresp {
+        border: 0;
+    }
+
+        table.tblresp thead {
+            display: none;
+        }
+
+        table.tblresp tr {
+            margin-bottom: 10px;
+            display: block;
+            border-bottom: 2px solid #ddd;
+        }
+
+        table.tblresp td {
+            display: block;
+            text-align: right;
+            font-size: 13px;
+            border-bottom: 1px dotted #ccc;
+        }
+
+            table.tblresp td:last-child {
+                border-bottom: 0;
+            }
+
+            table.tblresp td:before {
+                content: attr(data-label);
+                float: left;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+}
+
+/*table resp */
+
+/**AgentView**/
+select {
+    width: 150px;
+}
+
+.panels {
+    padding: 5px;
+    border: 1px solid #91afca;
+}
+
+.Yellow {
+    background-color: yellow;
+}
+
+.selectColor {
+    background-color: #d5d8f7;
+}
+
+.divDocuments {
+    border: 1px solid #e4e7e9;
+    padding: 10px;
+}
+
+.async-attachment {
+    width: 150px;
+}
+
+.tblStoimost {
+    margin-top: 10px;
+}
+
+.SaveCustomers, .SaveRequest {
+    color: red;
+}
+
+.gvProducts .width165 {
+    width: 150px;
+    background-color: lightgray
+}
+
+.gvProducts {
+    width: 100%;
+}
+
+    .gvProducts input {
+        width: 100%;
+    }
+
+.width165 {
+    width: 150px;
+    background-color: lightgray
+}
+
+.headGvProducts {
+    width: 150px;
+}
+
+.right {
+    text-align: right;
+}
+
+.RadUpload {
+    text-align: left;
+    width: auto !important;
+}
+
+.clr {
+    clear: both;
+}
+
+label {
+    font-size: 12px;
+}
+
+input, select {
+    font-size: 14px;
+}
+
+#fc {
+    width: 170px;
+    height: 170px;
+}
+
+/**rptAgreement**/
+.centre {
+    text-align: center;
+}
+/**rptReceptionAct**/
+.width100 {
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+    table tr td, table tr th {
+        padding: 0 2px;
+    }
+
+    table.line tr td {
+        border: 1px solid #000000;
+        padding: 0 10px;
+    }
+
+    table.line tr th {
+        border: 1px solid #000000;
+        padding: 0 10px;
+    }
+
+    table.line {
+        border: 1px solid #000000;
+        padding: 0 10px;
+    }
+
+.width165 {
+    width: 165px;
+}
+/**/
+#fc {
+    z-index: 100;
+}
+
+.container {
+    width: auto !important;
+   /* padding: 10px; */
+}
+
+
+
+/*****************************/
+
+
+/*SoftCollection***************************************************/
+#ctl11_MiddleMenuContent_Menu1 + div, #Menu1 + div {
+    clear: none !important;
+}
+
+#Menu1 a {
+    /*margin: 14.5px -5px;*/
+    padding: 15px;
+}
+
+li.static {
+    float: left;
+}
+
+@media (max-width: 767px) {
+    li.static {
+        float: none;
+    }
+
+    #Menu1 {
+        float: none !important;
+    }
+}
+
+
+
+.tbl1 {
+    float: left;
+}
+
+.tbl2 {
+    clear: both;
+}
+
+.tbl1 {
+    margin: 20px;
+}
+
+.container2 {
+    margin: 10px;
+}
+
+#Menu1 a {
+    color: #999999;
+}
+
+#Menu1 a:hover {
+        color: #FFFFFF;
+    }
+
+    #Menu1 a.active {
+        color: #FFFFFF;
+        font-size: 15px;
+    }
+
+#Menu1 a.selected {
+        color: #428bca;
+    }
+
+
+.container2 .col-md-4 div {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.nav p {
+    margin: 15px 0px 10px;
+    color: #999999
+}
+
+.navbar-inverse {
+    background-color: #014783!important;
+    border-color: #080808;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    font-size: 25px;
+}
+
+.chosen-container{
+    width: 280px!important;
+}
+
+.row{margin:5px;}
+
+/**************/
+.left { float:left;  }
+    .left input {
+        margin-left: 15px;
+    }
+.chkbxhead { margin-top:25px; }
+input, button {margin-top: 5px;}
+
+.txtCodePerm {
+    width:150px;
+    display:block;
+    float:left;
+}
+.PhotoCustomer #Image1 {
+    margin-bottom: 35px;
+}
+
+.nav > li > a:focus, .nav > li > a.active {
+    
+}
+
+.nav-tabs > li > a.active {
+    text-decoration: none;
+    background-color: #eee;
+}

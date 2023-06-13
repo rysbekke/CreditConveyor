@@ -1,0 +1,838 @@
+C:\MicroCredit\MicroCredit\Zamat\bin\Zamat.dll.config
+C:\MicroCredit\MicroCredit\Zamat\bin\Zamat.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Zamat.pdb
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\csc.exe
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\csc.exe.config
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\csc.rsp
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\csi.exe
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\csi.exe.config
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\csi.rsp
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\Microsoft.Managed.Core.targets
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.AppContext.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Collections.Immutable.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Console.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.IO.Compression.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.IO.FileSystem.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.IO.Pipes.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Reflection.Metadata.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Security.AccessControl.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Security.Claims.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Security.Principal.Windows.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.ValueTuple.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Xml.XmlDocument.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Xml.XPath.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\vbc.exe
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\vbc.exe.config
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\vbc.rsp
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\VBCSCompiler.exe
+C:\MicroCredit\MicroCredit\Zamat\bin\roslyn\VBCSCompiler.exe.config
+C:\MicroCredit\MicroCredit\Zamat\bin\Antlr3.Runtime.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\AspNet.ScriptManager.bootstrap.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\AspNet.ScriptManager.jQuery.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\EntityFramework.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\EntityFramework.SqlServer.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.AspNet.Identity.Core.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.Security.Cookies.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.Security.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.Security.Facebook.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.Security.Google.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.Security.OAuth.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.Security.Twitter.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.ScriptManager.MSAjax.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.ScriptManager.WebForms.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Web.Infrastructure.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Newtonsoft.Json.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\OpenPop.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Owin.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Buffers.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Memory.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Numerics.Vectors.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Text.Encodings.Web.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Text.Json.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Threading.Tasks.Extensions.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\System.ValueTuple.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Web.Optimization.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Web.Providers.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\WebGrease.dll
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\OpenPop.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Buffers.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Memory.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Numerics.Vectors.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Text.Encodings.Web.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Text.Json.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Threading.Tasks.Extensions.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\System.ValueTuple.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Web.Optimization.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\Newtonsoft.Json.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\Antlr3.Runtime.pdb
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\EntityFramework.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\EntityFramework.SqlServer.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.AspNet.Identity.Core.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\System.Web.Providers.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.Security.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.Security.Facebook.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.Security.Cookies.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.Security.Google.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.Security.Twitter.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.Owin.Security.OAuth.xml
+C:\MicroCredit\MicroCredit\Zamat\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\MicroCredit\MicroCredit\Zamat\obj\Debug\СreditСonveyor.csproj.AssemblyReference.cache
+C:\MicroCredit\MicroCredit\Zamat\obj\Debug\СreditСonveyor.csproj.CoreCompileInputs.cache
+C:\MicroCredit\MicroCredit\Zamat\obj\Debug\СreditСonveyor.csproj.CopyComplete
+C:\MicroCredit\MicroCredit\Zamat\obj\Debug\Zamat.dll
+C:\MicroCredit\MicroCredit\Zamat\obj\Debug\Zamat.pdb
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Zamat.dll.config
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Zamat.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Zamat.pdb
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\csc.exe
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\csc.exe.config
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\csc.rsp
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\csi.exe
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\csi.exe.config
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\csi.rsp
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\Microsoft.Managed.Core.targets
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.AppContext.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Collections.Immutable.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Console.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.IO.Compression.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.IO.FileSystem.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.IO.Pipes.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Reflection.Metadata.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Security.AccessControl.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Security.Claims.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Security.Principal.Windows.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.ValueTuple.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Xml.XmlDocument.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Xml.XPath.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\vbc.exe
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\vbc.exe.config
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\vbc.rsp
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\VBCSCompiler.exe
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\roslyn\VBCSCompiler.exe.config
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Antlr3.Runtime.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\AspNet.ScriptManager.bootstrap.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\AspNet.ScriptManager.jQuery.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\EntityFramework.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\EntityFramework.SqlServer.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.AspNet.Identity.Core.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.Security.Cookies.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.Security.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.Security.Facebook.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.Security.Google.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.Security.OAuth.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.Security.Twitter.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.ScriptManager.MSAjax.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.ScriptManager.WebForms.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Web.Infrastructure.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Newtonsoft.Json.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\OpenPop.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Owin.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Buffers.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Memory.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Numerics.Vectors.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Text.Encodings.Web.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Text.Json.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Threading.Tasks.Extensions.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.ValueTuple.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Web.Optimization.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Web.Providers.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\WebGrease.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\OpenPop.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Buffers.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Memory.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Numerics.Vectors.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Text.Encodings.Web.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Text.Json.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Threading.Tasks.Extensions.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.ValueTuple.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Web.Optimization.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Newtonsoft.Json.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Antlr3.Runtime.pdb
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\EntityFramework.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\EntityFramework.SqlServer.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.AspNet.Identity.Core.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\System.Web.Providers.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.Security.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.Security.Facebook.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.Security.Cookies.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.Security.Google.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.Security.Twitter.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.Owin.Security.OAuth.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\MicroCredit\MicroCredit\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.AssemblyReference.cache
+C:\MicroCredit\MicroCredit\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.CoreCompileInputs.cache
+C:\MicroCredit\MicroCredit\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.CopyComplete
+C:\MicroCredit\MicroCredit\СreditСonveyor\obj\Debug\Zamat.dll
+C:\MicroCredit\MicroCredit\СreditСonveyor\obj\Debug\Zamat.pdb
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Zamat.dll.config
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Zamat.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Zamat.pdb
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\csc.exe
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\csc.exe.config
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\csc.rsp
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\csi.exe
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\csi.exe.config
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\csi.rsp
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.AppContext.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Collections.Immutable.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Console.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.Compression.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.FileSystem.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.Pipes.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Reflection.Metadata.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.AccessControl.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Claims.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.ValueTuple.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.XPath.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\vbc.exe
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\vbc.exe.config
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\vbc.rsp
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\VBCSCompiler.exe
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\VBCSCompiler.exe.config
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Antlr3.Runtime.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\AspNet.ScriptManager.bootstrap.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\AspNet.ScriptManager.jQuery.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\EntityFramework.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\EntityFramework.SqlServer.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Google.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.ScriptManager.MSAjax.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.ScriptManager.WebForms.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Web.Infrastructure.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Newtonsoft.Json.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\OpenPop.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Owin.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Buffers.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Memory.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Numerics.Vectors.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Text.Encodings.Web.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Text.Json.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Threading.Tasks.Extensions.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.ValueTuple.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Web.Optimization.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Web.Providers.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\WebGrease.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\OpenPop.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Buffers.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Memory.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Numerics.Vectors.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Text.Encodings.Web.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Text.Json.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Threading.Tasks.Extensions.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.ValueTuple.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Web.Optimization.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Newtonsoft.Json.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Antlr3.Runtime.pdb
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\EntityFramework.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\EntityFramework.SqlServer.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Web.Providers.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Google.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.AssemblyReference.cache
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.CoreCompileInputs.cache
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.CopyComplete
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\obj\Debug\Zamat.dll
+C:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\obj\Debug\Zamat.pdb
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.AssemblyReference.cache
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.CoreCompileInputs.cache
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Zamat.dll.config
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Zamat.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Zamat.pdb
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\csc.exe
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\csc.exe.config
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\csc.rsp
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\csi.exe
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\csi.exe.config
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\csi.rsp
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.AppContext.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Collections.Immutable.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Console.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.Compression.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.FileSystem.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.Pipes.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Reflection.Metadata.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.AccessControl.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Claims.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Principal.Windows.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.ValueTuple.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.XPath.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\vbc.exe
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\vbc.exe.config
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\vbc.rsp
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\VBCSCompiler.exe
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\roslyn\VBCSCompiler.exe.config
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Antlr3.Runtime.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\AspNet.ScriptManager.bootstrap.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\AspNet.ScriptManager.jQuery.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.FriendlyUrls.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Google.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.ScriptManager.MSAjax.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.ScriptManager.WebForms.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Web.Infrastructure.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Newtonsoft.Json.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\OpenPop.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Owin.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Buffers.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Memory.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Numerics.Vectors.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Text.Encodings.Web.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Text.Json.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Threading.Tasks.Extensions.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.ValueTuple.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Web.Optimization.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Web.Providers.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\WebGrease.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\OpenPop.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Buffers.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Memory.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Numerics.Vectors.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Text.Encodings.Web.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Text.Json.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Threading.Tasks.Extensions.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.ValueTuple.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Web.Optimization.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Newtonsoft.Json.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Antlr3.Runtime.pdb
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.FriendlyUrls.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\System.Web.Providers.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Google.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.CopyComplete
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\obj\Debug\Zamat.dll
+D:\Bankprojects\CreditConveyor\CreditConveyor\СreditСonveyor\obj\Debug\Zamat.pdb
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Zamat.dll.config
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Zamat.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Zamat.pdb
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\csc.exe
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\csc.exe.config
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\csc.rsp
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\csi.exe
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\csi.exe.config
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\csi.rsp
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.AppContext.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Collections.Immutable.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Console.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.Compression.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.FileSystem.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.Pipes.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Reflection.Metadata.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.AccessControl.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Claims.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Principal.Windows.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.ValueTuple.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.XPath.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\vbc.exe
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\vbc.exe.config
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\vbc.rsp
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\VBCSCompiler.exe
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\roslyn\VBCSCompiler.exe.config
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Antlr3.Runtime.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\AspNet.ScriptManager.bootstrap.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\AspNet.ScriptManager.jQuery.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.FriendlyUrls.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Google.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.ScriptManager.MSAjax.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.ScriptManager.WebForms.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Web.Infrastructure.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Newtonsoft.Json.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\OpenPop.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Owin.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Buffers.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Memory.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Numerics.Vectors.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Text.Encodings.Web.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Text.Json.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Threading.Tasks.Extensions.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.ValueTuple.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Web.Optimization.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Web.Providers.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\WebGrease.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\OpenPop.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Buffers.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Memory.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Numerics.Vectors.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Text.Encodings.Web.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Text.Json.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Threading.Tasks.Extensions.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.ValueTuple.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Web.Optimization.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Newtonsoft.Json.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Antlr3.Runtime.pdb
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.FriendlyUrls.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\System.Web.Providers.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Google.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.AssemblyReference.cache
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.CoreCompileInputs.cache
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.CopyComplete
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\obj\Debug\Zamat.dll
+D:\Bankprojects\CreditConveyorWF\CreditConveyor\СreditСonveyor\obj\Debug\Zamat.pdb
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Zamat.dll.config
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Zamat.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Zamat.pdb
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\csc.exe
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\csc.exe.config
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\csc.rsp
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\csi.exe
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\csi.exe.config
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\csi.rsp
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.Managed.Core.targets
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.AppContext.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Collections.Immutable.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Console.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.Compression.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.FileSystem.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.Pipes.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Reflection.Metadata.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.AccessControl.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Claims.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Principal.Windows.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.ValueTuple.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.XmlDocument.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.XPath.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\vbc.exe
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\vbc.exe.config
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\vbc.rsp
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\VBCSCompiler.exe
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\roslyn\VBCSCompiler.exe.config
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Antlr3.Runtime.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\AspNet.ScriptManager.bootstrap.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\AspNet.ScriptManager.jQuery.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Core.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Cookies.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Facebook.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Google.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.OAuth.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Twitter.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.ScriptManager.MSAjax.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.ScriptManager.WebForms.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Web.Infrastructure.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Newtonsoft.Json.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\OpenPop.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Owin.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Buffers.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Memory.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Numerics.Vectors.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Text.Encodings.Web.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Text.Json.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Threading.Tasks.Extensions.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.ValueTuple.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Web.Optimization.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Web.Providers.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\WebGrease.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\OpenPop.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Buffers.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Memory.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Numerics.Vectors.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Text.Encodings.Web.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Text.Json.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Threading.Tasks.Extensions.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.ValueTuple.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Web.Optimization.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Newtonsoft.Json.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Antlr3.Runtime.pdb
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Core.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\System.Web.Providers.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Facebook.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Cookies.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Google.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Twitter.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.OAuth.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.AssemblyReference.cache
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.CoreCompileInputs.cache
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.CopyComplete
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\obj\Debug\Zamat.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor_21102022_2057\CreditConveyor\СreditСonveyor\obj\Debug\Zamat.pdb
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Zamat.dll.config
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Zamat.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Zamat.pdb
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\csc.exe
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\csc.exe.config
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\csc.rsp
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\csi.exe
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\csi.exe.config
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\csi.rsp
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.Managed.Core.targets
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.AppContext.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Collections.Immutable.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Console.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.Compression.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.FileSystem.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.IO.Pipes.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Reflection.Metadata.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.AccessControl.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Claims.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Security.Principal.Windows.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.ValueTuple.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.XmlDocument.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.XPath.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\vbc.exe
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\vbc.exe.config
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\vbc.rsp
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\VBCSCompiler.exe
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\roslyn\VBCSCompiler.exe.config
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Antlr3.Runtime.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\AspNet.ScriptManager.bootstrap.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\AspNet.ScriptManager.jQuery.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Core.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Cookies.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Facebook.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Google.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.OAuth.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Twitter.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.ScriptManager.MSAjax.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.ScriptManager.WebForms.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Web.Infrastructure.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Newtonsoft.Json.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\OpenPop.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Owin.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Buffers.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Memory.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Numerics.Vectors.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Text.Encodings.Web.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Text.Json.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Threading.Tasks.Extensions.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.ValueTuple.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Web.Optimization.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Web.Providers.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\WebGrease.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\OpenPop.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Buffers.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Memory.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Numerics.Vectors.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Text.Encodings.Web.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Text.Json.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Threading.Tasks.Extensions.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.ValueTuple.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Web.Optimization.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Newtonsoft.Json.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Antlr3.Runtime.pdb
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Core.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\System.Web.Providers.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Facebook.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Cookies.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Google.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.Twitter.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.Owin.Security.OAuth.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.AssemblyReference.cache
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.CoreCompileInputs.cache
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\obj\Debug\СreditСonveyor.csproj.CopyComplete
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\obj\Debug\Zamat.dll
+C:\CreditConveyor\21102022\CreditConveyor_21102022_2057 (2)\CreditConveyor\СreditСonveyor\obj\Debug\Zamat.pdb
