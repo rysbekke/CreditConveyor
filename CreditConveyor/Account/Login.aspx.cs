@@ -175,6 +175,7 @@ namespace СreditСonveyor.Account
         }
 
 
+
         protected void LogIn(object sender, EventArgs e) //Авторизация
         {
             dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
@@ -187,15 +188,20 @@ namespace СreditСonveyor.Account
             {
                 if (check_login_with_СreditСonveyor(Email.Text, connectionStringZ) == 1)
                 {
+                    update_password_from_OB(Email.Text);
                     LogInFunction();
                 }
                 else
                 {
-                    if (check_login_password_with_OB(Email.Text, Password.Text) == 1)
+                    int roleID = 0;
+                    int role_ID = check_login_password_with_OB(Email.Text, Password.Text);
+                    //if (check_login_password_with_OB(Email.Text, Password.Text) == 1)
+                    if ((role_ID == 158) || (role_ID == 159)) roleID = 2;
+                    if (role_ID > 0)
                     {
 
                         int UserIDOB = Convert.ToInt32(Session["UserIDOB"]);
-                        var usr = (from u in dbR.Users where (u.UserID == UserIDOB)  select u).FirstOrDefault();
+                        var usr = (from u in dbR.Users where (u.UserID == UserIDOB) select u).FirstOrDefault();
                         //Создание логина
                         Users2 newItem = new Users2
                         {
@@ -219,7 +225,7 @@ namespace СreditСonveyor.Account
                         {
                             UserID = userID,
                             UserName = Email.Text,
-                            RoleID = 2,
+                            RoleID = roleID,
                             NameAgencyPoint = "КапиталБанк",
                             NameAgencyPoint2 = "КапиталБанк",
                             AddressAgencyPoint = "КапиталБанк",
@@ -233,11 +239,75 @@ namespace СreditСonveyor.Account
                         //Авторизация
                         LogInFunction();
                     }
-                    
+
 
                 }
             }
         }
+
+        //protected void LogIn(object sender, EventArgs e) //Авторизация
+        //{
+        //    dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+        //    dbdataDataContext dbZ = new dbdataDataContext(connectionStringZ);
+        //    //IdentityResult result;
+
+        //    //if (check_password_with_ldap(UserName.Text, Password.Text)) //домен
+        //    //
+        //    if (IsValid)
+        //    {
+        //        if (check_login_with_СreditСonveyor(Email.Text, connectionStringZ) == 1)
+        //        {
+        //            LogInFunction();
+        //        }
+        //        else
+        //        {
+        //            if (check_login_password_with_OB(Email.Text, Password.Text) == 1)
+        //            {
+
+        //                int UserIDOB = Convert.ToInt32(Session["UserIDOB"]);
+        //                var usr = (from u in dbR.Users where (u.UserID == UserIDOB)  select u).FirstOrDefault();
+        //                //Создание логина
+        //                Users2 newItem = new Users2
+        //                {
+        //                    //UserID = Convert.ToInt32(ddlUsers.SelectedItem.Value),
+        //                    UserName = Email.Text,
+        //                    Fullname = "",
+        //                    Password = Crypto.SHA1(Password.Text).ToLower(),
+        //                    EMail = Email.Text,
+        //                    OfficeID = usr.OfficeID,
+        //                    CreateDate = DateTime.Now,
+        //                    PasswordExpiryDate = DateTime.MaxValue,
+        //                    GroupID = 1,
+        //                    OrgID = 1,
+        //                    UserIDOB = UserIDOB
+        //                };
+        //                dbZ.Users2s.InsertOnSubmit(newItem);
+        //                dbZ.Users2s.Context.SubmitChanges();
+        //                int userID = newItem.UserID;
+        //                //Создание роли
+        //                RequestsUsersRole newItemRole = new RequestsUsersRole
+        //                {
+        //                    UserID = userID,
+        //                    UserName = Email.Text,
+        //                    RoleID = 2,
+        //                    NameAgencyPoint = "КапиталБанк",
+        //                    NameAgencyPoint2 = "КапиталБанк",
+        //                    AddressAgencyPoint = "КапиталБанк",
+        //                    AddressAgencyPoint2 = "КапиталБанк",
+        //                    AttorneyDocName = "0",
+        //                    //AttorneyDocDate = Convert.ToDateTime(tbAttorneyDocDate.Text.Substring(3, 2) + "." + tbAttorneyDocDate.Text.Substring(0, 2) + "." + tbAttorneyDocDate.Text.Substring(6, 4)),
+        //                    AttorneyDocDate = DateTime.Now,
+        //                };
+        //                dbZ.RequestsUsersRoles.InsertOnSubmit(newItemRole);
+        //                dbZ.RequestsUsersRoles.Context.SubmitChanges();
+        //                //Авторизация
+        //                LogInFunction();
+        //            }
+
+
+        //        }
+        //    }
+        //}
 
         //Разблокировка логов пользователя
         public void logAuthUnBlock() 
@@ -393,7 +463,7 @@ namespace СreditСonveyor.Account
             //var sha1 = System.Security.Cryptography.SHA1.Create(psw);
             //string sha1 = tosha(password);
             dbdataDataContext db = new dbdataDataContext(connectstr);
-            dbdataDataContext dbRWZ = new dbdataDataContext(connectionStringZ);
+            //dbdataDataContext dbRWZ = new dbdataDataContext(connectionStringZ);
             var usr = (from u in db.Users2s where ((u.UserName == username)) select u).ToList();
           
             if (usr.Count > 0)
@@ -404,7 +474,30 @@ namespace СreditСonveyor.Account
 
         }
 
-        public byte check_login_password_with_OB(string username, string password)
+
+
+        public void update_password_from_OB(string username)
+        {
+            dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+            var usrOB = (from u in dbR.Users where ((u.UserName == username)) select u).ToList();
+
+            dbdataDataContext dbRWZ = new dbdataDataContext(connectionStringZ);
+            var usr = (from u in dbRWZ.Users2s where ((u.UserName == username)) select u).ToList();
+
+            if (usrOB.Count > 0)
+            {
+                string sqlExpression = "update [CreditConveyorWF].[onlineCredits].[Users2] set Password = '" + usrOB.FirstOrDefault().Password + "' where UserName = '" + usr.FirstOrDefault().UserName + "'";
+
+                using (SqlConnection connection = new SqlConnection(connectionStringZ))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public int check_login_password_with_OB(string username, string password)
         {
             dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
 
@@ -453,16 +546,17 @@ namespace СreditСonveyor.Account
             //}
             if (usr.Count > 0)
             {
+                int roleID = 0;
                 var rolesID = dbR.UsersRoles.Where((u) => u.UserID == usr.FirstOrDefault().UserID).ToList();
                 bool f = false;
                 foreach (var role in rolesID)
                 {
-                    if ((role.RoleID == 158) || (role.RoleID == 159)) f = true;
+                    if ((role.RoleID == 158) || (role.RoleID == 159)) { f = true; roleID = role.RoleID; }
                 }
                 if (f)
                 {
                     Session["UserIDOB"] = usr.SingleOrDefault().UserID;
-                    return 1; //пользователь найден
+                    return roleID; //пользователь найден
                 }
                 else return 0;
             }

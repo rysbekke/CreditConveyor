@@ -407,7 +407,7 @@
                 <%--***********************************************--%>
 
 
-                ----
+               
                  <div class="col-md-4 panels">
 
                     
@@ -1288,7 +1288,7 @@
 					
 					<asp:Button ID="btnSendCreditRequest" runat="server" Text="Сохранить" class="btn btn-success" OnClick="btnSendCreditRequest_Click" ValidationGroup="SaveRequest" Visible="False" onClientclick="myComment()"/>
 					
-                    <asp:Button ID="btnCloseRequest" runat="server" Text="Закрыть форму" class="btn btn-dark" OnClick="btnCloseRequest_Click" Visible ="false"/>
+                    <%--<asp:Button ID="btnCloseRequest" runat="server" Text="Закрыть форму" class="btn btn-dark" OnClick="btnCloseRequest_Click" Visible ="false"/>--%>
 
  </div>
 

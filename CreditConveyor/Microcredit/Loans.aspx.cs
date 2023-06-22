@@ -287,9 +287,9 @@ namespace СreditСonveyor.Microcredit
                 chkbxKindActivity2.Visible = true;
                 chkbxKindActivity3.Visible = true;
 
-                btnForPeriod.Visible = true;
-                btnForPeriodWithHistory.Visible = true;
-                btnForPeriodWithProducts.Visible = true;
+                //btnForPeriod.Visible = true;
+                //btnForPeriodWithHistory.Visible = true;
+                //btnForPeriodWithProducts.Visible = true;
                 //btnSozfondAgree.Visible = true;
             }
         }
@@ -325,7 +325,7 @@ namespace СreditСonveyor.Microcredit
                                   //3-Тур
                                   //6-все заявки Светофор
                                   //8-Билайн
-            var rle = Convert.ToInt32(Session["RoleID"]);
+            var rle = Convert.ToInt32(Session["RoleID"]); agentRoleID = rle;
             var users2 = dbRWZ.Users2s.Where(r => r.UserID == usrID).FirstOrDefault();
             int? orgID = dbRWZ.Groups.Where(g => g.GroupID == groupID).FirstOrDefault().OrgID;
             List<Request> lst;

@@ -51,9 +51,9 @@
     <h4>МК кредиты</h4>
 <asp:Panel ID="pnlUser" runat="server">
 	<p class="right" style="font-size: 14px;">
-        <asp:Label ID="lblGroup" runat="server" Text="Group" style="font-size:14px"></asp:Label>
+        <asp:Label ID="lblGroup" runat="server" Text="Group" style="font-size:14px" Visible="false"></asp:Label>
 		<asp:Label ID="lblUserName" runat="server" Text="" Visible="false"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;<asp:LinkButton ID="lbLogout" runat="server" OnClick="lbLogout_Click" Visible="false">Logout</asp:LinkButton>
-        &nbsp;&nbsp;&nbsp;&nbsp;<asp:LinkButton ID="lbSettings" runat="server" OnClick="lbSettings_Click">Настройки</asp:LinkButton>
+        &nbsp;&nbsp;&nbsp;&nbsp;<asp:LinkButton ID="lbSettings" runat="server" OnClick="lbSettings_Click" Visible="false">Настройки</asp:LinkButton>
 	</p>
 	
     
@@ -292,9 +292,9 @@
             <asp:HiddenField ID="hfRequestID" runat="server" />
     <asp:HiddenField ID="hfRequestsRowID" runat="server" />
     <asp:Button ID="btnNewRequest" runat="server" Text="Новая заявка" class="btn btn-primary" OnClick="btnNewRequest_Click" />
-    <asp:Button ID="btnForPeriod" runat="server" Text="Отчет" Visible="False" OnClientClick="openNewWin();" class="btn btn-primary" OnClick="btnForPeriod_Click" />
+   <%-- <asp:Button ID="btnForPeriod" runat="server" Text="Отчет" Visible="False" OnClientClick="openNewWin();" class="btn btn-primary" OnClick="btnForPeriod_Click" />
     <asp:Button ID="btnForPeriodWithHistory" runat="server" Text="Отчет 2" Visible="False" OnClientClick="openNewWin();" class="btn btn-primary" OnClick="btnForPeriodWithHistory_Click"  />
-    <asp:Button ID="btnForPeriodWithProducts" runat="server" Text="Отчет 3" Visible="False" OnClientClick="openNewWin();" class="btn btn-primary" OnClick="btnForPeriodWithProducts_Click" />
+    <asp:Button ID="btnForPeriodWithProducts" runat="server" Text="Отчет 3" Visible="False" OnClientClick="openNewWin();" class="btn btn-primary" OnClick="btnForPeriodWithProducts_Click" />--%>
 
 
 

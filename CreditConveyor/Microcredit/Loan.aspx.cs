@@ -276,6 +276,11 @@ namespace СreditСonveyor.Microcredit
 
         protected void btnSearchClient_Click(object sender, EventArgs e)
         {
+            SearchClient_Click();
+        }
+        protected void SearchClient_Click()
+        {
+            btnSaveCustomer.Text = "Прикрепить";
             disableCustomerFields();
             dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
             //var query = (from u in dbR.Customers where ((u.IdentificationNumber == tbSearchINN.Text) && (u.DocumentSeries == tbSerialN.Text.Substring(0, 5)) && (u.DocumentNo == tbSerialN.Text.Substring(5, 4))) select u).ToList().FirstOrDefault();
@@ -344,8 +349,8 @@ namespace СreditСonveyor.Microcredit
                 if (ddlRegistrationCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCityID.ToString()))
                     ddlRegistrationCityName.SelectedIndex = ddlRegistrationCityName.Items.IndexOf(ddlRegistrationCityName.Items.FindByValue(query.RegistrationCityID.ToString()));
                 var RegistrationCity = (from u in dbR.Cities where ((u.CityID == query.RegistrationCityID)) select u).ToList().FirstOrDefault();
-                ddlRegistrationCityName.Items.Add(RegistrationCity.CityName);
-
+                //ddlRegistrationCityName.Items.Add(RegistrationCity.CityName);
+                ddlRegistrationCityName.Items.Add(new ListItem { Text = RegistrationCity.CityName, Value = RegistrationCity.CityID.ToString() });
                 var registrationCity = dbR.GetTable<City>().Where(c => c.CityID == query.RegistrationCityID).FirstOrDefault();
                 if (registrationCity != null)
                 {
@@ -354,8 +359,9 @@ namespace СreditСonveyor.Microcredit
                 if (ddlResidenceCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCityID.ToString()))
                     ddlResidenceCityName.SelectedIndex = ddlResidenceCityName.Items.IndexOf(ddlResidenceCityName.Items.FindByValue(query.ResidenceCityID.ToString()));
                 var ResidenceCity = (from u in dbR.Cities where ((u.CityID == query.ResidenceCityID)) select u).ToList().FirstOrDefault();
-                ddlResidenceCityName.Items.Add(ResidenceCity.CityName);
-                
+                //ddlResidenceCityName.Items.Add(ResidenceCity.CityName);
+                ddlResidenceCityName.Items.Add(new ListItem { Text = ResidenceCity.CityName, Value = ResidenceCity.CityID.ToString() });
+
                 var residenceCity = dbR.GetTable<City>().Where(c => c.CityID == query.ResidenceCityID).FirstOrDefault();
                 if (residenceCity != null)
                 {
@@ -831,6 +837,7 @@ namespace СreditСonveyor.Microcredit
 
         protected void btnNewCustomer_Click(object sender, EventArgs e)
         {
+            btnSaveCustomer.Text = "Сохранить";
             databindDDL();
             enableCustomerFields();
             clearEditControls();
@@ -903,7 +910,11 @@ namespace СreditСonveyor.Microcredit
                     if ((hfCustomerID.Value == "noselect") && (hfGuarantorID.Value == "noselect") && (hfPledgerID.Value == "noselect"))
                     {
                         dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
-                        var cust = dbR.Customers.Where(c => ((c.IdentificationNumber == tbIdentificationNumber.Text) && (c.DocumentSeries == tbDocumentSeries.Text.Substring(0, 5) && (c.DocumentNo == tbDocumentSeries.Text.Substring(5, 4))))).ToList();
+                        //var cust = dbR.Customers.Where(c => ((c.IdentificationNumber == tbIdentificationNumber.Text) && (c.DocumentSeries == tbDocumentSeries.Text.Substring(0, 5) && (c.DocumentNo == tbDocumentSeries.Text.Substring(5, 4))))).ToList();
+                        
+                        
+                        
+                        var cust = dbR.Customers.Where(c => ((c.IdentificationNumber == tbIdentificationNumber.Text.Trim()) && (String.Concat(c.DocumentSeries, c.DocumentNo) == tbDocumentSeries.Text.Trim()))).ToList();
                         if (cust.Count == 0)
                         {
                             //Customer newItem = new Customer
@@ -991,12 +1002,12 @@ namespace СreditСonveyor.Microcredit
                             dCustomer.Data.ResidenceHouse = tbResidenceHouse.Text;
                             dCustomer.Data.ResidenceFlat = tbResidenceFlat.Text;
                             dCustomer.Data.DocumentTypeID = Convert.ToInt32(ddlDocumentTypeID.SelectedValue);
-                            dCustomer.Data.NationalityID = Convert.ToInt32(ddlNationalityID.SelectedItem.Value);
-                            dCustomer.Data.BirthCountryID = Convert.ToInt32(ddlBirthCountryID.SelectedItem.Value);
-                            dCustomer.Data.RegistrationCountryID = Convert.ToInt32(ddlBirthCountryID.SelectedItem.Value);
+                            //dCustomer.Data.NationalityID = Convert.ToInt32(ddlNationalityID.SelectedItem.Value);
+                            //dCustomer.Data.BirthCountryID = Convert.ToInt32(ddlBirthCountryID.SelectedItem.Value);
                             
-                            dCustomer.Data.ResidenceCountryID = Convert.ToInt32(ddlResidenceCountryID.SelectedItem.Value);
-                            dCustomer.Data.BirthCityID = Convert.ToInt32(ddlBirthCityName.SelectedItem.Value);
+                            //dCustomer.Data.RegistrationCountryID = Convert.ToInt32(ddlRegistrationCountryID.SelectedItem.Value);
+                            //dCustomer.Data.ResidenceCountryID = Convert.ToInt32(ddlResidenceCountryID.SelectedItem.Value);
+                            //dCustomer.Data.BirthCityID = Convert.ToInt32(ddlBirthCityName.SelectedItem.Value);
                             dCustomer.Data.RegistrationCityID = Convert.ToInt32(ddlRegistrationCityName.SelectedItem.Value);
                             dCustomer.Data.RegistrationCityName = ddlRegistrationCityName.SelectedItem.Text;
                             dCustomer.Data.ResidenceCityID = Convert.ToInt32(ddlResidenceCityName.SelectedItem.Value);
@@ -1044,6 +1055,37 @@ namespace СreditСonveyor.Microcredit
                         else
                         {
                             //*****/ DotNetNuke.UI.Skins.Skin.AddModuleMessage(this, "Клиент есть в базе, сделайте поиск по ИНН", DotNetNuke.UI.Skins.Controls.ModuleMessage.ModuleMessageType.RedError);
+                            if (btnSaveCustomer.Text == "Прикрепить")
+                            {
+                                hfChooseClient.Value = "Выбрать клиента";
+                                if (hfChooseClient.Value == "Выбрать клиента")
+                                {
+                                    hfCustomerID.Value = cust.FirstOrDefault().CustomerID.ToString();
+                                    tbSurname2.Text = tbSurname.Text;
+                                    tbCustomerName2.Text = tbCustomerName.Text;
+                                    tbOtchestvo2.Text = tbOtchestvo.Text;
+                                    //tbINN2.Text = tbIdentificationNumber.Text;
+                                    lblFIO.Text = tbSurname2.Text + " " + tbCustomerName2.Text + " " + tbOtchestvo2.Text;
+                                    lblINN.Text = tbIdentificationNumber.Text;
+                                }
+                                if (hfChooseClient.Value == "Выбрать поручителя")
+                                {
+                                    hfGuarantorID.Value = cust.FirstOrDefault().CustomerID.ToString();
+                                    tbGuarantorSurname.Text = tbSurname.Text;
+                                    tbGuarantorName.Text = tbCustomerName.Text;
+                                    tbGuarantorOtchestvo.Text = tbOtchestvo.Text;
+                                    tbGuarantorINN.Text = tbIdentificationNumber.Text;
+                                }
+                                if (hfChooseClient.Value == "Выбрать залогодателя")
+                                {
+                                    hfPledgerID.Value = cust.FirstOrDefault().CustomerID.ToString();
+                                    tbPledgerSurname.Text = tbSurname.Text;
+                                    tbPledgerName.Text = tbCustomerName.Text;
+                                    tbPledgerOtchestvo.Text = tbOtchestvo.Text;
+                                    tbPledgerINN.Text = tbIdentificationNumber.Text;
+                                }
+                            }
+                            else 
                             MsgBox("Клиент есть в базе, сделайте поиск по ИНН", this.Page, this);
                             //MsgBox("Выдача кредита не возможна, возрастное ограничение 23-70 (не должно превышать 70 на момент окончания кредита клиенту)", this.Page, this);
                         }
@@ -1656,17 +1698,18 @@ namespace СreditСonveyor.Microcredit
                                         //LoanStatus = 0,
                     CreditID = 0,
                     MortrageTypeID = mortrageTypeID,  //Вид обеспечения 16-приобретаемая имущество
-                                                      //IncomeApproveTypeID = 1,
+                    IncomeApproveTypeID = 1,
                     RequestCurrencyID = 417,
                     RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text),
-                    //MarketingSourceID = 5,
+                    MarketingSourceID = 1,
                     RequestDate = Convert.ToDateTime(actdate), //dateTimeNow, 
                                                                //IssueAccountNo = "",
                                                                //OfficerUserName = "",
                     CreditOfficerTypeID = 1,
-                    CreditOfficerStartDate = Convert.ToDateTime(actdate), // creditOfficerStartDate, //Convert.ToDateTime(dateNow).AddDays(-1),  //Convert.ToDateTime("2021-09-19T11:28:42"),  //Convert.ToDateTime(actdate), //dateTimeNow, 
-                                                                     //CreditOfficerEndDate = null, // Convert.ToDateTime(actdate), //dateTimeNow, 
-                                                                     //OfficeID = officeID, //1105,
+                    CreditOfficerStartDate = Convert.ToDateTime(actdate).AddDays(-1), // creditOfficerStartDate, //Convert.ToDateTime(dateNow).AddDays(-1),  //Convert.ToDateTime("2021-09-19T11:28:42"),  //Convert.ToDateTime(actdate), //dateTimeNow, 
+                                                                          //CreditOfficerEndDate = null, // Convert.ToDateTime(actdate), //dateTimeNow, 
+                                                                          //OfficeID = officeID, //1105,
+                    
                     OfficerID = Convert.ToInt32(credOfficerID), //6804,
 
                     IncomesStructuresActualDates = new List<GeneralController.IncomesStructuresActualDate>(),
@@ -1804,7 +1847,7 @@ namespace СreditСonveyor.Microcredit
                         CreditPurpose = tbCreditPurpose.Text,
                         RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue),
                         CreditProduct = ddlProduct.SelectedValue,
-
+                        
                         RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text),
                         RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text),
                         //RequestGrantComission = Convert.ToDecimal(lblCommission.Text),
@@ -3052,7 +3095,7 @@ namespace СreditСonveyor.Microcredit
                 /***********************/
                 history(id);
                 btnCustomerSearch.Enabled = false;
-                btnCloseRequest.Visible = true; //закры форму заявки
+                //btnCloseRequest.Visible = true; //закры форму заявки
                 //btnCalculator.Visible = true; //калькулятор
                 btnNewRequest.Visible = true; //новая заявка
                 btnProffer.Visible = false; //предложение зп
@@ -3849,7 +3892,7 @@ namespace СreditСonveyor.Microcredit
             btnIssue.Visible = false;
             btnCancelIssue.Visible = false;
             pnlNewRequest.Visible = true;
-            btnCloseRequest.Visible = true;
+            //btnCloseRequest.Visible = true;
             btnSozfondAgree.Visible = false;
             btnComment.Visible = false;
             //btnForPeriod.Visible = false;
@@ -4244,7 +4287,7 @@ namespace СreditСonveyor.Microcredit
         protected void btnCloseRequest_Click(object sender, EventArgs e)
         {
             pnlNewRequest.Visible = false;
-            btnCloseRequest.Visible = false;
+            //btnCloseRequest.Visible = false;
             btnSendCreditRequest.Visible = false;
             btnAgreement.Visible = false;
             btnPledgeAgreement.Visible = false;
