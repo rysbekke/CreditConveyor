@@ -35,7 +35,7 @@ using iTextSharp.text.pdf;
 using System.Globalization;
 using System.Threading;
 using System.Net.Http.Headers;
-
+using Zamat;
 
 namespace СreditСonveyor.Data
 {
@@ -880,7 +880,7 @@ namespace СreditСonveyor.Data
             public int IncomeApproveTypeID { get; set; }
             public int RequestCurrencyID { get; set; }
             public decimal RequestSumm { get; set; }
-            //public int MarketingSourceID { get; set; }
+            public int MarketingSourceID { get; set; }
             //public DateTime RequestDate { get; set; }
             public string IssueAccountNo { get; set; }
             //public string OfficerUserName { get; set; }

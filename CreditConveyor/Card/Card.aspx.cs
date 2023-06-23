@@ -12,8 +12,10 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Zamat;
 using СreditСonveyor.Data;
 using СreditСonveyor.Data.Card;
+using Region = Zamat.Region;
 
 namespace СreditСonveyor.Card
 {

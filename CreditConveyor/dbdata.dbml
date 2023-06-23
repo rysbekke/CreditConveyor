@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="СreditСonveyor" Class="dbdataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=10.120.17.98;Initial Catalog=СreditСonveyor;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ConnectionStringZ" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CapitalDB3_Update" Class="dbdataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=192.168.22.10;Initial Catalog=CapitalDB3_Update;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ConnectionStringOBR" Provider="System.Data.SqlClient" />
   <Table Name="UnitedDBSecurity.UsersRoles" Member="UsersRoles">
     <Type Name="UsersRole">
       <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -163,87 +163,6 @@
       <Association Name="History_RejectedHistoriesReason" Member="History" ThisKey="CreditID" OtherKey="CreditID" Type="History" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
-  <Table Name="Credits.Histories" Member="Histories">
-    <Type Name="History">
-      <Column Name="CreditID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RequestDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="RequestCurrencyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RequestPeriod" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="RequestRate" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="PaymentSourceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LanguageID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
-      <Column Name="RequestMortrageTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IncomeApproveTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LoanLocation" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
-      <Column Name="MarketingSourceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="RequestGrantComission" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="RequestGrantComissionType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="RequestReturnComission" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="RequestReturnComissionType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="RequestTrancheIssueComission" Type="System.Decimal" DbType="Decimal(15,6)" CanBeNull="true" />
-      <Column Name="RequestTrancheIssueComissionType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="RequestTrancheSupportComission" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="RequestTrancheSupportComissionType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="RequestRateForNotUsedTranche" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="GroupName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PartnerCompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DecisionNo" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="AgreementNo" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
-      <Column Name="ApprovedCurrencyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ApprovedPeriod" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="ApprovedRate" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="ApprovedGrantComission" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="ApprovedGrantComissionType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="ApprovedReturnComission" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="ApprovedReturnComissionType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="ApprovedTrancheIssueComission" Type="System.Decimal" DbType="Decimal(15,6)" CanBeNull="true" />
-      <Column Name="ApprovedTrancheIssueComissionType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="ApprovedTrancheSupportComission" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="ApprovedTrancheSupportComissionType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="ApprovedRateForNotUsedTranche" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="OfficeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CurrentObligations" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
-      <Column Name="GuaranteeContractNo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="GuaranteeContractDescription" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
-      <Column Name="GuaranteeBeneficiaryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GuaranteeSpecialInstructions" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="GuaranteePurposeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LoanPurposeTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CalculationTypeID" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="GuaranteeEndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="FinancingSourceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreditFraudStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="InformationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ParallelRelativeCredit" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Options" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExternalProgramID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="RedealType" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CustomerAwayReasonDictionaryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NonPaymentRisk" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExternalCashDeskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IssueAccountNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="IssueComissionPaymentTypeID" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="IssueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CurrentAssets" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MainAssets" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="EquityСapital" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ProfitBeforeLoanRepayment" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="NetProfitAfterLoanRepayment" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ReasonID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="History_HistoriesStatuse" Member="HistoriesStatuses" ThisKey="CreditID" OtherKey="CreditID" Type="HistoriesStatuse" />
-      <Association Name="History_RejectedHistoriesReason" Member="RejectedHistoriesReason" ThisKey="CreditID" OtherKey="CreditID" Type="RejectedHistoriesReason" Cardinality="One" />
-      <Association Name="History_HistoriesCustomer" Member="HistoriesCustomers" ThisKey="CreditID" OtherKey="CreditID" Type="HistoriesCustomer" />
-      <Association Name="History_HistoriesEarlyPaymentComission" Member="HistoriesEarlyPaymentComissions" ThisKey="CreditID" OtherKey="CreditID" Type="HistoriesEarlyPaymentComission" />
-      <Association Name="History_HistoriesOfficer" Member="HistoriesOfficers" ThisKey="CreditID" OtherKey="CreditID" Type="HistoriesOfficer" />
-      <Association Name="History_IncomesStructuresActualDate" Member="IncomesStructuresActualDates" ThisKey="CreditID" OtherKey="CreditID" Type="IncomesStructuresActualDate" />
-      <Association Name="History_Graphic" Member="Graphics" ThisKey="CreditID" OtherKey="CreditID" Type="Graphic" />
-      <Association Name="History_CreditsAccount" Member="CreditsAccounts" ThisKey="CreditID" OtherKey="CreditID" Type="CreditsAccount" />
-      <Association Name="Office_History" Member="Office" ThisKey="OfficeID" OtherKey="ID" Type="Office" IsForeignKey="true" />
-      <Association Name="Customer_History" Member="Customer" ThisKey="GuaranteeBeneficiaryID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" />
-      <Association Name="Currency_History" Member="Currency" ThisKey="RequestCurrencyID" OtherKey="CurrencyID" Type="Currency" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="Credits.HistoriesCustomers" Member="HistoriesCustomers">
     <Type Name="HistoriesCustomer">
       <Column Name="CreditID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -253,8 +172,8 @@
       <Column Name="CreditPurpose" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="ApprovedSumm" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
       <Column Name="HistoryObjectID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="History_HistoriesCustomer" Member="History" ThisKey="CreditID" OtherKey="CreditID" Type="History" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="Customer_HistoriesCustomer" Member="Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="History_HistoriesCustomer" Member="History" ThisKey="CreditID" OtherKey="CreditID" Type="History" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="Credits.HistoriesEarlyPaymentComissions" Member="HistoriesEarlyPaymentComissions">
@@ -281,8 +200,8 @@
       <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="RotationReasonID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="RotatedByUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="History_HistoriesOfficer" Member="History" ThisKey="CreditID" OtherKey="CreditID" Type="History" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="User_HistoriesOfficer" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="History_HistoriesOfficer" Member="History" ThisKey="CreditID" OtherKey="CreditID" Type="History" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="Credits.IncomesStructures" Member="IncomesStructures">
@@ -341,8 +260,8 @@
       <Column Name="Latitude" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Longitude" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="Office_User" Member="Users" ThisKey="ID" OtherKey="OfficeID" Type="User" />
-      <Association Name="Office_History" Member="Histories" ThisKey="ID" OtherKey="OfficeID" Type="History" />
       <Association Name="Office_Accounts" Member="Accounts" ThisKey="ID" OtherKey="OfficeID" Type="Accounts" />
+      <Association Name="Office_History" Member="Histories" ThisKey="ID" OtherKey="OfficeID" Type="History" />
       <Association Name="Branch_Office" Member="Branch" ThisKey="BranchID" OtherKey="ID" Type="Branch" IsForeignKey="true" />
     </Type>
   </Table>
@@ -489,12 +408,12 @@
       <Column Name="WhatsAppPhone" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
       <Column Name="IsBankEmployee" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="SegmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Customer_History" Member="Histories" ThisKey="CustomerID" OtherKey="GuaranteeBeneficiaryID" Type="History" />
       <Association Name="Customer_HistoriesCustomer" Member="HistoriesCustomers" ThisKey="CustomerID" OtherKey="CustomerID" Type="HistoriesCustomer" />
       <Association Name="Customer_Customer" Member="Customers" ThisKey="CustomerID" OtherKey="BeneficiaryID" Type="Customer" />
       <Association Name="Customer_BranchesCustomer" Member="BranchesCustomers" ThisKey="CustomerID" OtherKey="CustomerID" Type="BranchesCustomer" />
       <Association Name="Customer_PartnersHistory" Member="PartnersHistories" ThisKey="CustomerID" OtherKey="CompanyID" Type="PartnersHistory" />
       <Association Name="Customer_Accounts" Member="Accounts" ThisKey="CustomerID" OtherKey="CustomerID" Type="Accounts" />
+      <Association Name="Customer_History" Member="Histories" ThisKey="CustomerID" OtherKey="GuaranteeBeneficiaryID" Type="History" />
       <Association Name="Customer_Customer" Member="Customer1" ThisKey="BeneficiaryID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" />
       <Association Name="City_Customer" Member="City" ThisKey="BirthCityID" OtherKey="CityID" Type="City" IsForeignKey="true" />
       <Association Name="City_Customer1" Member="City1" ThisKey="RegistrationCityID" OtherKey="CityID" Type="City" IsForeignKey="true" />
@@ -524,11 +443,11 @@
       <Column Name="CountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GenderTypeID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
       <Column Name="PRBOCode" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
-      <Association Name="Currency_History" Member="Histories" ThisKey="CurrencyID" OtherKey="RequestCurrencyID" Type="History" />
       <Association Name="Currency_IncomesStructure" Member="IncomesStructures" ThisKey="CurrencyID" OtherKey="CurrencyID" Type="IncomesStructure" />
       <Association Name="Currency_Customer" Member="Customers" ThisKey="CurrencyID" OtherKey="ExtraWorkCurrencyID" Type="Customer" />
       <Association Name="Currency_Customer1" Member="Customers1" ThisKey="CurrencyID" OtherKey="WorkCurrencyID" Type="Customer" />
       <Association Name="Currency_Accounts" Member="Accounts" ThisKey="CurrencyID" OtherKey="CurrencyID" Type="Accounts" />
+      <Association Name="Currency_History" Member="Histories" ThisKey="CurrencyID" OtherKey="RequestCurrencyID" Type="History" />
       <Association Name="Country_Currency" Member="Country" ThisKey="CountryID" OtherKey="CountryID" Type="Country" IsForeignKey="true" />
     </Type>
   </Table>
@@ -643,8 +562,8 @@
       <Column Name="CurrencyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="LastCalcDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="SumV" Type="System.Decimal" DbType="Decimal(15,2) NOT NULL" CanBeNull="false" />
-      <Association Name="History_CreditsAccount" Member="History" ThisKey="CreditID" OtherKey="CreditID" Type="History" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="Accounts_CreditsAccount" Member="Accounts" ThisKey="AccountNo,CurrencyID" OtherKey="AccountNo,CurrencyID" Type="Accounts" IsForeignKey="true" />
+      <Association Name="History_CreditsAccount" Member="History" ThisKey="CreditID" OtherKey="CreditID" Type="History" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="Credits.ProductsEarlyPaymentComissions" Member="ProductsEarlyPaymentComissions">
@@ -1133,105 +1052,6 @@
       <Column Name="Coefficient" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="onlineCredits.Requests" Member="Requests">
-    <Type Name="Request">
-      <Column Name="RequestID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="AgentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreditID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="BranchID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Surname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Otchestvo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CreditPurpose" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="RequestPeriod" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="ProductPrice" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="AmountDownPayment" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="RequestSumm" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="RequestRate" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="RequestGrantComission" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="ActualDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ProductMark" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="ProductSerial" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
-      <Column Name="ProductImei" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
-      <Column Name="ProductDescription" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
-      <Column Name="RequestDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="IdentificationNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="AgentUsername" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="AgentFirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="AgentLastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="GuarantorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GuarantorSurname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="GuarantorName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="GuarantorOtchestvo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="GuarantorIdentificationNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="RequestStatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="AverageMonthSalary" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="Revenue" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="СostPrice" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="Overhead" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="Bussiness" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="OtherLoans" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="AverageMonthSalaryGuar" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="RevenueGuar" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="СostPriceGuar" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="OverheadGuar" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="BussinessGuar" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AverageMonthSalarySpouse" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="AgentRoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="OtherLoansGuar" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="SumMonthSalary" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="MonthlyInstallment" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="CountMonthSalary" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IsEmployer" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="SumMonthSalaryGuar" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="CountMonthSalaryGuar" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FamilyExpenses" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="CountWorkDay" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="BusinessComment" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
-      <Column Name="AdditionalIncome" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="MinRevenue" Type="System.Decimal" DbType="Decimal(15,0)" CanBeNull="true" />
-      <Column Name="MaxRevenue" Type="System.Decimal" DbType="Decimal(15,0)" CanBeNull="true" />
-      <Column Name="GroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="OfficeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="OrgID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="RevenueAgro" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="RevenueMilk" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="OverheadAgro" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="AddOverheadAgro" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="MaritalStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NanoScorePoints" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="ContactPhone1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="RequestCode" Type="System.String" DbType="NVarChar(36)" CanBeNull="true" />
-      <Column Name="IsLoadAgree" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="lnkSozfond" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
-      <Column Name="OrganizationINN" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="StatusOB" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CreditProduct" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="CardNumber" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
-      <Column Name="IsReceivedMPZ" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="CardAccount" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
-      <Column Name="RevenueMilkProd" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="isGuarantor" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="isPledger" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="isNoPledge" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="PledgerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PledgerSurname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PledgerName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PledgerOtchestvo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PledgerIdentificationNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="NumberCola" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="KindOfAgriculture" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Bulls" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="BairyCows" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Sheeps" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Horse" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExperienceAnimals" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MortrageTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TypeOfIssue" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Request_LoanRequest" Member="LoanRequest" ThisKey="RequestID" OtherKey="RequestID" Type="LoanRequest" Cardinality="One" />
-    </Type>
-  </Table>
   <Table Name="onlineCredits.CardRequests" Member="CardRequests">
     <Type Name="CardRequest">
       <Column Name="RequestID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -1356,7 +1176,6 @@
       <Column Name="CurrencyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TotalPercents" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
       <Column Name="ActualDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Association Name="Request_LoanRequest" Member="Request" ThisKey="RequestID" OtherKey="RequestID" Type="Request" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.JournalDCBCola" Member="JournalDCBColas">
@@ -1387,6 +1206,192 @@
       <Column Name="Verificator" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DateVerif" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="onlineCredits.Requests" Member="Requests">
+    <Type Name="Request">
+      <Column Name="RequestID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AgentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreditID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BranchID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Otchestvo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreditPurpose" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="RequestPeriod" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="ProductPrice" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="AmountDownPayment" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="RequestSumm" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="RequestRate" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="RequestGrantComission" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="ActualDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProductMark" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ProductSerial" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="ProductImei" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="ProductDescription" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="RequestDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IdentificationNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="AgentUsername" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="AgentFirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AgentLastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GuarantorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GuarantorSurname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GuarantorName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GuarantorOtchestvo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GuarantorIdentificationNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="RequestStatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AverageMonthSalary" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="Revenue" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="СostPrice" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="Overhead" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="Bussiness" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OtherLoans" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="AverageMonthSalaryGuar" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="RevenueGuar" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="СostPriceGuar" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="OverheadGuar" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="BussinessGuar" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AverageMonthSalarySpouse" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="AgentRoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OtherLoansGuar" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="SumMonthSalary" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="MonthlyInstallment" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="CountMonthSalary" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsEmployer" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SumMonthSalaryGuar" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="CountMonthSalaryGuar" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FamilyExpenses" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="CountWorkDay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BusinessComment" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="AdditionalIncome" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="MinRevenue" Type="System.Decimal" DbType="Decimal(15,0)" CanBeNull="true" />
+      <Column Name="MaxRevenue" Type="System.Decimal" DbType="Decimal(15,0)" CanBeNull="true" />
+      <Column Name="GroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OfficeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrgID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RevenueAgro" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="RevenueMilk" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="OverheadAgro" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="AddOverheadAgro" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="MaritalStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NanoScorePoints" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ContactPhone1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RequestCode" Type="System.String" DbType="NVarChar(36)" CanBeNull="true" />
+      <Column Name="IsLoadAgree" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="lnkSozfond" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="OrganizationINN" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="StatusOB" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreditProduct" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CardNumber" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="IsReceivedMPZ" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CardAccount" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="RevenueMilkProd" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="isGuarantor" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isPledger" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isNoPledge" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PledgerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PledgerSurname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PledgerName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PledgerOtchestvo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PledgerIdentificationNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="NumberCola" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="KindOfAgriculture" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Bulls" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BairyCows" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sheeps" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Horse" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExperienceAnimals" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MortrageTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TypeOfIssue" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SerialNumber" Type="System.String" DbType="NVarChar(9)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Credits.Histories" Member="Histories">
+    <Type Name="History">
+      <Column Name="CreditID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RequestDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RequestCurrencyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RequestPeriod" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="RequestRate" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="PaymentSourceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LanguageID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="RequestMortrageTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IncomeApproveTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LoanLocation" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="MarketingSourceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RequestGrantComission" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="RequestGrantComissionType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="RequestReturnComission" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="RequestReturnComissionType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="RequestTrancheIssueComission" Type="System.Decimal" DbType="Decimal(15,6)" CanBeNull="true" />
+      <Column Name="RequestTrancheIssueComissionType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="RequestTrancheSupportComission" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="RequestTrancheSupportComissionType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="RequestRateForNotUsedTranche" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="GroupName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PartnerCompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DecisionNo" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="AgreementNo" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="ApprovedCurrencyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApprovedPeriod" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="ApprovedRate" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="ApprovedGrantComission" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="ApprovedGrantComissionType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="ApprovedReturnComission" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="ApprovedReturnComissionType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="ApprovedTrancheIssueComission" Type="System.Decimal" DbType="Decimal(15,6)" CanBeNull="true" />
+      <Column Name="ApprovedTrancheIssueComissionType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="ApprovedTrancheSupportComission" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="ApprovedTrancheSupportComissionType" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="ApprovedRateForNotUsedTranche" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="OfficeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CurrentObligations" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="GuaranteeContractNo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="GuaranteeContractDescription" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="GuaranteeBeneficiaryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GuaranteeSpecialInstructions" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="GuaranteePurposeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LoanPurposeTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CalculationTypeID" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="GuaranteeEndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="FinancingSourceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreditFraudStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InformationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParallelRelativeCredit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Options" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExternalProgramID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RedealType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerAwayReasonDictionaryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NonPaymentRisk" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExternalCashDeskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IssueAccountNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IssueComissionPaymentTypeID" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="IssueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CurrentAssets" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MainAssets" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EquityCapital" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProfitBeforeLoanRepayment" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NetProfitAfterLoanRepayment" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ReasonID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SalaryReduceNegativeImpact" Type="System.Decimal" DbType="Decimal(9,2)" CanBeNull="true" />
+      <Column Name="LoanIssuePaymentTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WalletNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PaymentCardNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProviderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IssueOfficeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="History_HistoriesStatuse" Member="HistoriesStatuses" ThisKey="CreditID" OtherKey="CreditID" Type="HistoriesStatuse" />
+      <Association Name="History_RejectedHistoriesReason" Member="RejectedHistoriesReason" ThisKey="CreditID" OtherKey="CreditID" Type="RejectedHistoriesReason" Cardinality="One" />
+      <Association Name="History_HistoriesCustomer" Member="HistoriesCustomers" ThisKey="CreditID" OtherKey="CreditID" Type="HistoriesCustomer" />
+      <Association Name="History_HistoriesEarlyPaymentComission" Member="HistoriesEarlyPaymentComissions" ThisKey="CreditID" OtherKey="CreditID" Type="HistoriesEarlyPaymentComission" />
+      <Association Name="History_HistoriesOfficer" Member="HistoriesOfficers" ThisKey="CreditID" OtherKey="CreditID" Type="HistoriesOfficer" />
+      <Association Name="History_IncomesStructuresActualDate" Member="IncomesStructuresActualDates" ThisKey="CreditID" OtherKey="CreditID" Type="IncomesStructuresActualDate" />
+      <Association Name="History_Graphic" Member="Graphics" ThisKey="CreditID" OtherKey="CreditID" Type="Graphic" />
+      <Association Name="History_CreditsAccount" Member="CreditsAccounts" ThisKey="CreditID" OtherKey="CreditID" Type="CreditsAccount" />
+      <Association Name="Currency_History" Member="Currency" ThisKey="RequestCurrencyID" OtherKey="CurrencyID" Type="Currency" IsForeignKey="true" />
+      <Association Name="Customer_History" Member="Customer" ThisKey="GuaranteeBeneficiaryID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" />
+      <Association Name="Office_History" Member="Office" ThisKey="OfficeID" OtherKey="ID" Type="Office" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="Credits.CalculateEIR" Method="CalculateEIR" IsComposable="true">

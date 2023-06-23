@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Zamat;
 using СreditСonveyor.Data.Partners2;
 
 namespace СreditСonveyor.Partners2

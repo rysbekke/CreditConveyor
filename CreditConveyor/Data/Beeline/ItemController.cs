@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Web;
+using Zamat;
 
 namespace СreditСonveyor.Data.Beeline
 {

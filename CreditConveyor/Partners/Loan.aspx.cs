@@ -33,6 +33,8 @@ using System.Net.Security;
 using System.IO.Compression;
 using iTextSharp.text;
 using ListItem = System.Web.UI.WebControls.ListItem;
+using Zamat;
+using Region = Zamat.Region;
 
 namespace СreditСonveyor.Partners
 {

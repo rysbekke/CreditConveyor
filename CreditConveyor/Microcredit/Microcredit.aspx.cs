@@ -30,6 +30,8 @@ using OpenPop.Mime;
 using System.Web.Services;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
+using Zamat;
+using Region = Zamat.Region;
 
 namespace СreditСonveyor.Microcredit
 {
@@ -368,14 +370,14 @@ namespace СreditСonveyor.Microcredit
                 var registrationCity = dbR.GetTable<City>().Where(c => c.CityID == query.RegistrationCityID).FirstOrDefault();
                 if (registrationCity != null)
                 {
-                    var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == registrationCity.RegionID).FirstOrDefault();
+                    var region = dbR.GetTable<Zamat.Region>().Where(reg => reg.RegionID == registrationCity.RegionID).FirstOrDefault();
                 }
                 if (ddlResidenceCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCityID.ToString()))
                     ddlResidenceCityName.SelectedIndex = ddlResidenceCityName.Items.IndexOf(ddlResidenceCityName.Items.FindByValue(query.ResidenceCityID.ToString()));
                 var residenceCity = dbR.GetTable<City>().Where(c => c.CityID == query.ResidenceCityID).FirstOrDefault();
                 if (residenceCity != null)
                 {
-                    var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == residenceCity.RegionID).FirstOrDefault();
+                    var region = dbR.GetTable<Zamat.Region>().Where(reg => reg.RegionID == residenceCity.RegionID).FirstOrDefault();
                 }
             }
             else
@@ -405,7 +407,7 @@ namespace СreditСonveyor.Microcredit
             var tblCity = dbR.GetTable<City>();
             foreach (var rowCity in tblCity)
             {
-                var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == rowCity.RegionID).FirstOrDefault();
+                var region = dbR.GetTable<Zamat.Region>().Where(reg => reg.RegionID == rowCity.RegionID).FirstOrDefault();
                 ddlBirthCityName.Items.Add(new ListItem(rowCity.CityName + ", " + region.RegionName, rowCity.CityID.ToString()));
                 ddlRegistrationCityName.Items.Add(new ListItem(rowCity.CityName + ", " + region.RegionName, rowCity.CityID.ToString()));
                 ddlResidenceCityName.Items.Add(new ListItem(rowCity.CityName + ", " + region.RegionName, rowCity.CityID.ToString()));

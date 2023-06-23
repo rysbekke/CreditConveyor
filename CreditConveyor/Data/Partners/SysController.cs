@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
+using Zamat;
 
 namespace СreditСonveyor.Data.Partners
 {

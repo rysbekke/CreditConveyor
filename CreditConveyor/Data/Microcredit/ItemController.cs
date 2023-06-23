@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Web;
+using Zamat;
 
 namespace СreditСonveyor.Data.Microcredit
 {
@@ -443,13 +444,14 @@ namespace СreditСonveyor.Data.Microcredit
                             if (hstat.StatusID == 2) { st = "На утверждении"; }
                             if (hstat.StatusID == 3) { st = "На выдаче"; }
                             if (hstat.StatusID == 4) { st = "Отказано"; }
-                            if (hstat.StatusID == 5) { st = "Выдан"; }
+                            if (hstat.StatusID == 5) { st = "Выдан";  }
                             if (hstat.StatusID == 6) { st = "Закрыт"; }
                             if (hstat.StatusID == 7) { st = "Списан"; }
                             if (hstat.StatusID == 8) { st = "Предварительная выдача"; }
                             if (hstat.StatusID == 9) { st = "Инициация выдачи"; }
                             var reqs = dbRWZ.Requests.Where(r => r.RequestID == ech.RequestID).FirstOrDefault();
                             reqs.StatusOB = st;
+                            if (hstat.StatusID == 5) reqs.RequestStatus = "Выдано";
                             dbRWZ.Requests.Context.SubmitChanges();
                         }
 

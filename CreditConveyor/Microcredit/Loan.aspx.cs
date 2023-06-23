@@ -33,6 +33,8 @@ using System.Net.Security;
 using System.IO.Compression;
 using iTextSharp.text;
 using ListItem = System.Web.UI.WebControls.ListItem;
+using Zamat;
+using Region = Zamat.Region;
 
 namespace СreditСonveyor.Microcredit
 {
@@ -106,7 +108,8 @@ namespace СreditСonveyor.Microcredit
                                 pnlMenuRequest.Visible = true;
                                 Page.Title = strRequestID;
                                 int RequestID = Convert.ToInt32(strRequestID);
-                                //lblDocuments.Visible = true;
+                                //lblDocuments.Visible = true; 
+                                
                                 editcommand(RequestID);
                                 refreshfiles();
                                 refreshGuarantees();
@@ -341,7 +344,7 @@ namespace СreditСonveyor.Microcredit
                 var birthCity = dbR.GetTable<City>().Where(c => c.CityID == query.BirthCityID).FirstOrDefault();
                 if (birthCity != null)
                 {
-                    var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == birthCity.RegionID).FirstOrDefault();
+                    var region = dbR.GetTable<Zamat.Region>().Where(reg => reg.RegionID == birthCity.RegionID).FirstOrDefault();
                     if (region.RegionName != null)
                     {
                     }
@@ -1707,9 +1710,9 @@ namespace СreditСonveyor.Microcredit
                                                                //OfficerUserName = "",
                     CreditOfficerTypeID = 1,
                     CreditOfficerStartDate = Convert.ToDateTime(actdate).AddDays(-1), // creditOfficerStartDate, //Convert.ToDateTime(dateNow).AddDays(-1),  //Convert.ToDateTime("2021-09-19T11:28:42"),  //Convert.ToDateTime(actdate), //dateTimeNow, 
-                                                                          //CreditOfficerEndDate = null, // Convert.ToDateTime(actdate), //dateTimeNow, 
-                                                                          //OfficeID = officeID, //1105,
-                    
+                                                                                      //CreditOfficerEndDate = null, // Convert.ToDateTime(actdate), //dateTimeNow, 
+                                                                                      //OfficeID = officeID, //1105,
+
                     OfficerID = Convert.ToInt32(credOfficerID), //6804,
 
                     IncomesStructuresActualDates = new List<GeneralController.IncomesStructuresActualDate>(),
@@ -1721,6 +1724,7 @@ namespace СreditСonveyor.Microcredit
                     RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue),
                     RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text), //0.0, // Convert.ToDouble(ddlRequestRate.SelectedItem.Text),
                     PaymentSourceID = 1,
+                    
                     //NonPaymentRisk = null,
                     //CreditFraudStatus = null,
                     //InformationID = null,
@@ -1743,7 +1747,7 @@ namespace СreditСonveyor.Microcredit
                                        //RequestReturnComissionType = null,
                                        //RequestTrancheIssueComission = null,
                                        //RequestTrancheIssueComissionType = null
-
+                    
                 };
 
 
@@ -1847,7 +1851,7 @@ namespace СreditСonveyor.Microcredit
                         CreditPurpose = tbCreditPurpose.Text,
                         RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue),
                         CreditProduct = ddlProduct.SelectedValue,
-                        
+                        SerialNumber = tbDocumentSeries.Text,
                         RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text),
                         RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text),
                         //RequestGrantComission = Convert.ToDecimal(lblCommission.Text),
@@ -2087,24 +2091,24 @@ namespace СreditСonveyor.Microcredit
                 if (rbtnBusiness.SelectedIndex == 2) comment = txtAgroComment.Text;
 
                 /*----------------------------------------------------*/
-                HistoriesCustomer editItemHistoryCustomer = new HistoriesCustomer();
-                editItemHistoryCustomer = ctlCredit.GetHistoriesCustomerByCreditID(Convert.ToInt32(hfCreditID.Value));
-                editItemHistoryCustomer.RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text);
-                editItemHistoryCustomer.ApprovedSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text);
+                //HistoriesCustomer editItemHistoryCustomer = new HistoriesCustomer();
+                //editItemHistoryCustomer = ctlCredit.GetHistoriesCustomerByCreditID(Convert.ToInt32(hfCreditID.Value));
+                //editItemHistoryCustomer.RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text);
+                //editItemHistoryCustomer.ApprovedSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text);
 
-                //editItemHistory.PartnerCompanyID = GroupCode;
-                ctlCredit.HistoriesCustomerUpd(editItemHistoryCustomer);
+                ////editItemHistory.PartnerCompanyID = GroupCode;
+                //ctlCredit.HistoriesCustomerUpd(editItemHistoryCustomer);
 
 
-                History editItemHistory = new History();
-                editItemHistory = ctlCredit.GetHistoryByCreditID(Convert.ToInt32(hfCreditID.Value));
-                editItemHistory.RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue);
-                editItemHistory.RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Value);
-                editItemHistory.ProductID = prodID;
-                editItemHistory.ApprovedPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue);
-                editItemHistory.ApprovedRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Value);
-                //editItemHistory.PartnerCompanyID = GroupCode;
-                ctlCredit.HistoryUpd(editItemHistory);
+                //History editItemHistory = new History();
+                //editItemHistory = ctlCredit.GetHistoryByCreditID(Convert.ToInt32(hfCreditID.Value));
+                //editItemHistory.RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue);
+                //editItemHistory.RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Value);
+                //editItemHistory.ProductID = prodID;
+                //editItemHistory.ApprovedPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue);
+                //editItemHistory.ApprovedRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Value);
+                ////editItemHistory.PartnerCompanyID = GroupCode;
+                //ctlCredit.HistoryUpd(editItemHistory);
                 /*----------------------------------------------------*/
                 string dateFirstPayment = tbActualDate.Text.Substring(6, 4) + "." + tbActualDate.Text.Substring(3, 2) + "." + tbActualDate.Text.Substring(0, 2);
                 var reqs = dbRWZ.Requests.Where(r => r.RequestID == Convert.ToInt32(hfRequestID.Value)).FirstOrDefault();
@@ -2112,8 +2116,8 @@ namespace СreditСonveyor.Microcredit
                 int? groupID = reqs.GroupID;
                 int? GroupCode = dbRWZ.Groups.Where(r => r.GroupID == groupID).FirstOrDefault().GroupCode;
                 int mortrageTypeID = 2;
-                if (reqs.GroupID != 110)
-                {
+                //if (reqs.GroupID != 110)
+                //{
                     GeneralController gctx = new GeneralController();
 
 
@@ -2172,7 +2176,7 @@ namespace СreditСonveyor.Microcredit
                     if (chkbxTypeOfCollateral.Items[1].Selected == true) mortrageTypeID = 14;
                     if (chkbxTypeOfCollateral.Items[2].Selected == true) mortrageTypeID = 2;
                     if ((chkbxTypeOfCollateral.Items[1].Selected == true) && (chkbxTypeOfCollateral.Items[2].Selected == true)) mortrageTypeID = 14;
-
+                    mortrageTypeID = 13;
 
                     //root3update root = new root3update()
                     GeneralController.RootUpdate root = new GeneralController.RootUpdate()
@@ -2185,7 +2189,7 @@ namespace СreditСonveyor.Microcredit
                         IncomeApproveTypeID = 1,
                         RequestCurrencyID = 417,
                         RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text),
-                        //MarketingSourceID = 5,
+                        MarketingSourceID = 1,
                         //RequestDate = Convert.ToDateTime(actdate, //dateTimeNow, 
                         //IssueAccountNo = null,
                         //OfficerUserName = null,
@@ -2199,7 +2203,7 @@ namespace СreditСonveyor.Microcredit
                         Guarantors = new List<GeneralController.Guarantor>(),
                         Pictures = new List<GeneralController.Picture>(),
                         Partners = new List<GeneralController.Partner>(),
-
+                        
 
                         RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue),
                         RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text), //0.0, // Convert.ToDouble(ddlRequestRate.SelectedItem.Text),
@@ -2300,7 +2304,7 @@ namespace СreditСonveyor.Microcredit
 
                     //string str = SendPostOBCreateRequest(root);
 
-                    //string result = gctx.UpdateRequestWithAPI(root);  //кафка
+                    string result = gctx.UpdateRequestWithAPI(root);  //кафка
 
                     //try
                     //{
@@ -2325,28 +2329,29 @@ namespace СreditСonveyor.Microcredit
                     //general.UpdateToLoanRequest(root, reqs.RequestID); //кафка
 
 
-                    //int CreditsHistoriesID = 0;
-                    //try
-                    //{
-                    //    CreditsHistoriesID = Convert.ToInt32(gctx.getCreditID(result));
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    MsgBox("Ошибка:" + result, this.Page, this);
-                    //    lblError.Text = result;
-                    //    return;
-                    //}
+                    int CreditsHistoriesID = 0;
+                    try
+                    {
+                        CreditsHistoriesID = Convert.ToInt32(gctx.getCreditID(result));
+                    }
+                    catch (Exception ex)
+                    {
+                        MsgBox("Ошибка:" + result, this.Page, this);
+                        lblError.Text = result;
+                        return;
+                    }
                     //savePhoto("edit", CreditsHistoriesID);
                     savePhoto("edit", Convert.ToInt32(hfCreditID.Value));
                     
 
-                }
+                //}
 
 
 
 
-                //if (CreditsHistoriesID != 0)
-                
+                if (CreditsHistoriesID != 0)
+                {
+
 
 
 
@@ -2377,7 +2382,7 @@ namespace СreditСonveyor.Microcredit
                         editRequest.GuarantorOtchestvo = tbGuarantorOtchestvo.Text;
                         editRequest.GuarantorIdentificationNumber = tbGuarantorINN.Text;
                     }
-                    else 
+                    else
                     {
                         editRequest.GuarantorID = null;
                         editRequest.GuarantorSurname = "";
@@ -2393,7 +2398,7 @@ namespace СreditСonveyor.Microcredit
                         editRequest.PledgerName = tbPledgerName.Text;
                         editRequest.PledgerOtchestvo = tbPledgerOtchestvo.Text;
                         editRequest.PledgerIdentificationNumber = tbPledgerINN.Text;
-                    } 
+                    }
                     else
                     {
                         editRequest.PledgerID = null;
@@ -2467,6 +2472,7 @@ namespace СreditСonveyor.Microcredit
                         //ctx2.CustomerUpdItem(cust);
                     }
                     else { }
+                }
 
                 clearEditControlsRequest();
                 hfRequestAction.Value = "";
@@ -3118,6 +3124,12 @@ namespace СreditСonveyor.Microcredit
                 btnSignature.Visible = false;
                 /**********************/
 
+                tbSearchINN.Text = lst.IdentificationNumber;
+                tbSerialN.Text = lst.SerialNumber;
+                btnSaveCustomer.Enabled = false;
+                btnCancel.Enabled = false;
+                SearchClient_Click();
+                /***********************/
 
 
                 txtCardNumber.Text = lst.CardNumber;

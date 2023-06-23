@@ -29,6 +29,8 @@ using System.Net.Http.Headers;
 using СreditСonveyor.Data;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
+using Zamat;
+using Region = Zamat.Region;
 
 namespace СreditСonveyor.Partners2
 {

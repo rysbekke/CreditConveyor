@@ -30,6 +30,7 @@ using OpenPop.Mime;
 using System.Web.Services;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
+using Zamat;
 
 namespace СreditСonveyor.Partners
 {
