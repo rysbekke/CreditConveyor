@@ -35,6 +35,7 @@ using iTextSharp.text;
 using ListItem = System.Web.UI.WebControls.ListItem;
 using Zamat;
 using Region = Zamat.Region;
+using System.Windows.Forms;
 
 namespace СreditСonveyor.Microcredit
 {
@@ -149,7 +150,12 @@ namespace СreditСonveyor.Microcredit
                         
                     }
 
-
+                    //string embed = "<embed src = \"{0}\" width = \"auto\" height = \"900\" alt = \"pdf\" pluginspage = \"http://www.adobe.com/products/acrobat/readstep2.html\">";
+                    //string embed = "<object data=\"{0}\" type=\"application/pdf\" width=\"500px\" height=\"300px\">";
+                    //embed += "If you are unable to view file, you can download from <a href = \"{0}\">here</a>";
+                    //embed += " or download <a target = \"_blank\" href = \"http://get.adobe.com/reader/\">Adobe PDF Reader</a> to view the file.";
+                    //embed += "</object>";
+                    //ltEmbed.Text = string.Format(embed, ResolveUrl("https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea%20Brochure.pdf"));
 
                     //refreshGrid();
 
@@ -7498,7 +7504,7 @@ namespace СreditСonveyor.Microcredit
                 for (int i = 1; i <= count; i++)
                 {
                     Console.WriteLine("--------------------------");
-                    Message message = client.GetMessage(i);
+                    OpenPop.Mime.Message message = client.GetMessage(i);
                     //Console.WriteLine(message.Headers.Subject);
                     int d = message.Headers.Subject.Length;
                     string mailphone = "", custphone = "";
@@ -7708,7 +7714,7 @@ namespace СreditСonveyor.Microcredit
             dbRWZ.LogDcbServices.Context.SubmitChanges();
         }
 
-        public async void getDocFromCIB(string IdNumber, string FullName, string DateOfBirth, string InternalPassport, string typeReport)
+        public async Task<string> getDocFromCIB(string IdNumber, string FullName, string DateOfBirth, string InternalPassport, string typeReport)
         {
             ServicePointManager.ServerCertificateValidationCallback = (a, b, c, d) => true;
             try
@@ -7720,7 +7726,8 @@ namespace СreditСonveyor.Microcredit
                     //string json = "{\"userName\": \"user01\" , \"password\": \"password123\"}";
 
 
-                    string json = "{\"userName\": \"" + Session["UserName"].ToString() + "\" , \"password\": \"" + Session["Password"].ToString() + "\"}";
+                    //string json = "{\"userName\": \"" + Session["UserName"].ToString() + "\" , \"password\": \"" + Session["Password"].ToString() + "\"}";
+                    string json = "{\"userName\": \"" + "r.tentiev" + "\" , \"password\": \"" + "Password1@3$" + "\"}";
 
                     var response = await client.PostAsync(connectionStringKIB + "/api/Account/Login", new StringContent(json, Encoding.UTF8, "application/json"));
                     var result = await response.Content.ReadAsStringAsync();
@@ -7734,17 +7741,29 @@ namespace СreditСonveyor.Microcredit
                     client2.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                     client2.BaseAddress = new Uri(connectionStringKIB + "/api/Cib/SmartSearchIndividual");
 
-                    var u = connectionStringKIB + "/api/Cib/SmartSearchIndividual";
-                    string json2 = "{\"IdNumber\": \"12303199400514\" , \"FullName\": \"Жоомарт кызы Зинат\", \"DateOfBirth\": \"1994-03-23\", \"InternalPassport\": \"ID1081023\"}";
+                    var u = connectionStringKIB + "/api/Cib/SoapSmartSearchIndividual";
+                    //string json2 = "{\"IdNumber\": \"12303199400514\" , \"FullName\": \"Жоомарт кызы Зинат\", \"DateOfBirth\": \"1994-03-23\", \"InternalPassport\": \"ID1081023\"}";
+
+                    //var builder = new UriBuilder(u);
+                    //builder.Query = "IdNumber="+ IdNumber + "&FullName=" + FullName + "&DateOfBirth=" + DateOfBirth + "&InternalPassport=" + InternalPassport;
+                    //var url = builder.ToString();
+
+                    //var response2 = await client2.PostAsync(url, new StringContent(json2, Encoding.UTF8, "application/json"));
+                    //var result2 = await response2.Content.ReadAsStringAsync();
+
+                    //client2.Dispose();
+
 
                     var builder = new UriBuilder(u);
-                    builder.Query = "IdNumber="+ IdNumber + "&FullName=" + FullName + "&DateOfBirth=" + DateOfBirth + "&InternalPassport=" + InternalPassport;
+                    builder.Query = "IdNumber="+ IdNumber + "&FullName=" + FullName + "&DateOfBirth=" + DateOfBirth + "&InternalPassport=" + InternalPassport + "&userName=" + Session["UserName"].ToString();
                     var url = builder.ToString();
 
-                    var response2 = await client2.PostAsync(url, new StringContent(json2, Encoding.UTF8, "application/json"));
+                    var response2 = await client2.PostAsync(url, new StringContent("", Encoding.UTF8, "application/json"));
                     var result2 = await response2.Content.ReadAsStringAsync();
 
                     client2.Dispose();
+
+
 
                     if (result2 != "SubjectNotFound")
                     {
@@ -7761,11 +7780,11 @@ namespace СreditСonveyor.Microcredit
                         var json3 = "{\"IdNumber\": \"12303199400514\", \"typeReport\": \"CondensedReportPlus\"}";
 
                         var builder3 = new UriBuilder(u3);
-                        builder3.Query = "IDNumber=" + result2 + "&typeReport=" + typeReport;
+                        builder3.Query = "IDNumber=" + result2 + "&typeReport=" + typeReport + "&userName=" + Session["UserName"].ToString();
                         //builder3.Query = "typeReport=" + "CondensedReportPlus";
                         var url3 = builder3.ToString();
 
-                        var response3 = await client3.PostAsync(url3, new StringContent(json3, Encoding.UTF8, "application/json"));
+                        var response3 = await client3.PostAsync(url3, new StringContent("", Encoding.UTF8, "application/json"));
                         var result3byte = await response3.Content.ReadAsByteArrayAsync();
                         string result3string = await response3.Content.ReadAsStringAsync();
                         string res = JsonConvert.ToString(result3string);
@@ -7775,15 +7794,27 @@ namespace СreditСonveyor.Microcredit
                         byte[] byteArray = Convert.FromBase64String(result3string);
 
 
+                        //string embed = "<object data=\"{0}\" type=\"application/pdf\" width=\"500px\" height=\"300px\">";
+                        //embed += "If you are unable to view file, you can download from <a href = \"{0}\">here</a>";
+                        //embed += " or download <a target = \"_blank\" href = \"http://get.adobe.com/reader/\">Adobe PDF Reader</a> to view the file.";
+                        //embed += "</object>";
 
-                        Response.Clear();
-                        Response.Buffer = true;
-                        Response.Charset = "";
-                        Response.Cache.SetCacheability(HttpCacheability.NoCache);
-                        Response.ContentType = "application/pdf";
-                        Response.AppendHeader("Content-Disposition", "attachment; filename=" + "MyFile.pdf");
-                        Response.BinaryWrite(byteArray);
-                        Response.Flush();
+                        string embed = "<embed src = \"{0}\" width = \"auto\" height = \"900\" alt = \"pdf\" pluginspage = \"http://www.adobe.com/products/acrobat/readstep2.html\">";
+
+                        ltEmbed.Text = string.Format(embed, ResolveUrl("https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea%20Brochure.pdf"));
+
+                        //string Base64String = "data:application/pdf;base64," + result3string;
+
+
+                        //Скачивание файла
+                        //Response.Clear();
+                        //Response.Buffer = true;
+                        //Response.Charset = "";
+                        //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                        //Response.ContentType = "application/pdf";
+                        //Response.AppendHeader("Content-Disposition", "attachment; filename=" + "MyFile.pdf");
+                        //Response.BinaryWrite(byteArray);
+                        //Response.Flush();
 
 
                         string destinationFile = "";
@@ -7793,6 +7824,8 @@ namespace СreditСonveyor.Microcredit
                         destinationFile = gctl.fileNameAddExt(IdNumber + "_KIB" + DateTime.Today.Date.ToString("_ddMMyyyy") + ".pdf", destinationFolder, dateRandomdir);
 
                         File.WriteAllBytes(destinationFolder + "\\" + dateRandomdir + "\\" + destinationFile, Convert.FromBase64String(result3string));
+
+
 
                         RequestsFile newRequestFile = new RequestsFile
                         {
@@ -7811,22 +7844,427 @@ namespace СreditСonveyor.Microcredit
                         };
                         ItemController ctl = new ItemController();
                         ctl.ItemRequestFilesAddItem(newRequestFile);
+                        return result3string;
 
-                    } else MsgBox("Клиент не найден в базе КИБ", this.Page, this);
+                    }
+                    else { 
+                        MsgBox("Клиент не найден в базе КИБ", this.Page, this);
+                        return null;
+                    }
 
                 }
             }
             catch (Exception ex)
             {
                 MsgBox(ex.ToString(), this.Page, this);
+                return null;
             }
-            finally
-            {
+            //finally
+            //{
 
-            }
+            //}
         }
 
-    
+
+        public async Task<string> getDocFromSucfund(string Pin, string Service)
+        {
+            ServicePointManager.ServerCertificateValidationCallback = (a, b, c, d) => true;
+            try
+            {
+                
+                    //if (result2 != "SubjectNotFound")
+                    {
+                        HttpClient client = new HttpClient();
+
+                        client.BaseAddress = new Uri(connectionStringKIB + "/api/Account/Login");
+                        //string json = "{\"userName\": \"user01\" , \"password\": \"password123\"}";
+
+
+                        //string json = "{\"userName\": \"" + Session["UserName"].ToString() + "\" , \"password\": \"" + Session["Password"].ToString() + "\"}";
+                        string json = "{\"userName\": \"" + "r.tentiev" + "\" , \"password\": \"" + "Password1@3$" + "\"}";
+
+                        var response = await client.PostAsync(connectionStringKIB + "/api/Account/Login", new StringContent(json, Encoding.UTF8, "application/json"));
+                        var result = await response.Content.ReadAsStringAsync();
+                        //string result3 = "res:" + result;
+                        string token = getToken(result);
+                        client.Dispose();
+                        //    /****************************/
+
+
+                        HttpClient client3 = new HttpClient();
+                        client3.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                        client3.BaseAddress = new Uri(connectionStringKIB + Service);
+
+                        var u3 = connectionStringKIB + Service;
+                        //var json3 = "{\"IdNumber\": \"12303199400514\", \"typeReport\": \"CondensedReportPlus\"}";
+
+                        var builder3 = new UriBuilder(u3);
+                        builder3.Query = "Pin=" + Pin + "&userName=" + Session["UserName"].ToString();
+                        //builder3.Query = "typeReport=" + "CondensedReportPlus";
+                        var url3 = builder3.ToString();
+
+                        var response3 = await client3.PostAsync(url3, new StringContent("", Encoding.UTF8, "application/json"));
+                        var result3byte = await response3.Content.ReadAsByteArrayAsync();
+                        string result3string = await response3.Content.ReadAsStringAsync();
+                        string res = JsonConvert.ToString(result3string);
+                        client3.Dispose();
+                        result3string = result3string.Replace("\"", "");
+
+                        byte[] byteArray = Convert.FromBase64String(result3string);
+
+
+                        //string embed = "<object data=\"{0}\" type=\"application/pdf\" width=\"500px\" height=\"300px\">";
+                        //embed += "If you are unable to view file, you can download from <a href = \"{0}\">here</a>";
+                        //embed += " or download <a target = \"_blank\" href = \"http://get.adobe.com/reader/\">Adobe PDF Reader</a> to view the file.";
+                        //embed += "</object>";
+
+                        string embed = "<embed src = \"{0}\" width = \"auto\" height = \"900\" alt = \"pdf\" pluginspage = \"http://www.adobe.com/products/acrobat/readstep2.html\">";
+
+                        ltEmbed.Text = string.Format(embed, ResolveUrl("https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea%20Brochure.pdf"));
+
+                        //string Base64String = "data:application/pdf;base64," + result3string;
+
+
+                        //Скачивание файла
+                        //Response.Clear();
+                        //Response.Buffer = true;
+                        //Response.Charset = "";
+                        //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                        //Response.ContentType = "application/pdf";
+                        //Response.AppendHeader("Content-Disposition", "attachment; filename=" + "MyFile.pdf");
+                        //Response.BinaryWrite(byteArray);
+                        //Response.Flush();
+
+
+                        string destinationFile = "";
+                        string destinationFolder = getDestinationFolder();
+                        GeneralController gctl = new GeneralController();
+                        string dateRandomdir = gctl.DateRandodir(destinationFolder);
+                        destinationFile = gctl.fileNameAddExt(Pin + "_KIB" + DateTime.Today.Date.ToString("_ddMMyyyy") + ".pdf", destinationFolder, dateRandomdir);
+
+                        File.WriteAllBytes(destinationFolder + "\\" + dateRandomdir + "\\" + destinationFile, Convert.FromBase64String(result3string));
+
+
+
+                        RequestsFile newRequestFile = new RequestsFile
+                        {
+                            Name = destinationFile,
+                            RequestID = Convert.ToInt32(Convert.ToInt32(hfRequestID.Value)),
+                            ContentType = "pdf",
+                            //Data = bytes,
+                            //FullName = Server.MapPath("~/") + filedir + "\\" + partnerdir + "\\" + fullfilename,
+                            //FullName = "\\Portals\\0\\" + partnerdir + "\\" + destinationFile,
+                            //FullName2 = fileupl + "\\" + "Portals\\0\\" + partnerdir + "\\" + destinationFile,
+                            FullName = "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                            FullName2 = fileupl + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                            FileDescription = tbFileDescription.Text + " " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"),
+                            IsPhoto = false
+
+                        };
+                        ItemController ctl = new ItemController();
+                        ctl.ItemRequestFilesAddItem(newRequestFile);
+                        return result3string;
+
+                    }
+                    
+                   
+            }
+            catch (Exception ex)
+            {
+                MsgBox(ex.ToString(), this.Page, this);
+                return null;
+            }
+            //finally
+            //{
+
+            //}
+        }
+
+        public async Task<string> getDocFromSucfund2(string Pin)
+        {
+            ServicePointManager.ServerCertificateValidationCallback = (a, b, c, d) => true;
+            try
+            {
+
+                //if (result2 != "SubjectNotFound")
+                {
+                    HttpClient client = new HttpClient();
+
+                    client.BaseAddress = new Uri(connectionStringKIB + "/api/Account/Login");
+                    //string json = "{\"userName\": \"user01\" , \"password\": \"password123\"}";
+
+
+                    //string json = "{\"userName\": \"" + Session["UserName"].ToString() + "\" , \"password\": \"" + Session["Password"].ToString() + "\"}";
+                    string json = "{\"userName\": \"" + "r.tentiev" + "\" , \"password\": \"" + "Password1@3$" + "\"}";
+
+                    var response = await client.PostAsync(connectionStringKIB + "/api/Account/Login", new StringContent(json, Encoding.UTF8, "application/json"));
+                    var result = await response.Content.ReadAsStringAsync();
+                    //string result3 = "res:" + result;
+                    string token = getToken(result);
+                    client.Dispose();
+                    //    /****************************/
+
+
+                    HttpClient client3 = new HttpClient();
+                    client3.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                    client3.BaseAddress = new Uri(connectionStringKIB + "/api/Socfund/SoapGetWorkPeriodInfoWithSumPdf");
+
+                    var u3 = connectionStringKIB + "/api/Socfund/SoapGetWorkPeriodInfoWithSumPdf";
+                    //var json3 = "{\"IdNumber\": \"12303199400514\", \"typeReport\": \"CondensedReportPlus\"}";
+
+                    var builder3 = new UriBuilder(u3);
+                    builder3.Query = "Pin=" + Pin + "&userName=" + Session["UserName"].ToString();
+                    //builder3.Query = "typeReport=" + "CondensedReportPlus";
+                    var url3 = builder3.ToString();
+
+                    var response3 = await client3.PostAsync(url3, new StringContent("", Encoding.UTF8, "application/json"));
+                    var result3byte = await response3.Content.ReadAsByteArrayAsync();
+                    string result3string = await response3.Content.ReadAsStringAsync();
+                    string res = JsonConvert.ToString(result3string);
+                    client3.Dispose();
+                    result3string = result3string.Replace("\"", "");
+
+                    byte[] byteArray = Convert.FromBase64String(result3string);
+
+
+                    //string embed = "<object data=\"{0}\" type=\"application/pdf\" width=\"500px\" height=\"300px\">";
+                    //embed += "If you are unable to view file, you can download from <a href = \"{0}\">here</a>";
+                    //embed += " or download <a target = \"_blank\" href = \"http://get.adobe.com/reader/\">Adobe PDF Reader</a> to view the file.";
+                    //embed += "</object>";
+
+                    string embed = "<embed src = \"{0}\" width = \"auto\" height = \"900\" alt = \"pdf\" pluginspage = \"http://www.adobe.com/products/acrobat/readstep2.html\">";
+
+                    ltEmbed.Text = string.Format(embed, ResolveUrl("https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea%20Brochure.pdf"));
+
+                    //string Base64String = "data:application/pdf;base64," + result3string;
+
+
+                    //Скачивание файла
+                    //Response.Clear();
+                    //Response.Buffer = true;
+                    //Response.Charset = "";
+                    //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                    //Response.ContentType = "application/pdf";
+                    //Response.AppendHeader("Content-Disposition", "attachment; filename=" + "MyFile.pdf");
+                    //Response.BinaryWrite(byteArray);
+                    //Response.Flush();
+
+
+                    string destinationFile = "";
+                    string destinationFolder = getDestinationFolder();
+                    GeneralController gctl = new GeneralController();
+                    string dateRandomdir = gctl.DateRandodir(destinationFolder);
+                    destinationFile = gctl.fileNameAddExt(Pin + "_KIB" + DateTime.Today.Date.ToString("_ddMMyyyy") + ".pdf", destinationFolder, dateRandomdir);
+
+                    File.WriteAllBytes(destinationFolder + "\\" + dateRandomdir + "\\" + destinationFile, Convert.FromBase64String(result3string));
+
+
+
+                    RequestsFile newRequestFile = new RequestsFile
+                    {
+                        Name = destinationFile,
+                        RequestID = Convert.ToInt32(Convert.ToInt32(hfRequestID.Value)),
+                        ContentType = "pdf",
+                        //Data = bytes,
+                        //FullName = Server.MapPath("~/") + filedir + "\\" + partnerdir + "\\" + fullfilename,
+                        //FullName = "\\Portals\\0\\" + partnerdir + "\\" + destinationFile,
+                        //FullName2 = fileupl + "\\" + "Portals\\0\\" + partnerdir + "\\" + destinationFile,
+                        FullName = "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                        FullName2 = fileupl + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                        FileDescription = tbFileDescription.Text + " " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"),
+                        IsPhoto = false
+
+                    };
+                    ItemController ctl = new ItemController();
+                    ctl.ItemRequestFilesAddItem(newRequestFile);
+                    return result3string;
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MsgBox(ex.ToString(), this.Page, this);
+                return null;
+            }
+            //finally
+            //{
+
+            //}
+        }
+        public async Task<string> initPerm(string Pin, string PhoneNumber, string LastName, string FirstName, string Patronymic, string EndDate, string BirthDate,
+            string PassportAddress, string FactAddress, string PassportNumberAndSeries, string PassportIssuedDate, string PassportIssuedBy, string Email, string userName)
+        {
+            ServicePointManager.ServerCertificateValidationCallback = (a, b, c, d) => true;
+            try
+            {
+                
+                    //if (result2 != "SubjectNotFound")
+                    {
+                        HttpClient client = new HttpClient();
+
+                        client.BaseAddress = new Uri(connectionStringKIB + "/api/Account/Login");
+                    //string json = "{\"userName\": \"user01\" , \"password\": \"password123\"}";
+
+                    
+                    //string json = "{\"userName\": \"" + Session["UserName"].ToString() + "\" , \"password\": \"" + Session["Password"].ToString() + "\"}";
+                    string json = "{\"userName\": \"" + "r.tentiev" + "\" , \"password\": \"" + "Password1@3$" + "\"}";
+
+                        var response = await client.PostAsync(connectionStringKIB + "/api/Account/Login", new StringContent(json, Encoding.UTF8, "application/json"));
+                        var result = await response.Content.ReadAsStringAsync();
+                        //string result3 = "res:" + result;
+                        string token = getToken(result);
+                        client.Dispose();
+                        //    /****************************/
+
+
+                        HttpClient client3 = new HttpClient();
+                        client3.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                        client3.BaseAddress = new Uri(connectionStringKIB + "/api/Socfund/SoapInitReqForPerm");
+
+                        var u3 = connectionStringKIB + "/api/Socfund/SoapInitReqForPerm";
+                    //var json3 = "{\"IdNumber\": \"12303199400514\", \"typeReport\": \"CondensedReportPlus\"}";
+
+
+
+                    var form = new MultipartFormDataContent();
+
+
+                    var fileStreamContent1 = new StreamContent(FileUpload1.FileContent);
+                    fileStreamContent1.Headers.ContentType = MediaTypeHeaderValue.Parse(FileUpload1.PostedFile.ContentType);
+                    form.Add(fileStreamContent1, name: "filePassportFrontSideImage", FileUpload1.FileName);
+
+                    var fileStreamContent2 = new StreamContent(FileUpload2.FileContent);
+                    fileStreamContent2.Headers.ContentType = MediaTypeHeaderValue.Parse(FileUpload2.PostedFile.ContentType);
+                    form.Add(fileStreamContent2, name: "filePassportBackSideImage", FileUpload2.FileName);
+
+                    //var fileStreamContent3 = new StreamContent(model.SelfieWithPassportImage.OpenReadStream());
+                    //fileStreamContent3.Headers.ContentType = MediaTypeHeaderValue.Parse(model.SelfieWithPassportImage.ContentType);
+                    //form.Add(fileStreamContent3, name: "fileSelfieWithPassportImage", model.SelfieWithPassportImage.FileName);
+
+                    var fileStreamContent3 = new StreamContent(FileUpload3.FileContent);
+                    fileStreamContent3.Headers.ContentType = MediaTypeHeaderValue.Parse(FileUpload3.PostedFile.ContentType);
+                    form.Add(fileStreamContent3, name: "fileSelfieWithPassportImage", FileUpload3.FileName);
+
+                    Email = "rysbekke@gmail.com";
+                    PhoneNumber = PhoneNumber.Trim().Replace(" ", "");
+                    PhoneNumber = PhoneNumber.Substring(1, 12);
+                    var builder3 = new UriBuilder(u3);
+                    builder3.Query = "Pin=" + Pin + "&PhoneNumber=" + PhoneNumber + "&LastName=" + LastName + "&FirstName=" + FirstName + "&Patronymic=" + Patronymic +
+                    "&EndDate=" + EndDate + "&BirthDate=" + BirthDate + "&PassportAddress=" + PassportAddress + "&FactAddress=" + FactAddress +
+                    "&PassportNumberAndSeries=" + PassportNumberAndSeries + "&PassportIssuedDate=" + PassportIssuedDate + "&PassportIssuedBy=" + PassportIssuedBy +
+                    "&Email=" + Email + "&userName=" + userName;
+                        //builder3.Query = "typeReport=" + "CondensedReportPlus";
+                        var url3 = builder3.ToString();
+
+                    //var response3 = await client3.PostAsync(url3, new StringContent("", Encoding.UTF8, "application/json"));
+                    var response3 = await client3.PostAsync(url3, form);
+                    var result3byte = await response3.Content.ReadAsByteArrayAsync();
+                        string result3string = await response3.Content.ReadAsStringAsync();
+                        string res = JsonConvert.ToString(result3string);
+                        client3.Dispose();
+                        result3string = result3string.Replace("\"", "");
+
+                        //byte[] byteArray = Convert.FromBase64String(result3string);
+
+
+                                            
+                        return result3string;
+
+                    }
+                    
+                   
+            }
+            catch (Exception ex)
+            {
+                MsgBox(ex.ToString(), this.Page, this);
+                return null;
+            }
+            //finally
+            //{
+
+            //}
+        }
+
+
+
+        public async Task<string> sendCodeForPerm(string Pin, string PhoneNumber, string LastName, string FirstName, string Patronymic, string EndDate, string BirthDate,
+            string PassportAddress, string FactAddress, string PassportNumberAndSeries, string PassportIssuedDate, string PassportIssuedBy, string Email, string userName)
+        {
+            ServicePointManager.ServerCertificateValidationCallback = (a, b, c, d) => true;
+            try
+            {
+
+                //if (result2 != "SubjectNotFound")
+                {
+                    HttpClient client = new HttpClient();
+
+                    client.BaseAddress = new Uri(connectionStringKIB + "/api/Account/Login");
+                    //string json = "{\"userName\": \"user01\" , \"password\": \"password123\"}";
+
+
+                    //string json = "{\"userName\": \"" + Session["UserName"].ToString() + "\" , \"password\": \"" + Session["Password"].ToString() + "\"}";
+                    string json = "{\"userName\": \"" + "r.tentiev" + "\" , \"password\": \"" + "Password1@3$" + "\"}";
+
+                    var response = await client.PostAsync(connectionStringKIB + "/api/Account/Login", new StringContent(json, Encoding.UTF8, "application/json"));
+                    var result = await response.Content.ReadAsStringAsync();
+                    //string result3 = "res:" + result;
+                    string token = getToken(result);
+                    client.Dispose();
+                    //    /****************************/
+
+
+                    HttpClient client3 = new HttpClient();
+                    client3.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                    client3.BaseAddress = new Uri(connectionStringKIB + "/api/Socfund/SoapSendConfirmationCodeForPermission");
+
+                    var u3 = connectionStringKIB + "/api/Socfund/SoapSendConfirmationCodeForPermission";
+                    //var json3 = "{\"IdNumber\": \"12303199400514\", \"typeReport\": \"CondensedReportPlus\"}";
+
+                    var form = new MultipartFormDataContent();
+
+
+
+
+                    var builder3 = new UriBuilder(u3);
+                    builder3.Query = "Pin=" + Pin + "&PhoneNumber=" + PhoneNumber.Trim().Replace(" ", "") + "&LastName=" + LastName + "&FirstName=" + FirstName + "&Patronymic=" + Patronymic +
+                    "&EndDate=" + EndDate + "&BirthDate=" + BirthDate + "&PassportAddress=" + PassportAddress + "&FactAddress=" + FactAddress +
+                    "&PassportNumberAndSeries=" + PassportNumberAndSeries + "&PassportIssuedDate=" + PassportIssuedDate + "&PassportIssuedBy=" + PassportIssuedBy +
+                    "&Email=" + Email + "&userName=" + userName;
+                    //builder3.Query = "typeReport=" + "CondensedReportPlus";
+                    var url3 = builder3.ToString();
+
+                    //var response3 = await client3.PostAsync(url3, new StringContent("", Encoding.UTF8, "application/json"));
+                    var response3 = await client3.PostAsync(url3, form);
+                    var result3byte = await response3.Content.ReadAsByteArrayAsync();
+                    string result3string = await response3.Content.ReadAsStringAsync();
+                    string res = JsonConvert.ToString(result3string);
+                    client3.Dispose();
+                    result3string = result3string.Replace("\"", "");
+
+                    //byte[] byteArray = Convert.FromBase64String(result3string);
+
+
+
+                    return result3string;
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MsgBox(ex.ToString(), this.Page, this);
+                return null;
+            }
+            //finally
+            //{
+
+            //}
+        }
+
+
 
         public async void getDocFromServDCB(string kindServ)
         {
@@ -7914,6 +8352,8 @@ namespace СreditСonveyor.Microcredit
             }
         }
 
+
+       
 
         public async void postInitPermFromServDCB(string kindServ)
         {
@@ -8406,14 +8846,14 @@ namespace СreditСonveyor.Microcredit
 
         protected void gvGuarantees_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            Label lblID = (Label)(gvGuarantees.Rows[e.RowIndex].FindControl("lblID"));
-            TextBox txtName = ((TextBox)gvGuarantees.Rows[e.RowIndex].FindControl("txtName"));
-            TextBox txtCount = ((TextBox)gvGuarantees.Rows[e.RowIndex].FindControl("txtCount"));
-            TextBox txtDescription = ((TextBox)gvGuarantees.Rows[e.RowIndex].FindControl("txtDescription"));
-            TextBox txtAddress = ((TextBox)gvGuarantees.Rows[e.RowIndex].FindControl("txtAddress"));
-            TextBox txtMarketPrice = ((TextBox)gvGuarantees.Rows[e.RowIndex].FindControl("txtMarketPrice"));
-            TextBox txtAssessedPrice = ((TextBox)gvGuarantees.Rows[e.RowIndex].FindControl("txtAssessedPrice"));
-            TextBox txtCoefficient = ((TextBox)gvGuarantees.Rows[e.RowIndex].FindControl("txtCoefficient"));
+            System.Web.UI.WebControls.Label lblID = (System.Web.UI.WebControls.Label)(gvGuarantees.Rows[e.RowIndex].FindControl("lblID"));
+            System.Web.UI.WebControls.TextBox txtName = ((System.Web.UI.WebControls.TextBox)gvGuarantees.Rows[e.RowIndex].FindControl("txtName"));
+            System.Web.UI.WebControls.TextBox txtCount = ((System.Web.UI.WebControls.TextBox)gvGuarantees.Rows[e.RowIndex].FindControl("txtCount"));
+            System.Web.UI.WebControls.TextBox txtDescription = ((System.Web.UI.WebControls.TextBox)gvGuarantees.Rows[e.RowIndex].FindControl("txtDescription"));
+            System.Web.UI.WebControls.TextBox txtAddress = ((System.Web.UI.WebControls.TextBox)gvGuarantees.Rows[e.RowIndex].FindControl("txtAddress"));
+            System.Web.UI.WebControls.TextBox txtMarketPrice = ((System.Web.UI.WebControls.TextBox)gvGuarantees.Rows[e.RowIndex].FindControl("txtMarketPrice"));
+            System.Web.UI.WebControls.TextBox txtAssessedPrice = ((System.Web.UI.WebControls.TextBox)gvGuarantees.Rows[e.RowIndex].FindControl("txtAssessedPrice"));
+            System.Web.UI.WebControls.TextBox txtCoefficient = ((System.Web.UI.WebControls.TextBox)gvGuarantees.Rows[e.RowIndex].FindControl("txtCoefficient"));
             
             
             Guarantee edititem = new Guarantee();
@@ -8444,12 +8884,25 @@ namespace СreditСonveyor.Microcredit
 
         protected async void btnKIB_Click(object sender, EventArgs e)
         {
+            
+
             dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
             //var res = await KIBRequestOB(hfCustomerID.Value, RadNumTbRequestSumm.Text, 1);
             var cust = dbR.Customers.Where(x => x.CustomerID == Convert.ToInt32(hfCustomerID.Value)).FirstOrDefault();
             if (cust != null)
-            getDocFromCIB(cust.IdentificationNumber, cust.Surname.Trim() + " " + cust.CustomerName.Trim() + " " + cust.Otchestvo.Trim(), Convert.ToDateTime(cust.DateOfBirth).ToString("yyyy-MM-dd"), cust.DocumentSeries.Trim() + cust.DocumentNo.Trim(), "CreditinfoReportPlus");
-            //getDocFromCIB("12303199400514", "Жоомарт кызы Зинат", "1994-03-23", "ID1081023");
+            {
+                //getDocFromCIB(cust.IdentificationNumber, cust.Surname.Trim() + " " + cust.CustomerName.Trim() + " " + cust.Otchestvo.Trim(), Convert.ToDateTime(cust.DateOfBirth).ToString("yyyy-MM-dd"), cust.DocumentSeries.Trim() + cust.DocumentNo.Trim(), "CreditinfoReportPlus");
+                //string st = await getDocFromCIB2(cust.IdentificationNumber, cust.Surname.Trim() + " " + cust.CustomerName.Trim() + " " + cust.Otchestvo.Trim(), Convert.ToDateTime(cust.DateOfBirth).ToString("yyyy-MM-dd"), cust.DocumentSeries.Trim() + cust.DocumentNo.Trim(), "CreditinfoReportPlus");
+                //getDocFromCIB("12303199400514", "Жоомарт кызы Зинат", "1994-03-23", "ID1081023");
+
+                string pdfFile = await getDocFromCIB(cust.IdentificationNumber, cust.Surname.Trim() + " " + cust.CustomerName.Trim() + " " + cust.Otchestvo.Trim(), Convert.ToDateTime(cust.DateOfBirth).ToString("yyyy-MM-dd"), cust.DocumentSeries.Trim() + cust.DocumentNo.Trim(), "CreditinfoReportPlus");
+                byte[] data = Convert.FromBase64String(pdfFile);
+
+                string embed = "<embed src = \"{0}\" width = \"100%\" height = \"900\" alt = \"pdf\" pluginspage = \"http://www.adobe.com/products/acrobat/readstep2.html\">";
+                //ltEmbed.Text = "sdsadsa";
+
+                ltEmbed.Text = string.Format(embed, "data:application/pdf;base64," + Convert.ToBase64String(data, 0, data.Length));
+            }
         }
 
         protected async void btnKIB2_Click(object sender, EventArgs e)
@@ -8459,8 +8912,15 @@ namespace СreditСonveyor.Microcredit
             //var res = await KIBRequestOB(hfCustomerID.Value, RadNumTbRequestSumm.Text, 1);
             var cust = dbR.Customers.Where(x => x.CustomerID == Convert.ToInt32(hfCustomerID.Value)).FirstOrDefault();
             if (cust != null)
-                getDocFromCIB(cust.IdentificationNumber, cust.Surname.Trim() + " " + cust.CustomerName.Trim() + " " + cust.Otchestvo.Trim(), Convert.ToDateTime(cust.DateOfBirth).ToString("yyyy-MM-dd"), cust.DocumentSeries.Trim() + cust.DocumentNo.Trim(), "CondensedReportPlus");
-            //getDocFromCIB("12303199400514", "Жоомарт кызы Зинат", "1994-03-23", "ID1081023");
+            {
+                string pdfFile = await getDocFromCIB(cust.IdentificationNumber, cust.Surname.Trim() + " " + cust.CustomerName.Trim() + " " + cust.Otchestvo.Trim(), Convert.ToDateTime(cust.DateOfBirth).ToString("yyyy-MM-dd"), cust.DocumentSeries.Trim() + cust.DocumentNo.Trim(), "CondensedReportPlus");
+                byte[] data = Convert.FromBase64String(pdfFile);
+
+                string embed = "<embed src = \"{0}\" width = \"100%\" height = \"900\" alt = \"pdf\" pluginspage = \"http://www.adobe.com/products/acrobat/readstep2.html\">";
+                //ltEmbed.Text = "sdsadsa";
+
+                ltEmbed.Text = string.Format(embed, "data:application/pdf;base64," + Convert.ToBase64String(data, 0, data.Length));
+            }
         }
 
         protected void rbtnTypeOfIssue_SelectedIndexChanged(object sender, EventArgs e)
@@ -8477,13 +8937,13 @@ namespace СreditСonveyor.Microcredit
         {
             try
             {
-                TextBox Name = ((TextBox)gvGuarantees.FooterRow.FindControl("txtName"));
-                TextBox Count = ((TextBox)gvGuarantees.FooterRow.FindControl("txtCount"));
-                TextBox Description = ((TextBox)gvGuarantees.FooterRow.FindControl("txtDescription"));
-                TextBox Address = ((TextBox)gvGuarantees.FooterRow.FindControl("txtAddress"));
-                TextBox MarketPrice = ((TextBox)gvGuarantees.FooterRow.FindControl("txtMarketPrice"));
-                TextBox AssessedPrice = ((TextBox)gvGuarantees.FooterRow.FindControl("txtAssessedPrice"));
-                TextBox Coefficient = ((TextBox)gvGuarantees.FooterRow.FindControl("txtCoefficient"));
+                System.Web.UI.WebControls.TextBox Name = ((System.Web.UI.WebControls.TextBox)gvGuarantees.FooterRow.FindControl("txtName"));
+                System.Web.UI.WebControls.TextBox Count = ((System.Web.UI.WebControls.TextBox)gvGuarantees.FooterRow.FindControl("txtCount"));
+                System.Web.UI.WebControls.TextBox Description = ((System.Web.UI.WebControls.TextBox)gvGuarantees.FooterRow.FindControl("txtDescription"));
+                System.Web.UI.WebControls.TextBox Address = ((System.Web.UI.WebControls.TextBox)gvGuarantees.FooterRow.FindControl("txtAddress"));
+                System.Web.UI.WebControls.TextBox MarketPrice = ((System.Web.UI.WebControls.TextBox)gvGuarantees.FooterRow.FindControl("txtMarketPrice"));
+                System.Web.UI.WebControls.TextBox AssessedPrice = ((System.Web.UI.WebControls.TextBox)gvGuarantees.FooterRow.FindControl("txtAssessedPrice"));
+                System.Web.UI.WebControls.TextBox Coefficient = ((System.Web.UI.WebControls.TextBox)gvGuarantees.FooterRow.FindControl("txtCoefficient"));
 
                 if ((!string.IsNullOrEmpty(Name.Text)) &&
                     (!string.IsNullOrEmpty(Count.Text)) &&
@@ -8570,11 +9030,155 @@ namespace СreditСonveyor.Microcredit
             pnlMenuCustomer.Visible = false;
         }
 
-       
+        protected async void btnGetWorkPeriodInfoWithSum_Click(object sender, EventArgs e)
+        {
+            dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+            //var res = await KIBRequestOB(hfCustomerID.Value, RadNumTbRequestSumm.Text, 1);
+            var cust = dbR.Customers.Where(x => x.CustomerID == Convert.ToInt32(hfCustomerID.Value)).FirstOrDefault();
+            if (cust != null)
+            {
+                string pdfFile = await getDocFromSucfund(cust.IdentificationNumber, "/api/Socfund/SoapGetWorkPeriodInfoWithSumPdf");
+                byte[] data = Convert.FromBase64String(pdfFile);
+
+                string embed = "<embed src = \"{0}\" width = \"100%\" height = \"900\" alt = \"pdf\" pluginspage = \"http://www.adobe.com/products/acrobat/readstep2.html\">";
+                //ltEmbed.Text = "sdsadsa";
+
+                ltEmbed.Text = string.Format(embed, "data:application/pdf;base64," + Convert.ToBase64String(data, 0, data.Length));
+            }
+            
+        }
+
+        protected async void btnInitPermSF_Click(object sender, EventArgs e)
+        {
+            DateTime dt1 = DateTime.Now;
+            DateTime endDate = dt1.AddYears(1);
+            endDate = endDate.AddDays(10);
+
+
+
+            //btnInitPermSF.Enabled = false;
+            dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+
+
+
+
+
+           
+            var cust = dbR.Customers.Where(x => x.CustomerID == Convert.ToInt32(hfCustomerID.Value)).FirstOrDefault();
+
+
+            string regCustomerCountry = (cust.RegistrationCountryID != null) ? dbR.Countries.Where(v => v.CountryID == cust.RegistrationCountryID).ToList().FirstOrDefault().ShortName : "";
+            string regCustomerCity = (cust.RegistrationCityID != null) ? dbR.Cities.Where(v => v.CityID == cust.RegistrationCityID).ToList().FirstOrDefault().CityName : "";
+            string regCustomerStreet = dbR.Customers.Where(v => v.CustomerID == cust.CustomerID).ToList().FirstOrDefault().RegistrationStreet;
+            string regCustomerHouse = dbR.Customers.Where(v => v.CustomerID == cust.CustomerID).ToList().FirstOrDefault().RegistrationHouse;
+            string regCustomerFlat = dbR.Customers.Where(v => v.CustomerID == cust.CustomerID).ToList().FirstOrDefault().RegistrationFlat;
+            string RegCustomerAddress = regCustomerCountry + " " + regCustomerCity + " " + regCustomerStreet + " " + regCustomerHouse + " " + regCustomerFlat;
+            
+            string resCustomerCountry = (cust.ResidenceCountryID != null) ? dbR.Countries.Where(v => v.CountryID == cust.ResidenceCountryID).ToList().FirstOrDefault().ShortName : "";
+            string resCustomerCity = (cust.ResidenceCityID != null) ? dbR.Cities.Where(v => v.CityID == cust.ResidenceCityID).ToList().FirstOrDefault().CityName : "";
+            string resCustomerStreet = dbR.Customers.Where(v => v.CustomerID == cust.CustomerID).ToList().FirstOrDefault().ResidenceStreet;
+            string resCustomerHouse = dbR.Customers.Where(v => v.CustomerID == cust.CustomerID).ToList().FirstOrDefault().ResidenceHouse;
+            string resCustomerFlat = dbR.Customers.Where(v => v.CustomerID == cust.CustomerID).ToList().FirstOrDefault().ResidenceFlat;
+            string ResCustomerAddress = resCustomerCountry + " " + resCustomerCity + " " + resCustomerStreet + " " + resCustomerHouse + " " + resCustomerFlat;
+           
+
+
+            if (cust != null)
+            {
+                var res = await initPerm(cust.IdentificationNumber, cust.ContactPhone1, cust.Surname, cust.CustomerName, cust.Otchestvo, endDate.Date.ToString("yyyy-MM-dd"),
+                ((DateTime)cust.DateOfBirth).ToString("yyyy-MM-dd"), RegCustomerAddress, ResCustomerAddress, cust.DocumentSeries + cust.DocumentNo,
+                ((DateTime)cust.IssueDate).ToString("yyyy-MM-dd"), cust.IssueAuthority, cust.EMail, Session["UserName"].ToString());
+                 
+
+                MsgBox(res, this.Page, this);
+                
+                lblReqForInitPerm.Text = getText(res, "requestId:", ",oneTimePasswordRequired");
+            }
+            else lblReqForInitPerm.Text = "";
+
+
+        }
+
+        protected async void btnConfPermSF_Click(object sender, EventArgs e)
+        {
+            ServicePointManager.ServerCertificateValidationCallback = (a, b, c, d) => true;
+            try
+            {
+
+                //if (result2 != "SubjectNotFound")
+                {
+                    HttpClient client = new HttpClient();
+
+                    client.BaseAddress = new Uri(connectionStringKIB + "/api/Account/Login");
+                    //string json = "{\"userName\": \"user01\" , \"password\": \"password123\"}";
+
+
+                    //string json = "{\"userName\": \"" + Session["UserName"].ToString() + "\" , \"password\": \"" + Session["Password"].ToString() + "\"}";
+                    string json = "{\"userName\": \"" + "r.tentiev" + "\" , \"password\": \"" + "Password1@3$" + "\"}";
+
+                    var response = await client.PostAsync(connectionStringKIB + "/api/Account/Login", new StringContent(json, Encoding.UTF8, "application/json"));
+                    var result = await response.Content.ReadAsStringAsync();
+                    //string result3 = "res:" + result;
+                    string token = getToken(result);
+                    client.Dispose();
+                    //    /****************************/
+
+
+                    HttpClient client3 = new HttpClient();
+                    client3.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                    client3.BaseAddress = new Uri(connectionStringKIB + "/api/Socfund/SoapSendConfirmationCodeForPermission");
+
+                    var u3 = connectionStringKIB + "/api/Socfund/SoapSendConfirmationCodeForPermission";
+                    //var json3 = "{\"IdNumber\": \"12303199400514\", \"typeReport\": \"CondensedReportPlus\"}";
+
+                    var builder3 = new UriBuilder(u3);
+                    builder3.Query = "RequestId=" + lblReqForInitPerm.Text  + "&Code=" + txtCodePermSF.Text + "&userName=" + Session["UserName"].ToString();
+                    //builder3.Query = "typeReport=" + "CondensedReportPlus";
+                    var url3 = builder3.ToString();
+
+                    var response3 = await client3.PostAsync(url3, new StringContent("", Encoding.UTF8, "application/json"));
+                    var result3byte = await response3.Content.ReadAsByteArrayAsync();
+                    string result3string = await response3.Content.ReadAsStringAsync();
+                    string res = JsonConvert.ToString(result3string);
+                    client3.Dispose();
+                    result3string = result3string.Replace("\"", "");
+                    MsgBox(result3string, this.Page, this);
+                    //byte[] byteArray = Convert.FromBase64String(result3string);
+
+
+                    //return result3string;
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MsgBox(ex.ToString(), this.Page, this);
+                //return null;
+            }
+        }
 
         class root3 : GeneralController.Root
         {
             public string IssueAccountNo { get; set; } = "";
+        }
+
+        protected async void btnGetPensionInfoWithSum_Click(object sender, EventArgs e)
+        {
+            dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+            //var res = await KIBRequestOB(hfCustomerID.Value, RadNumTbRequestSumm.Text, 1);
+            var cust = dbR.Customers.Where(x => x.CustomerID == Convert.ToInt32(hfCustomerID.Value)).FirstOrDefault();
+            if (cust != null)
+            {
+                string pdfFile = await getDocFromSucfund(cust.IdentificationNumber, "/api/Socfund/SoapGetPensionInfoWithSumPdf");
+                byte[] data = Convert.FromBase64String(pdfFile);
+
+                string embed = "<embed src = \"{0}\" width = \"100%\" height = \"900\" alt = \"pdf\" pluginspage = \"http://www.adobe.com/products/acrobat/readstep2.html\">";
+                //ltEmbed.Text = "sdsadsa";
+
+                ltEmbed.Text = string.Format(embed, "data:application/pdf;base64," + Convert.ToBase64String(data, 0, data.Length));
+            }
         }
 
         class root3update : GeneralController.RootUpdate
@@ -8583,7 +9187,13 @@ namespace СreditСonveyor.Microcredit
         }
 
 
-
+        protected string getText(string str, string str1, string str2)
+        {
+            int position1 = str.IndexOf(str1) + str1.Length;
+            int position2 = str.IndexOf(str2);
+            var conts = str.Substring(position1, position2 - position1);
+            return conts;
+        }
 
 
     }

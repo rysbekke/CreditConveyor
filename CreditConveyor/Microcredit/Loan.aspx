@@ -824,7 +824,44 @@
             <asp:Button ID="btnKIB" runat="server" Text="КИБ (полный)" class="btn btn-primary" OnClick="btnKIB_Click" />  
             <asp:Button ID="btnKIB2" runat="server" Text="КИБ (сжатый)" class="btn btn-primary" OnClick="btnKIB2_Click" />
                
+               
+               
+            <asp:Button ID="btnGetWorkPeriodInfoWithSum" runat="server" Text="Зарплата" class="btn btn-primary" OnClick="btnGetWorkPeriodInfoWithSum_Click" />
+               
+               
+               
+            <asp:Button ID="btnGetPensionInfoWithSum" runat="server" Text="Пенсия" class="btn btn-primary" OnClick="btnGetPensionInfoWithSum_Click" />
+               
+               
+               
             </div>
+            <div>
+                 <%--<embed src="@ViewBag.Base64String" width="auto" height="900" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">--%>
+               
+                <asp:Literal ID="ltEmbed" runat="server" />
+                
+                 <br />
+                 <br />
+                 <asp:FileUpload ID="FileUpload1" runat="server" />
+                 <asp:FileUpload ID="FileUpload2" runat="server" />
+                 <asp:FileUpload ID="FileUpload3" runat="server" />
+                
+            </div>
+
+
+            <div>
+            <asp:Button ID="btnInitPermSF" runat="server" Text="Запрос на разрешение" class="btn btn-primary" OnClick="btnInitPermSF_Click"  />
+                <br />
+                <asp:Label ID="lblReqForInitPerm" runat="server" Text="Label"></asp:Label>
+                <br />
+           </div>
+
+            <div>
+            <asp:TextBox ID="txtCodePermSF" runat="server" class="form-control" CssClass ="txtCodePerm"></asp:TextBox>
+            <asp:Button ID="btnConfPermSF" runat="server" class="btn btn-primary" Text="Отравить код" OnClick="btnConfPermSF_Click" />
+                <br />
+            </div>
+
 
             <div>
             <asp:Button ID="btnAnimals" runat="server" Text="Аймак (кол-во скота)" class="btn btn-primary" OnClick="btnAnimals_Click" />
