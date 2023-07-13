@@ -36,6 +36,9 @@ using System.Globalization;
 using System.Threading;
 using System.Net.Http.Headers;
 using Zamat;
+using System.Text.Json;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 namespace СreditСonveyor.Data
 {
@@ -656,9 +659,19 @@ namespace СreditСonveyor.Data
             {
                 using (HttpClient client = new HttpClient())
                 {
+                    var options1 = new JsonSerializerOptions
+                    {
+                        Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+                        WriteIndented = true
+                    };
+                   // JsonSerializerOptions jso = new JsonSerializerOptions();
+                   // jso.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+
+
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    var json = System.Text.Json.JsonSerializer.Serialize(root);
-                    string jsonString = System.Text.Json.JsonSerializer.Serialize(root);
+                    var json = System.Text.Json.JsonSerializer.Serialize(root, options1).Replace("\r\n","");
+                    
+                   // string jsonString = System.Text.Json.JsonSerializer.Serialize(root, jso);
                     var response = client.PostAsync("https://" + connectionStringOBAPIAddress + "/OnlineBank.IntegrationService/api/customer/Add", new StringContent(json, Encoding.UTF8, "application/json"));
                     while (response.Status == System.Threading.Tasks.TaskStatus.WaitingForActivation)
                     {

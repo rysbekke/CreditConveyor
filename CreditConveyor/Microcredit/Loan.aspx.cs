@@ -36,6 +36,10 @@ using ListItem = System.Web.UI.WebControls.ListItem;
 using Zamat;
 using Region = Zamat.Region;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
+using Image = System.Drawing.Image;
+using Rectangle = System.Drawing.Rectangle;
+using Org.BouncyCastle.Crypto.IO;
 
 namespace СreditСonveyor.Microcredit
 {
@@ -339,12 +343,28 @@ namespace СreditСonveyor.Microcredit
                     ddlDocumentTypeID.SelectedIndex = ddlDocumentTypeID.Items.IndexOf(ddlDocumentTypeID.Items.FindByValue(query.DocumentTypeID.ToString()));
                 if (ddlNationalityID.Items.Count > 0 && !string.IsNullOrEmpty(query.NationalityID.ToString()))
                     ddlNationalityID.SelectedIndex = ddlNationalityID.Items.IndexOf(ddlNationalityID.Items.FindByValue(query.NationalityID.ToString()));
+                
                 if (ddlBirthCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.BirthCountryID.ToString()))
                     ddlBirthCountryID.SelectedIndex = ddlBirthCountryID.Items.IndexOf(ddlBirthCountryID.Items.FindByValue(query.BirthCountryID.ToString()));
+                var BirthCountry = (from u in dbR.Countries where ((u.CountryID == query.BirthCountryID)) select u).ToList().FirstOrDefault();
+                if (BirthCountry != null)
+                    ddlBirthCountryID.Items.Add(new ListItem { Text = BirthCountry.ShortName, Value = BirthCountry.CountryID.ToString() });
+
                 if (ddlRegistrationCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCountryID.ToString()))
                     ddlRegistrationCountryID.SelectedIndex = ddlRegistrationCountryID.Items.IndexOf(ddlRegistrationCountryID.Items.FindByValue(query.RegistrationCountryID.ToString()));
+                var RegistrationCountry = (from u in dbR.Countries where ((u.CountryID == query.RegistrationCountryID)) select u).ToList().FirstOrDefault();
+                if (RegistrationCountry != null)
+                    ddlRegistrationCountryID.Items.Add(new ListItem { Text = RegistrationCountry.ShortName, Value = RegistrationCountry.CountryID.ToString() });
+
+
+
                 if (ddlResidenceCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCountryID.ToString()))
                     ddlResidenceCountryID.SelectedIndex = ddlResidenceCountryID.Items.IndexOf(ddlResidenceCountryID.Items.FindByValue(query.ResidenceCountryID.ToString()));
+                var ResidenceCountry = (from u in dbR.Countries where ((u.CountryID == query.ResidenceCountryID)) select u).ToList().FirstOrDefault();
+                if (ResidenceCountry != null)
+                    ddlResidenceCountryID.Items.Add(new ListItem { Text = ResidenceCountry.ShortName, Value = ResidenceCountry.CountryID.ToString() });
+
+
                 if (ddlBirthCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.BirthCityID.ToString()))
                     ddlBirthCityName.SelectedIndex = ddlBirthCityName.Items.IndexOf(ddlBirthCityName.Items.FindByValue(query.BirthCityID.ToString()));
                 var birthCity = dbR.GetTable<City>().Where(c => c.CityID == query.BirthCityID).FirstOrDefault();
@@ -355,6 +375,8 @@ namespace СreditСonveyor.Microcredit
                     {
                     }
                 }
+
+
                 if (ddlRegistrationCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCityID.ToString()))
                     ddlRegistrationCityName.SelectedIndex = ddlRegistrationCityName.Items.IndexOf(ddlRegistrationCityName.Items.FindByValue(query.RegistrationCityID.ToString()));
                 var RegistrationCity = (from u in dbR.Cities where ((u.CityID == query.RegistrationCityID)) select u).ToList().FirstOrDefault();
@@ -365,6 +387,8 @@ namespace СreditСonveyor.Microcredit
                 {
                     var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == registrationCity.RegionID).FirstOrDefault();
                 }
+
+
                 if (ddlResidenceCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCityID.ToString()))
                     ddlResidenceCityName.SelectedIndex = ddlResidenceCityName.Items.IndexOf(ddlResidenceCityName.Items.FindByValue(query.ResidenceCityID.ToString()));
                 var ResidenceCity = (from u in dbR.Cities where ((u.CityID == query.ResidenceCityID)) select u).ToList().FirstOrDefault();
@@ -376,6 +400,12 @@ namespace СreditСonveyor.Microcredit
                 {
                     var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == residenceCity.RegionID).FirstOrDefault();
                 }
+
+
+
+               
+
+
             }
             else
             {
@@ -980,7 +1010,7 @@ namespace СreditСonveyor.Microcredit
                             dCustomer.Data.CustomerName = tbCustomerName.Text.Trim();
                             dCustomer.Data.Otchestvo = tbOtchestvo.Text.Trim();
                             dCustomer.Data.CustomerTypeID = 1;
-                            //    PersonActivityTypeID = 19,
+                            dCustomer.Data.PersonActivityTypeID = 19;
                             //    WorkTypeID = 0,
                             dCustomer.Data.IsResident = (rbtIsResident.SelectedIndex == 0) ? true : false;
                             dCustomer.Data.IdentificationNumber = tbIdentificationNumber.Text;
@@ -1011,12 +1041,13 @@ namespace СreditСonveyor.Microcredit
                             dCustomer.Data.ResidenceHouse = tbResidenceHouse.Text;
                             dCustomer.Data.ResidenceFlat = tbResidenceFlat.Text;
                             dCustomer.Data.DocumentTypeID = Convert.ToInt32(ddlDocumentTypeID.SelectedValue);
-                            //dCustomer.Data.NationalityID = Convert.ToInt32(ddlNationalityID.SelectedItem.Value);
-                            //dCustomer.Data.BirthCountryID = Convert.ToInt32(ddlBirthCountryID.SelectedItem.Value);
                             
-                            //dCustomer.Data.RegistrationCountryID = Convert.ToInt32(ddlRegistrationCountryID.SelectedItem.Value);
-                            //dCustomer.Data.ResidenceCountryID = Convert.ToInt32(ddlResidenceCountryID.SelectedItem.Value);
-                            //dCustomer.Data.BirthCityID = Convert.ToInt32(ddlBirthCityName.SelectedItem.Value);
+                            dCustomer.Data.NationalityID = Convert.ToInt32(ddlNationalityID.SelectedItem.Value);
+                            dCustomer.Data.BirthCountryID = Convert.ToInt32(ddlBirthCountryID.SelectedItem.Value);
+                            
+                            dCustomer.Data.RegistrationCountryID = Convert.ToInt32(ddlRegistrationCountryID.SelectedItem.Value);
+                            dCustomer.Data.ResidenceCountryID = Convert.ToInt32(ddlResidenceCountryID.SelectedItem.Value);
+                            dCustomer.Data.BirthCityID = Convert.ToInt32(ddlBirthCityName.SelectedItem.Value);
                             dCustomer.Data.RegistrationCityID = Convert.ToInt32(ddlRegistrationCityName.SelectedItem.Value);
                             dCustomer.Data.RegistrationCityName = ddlRegistrationCityName.SelectedItem.Text;
                             dCustomer.Data.ResidenceCityID = Convert.ToInt32(ddlResidenceCityName.SelectedItem.Value);
@@ -1514,7 +1545,12 @@ namespace СreditСonveyor.Microcredit
                 int branchID = dbR.Offices.Where(r => r.ID == officeID).FirstOrDefault().BranchID;
                 int? credOfficerID = 4583; //по умолч АЙбек
                 credOfficerID = dbRWZ.RequestsRedirect.Where(r => r.branchID == branchID).FirstOrDefault().creditOfficerID;
-                if ((officeID == 1133) || (officeID == 1134)) credOfficerID = dbRWZ.RequestsRedirect.Where(r => r.officeID == officeID).FirstOrDefault().creditOfficerID;
+                if (usrRoleID == 2)
+                {
+                    string username = dbRWZ.Users2s.Where(x => x.UserID == usrID).FirstOrDefault().UserName;
+                    credOfficerID = dbR.Users.Where(x => x.UserName == username).FirstOrDefault().UserID;
+                }
+                //if ((officeID == 1133) || (officeID == 1134)) credOfficerID = dbRWZ.RequestsRedirect.Where(r => r.officeID == officeID).FirstOrDefault().creditOfficerID;
                 hfAgentRoleID.Value = usrRoleID.ToString();
                 DateTime dateTimeServer = dateNowServer;
                 DateTime dateTimeNow = Convert.ToDateTime(DateTime.Now);
@@ -1698,7 +1734,7 @@ namespace СreditСonveyor.Microcredit
                 if (chkbxTypeOfCollateral.Items[1].Selected == true) mortrageTypeID = 14;
                 if (chkbxTypeOfCollateral.Items[2].Selected == true) mortrageTypeID = 2;
                 if ((chkbxTypeOfCollateral.Items[1].Selected == true) && (chkbxTypeOfCollateral.Items[2].Selected == true)) mortrageTypeID = 14;
-
+                mortrageTypeID = 13;
 
                 root3 root = new root3()
                 {
@@ -4244,7 +4280,9 @@ namespace СreditСonveyor.Microcredit
 
                                 try
                                 {
-                                    FileUploadControl.SaveAs(destinationFolder + "\\" + dateRandomdir + "\\" + destinationFile);
+                                    //FileUploadControl.SaveAs(destinationFolder + "\\" + dateRandomdir + "\\" + destinationFile);
+                                    Image img = compressImage(FileUploadControl.FileName, 400, 400, 80);
+                                    img.Save(destinationFolder + "\\" + dateRandomdir + "\\" + destinationFile);
                                 }
                                 catch (Exception ex)
                                 {
@@ -4300,6 +4338,93 @@ namespace СreditСonveyor.Microcredit
 
             if (!System.IO.Directory.Exists(Server.MapPath("~/") + partnerdir))
                 System.IO.Directory.CreateDirectory(Server.MapPath("~/") + partnerdir);
+        }
+
+
+        private Image compressImage(string fileName, int newWidth, int newHeight,
+                            int newQuality)   // set quality to 1-100, eg 50
+        {
+            //using (Image image = Image.FromFile(fileName))
+
+            //MemoryStream memStream2 = new MemoryStream();
+            //MemoryStream memStream2 = new MemoryStream(FileUploadControl.FileBytes);
+            MemoryStream memStream2 = new MemoryStream(FileUploadControl.FileBytes.ToArray());
+
+            Image image = Image.FromStream(memStream2);
+            double heightImage = image.Height;
+            double widthImage = image.Width;
+            double k = 0;
+            if (widthImage > heightImage) k = widthImage / heightImage;
+            else k = heightImage / widthImage;
+
+            newHeight = ((int)(newHeight * k)); //newHeight вычисляется по пропорции от newWidth
+
+            using (Image memImage = new Bitmap(image, newWidth, newHeight))
+            {
+                ImageCodecInfo myImageCodecInfo;
+                System.Drawing.Imaging.Encoder myEncoder;
+                EncoderParameter myEncoderParameter;
+                EncoderParameters myEncoderParameters;
+                myImageCodecInfo = GetEncoderInfo("image/jpeg");
+                myEncoder = System.Drawing.Imaging.Encoder.Quality;
+                myEncoderParameters = new EncoderParameters(1);
+                myEncoderParameter = new EncoderParameter(myEncoder, newQuality);
+                myEncoderParameters.Param[0] = myEncoderParameter;
+
+                MemoryStream memStream = new MemoryStream();
+                memImage.Save(memStream, myImageCodecInfo, myEncoderParameters);
+                Image newImage = Image.FromStream(memStream);
+                ImageAttributes imageAttributes = new ImageAttributes();
+                using (Graphics g = Graphics.FromImage(newImage))
+                {
+                    g.InterpolationMode =
+                      System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;  //**
+                    g.DrawImage(newImage, new Rectangle(Point.Empty, newImage.Size), 0, 0,
+                      newImage.Width, newImage.Height, GraphicsUnit.Pixel, imageAttributes);
+                }
+                return newImage;
+            }
+        }
+
+        private Image compressImage2(string fileName, int newWidth, int newHeight,
+                            int newQuality)   // set quality to 1-100, eg 50
+        {
+            using (Image image = Image.FromFile(fileName))
+            using (Image memImage = new Bitmap(image, newWidth, newHeight))
+            {
+                ImageCodecInfo myImageCodecInfo;
+                System.Drawing.Imaging.Encoder myEncoder;
+                EncoderParameter myEncoderParameter;
+                EncoderParameters myEncoderParameters;
+                myImageCodecInfo = GetEncoderInfo("image/jpeg");
+                myEncoder = System.Drawing.Imaging.Encoder.Quality;
+                myEncoderParameters = new EncoderParameters(1);
+                myEncoderParameter = new EncoderParameter(myEncoder, newQuality);
+                myEncoderParameters.Param[0] = myEncoderParameter;
+
+                MemoryStream memStream = new MemoryStream();
+                memImage.Save(memStream, myImageCodecInfo, myEncoderParameters);
+                Image newImage = Image.FromStream(memStream);
+                ImageAttributes imageAttributes = new ImageAttributes();
+                using (Graphics g = Graphics.FromImage(newImage))
+                {
+                    g.InterpolationMode =
+                      System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;  //**
+                    g.DrawImage(newImage, new Rectangle(Point.Empty, newImage.Size), 0, 0,
+                      newImage.Width, newImage.Height, GraphicsUnit.Pixel, imageAttributes);
+                }
+                return newImage;
+            }
+        }
+
+        private static ImageCodecInfo GetEncoderInfo(String mimeType)
+        {
+            ImageCodecInfo[] encoders;
+            encoders = ImageCodecInfo.GetImageEncoders();
+            foreach (ImageCodecInfo ici in encoders)
+                if (ici.MimeType == mimeType) return ici;
+
+            return null;
         }
 
         protected void btnCloseRequest_Click(object sender, EventArgs e)

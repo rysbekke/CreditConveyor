@@ -373,7 +373,7 @@ namespace СreditСonveyor.Data.Microcredit
 
             }
             else lst0 = (from v in dbRWZ.Requests where ((v.RequestDate.Value.Date == DateTime.ParseExact(date1, "yyyy-MM-dd", CultureInfo.InvariantCulture)) || (v.RequestDate.Value.Date > DateTime.ParseExact(date1, "yyyy-MM-dd", CultureInfo.InvariantCulture)) && (v.RequestDate.Value.Date < DateTime.ParseExact(date2, "yyyy-MM-dd", CultureInfo.InvariantCulture)) || (v.RequestDate.Value.Date == DateTime.ParseExact(date2, "yyyy-MM-dd", CultureInfo.InvariantCulture))) select v).ToList();
-            lst0 = (from v in lst0 where ((v.AgentRoleID == agentRoleID) || (v.AgentRoleID == 19)) select v).ToList();
+            lst0 = (from v in lst0 where ((v.AgentRoleID == agentRoleID) || (v.AgentRoleID == 2)) select v).ToList();
 
             //var lst0 = ((nRequest != "") || (inn != "") || (creditID != "") || (surname != "") || (name != "")) ? (from v in dbRWZ.Requests select v).ToList() : (from v in dbRWZ.Requests where ((v.RequestDate.Value.Date == DateTime.ParseExact(date1, "yyyy.MM.dd", CultureInfo.InvariantCulture)) || (v.RequestDate.Value.Date > DateTime.ParseExact(date1, "yyyy.MM.dd", CultureInfo.InvariantCulture)) && (v.RequestDate.Value.Date < DateTime.ParseExact(date2, "yyyy.MM.dd", CultureInfo.InvariantCulture)) || (v.RequestDate.Value.Date == DateTime.ParseExact(date2, "yyyy.MM.dd", CultureInfo.InvariantCulture))) select v).ToList();
             //var lst1 = (inn == "") ? (from v in lst0 where ((v.AgentRoleID == agentRoleID) || (v.AgentRoleID == 19)) select v).ToList() : (from v in lst0 where ((v.IdentificationNumber == inn) && ((v.AgentRoleID == agentRoleID) || (v.AgentRoleID == 19))) select v).ToList();
@@ -409,16 +409,16 @@ namespace СreditСonveyor.Data.Microcredit
             var lst23 = (g1 == false) ? (from v in lst21 where (v.GroupID == 110) select v).ToList() : lst21;  //Билайн
             var lst24 = (g2 == false) ? (from v in lst23 where (v.GroupID != 110) select v).ToList() : lst23; //нано
 
-            var lst26 = (o0 == false) ? (from v in lst24 where (v.BranchID != 1027) select v).ToList() : lst24; //ЦФ
-            var lst27 = (o1 == false) ? (from v in lst26 where (v.OfficeID != 1082) select v).ToList() : lst26; //Берекет
+            var lst26 = (o0 == false) ? (from v in lst24 where (v.BranchID != 5) select v).ToList() : lst24; //ОАО Капитал Банк
+            var lst27 = (o1 == false) ? (from v in lst26 where (v.OfficeID != 15) select v).ToList() : lst26; //Ошский филиал ОАО Капитал Банк
             var lst28 = (o2 == false) ? (from v in lst27 where ((v.OfficeID != 1134) && (v.OfficeID != 1052)) select v).ToList() : lst27; //Карабалта
             var lst29 = (o3 == false) ? (from v in lst28 where ((v.OfficeID != 1133) && (v.OfficeID != 1120)) select v).ToList() : lst28; //Талас
-            var lst30 = (o4 == false) ? (from v in lst29 where (v.BranchID != 1016) select v).ToList() : lst29; //Балыкчы
-            var lst31 = (o5 == false) ? (from v in lst30 where (v.BranchID != 1017) select v).ToList() : lst30; //Ош
-            var lst32 = (o6 == false) ? (from v in lst31 where (v.BranchID != 1018) select v).ToList() : lst31; //Нарын
-            var lst33 = (o7 == false) ? (from v in lst32 where (v.BranchID != 1019) select v).ToList() : lst32; //Токмок
-            var lst34 = (o8 == false) ? (from v in lst33 where (v.BranchID != 1020) select v).ToList() : lst33; //Каракол
-            var lst35 = (o9 == false) ? (from v in lst34 where (v.BranchID != 1023) select v).ToList() : lst34; //Жалалабад
+            var lst30 = (o4 == false) ? (from v in lst29 where (v.BranchID != 16) select v).ToList() : lst29; //Кызыл-Кийский филиал ОАО Капитал Банк
+            var lst31 = (o5 == false) ? (from v in lst30 where (v.BranchID != 17) select v).ToList() : lst30; //Джалал-Абадский филиал ОАО Капитал Банк
+            var lst32 = (o6 == false) ? (from v in lst31 where (v.BranchID != 18) select v).ToList() : lst31; //Араванский филиал ОАО Капитал Банк
+            var lst33 = (o7 == false) ? (from v in lst32 where (v.BranchID != 19) select v).ToList() : lst32; //Караколский филиал ОАО Капитал Банк
+            var lst34 = (o8 == false) ? (from v in lst33 where (v.BranchID != 24) select v).ToList() : lst33; //Бишкекский филиал "Капитал Банк Центр"
+            var lst35 = (o9 == false) ? (from v in lst34 where (v.BranchID != 25) select v).ToList() : lst34; //Таласский филиал ОАО "Капитал Банк"
 
 
             if (lst35.Count > 0)
