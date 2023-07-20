@@ -342,12 +342,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Partner2\rptAgreesToyota.aspx" />
-    <Content Include="Partner2\rptAgreesToyotaInst.aspx" />
-    <Content Include="Partner2\rptAgreesCola.aspx" />
-    <Content Include="Partner2\rptApplicationForm.aspx" />
-    <Content Include="Partner2\rptProfferOnlineBusiness.aspx" />
-    <Content Include="Partner2\rptProfferCola.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Webadmin\Webadmin.aspx" />
     <Content Include="Webcam\WebCam.aspx" />
@@ -372,18 +366,6 @@
       <LastGenOutput>dbdata.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Partner2\rptAgrees.aspx" />
-    <Content Include="Partner2\rptAgreesInst.aspx" />
-    <Content Include="Partner2\rptConsentSozfond.aspx" />
-    <Content Include="Partner2\rptForPeriod.aspx" />
-    <Content Include="Partner2\rptForPeriodWithHistory.aspx" />
-    <Content Include="Partner2\rptForPeriodWithProducts.aspx" />
-    <Content Include="Partner2\rptProffer.aspx" />
-    <Content Include="Partner2\rptProfferAgro.aspx" />
-    <Content Include="Partner2\rptProfferBusiness.aspx" />
-    <Content Include="Partner2\rptProfferOnline.aspx" />
-    <Content Include="Partner2\rptRequests.aspx" />
-    <Content Include="Partner2\Partners.aspx" />
     <Content Include="WebCam.aspx" />
     <None Include="dbdata.dbml.layout">
       <DependentUpon>dbdata.dbml</DependentUpon>
@@ -762,48 +744,6 @@
     <Compile Include="Data\BeelineS\NumByWords.cs" />
     <Compile Include="Data\BeelineS\SysController.cs" />
     <Compile Include="Data\GeneralController.cs" />
-    <Compile Include="Partner2\rptAgreesToyota.aspx.cs">
-      <DependentUpon>rptAgreesToyota.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptAgreesToyota.aspx.designer.cs">
-      <DependentUpon>rptAgreesToyota.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Partner2\rptAgreesToyotaInst.aspx.cs">
-      <DependentUpon>rptAgreesToyotaInst.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptAgreesToyotaInst.aspx.designer.cs">
-      <DependentUpon>rptAgreesToyotaInst.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Partner2\rptAgreesCola.aspx.cs">
-      <DependentUpon>rptAgreesCola.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptAgreesCola.aspx.designer.cs">
-      <DependentUpon>rptAgreesCola.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Partner2\rptApplicationForm.aspx.cs">
-      <DependentUpon>rptApplicationForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptApplicationForm.aspx.designer.cs">
-      <DependentUpon>rptApplicationForm.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Partner2\rptProfferOnlineBusiness.aspx.cs">
-      <DependentUpon>rptProfferOnlineBusiness.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptProfferOnlineBusiness.aspx.designer.cs">
-      <DependentUpon>rptProfferOnlineBusiness.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Partner2\rptProfferCola.aspx.cs">
-      <DependentUpon>rptProfferCola.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptProfferCola.aspx.designer.cs">
-      <DependentUpon>rptProfferCola.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Repository\KIBRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
@@ -949,90 +889,6 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="Partner2\rptAgrees.aspx.cs">
-      <DependentUpon>rptAgrees.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptAgrees.aspx.designer.cs">
-      <DependentUpon>rptAgrees.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Partner2\rptAgreesInst.aspx.cs">
-      <DependentUpon>rptAgreesInst.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptAgreesInst.aspx.designer.cs">
-      <DependentUpon>rptAgreesInst.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Partner2\rptConsentSozfond.aspx.cs">
-      <DependentUpon>rptConsentSozfond.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptConsentSozfond.aspx.designer.cs">
-      <DependentUpon>rptConsentSozfond.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Partner2\rptForPeriod.aspx.cs">
-      <DependentUpon>rptForPeriod.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptForPeriod.aspx.designer.cs">
-      <DependentUpon>rptForPeriod.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Partner2\rptForPeriodWithHistory.aspx.cs">
-      <DependentUpon>rptForPeriodWithHistory.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptForPeriodWithHistory.aspx.designer.cs">
-      <DependentUpon>rptForPeriodWithHistory.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Partner2\rptForPeriodWithProducts.aspx.cs">
-      <DependentUpon>rptForPeriodWithProducts.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptForPeriodWithProducts.aspx.designer.cs">
-      <DependentUpon>rptForPeriodWithProducts.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Partner2\rptProffer.aspx.cs">
-      <DependentUpon>rptProffer.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptProffer.aspx.designer.cs">
-      <DependentUpon>rptProffer.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Partner2\rptProfferAgro.aspx.cs">
-      <DependentUpon>rptProfferAgro.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptProfferAgro.aspx.designer.cs">
-      <DependentUpon>rptProfferAgro.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Partner2\rptProfferBusiness.aspx.cs">
-      <DependentUpon>rptProfferBusiness.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptProfferBusiness.aspx.designer.cs">
-      <DependentUpon>rptProfferBusiness.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Partner2\rptProfferOnline.aspx.cs">
-      <DependentUpon>rptProfferOnline.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptProfferOnline.aspx.designer.cs">
-      <DependentUpon>rptProfferOnline.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Partner2\rptRequests.aspx.cs">
-      <DependentUpon>rptRequests.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\rptRequests.aspx.designer.cs">
-      <DependentUpon>rptRequests.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Partner2\Partners.aspx.cs">
-      <DependentUpon>Partners.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Partner2\Partners.aspx.designer.cs">
-      <DependentUpon>Partners.aspx</DependentUpon>
-    </Compile>
     <Compile Include="WebCam.aspx.cs">
       <DependentUpon>WebCam.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

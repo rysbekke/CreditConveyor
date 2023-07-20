@@ -105,7 +105,7 @@
 
                  <div class="col-md-4 panels">
                 
-                <div><p>Статус кредитной заявки:<asp:Label ID="lblStatusRequest" runat="server" Text="Status"></asp:Label></p></div>
+                <div class="row">Статус кредитной заявки:<asp:Label ID="lblStatusRequest" runat="server" Text="Status"></asp:Label></div>
                 <div style="text-align:center; ">
                 <asp:Button ID="btnPhoto" runat="server" Text="Фото клиента" class="btn btn-primary" ClientIDMode="Static" OnClick="btnPhoto_Click" />
                 <asp:Button ID="btnPhotoClose" runat="server" Text="Закрыть" class="btn btn-primary" OnClick="btnPhotoClose_Click" Visible="False" />
@@ -135,60 +135,60 @@
             </div>
           </div>
 
-                     <a href="#customer1" id="customer1" data-tab='customer'><b>Выбрать клиента</b></a>
+                     <a href="#customer1" id="customer1" data-tab='customer' class="btn btn-primary"><b>Выбрать клиента</b></a>
                      <asp:Button ID="btnCustomerSearch" runat="server" class="btn btn-primary" OnClick="btnCustomerSearch_Click" Text="Выбрать клиента" Visible="False" /><br />
                      <asp:Button ID="btnUpdFIO" runat="server" Text="Обновить ФИО" class="btn btn-primary" Visible="false" OnClick="btnUpdFIO_Click"  /><br />
                        
                      <div style="display:none">
-                        <div>
-                            <p><span class="fio">Фамилия:</span>
-				            <asp:TextBox ID="tbSurname2" runat="server" class="form-control" Enabled="False" TabIndex="5"></asp:TextBox></p>
+                        <div class="row">
+                            <span class="fio">Фамилия:</span>
+				            <asp:TextBox ID="tbSurname2" runat="server" class="form-control" Enabled="False" TabIndex="5"></asp:TextBox>
 				            
                         </div>
             
-                        <div>
-                            <p><span class="fio">Имя:</span>
-                            <asp:TextBox ID="tbCustomerName2" runat="server" class="form-control" Enabled="False" TabIndex="6"></asp:TextBox></p>
+                        <div class="row">
+                            <span class="fio">Имя:</span>
+                            <asp:TextBox ID="tbCustomerName2" runat="server" class="form-control" Enabled="False" TabIndex="6"></asp:TextBox>
 				            
                         </div>
             
-                        <div>
-                            <p><span class="fio">Отчество</span>
-		                    <asp:TextBox ID="tbOtchestvo2" runat="server" class="form-control" Enabled="False" TabIndex="7"></asp:TextBox></p>
+                        <div class="row">
+                            <span class="fio">Отчество</span>
+		                    <asp:TextBox ID="tbOtchestvo2" runat="server" class="form-control" Enabled="False" TabIndex="7"></asp:TextBox>
 				            
                         </div>
                      </div>
 
-                        <div>
-                            <p><span class="fio">ФИО:</span>
-				            <asp:Label ID="lblFIO" runat="server" Text="Label"></asp:Label></p>
+                        <div class="row">
+                            <span class="fio">ФИО:</span>
+				            <asp:Label ID="lblFIO" runat="server" Text="Label"></asp:Label>
                         </div>
-                        <div>
-                            <p><span class="fio">ИНН:</span>
+                        <div class="row">
+                            <span class="fio">ИНН:</span>
 				            
                             <asp:Label ID="lblINN" runat="server" Text="Label"></asp:Label>
-                            </p>
+                            
                         </div>
-                        <div>
-                            <p><span class="fio">Телефон:</span>
-                            <asp:Label ID="lblPhone" runat="server" Text=""></asp:Label></p>
+                        <div class="row">
+                            <span class="fio">Телефон:</span>
+                            <asp:Label ID="lblPhone" runat="server" Text=""></asp:Label>
                         </div>
 
 
                    
-                        <div>
-                            <p>Сем.положение:
+                        <div class="row">
+                            Сем.положение:
                             <asp:RadioButtonList ID="rbtnMaritalStatus" runat="server">
                                         <asp:ListItem Value="0">холост (не замужем)</asp:ListItem>
                                         <asp:ListItem Value="1" Selected="True">женат (за мужем)</asp:ListItem>
-                                    </asp:RadioButtonList></p>
+                                    </asp:RadioButtonList>
                         </div>
                        
                        <br />
 
-                     <div>
+                     <div class="row">
                          
-                            <p>Обеспечение:</p>
+                            Обеспечение:
                             <asp:CheckBoxList ID="chkbxTypeOfCollateral" runat="server" OnSelectedIndexChanged="chkbxTypeOfCollateral_SelectedIndexChanged" AutoPostBack="True" onclick="myFunction()"> 
                                 <asp:ListItem Value="0">Без обеспечения</asp:ListItem>
                                 <asp:ListItem Value="1">Поручительство</asp:ListItem>
@@ -411,28 +411,29 @@
                  <div class="col-md-4 panels">
 
                     
-                       <div>
-                            <p>Цель кредита:
+                       <div class="row">
+                            Цель кредита:
 			                <asp:TextBox ID="tbCreditPurpose" runat="server" class="form-control" TabIndex="1"></asp:TextBox>
 				            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="tbCreditPurpose" ErrorMessage="Ошибка!" ValidationGroup="SaveRequest" CssClass="SaveRequest"></asp:RequiredFieldValidator>
-		                    </p>
+		                    
                       </div>
-                      <div>
-                            <p>Продукт:
+                      <div class="row">
+                            Продукт:
      		                <asp:DropDownList ID="ddlProduct" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProduct_SelectedIndexChanged" class="form-control">
                                         <asp:ListItem Value="92">Потребительский кредит</asp:ListItem>
+                                        <asp:ListItem Value="153">Рассрочка</asp:ListItem>  
                                     </asp:DropDownList>
-                                </p>
+                                
                       </div>
-                      <div>
-                            <p>% Cтавка:
+                      <div class="row">
+                            % Cтавка:
 				            <asp:DropDownList ID="ddlRequestRate" runat="server" OnSelectedIndexChanged="ddlRequestRate_SelectedIndexChanged" AutoPostBack="True" class="form-control">
                                <asp:ListItem Value="30" Selected="True" >30</asp:ListItem>
                             </asp:DropDownList>
-                                </p>
+                                
                       </div>
-                      <div>
-                            <p>Срок кредита:
+                      <div class="row">
+                            Срок кредита:
                             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                 <ContentTemplate>
 			                <asp:DropDownList ID="ddlRequestPeriod" runat="server" TabIndex="2" ClientIDMode="Static" OnSelectedIndexChanged="ddlRequestPeriod_SelectedIndexChanged" AutoPostBack="True" class="form-control">
@@ -446,6 +447,19 @@
 							            <asp:ListItem Value="10"></asp:ListItem>
 							            <asp:ListItem Value="11"></asp:ListItem>
 							            <asp:ListItem Value="12"></asp:ListItem>
+                                <asp:ListItem Value="13"></asp:ListItem>
+                                <asp:ListItem Value="14"></asp:ListItem>
+                                <asp:ListItem Value="15"></asp:ListItem>
+                                <asp:ListItem Value="16"></asp:ListItem>
+                                <asp:ListItem Value="17"></asp:ListItem>
+                                <asp:ListItem Value="18"></asp:ListItem>
+                                <asp:ListItem Value="19"></asp:ListItem>
+                                <asp:ListItem Value="20"></asp:ListItem>
+                                <asp:ListItem Value="21"></asp:ListItem>
+                                <asp:ListItem Value="22"></asp:ListItem>
+                                <asp:ListItem Value="23"></asp:ListItem>
+                                <asp:ListItem Value="24"></asp:ListItem>
+                              
 						            </asp:DropDownList>
                                     </ContentTemplate>
                             </asp:UpdatePanel>
@@ -454,7 +468,7 @@
                               
                         </div>
                       
-                        <div>
+                        <div class="row">
                             <asp:DropDownList ID="ddlOffice" runat="server" Visible="False" class="form-control">
                                         <asp:ListItem Value="1105">ЦФ</asp:ListItem>
                                         <asp:ListItem Value="1082">Берекет</asp:ListItem>
@@ -474,22 +488,22 @@
                             <asp:TextBox ID="tbINNOrg" runat="server" AutoPostBack="True" OnTextChanged="tbINNOrg_TextChanged" class="form-control"></asp:TextBox>
 					        <asp:RegularExpressionValidator ID="RegularExpressionValidator14" runat="server" ErrorMessage="Ошибка!" ValidationGroup="SaveRequest" CssClass="SaveRequest" ControlToValidate="tbINNOrg" ValidationExpression="\d\d\d\d\d\d\d\d\d\d\d\d\d\d"></asp:RegularExpressionValidator>
                         </div>--%>
-                        <div>
-                            <p>Сумма кредита:
+                        <div class="row">
+                            Сумма кредита:
                             <asp:TextBox ID="RadNumTbRequestSumm" runat="server" class="form-control" Type="Currency" MinValue="0" Enabled="true" onchange="demo.valueChanged3()" TabIndex="15" ReadOnly="false" ClientIDMode="Static"></asp:TextBox>
 						    <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ErrorMessage="Ошибка!" ControlToValidate="RadNumTbRequestSumm" ValidationGroup="SaveRequest" CssClass="SaveRequest"></asp:RequiredFieldValidator>
-                            </p>
+                            
                         </div>
-                        <div>
+                        <div class="row">
                             <%--<label>Ежемесячный платеж:</label>--%>
                             <asp:TextBox ID="RadNumTbMonthlyInstallment" class="form-control" runat="server" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" Enabled="false" TabIndex="16" visible="false"></asp:TextBox>
                         </div>
-                        <div>
-                                <p>Предполагаемая дата погашения
+                        <div class="row">
+                                Предполагаемая дата погашения
 								<asp:TextBox ID="tbActualDate" runat="server" class="form-control" ClientIDMode="Static" TabIndex="17" onfocus="this.select();lcs(this)" onclick="event.cancelBubble=true;this.select();lcs(this)" ></asp:TextBox>
 								<asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Ошибка!" ValidationGroup="SaveRequest" ControlToValidate="tbActualDate" CssClass="SaveRequest"></asp:RequiredFieldValidator>
 							    <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="дд.мм.гггг (возможные дни погашения: 2-19)" ValidationExpression="(?:02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19).\d\d.\d\d\d\d" ValidationGroup="SaveRequest" ControlToValidate="tbActualDate" CssClass="SaveRequest"></asp:RegularExpressionValidator>--%>
-                                </p>
+                                
                         </div>
 
 
@@ -531,17 +545,17 @@
                             <asp:ListItem>Агро</asp:ListItem>
 						</asp:RadioButtonList>
 						<asp:Panel ID="pnlEmployment" runat="server">
-                                <diV>
+                                <diV class="row">
                                         <asp:CheckBox ID="chbEmployer" runat="server" Text="Сотрудник" AutoPostBack="True" OnCheckedChanged="chbEmployer_CheckedChanged" Visible="False"/>
                                 </diV>
-								<div>
-                                    <p>Общая сумма заработной платы
+								<div class="row">
+                                        Общая сумма заработной платы
                                         <asp:TextBox ID="RadNumTbSumMonthSalary" runat="server" class="form-control" Value="0" EmptyMessage="" Type="Currency" MinValue="0" onchange="demo.valueChanged3()" AutoPostBack="false" TabIndex="18" ClientIDMode="Static"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="rfAverageMonthSalary" runat="server" ErrorMessage="Ошибка!" ValidationGroup="SaveRequest" ControlToValidate="RadNumTbSumMonthSalary" CssClass="SaveRequest"></asp:RequiredFieldValidator>
-                                    </p>
+                                    
                                 </div>
-                                <div>
-                                    <p>Количество месяцев
+                                <div class="row">
+                                    Количество месяцев
                                     <asp:DropDownList ID="ddlMonthCount" runat="server" TabIndex="1" ClientIDMode="Static" class="form-control" onchange="demo.valueChanged3()">
                                             <asp:ListItem Value="1"></asp:ListItem>
                                             <asp:ListItem Value="2"></asp:ListItem>
@@ -556,29 +570,29 @@
 							                <asp:ListItem Value="11"></asp:ListItem>
 							                <asp:ListItem Value="12"></asp:ListItem>
 						                </asp:DropDownList>
-                                        </p>
+                                        
                                 </div>
-                                <div>
-									<p>Среднемес. заработная плата:
+                                <div class="row">
+									Среднемес. заработная плата:
                                         <asp:TextBox ID="RadNumTbAverageMonthSalary" Name="AverageMonthSalary" class="form-control" runat="server" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" Enabled="true" ClientIDMode="Static"></asp:TextBox>
-                                    </p>
+                                    
                                 </div>
 						</asp:Panel>
 						<asp:Panel ID="pnlBusiness" runat="server" Visible="false">
-                               <div>
-									<p>Минимальная выручка в день:
+                               <div class="row">
+									Минимальная выручка в день:
                                     <asp:TextBox ID="RadNumTbMinRevenue" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="19" ClientIDMode="Static" onchange="demo.RadNumTbMinRevenue()"></asp:TextBox>
         							<asp:RequiredFieldValidator ID="rfMinRevenue" runat="server" ErrorMessage="Ошибка!" ValidationGroup="SaveRequest" ControlToValidate="RadNumTbMinRevenue" CssClass="SaveRequest"></asp:RequiredFieldValidator>
-                                    </p>
+                                    
 								</div>
-                                <div>
-									<p>Максимальная выручка в день:
+                                <div class="row">
+									Максимальная выручка в день:
                                     <asp:TextBox ID="RadNumTbMaxRevenue" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="19" ClientIDMode="Static" onchange="demo.RadNumTbMaxRevenue()"></asp:TextBox>
      								<asp:RequiredFieldValidator ID="rfMaxRevenue" runat="server" ErrorMessage="Ошибка!" ValidationGroup="SaveRequest" ControlToValidate="RadNumTbMaxRevenue" CssClass="SaveRequest"></asp:RequiredFieldValidator>
-                                    </p>
+                                    
 								</div>
-                                <div>
-                                    <p>Количество рабочих дней в мес:</p>
+                                <div class="row">
+                                    Количество рабочих дней в мес:
                                     <asp:DropDownList ID="ddlCountWorkDay" runat="server" TabIndex="1" class="form-control" ClientIDMode="Static" >
                                             <asp:ListItem Value="1"></asp:ListItem>
                                             <asp:ListItem Value="2"></asp:ListItem>
@@ -613,91 +627,91 @@
                                             <asp:ListItem Value="31"></asp:ListItem>
 						                </asp:DropDownList>
                                 </div>
-								<div>
-									<p>Средняя наценка % (в торговле):
+								<div class="row">
+									Средняя наценка % (в торговле):
                                     <asp:TextBox ID="RadNumTbСostPrice" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="20" ClientIDMode="Static" onchange="demo.RadNumTbСostPrice()"></asp:TextBox>
 									<asp:RequiredFieldValidator ID="rfСostPrice" runat="server" ErrorMessage="Ошибка!" ValidationGroup="SaveRequest" ControlToValidate="RadNumTbСostPrice" CssClass="SaveRequest"></asp:RequiredFieldValidator>
-                                    </p>
+                                    
 								</div>
-								<div>
-									<p>Расходы по бизнесу в месяц (аренда, охрана, патент, транспорт, з/п и др.расходы связанные с бизнесом):
+								<div class="row">
+									Расходы по бизнесу в месяц (аренда, охрана, патент, транспорт, з/п и др.расходы связанные с бизнесом):
                                     <asp:TextBox ID="RadNumTbOverhead" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="21" ClientIDMode="Static" onchange="demo.RadNumTbOverhead()"></asp:TextBox>
      								<asp:RequiredFieldValidator ID="rfOverhead" runat="server" ErrorMessage="Ошибка!" ValidationGroup="SaveRequest" ControlToValidate="RadNumTbOverhead" CssClass="SaveRequest"></asp:RequiredFieldValidator>
-									</p>
+									
 								</div>
-                                <div>
-                                    <p><asp:Label ID="lblBusinessComment" runat="server" Text="Комментарии по бизнесу :</label>"></asp:Label>
+                                <div class="row">
+                                    <asp:Label ID="lblBusinessComment" runat="server" Text="Комментарии по бизнесу :</label>"></asp:Label>
                                     <asp:TextBox ID="txtBusinessComment" runat="server" class="form-control" TextMode="MultiLine" Rows="8" Width="300px" style = "resize:none" ></asp:TextBox>
-                                    </p>
+                                    
                                 </div>
 						</asp:Panel>
                         <asp:Panel ID="pnlAgro" runat="server" Visible="false">
 							<div>
-                                <div>
-                                    <p>Отрасль сельского хозяйства
+                                <div class="row">
+                                    Отрасль сельского хозяйства
                                     <asp:TextBox ID="txtbxKindOfAgriculture" runat="server" class="form-control"></asp:TextBox>
-                                    </p>
+                                    
                                 </div>
-                                <div>
-                                    <p>КРС(быки)
+                                <div class="row">
+                                    КРС(быки)
                                     <asp:TextBox ID="txtBulls" runat="server" class="form-control"></asp:TextBox>
-                                    </p>
+                                    
                                 </div>
-                                <div>
-                                    <p>КРС(Дойные коровы)
+                                <div class="row">
+                                    КРС(Дойные коровы)
                                     <asp:TextBox ID="txtbxBairyCows" runat="server" class="form-control"></asp:TextBox>
-                                    </p>
+                                    
                                 </div>
-                                <div>
-                                    <p>МРС
+                                <div class="row">
+                                    МРС
                                     <asp:TextBox ID="txtbxSheeps" runat="server" class="form-control"></asp:TextBox>
-                                    </p>
+                                    
                                 </div>
-                                <div>
-                                    <p>Лошади
+                                <div class="row">
+                                    Лошади
                                     <asp:TextBox ID="txtbxHorse" runat="server" class="form-control"></asp:TextBox>
-                                    </p>
+                                    
                                 </div>
-                                 <div>
-                                        <p>Опыт в живодноводстве
+                                 <div class="row">
+                                        Опыт в живодноводстве
                                         <asp:TextBox ID="txtbxExperienceAnimals" runat="server" class="form-control"></asp:TextBox>
-                                        </p>
+                                        
                                 </div>
-                                <div>
-                                        <p>Выручка от продажи скота за последние 3 мес:
+                                <div class="row">
+                                        Выручка от продажи скота за последние 3 мес:
                                         <asp:TextBox ID="RadNumTbRevenueAgro" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="19" ClientIDMode="Static" onchange="demo.RadNumTbRevenueAgro()"></asp:TextBox>
 										<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Ошибка!" ValidationGroup="SaveRequest" ControlToValidate="RadNumTbRevenueAgro" CssClass="SaveRequest"></asp:RequiredFieldValidator>
-                                        </p>
+                                        
 								</div>
-                                <div>
-                                        <p>Выручка от продажи молока в день:
+                                <div class="row">
+                                        Выручка от продажи молока в день:
                                         <asp:TextBox ID="RadNumTbRevenueMilk" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="19" ClientIDMode="Static" onchange="demo.RadNumTbRevenueMilk()"></asp:TextBox>
 										<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="Ошибка!" ValidationGroup="SaveRequest" ControlToValidate="RadNumTbRevenueMilk" CssClass="SaveRequest"></asp:RequiredFieldValidator>
-                                        </p>
+                                        
 								</div>
-                                <div>
-                                        <p>Выручка от продажи молочной продукции в день:
+                                <div class="row">
+                                        Выручка от продажи молочной продукции в день:
                                         <asp:TextBox ID="RadNumTbRevenueMilkProd" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="19" ClientIDMode="Static" onchange="demo.RadNumTbRevenueMilk()"></asp:TextBox>
 										<asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ErrorMessage="Ошибка!" ValidationGroup="SaveRequest" ControlToValidate="RadNumTbRevenueMilkProd" CssClass="SaveRequest"></asp:RequiredFieldValidator>
-                                        </p>
+                                        
 								</div>
-                                <div>
-                                        <p>Расходы на содержание скота за последние 3 мес:
+                                <div class="row">
+                                        Расходы на содержание скота за последние 3 мес:
                                         <asp:TextBox ID="RadNumTbOverheadAgro" runat="server" class="form-control"  Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="19" ClientIDMode="Static" onchange="demo.RadNumTbOverheadAgro()"></asp:TextBox>
 										<asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="Ошибка!" ValidationGroup="SaveRequest" ControlToValidate="RadNumTbOverheadAgro" CssClass="SaveRequest"></asp:RequiredFieldValidator>
-                                        </p>
+                                        
 								</div>
-								<div>
-                                        <p>Дополнительные расходы в мес:
+								<div class="row">
+                                        Дополнительные расходы в мес:
                                         <asp:TextBox ID="RadNumTbAddOverheadAgro" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="21" ClientIDMode="Static" onchange="demo.RadNumTbAddOverheadAgro()"></asp:TextBox>
 										<asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="Ошибка!" ValidationGroup="SaveRequest" ControlToValidate="RadNumTbAddOverheadAgro" CssClass="SaveRequest"></asp:RequiredFieldValidator>
-                                        </p>
+                                        
 								</div>
-                                <div>
-                                       <p>
+                                <div class="row">
+                                       
                                        <asp:Label ID="Label1" runat="server" Text="Комментарии по бизнесу :</label>"></asp:Label>
                                        <asp:TextBox ID="txtAgroComment" runat="server" class="form-control" TextMode="MultiLine" Rows="8" Width="300px" style = "resize:none"></asp:TextBox>
-                                       </p>
+                                       
                                 </div>
 
 							</div>
@@ -705,21 +719,21 @@
                            </ContentTemplate>
                      </asp:UpdatePanel>
 
-                                <div>
-									<p>Семейные расходы
+                                <div class="row">
+									Семейные расходы
                                         <asp:TextBox ID="RadNumTbFamilyExpenses" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="22" ClientIDMode="Static" onchange="demo.RadNumTbFamilyExpenses()">7000</asp:TextBox>
 										<asp:RequiredFieldValidator ID="rfFamilyExpenses" runat="server" ErrorMessage="Ошибка!" ValidationGroup="SaveRequest" ControlToValidate="RadNumTbFamilyExpenses" CssClass="SaveRequest"></asp:RequiredFieldValidator>
-                                    </p>
+                                    
 								</div>
-                                <div>
-									<p>Дополнительные доходы:
+                                <div class="row">
+									Дополнительные доходы:
                                         <asp:TextBox ID="RadNumTbAdditionalIncome" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="22" ClientIDMode="Static" onchange="demo.RadNumTbAdditionalIncome()"></asp:TextBox>
-                                    </p>
+                                    
                                 </div>
-                                <div>
-                                    <p><asp:Label ID="lblOtherLoans" runat="server" Text="Взносы по др.кредитам:</label>"></asp:Label>
+                                <div class="row">
+                                    <asp:Label ID="lblOtherLoans" runat="server" Text="Взносы по др.кредитам:</label>"></asp:Label>
                                     <asp:TextBox ID="RadNumOtherLoans" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="23" Visible="true" ClientIDMode="Static" onchange="demo.RadNumOtherLoans()"></asp:TextBox>
-                                    </p>
+                                    
                                 </div>
            
                         <br />
@@ -1127,8 +1141,17 @@
 					
                       
 				    </div>
-                   <div><br /><br />
+                   <br /><br />
+
                     <div><b>Гражданство</b></div>
+
+                    <div class="row">
+					    <asp:RadioButtonList ID="rbtIsResident" runat="server" RepeatDirection="Horizontal" Visible="False">
+						    <asp:ListItem Selected="True">Резидент</asp:ListItem>
+						    <asp:ListItem>Неризидент</asp:ListItem>
+					    </asp:RadioButtonList>
+				    </div>
+
                     <div class="row">
                      
                          <span class="fio">Страна:</span>
@@ -1155,7 +1178,7 @@
 					    <asp:RequiredFieldValidator ID="rfBirthCityName" Visible="false" runat="server" ControlToValidate="ddlBirthCityName" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
 				     
                     </div>
-                   </div>
+                   
 
 
              </div>
@@ -1165,7 +1188,7 @@
                     <div><b>Адрес по прописке</b></div>
                     <div class="row">
                         
-                            <span class="fio">Страна:</span>
+                        <span class="fio">Страна:</span>
 					    <asp:DropDownList ID="ddlRegistrationCountryID" runat="server" DataTextField="ShortName" DataValueField="CountryID" Visible="True" TabIndex="6" class="chosen"></asp:DropDownList>
 					    <asp:RequiredFieldValidator ID="rfvRegistrationCountryID" runat="server" ErrorMessage="Ошибка!" ControlToValidate="ddlRegistrationCountryID" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
                      
@@ -1252,12 +1275,12 @@
       </div>
             <%--******************************************--%>
      </div>	
-				    <div>
+				   <%-- <div>
 					    <asp:RadioButtonList ID="rbtIsResident" runat="server" RepeatDirection="Horizontal" Visible="False">
 						    <asp:ListItem Selected="True">Резидент</asp:ListItem>
 						    <asp:ListItem>Неризидент</asp:ListItem>
 					    </asp:RadioButtonList>
-				    </div>
+				    </div>--%>
 									
 				    <%--<div>
 					    <asp:DropDownList ID="ddlNationalityID" runat="server" DataTextField="ShortName" DataValueField="CountryID" Visible="True" TabIndex="5"></asp:DropDownList>

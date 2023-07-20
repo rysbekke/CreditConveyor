@@ -1851,6 +1851,15 @@ namespace СreditСonveyor.Microcredit
         protected global::System.Web.UI.WebControls.RadioButtonList rbtSex;
 
         /// <summary>
+        /// rbtIsResident control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rbtIsResident;
+
+        /// <summary>
         /// ddlNationalityID control.
         /// </summary>
         /// <remarks>
@@ -2101,15 +2110,6 @@ namespace СreditСonveyor.Microcredit
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revResidenceFlat;
-
-        /// <summary>
-        /// rbtIsResident control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbtIsResident;
 
         /// <summary>
         /// pnlSaveCustomer control.

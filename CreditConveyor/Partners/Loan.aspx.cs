@@ -1029,7 +1029,8 @@ namespace СreditСonveyor.Partners
                             dCustomer.Data.CustomerName = tbCustomerName.Text.Trim();
                             dCustomer.Data.Otchestvo = tbOtchestvo.Text.Trim();
                             dCustomer.Data.CustomerTypeID = 1;
-                            //    PersonActivityTypeID = 19,
+                            dCustomer.Data.PersonActivityTypeID = 19;
+                            
                             //    WorkTypeID = 0,
                             dCustomer.Data.IsResident = (rbtIsResident.SelectedIndex == 0) ? true : false;
                             dCustomer.Data.IdentificationNumber = tbIdentificationNumber.Text;
@@ -1717,7 +1718,7 @@ namespace СreditСonveyor.Partners
                 //if (chkbxTypeOfCollateral.Items[1].Selected == true) mortrageTypeID = 14;
                 //if (chkbxTypeOfCollateral.Items[2].Selected == true) mortrageTypeID = 2;
                 //if ((chkbxTypeOfCollateral.Items[1].Selected == true) && (chkbxTypeOfCollateral.Items[2].Selected == true)) mortrageTypeID = 14;
-
+                mortrageTypeID = 13;
 
                 root3 root = new root3()
                 {
@@ -1726,15 +1727,15 @@ namespace СreditСonveyor.Partners
                                         //LoanStatus = 0,
                     CreditID = 0,
                     MortrageTypeID = mortrageTypeID,  //Вид обеспечения 16-приобретаемая имущество
-                                                      //IncomeApproveTypeID = 1,
+                    IncomeApproveTypeID = 1,                                  //IncomeApproveTypeID = 1,
                     RequestCurrencyID = 417,
                     RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text),
-                    //MarketingSourceID = 5,
+                    MarketingSourceID = 1,
                     RequestDate = Convert.ToDateTime(actdate), //dateTimeNow, 
                                                                //IssueAccountNo = "",
                                                                //OfficerUserName = "",
                     CreditOfficerTypeID = 1,
-                    CreditOfficerStartDate = Convert.ToDateTime(actdate), // creditOfficerStartDate, //Convert.ToDateTime(dateNow).AddDays(-1),  //Convert.ToDateTime("2021-09-19T11:28:42"),  //Convert.ToDateTime(actdate), //dateTimeNow, 
+                    CreditOfficerStartDate = Convert.ToDateTime(actdate).AddDays(-1), // creditOfficerStartDate, //Convert.ToDateTime(dateNow).AddDays(-1),  //Convert.ToDateTime("2021-09-19T11:28:42"),  //Convert.ToDateTime(actdate), //dateTimeNow, 
                                                                      //CreditOfficerEndDate = null, // Convert.ToDateTime(actdate), //dateTimeNow, 
                                                                      //OfficeID = officeID, //1105,
                     OfficerID = Convert.ToInt32(credOfficerID), //6804,
