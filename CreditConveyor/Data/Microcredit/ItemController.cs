@@ -452,6 +452,9 @@ namespace СreditСonveyor.Data.Microcredit
                             var reqs = dbRWZ.Requests.Where(r => r.RequestID == ech.RequestID).FirstOrDefault();
                             reqs.StatusOB = st;
                             if (hstat.StatusID == 5) reqs.RequestStatus = "Выдано";
+                            if (hstat.StatusID == 2) reqs.RequestStatus = "Утверждено";
+                            if (hstat.StatusID == 3) reqs.RequestStatus = "На выдаче";
+                            if (hstat.StatusID == 4) reqs.RequestStatus = "Отказано";
                             dbRWZ.Requests.Context.SubmitChanges();
                         }
 
@@ -665,7 +668,12 @@ namespace СreditСonveyor.Data.Microcredit
                             if (hstat.StatusID == 9) { st = "Инициация выдачи"; }
                             var reqs = dbRWZ.Requests.Where(r => r.RequestID == ech.RequestID).FirstOrDefault();
                             reqs.StatusOB = st;
+                                if (hstat.StatusID == 5) reqs.RequestStatus = "Выдано";
+                                if (hstat.StatusID == 2) reqs.RequestStatus = "Утверждено";
+                                if (hstat.StatusID == 3) reqs.RequestStatus = "На выдаче";
+                                if (hstat.StatusID == 4) reqs.RequestStatus = "Отказано";
                             dbRWZ.Requests.Context.SubmitChanges();
+                                
                         }
 
                         if (ech.GroupID != 110)

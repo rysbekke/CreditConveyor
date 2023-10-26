@@ -48,27 +48,27 @@ namespace СreditСonveyor.Microcredit
                     DateTime issueDate = historyStat.Where(r => r.StatusID == 3).FirstOrDefault().StatusDate;
 
                     lblCreditNomer.Text = historyItem.AgreementNo;
-                    lblCreditNomer2.Text = historyItem.AgreementNo;
+                    //lblCreditNomer2.Text = historyItem.AgreementNo;
                     lblCreditNomer3.Text = historyItem.AgreementNo;
-                    lblCreditNomer4.Text = historyItem.AgreementNo;
+                    //lblCreditNomer4.Text = historyItem.AgreementNo;
                     lblCreditNomer5.Text = historyItem.AgreementNo;
                     lblCreditNomer6.Text = historyItem.AgreementNo;
                     //lblCreditNomer7.Text = historyItem.AgreementNo;
-                    lblCreditNomer8.Text = historyItem.AgreementNo;
+                    //lblCreditNomer8.Text = historyItem.AgreementNo;
                     lblCreditID.Text = hfCreditID.Value;
                     lblCreditID2.Text = hfCreditID.Value;
 
                     lblAgreementDate.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
-                    lblAgreementDate2.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy"); //historyItem.IssueDate.ToString();
+                    //lblAgreementDate2.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy"); //historyItem.IssueDate.ToString();
                     lblAgreementDate3.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
-                    lblAgreementDate4.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
+                    //lblAgreementDate4.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
                     lblAgreementDate5.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
                     lblAgreementDate6.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
                     lblAgreementDate7.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
                     lblAgreementDate8.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
                     lblAgreementDate9.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
                     lblAgreementDate10.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
-                    lblAgreementDate11.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
+                    //lblAgreementDate11.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
                     lblAgreementDate12.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
 
 
@@ -79,50 +79,50 @@ namespace СreditСonveyor.Microcredit
                     lblCustomerFIO3.Text = customerItem.Surname + " " + customerItem.CustomerName + " " + customerItem.Otchestvo;
                     lblCustomerFIO4.Text = customerItem.Surname + " " + customerItem.CustomerName + " " + customerItem.Otchestvo;
                     lblCustomerFIO5.Text = customerItem.Surname + " " + customerItem.CustomerName + " " + customerItem.Otchestvo;
-                    lblCustomerFIO6.Text = customerItem.Surname + " " + customerItem.CustomerName + " " + customerItem.Otchestvo;
-                    lblCustomerFIO7.Text = customerItem.Surname + " " + customerItem.CustomerName + " " + customerItem.Otchestvo;
-                    lblCustomerFIO8.Text = customerItem.Surname + " " + customerItem.CustomerName + " " + customerItem.Otchestvo;
-                    lblCustomerFIO9.Text = customerItem.Surname + " " + customerItem.CustomerName + " " + customerItem.Otchestvo;
-                    lblCustomerFIO10.Text = customerItem.Surname + " " + customerItem.CustomerName + " " + customerItem.Otchestvo;
+                    //lblCustomerFIO6.Text = customerItem.Surname + " " + customerItem.CustomerName + " " + customerItem.Otchestvo;
+                    //lblCustomerFIO7.Text = customerItem.Surname + " " + customerItem.CustomerName + " " + customerItem.Otchestvo;
+                    //lblCustomerFIO8.Text = customerItem.Surname + " " + customerItem.CustomerName + " " + customerItem.Otchestvo;
+                    //lblCustomerFIO9.Text = customerItem.Surname + " " + customerItem.CustomerName + " " + customerItem.Otchestvo;
+                    //lblCustomerFIO10.Text = customerItem.Surname + " " + customerItem.CustomerName + " " + customerItem.Otchestvo;
                     lblCustomerFIO11.Text = customerItem.Surname + " " + customerItem.CustomerName + " " + customerItem.Otchestvo;
                     lblCustomerFIO12.Text = customerItem.Surname + " " + customerItem.CustomerName + " " + customerItem.Otchestvo;
                     lblCustomerFIO13.Text = customerItem.Surname + " " + customerItem.CustomerName + " " + customerItem.Otchestvo;
                     lblDocumentSeries.Text = customerItem.DocumentSeries;
                     lblDocumentSeries2.Text = customerItem.DocumentSeries;
-                    lblDocumentSeries3.Text = customerItem.DocumentSeries;
-                    lblDocumentSeries4.Text = customerItem.DocumentSeries;
+                    //lblDocumentSeries3.Text = customerItem.DocumentSeries;
+                    //lblDocumentSeries4.Text = customerItem.DocumentSeries;
                     lblDocumentNo.Text = customerItem.DocumentNo;
                     lblDocumentNo2.Text = customerItem.DocumentNo;
-                    lblDocumentNo3.Text = customerItem.DocumentNo;
-                    lblDocumentNo4.Text = customerItem.DocumentNo;
+                    //lblDocumentNo3.Text = customerItem.DocumentNo;
+                    //lblDocumentNo4.Text = customerItem.DocumentNo;
                     lblIssueAuthority.Text = customerItem.IssueAuthority;
                     lblIssueAuthority2.Text = customerItem.IssueAuthority;
-                    lblIssueAuthority3.Text = customerItem.IssueAuthority;
-                    lblIssueAuthority4.Text = customerItem.IssueAuthority;
+                    //lblIssueAuthority3.Text = customerItem.IssueAuthority;
+                    //lblIssueAuthority4.Text = customerItem.IssueAuthority;
                     lblIssueDate.Text = (Convert.ToDateTime(customerItem.IssueDate)).Date.ToString("dd.MM.yyyy");           //customerItem.IssueDate.ToString(); 
                     lblIssueDate2.Text = (Convert.ToDateTime(customerItem.IssueDate)).Date.ToString("dd.MM.yyyy");
-                    lblIssueDate3.Text = (Convert.ToDateTime(customerItem.IssueDate)).Date.ToString("dd.MM.yyyy");
-                    lblIssueDate4.Text = (Convert.ToDateTime(customerItem.IssueDate)).Date.ToString("dd.MM.yyyy");
+                    //lblIssueDate3.Text = (Convert.ToDateTime(customerItem.IssueDate)).Date.ToString("dd.MM.yyyy");
+                    //lblIssueDate4.Text = (Convert.ToDateTime(customerItem.IssueDate)).Date.ToString("dd.MM.yyyy");
                     lblIdentificationNumber.Text = customerItem.IdentificationNumber;
                     Office officeItem = sysCtrl.OficcesGetItem(historyItem.OfficeID);
                     Branch branchItem = sysCtrl.BranchGetItem(officeItem.BranchID);
                     City cityItem = sysCtrl.CityGetItem(branchItem.CityID);
                     lblCity.Text = cityItem.CityName;
-                    lblCity2.Text = cityItem.CityName;
+                    //lblCity2.Text = cityItem.CityName;
                     var branchCustCustomersID = dbR.BranchesCustomers.Where(v => v.BranchID == branchItem.ID).FirstOrDefault().CustomerID;
                     Customer companyItem = sysCtrl.CustomerGetItem(branchCustCustomersID);
                     lblCompanyName.Text = companyItem.CompanyName;
-                    lblCompanyName2.Text = companyItem.CompanyName;
+                    //lblCompanyName2.Text = companyItem.CompanyName;
                     string regCompanyCity = dbR.Cities.Where(v => v.CityID == companyItem.RegistrationCityID).ToList().FirstOrDefault().CityName;
                     string regCompanyStreet = dbR.Customers.Where(v => v.CustomerID == companyItem.CustomerID).ToList().FirstOrDefault().RegistrationStreet;
                     string regCompanyHouse = dbR.Customers.Where(v => v.CustomerID == companyItem.CustomerID).ToList().FirstOrDefault().RegistrationHouse;
                     string regCompanyFlat = dbR.Customers.Where(v => v.CustomerID == companyItem.CustomerID).ToList().FirstOrDefault().RegistrationFlat;
                     lblCompanyAddress.Text = regCompanyCity + " " + regCompanyStreet + " " + regCompanyHouse + " " + regCompanyFlat;
-                    lblCompanyAddress2.Text = regCompanyCity + " " + regCompanyStreet + " " + regCompanyHouse + " " + regCompanyFlat;
+                    //lblCompanyAddress2.Text = regCompanyCity + " " + regCompanyStreet + " " + regCompanyHouse + " " + regCompanyFlat;
                     lblCompanyINN.Text = companyItem.IdentificationNumber;
-                    lblCompanyINN2.Text = companyItem.IdentificationNumber;
+                    //lblCompanyINN2.Text = companyItem.IdentificationNumber;
                     lblCompanyOKPO.Text = companyItem.OKPO;
-                    lblCompanyOKPO2.Text = companyItem.OKPO;
+                    //lblCompanyOKPO2.Text = companyItem.OKPO;
                     // var custCustomerManagersItem = sysCtrl.CustomerGetItem(customerManagersPerson.PersonID);
                     //lblCompanyCustomerManagersFIO3.Text = custCustomerManagersItem.Surname + " " + custCustomerManagersItem.CustomerName + " " + custCustomerManagersItem.Otchestvo;
                     //  lblCompanyWorkPosition.Text = custCustomerManagersItem.WorkPosition;
@@ -136,19 +136,19 @@ namespace СreditСonveyor.Microcredit
                     string regCustomerFlat = dbR.Customers.Where(v => v.CustomerID == customerItem.CustomerID).ToList().FirstOrDefault().RegistrationFlat;
                     lblRegCustomerAddress.Text = regCustomerCountry + " " + regCustomerCity + " " + regCustomerStreet + " " + regCustomerHouse + " " + regCustomerFlat;
                     lblRegCustomerAddress2.Text = regCustomerCountry + " " + regCustomerCity + " " + regCustomerStreet + " " + regCustomerHouse + " " + regCustomerFlat;
-                    lblRegCustomerAddress3.Text = regCustomerCountry + " " + regCustomerCity + " " + regCustomerStreet + " " + regCustomerHouse + " " + regCustomerFlat;
-                    lblRegCustomerAddress4.Text = regCustomerCountry + " " + regCustomerCity + " " + regCustomerStreet + " " + regCustomerHouse + " " + regCustomerFlat;
+                    //lblRegCustomerAddress3.Text = regCustomerCountry + " " + regCustomerCity + " " + regCustomerStreet + " " + regCustomerHouse + " " + regCustomerFlat;
+                    //lblRegCustomerAddress4.Text = regCustomerCountry + " " + regCustomerCity + " " + regCustomerStreet + " " + regCustomerHouse + " " + regCustomerFlat;
                     string resCustomerCountry = (customerItem.ResidenceCountryID != null) ? dbR.Countries.Where(v => v.CountryID == customerItem.ResidenceCountryID).ToList().FirstOrDefault().ShortName : "";
                     string resCustomerCity = (customerItem.ResidenceCityID != null) ? dbR.Cities.Where(v => v.CityID == customerItem.ResidenceCityID).ToList().FirstOrDefault().CityName : "";
                     string resCustomerStreet = dbR.Customers.Where(v => v.CustomerID == customerItem.CustomerID).ToList().FirstOrDefault().ResidenceStreet;
                     string resCustomerHouse = dbR.Customers.Where(v => v.CustomerID == customerItem.CustomerID).ToList().FirstOrDefault().ResidenceHouse;
                     string resCustomerFlat = dbR.Customers.Where(v => v.CustomerID == customerItem.CustomerID).ToList().FirstOrDefault().ResidenceFlat;
                     lblResCustomerAddress.Text = resCustomerCountry + " " + resCustomerCity + " " + resCustomerStreet + " " + resCustomerHouse + " " + resCustomerFlat;
-                    lblResCustomerAddress2.Text = resCustomerCountry + " " + resCustomerCity + " " + resCustomerStreet + " " + resCustomerHouse + " " + resCustomerFlat;
-                    lblResCustomerAddress3.Text = resCustomerCountry + " " + resCustomerCity + " " + resCustomerStreet + " " + resCustomerHouse + " " + resCustomerFlat;
-                    lblResCustomerAddress4.Text = resCustomerCountry + " " + resCustomerCity + " " + resCustomerStreet + " " + resCustomerHouse + " " + resCustomerFlat;
+                    //lblResCustomerAddress2.Text = resCustomerCountry + " " + resCustomerCity + " " + resCustomerStreet + " " + resCustomerHouse + " " + resCustomerFlat;
+                    //lblResCustomerAddress3.Text = resCustomerCountry + " " + resCustomerCity + " " + resCustomerStreet + " " + resCustomerHouse + " " + resCustomerFlat;
+                    //lblResCustomerAddress4.Text = resCustomerCountry + " " + resCustomerCity + " " + resCustomerStreet + " " + resCustomerHouse + " " + resCustomerFlat;
                     lblRequestSumm.Text = historyCustomerItem.ApprovedSumm.ToString();
-                    lblRequestSumm3.Text = historyCustomerItem.ApprovedSumm.ToString();
+                    //lblRequestSumm3.Text = historyCustomerItem.ApprovedSumm.ToString();
 
                     //lblRequestSumm2.Text = historyCustomerItem.ApprovedSumm.ToString();
                     //lblRequestSumm3.Text = historyCustomerItem.ApprovedSumm.ToString();
@@ -157,26 +157,26 @@ namespace СreditСonveyor.Microcredit
                     Decimal ApprovedSumm = Convert.ToDecimal(historyCustomerItem.ApprovedSumm);
                     string SummWord = num2words.KgsPhrase(ApprovedSumm);
                     lblRequestSummWord.Text = SummWord + " т."; //SummWord.Substring(0, (SummWord.Length - 3));
-                    lblRequestSummWord3.Text = SummWord + " т.";
+                    //lblRequestSummWord3.Text = SummWord + " т.";
                     //lblRequestSummWord2.Text = SummWord.Substring(0, (SummWord.Length - 3));
                     //lblRequestSummWord3.Text = SummWord.Substring(0, (SummWord.Length - 3));
                     //lblRequestSummWord4.Text = SummWord.Substring(0, (SummWord.Length - 3));
 
                     lblApprovedPeriod.Text = historyItem.ApprovedPeriod.ToString();
                     lblApprovedPeriod2.Text = historyItem.ApprovedPeriod.ToString();
-                    lblApprovedPeriod3.Text = historyItem.ApprovedPeriod.ToString();
+                    //lblApprovedPeriod3.Text = historyItem.ApprovedPeriod.ToString();
                     lblCreditPurpose.Text = historyCustomerItem.CreditPurpose;
                     //lblCreditPurpose2.Text = historyCustomerItem.CreditPurpose;
 
                     double approvedRate = Math.Round(Convert.ToDouble(historyItem.ApprovedRate), 1);
                     lblRequestRate.Text = approvedRate.ToString();
                     lblRequestRate2.Text = approvedRate.ToString();
-                    lblRequestRate3.Text = approvedRate.ToString();
+                    //lblRequestRate3.Text = approvedRate.ToString();
                     lblRequestRate4.Text = approvedRate.ToString();
                     lblRequestRate5.Text = approvedRate.ToString();
                     //lblRequestRate6.Text = approvedRate.ToString();
                     lblRequestRate7.Text = approvedRate.ToString();
-                    lblRequestRate8.Text = approvedRate.ToString();
+                    //lblRequestRate8.Text = approvedRate.ToString();
                     lblRequestRate9.Text = approvedRate.ToString();
 
 
@@ -231,10 +231,10 @@ namespace СreditСonveyor.Microcredit
                     lblApprovedSummWord.Text = num2words.KgsPhrase(ApprovedSumm) + " т.";
                     //lblApprovedSummWord.Text = lblApprovedSummWord.Text.Substring(0, (lblApprovedSummWord.Text.Length - 3));
                     lblCurrencyName.Text = sysCtrl.CurrencyGetItem(historyItem.ApprovedCurrencyID).CurrencyName;
-                    lblCurrencyName2.Text = sysCtrl.CurrencyGetItem(historyItem.ApprovedCurrencyID).CurrencyName;
+                    //lblCurrencyName2.Text = sysCtrl.CurrencyGetItem(historyItem.ApprovedCurrencyID).CurrencyName;
                     lblCurrencyName3.Text = sysCtrl.CurrencyGetItem(historyItem.ApprovedCurrencyID).CurrencyName;
-                    lblCurrencyName4.Text = sysCtrl.CurrencyGetItem(historyItem.ApprovedCurrencyID).CurrencyName;
-                    lblCurrencyName5.Text = sysCtrl.CurrencyGetItem(historyItem.ApprovedCurrencyID).CurrencyName;
+                    //lblCurrencyName4.Text = sysCtrl.CurrencyGetItem(historyItem.ApprovedCurrencyID).CurrencyName;
+                    //lblCurrencyName5.Text = sysCtrl.CurrencyGetItem(historyItem.ApprovedCurrencyID).CurrencyName;
                     lblCurrencyName6.Text = sysCtrl.CurrencyGetItem(historyItem.ApprovedCurrencyID).CurrencyName;
                     lblCreditIssueDate.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy"); // historyItem.IssueDate.ToString();
                     int? usrID = dbRWZ.Requests.Where(r => r.CreditID == Convert.ToInt32(Session["CreditID"].ToString())).FirstOrDefault().AgentID;
@@ -275,16 +275,16 @@ namespace СreditСonveyor.Microcredit
 
 
                     lblManagerDocNum.Text = docN;
-                    lblManagerDocNum2.Text = docN;
+                    //lblManagerDocNum2.Text = docN;
                     lblManagerDocNum3.Text = docN;
                     lblManagerDocNum4.Text = docN;
-                    lblManagerDocNum5.Text = docN;
+                    //lblManagerDocNum5.Text = docN;
                     //lblManagerDocNum6.Text = docN;
                     lblManagerDocDate.Text = docDate.ToString();
-                    lblManagerDocDate2.Text = docDate.ToString();
+                    //lblManagerDocDate2.Text = docDate.ToString();
                     lblManagerDocDate3.Text = docDate.ToString();
                     lblManagerDocDate4.Text = docDate.ToString();
-                    lblManagerDocDate5.Text = docDate.ToString();
+                    //lblManagerDocDate5.Text = docDate.ToString();
                     //lblManagerDocDate6.Text = docDate.ToString();
                     var request = dbRWZ.Requests.Where(r => r.CreditID == Convert.ToInt32(Session["CreditID"].ToString())).FirstOrDefault();
 
@@ -334,10 +334,10 @@ namespace СreditСonveyor.Microcredit
                     var lstRequestsProducts = dbRWZ.RequestsProducts.Where(r => r.RequestID == RequestID);
                     if (lstRequestsProducts != null)
                     {
-                        gvProducts.DataSource = lstRequestsProducts;
-                        gvProducts.DataBind();
-                        gvProducts2.DataSource = lstRequestsProducts;
-                        gvProducts2.DataBind();
+                       // gvProducts.DataSource = lstRequestsProducts;
+                        //gvProducts.DataBind();
+                        //gvProducts2.DataSource = lstRequestsProducts;
+                        //gvProducts2.DataBind();
                         gvProducts3.DataSource = lstRequestsProducts;
                         gvProducts3.DataBind();
                     }
@@ -349,16 +349,16 @@ namespace СreditСonveyor.Microcredit
                     {
                         RequestSumm2 = RequestSumm2 + Convert.ToDecimal(reqpr.Price);
                     }
-                    lblRequestSumm2.Text = RequestSumm2.ToString();
-                    lblRequestSumm4.Text = RequestSumm2.ToString();
+                    //lblRequestSumm2.Text = RequestSumm2.ToString();
+                    //lblRequestSumm4.Text = RequestSumm2.ToString();
                     lblRequestSumm5.Text = RequestSumm2.ToString();
                     string SummWord2 = num2words.KgsPhrase(RequestSumm2);
                     //lblRequestSummWord2.Text = SummWord2.Substring(0, (SummWord.Length - 3));
                     //lblRequestSummWord3.Text = SummWord2.Substring(0, (SummWord.Length - 3));
                     //lblRequestSummWord4.Text = SummWord2.Substring(0, (SummWord.Length - 3));
-                    lblRequestSummWord2.Text = SummWord2 + " т."; //SummWord2.Substring(0, (SummWord.Length - 3));
+                    //lblRequestSummWord2.Text = SummWord2 + " т."; //SummWord2.Substring(0, (SummWord.Length - 3));
                                                                   //lblRequestSummWord3.Text = SummWord2 + " т."; //SummWord2.Substring(0, (SummWord.Length - 3));
-                    lblRequestSummWord4.Text = SummWord2 + " т."; //SummWord2.Substring(0, (SummWord.Length - 3));
+                    //lblRequestSummWord4.Text = SummWord2 + " т."; //SummWord2.Substring(0, (SummWord.Length - 3));
 
                     /*Поручитель*/
                     var guarantorID = creditCtrl.GuarantorGetItem(Convert.ToInt32(hfCreditID.Value));
@@ -378,9 +378,9 @@ namespace СreditСonveyor.Microcredit
                     var users = sysCtrl.UsersGetItem(usrID2);
                     var customers = sysCtrl.CustomerGetItem(Convert.ToInt32(hfCustomerID.Value));
 
-                    lblNameAgencyPoint.Text = requestsUsersRoles.NameAgencyPoint2;
-                    lblNameAgencyPoint2.Text = requestsUsersRoles.NameAgencyPoint2;
-                    lblNameAgencyPointAddress.Text = requestsUsersRoles.AddressAgencyPoint2;
+                    //lblNameAgencyPoint.Text = requestsUsersRoles.NameAgencyPoint2;
+                    //lblNameAgencyPoint2.Text = requestsUsersRoles.NameAgencyPoint2;
+                    //lblNameAgencyPointAddress.Text = requestsUsersRoles.AddressAgencyPoint2;
 
                     int? groupID = dbRWZ.Users2s.Where(r => r.UserID == usrID).FirstOrDefault().GroupID;
                     int? orgID = dbRWZ.Groups.Where(r => r.GroupID == groupID).FirstOrDefault().OrgID;
@@ -397,36 +397,36 @@ namespace СreditСonveyor.Microcredit
                         }
                         catch { }
 
-                        lblNameAgencyPoint.Text = shopName;
-                        lblNameAgencyPoint2.Text = shopName;
-                        lblNameAgencyPointAddress.Text = shopNameAddress;
+                        //lblNameAgencyPoint.Text = shopName;
+                        //lblNameAgencyPoint2.Text = shopName;
+                        //lblNameAgencyPointAddress.Text = shopNameAddress;
                     }
 
 
-                    lblUserFIO.Text = users.Fullname;
-                    lblUserFIO2.Text = users.Fullname;
+                    //lblUserFIO.Text = users.Fullname;
+                    //lblUserFIO2.Text = users.Fullname;
 
                     lblManagerFIO.Text = users.Fullname;
                     lblManagerFIO2.Text = users.Fullname;
                     lblManagerFIO3.Text = users.Fullname;
-                    lblManagerFIO4.Text = users.Fullname;
-                    lblManagerFIO5.Text = users.Fullname;
+                    //lblManagerFIO4.Text = users.Fullname;
+                    //lblManagerFIO5.Text = users.Fullname;
                     lblManagerFIO6.Text = users.Fullname;
                     lblDateOfBirth.Text = Convert.ToDateTime(customers.DateOfBirth).Date.ToString("dd.MM.yyyy");
 
-                    lblCustomerAddress.Text = customers.RegistrationCityName + " " + customers.RegistrationStreet + " " + customers.RegistrationHouse + " " + customers.RegistrationFlat;
-                    lblCustomerPassport.Text = customers.DocumentSeries + customers.DocumentNo + " " + customers.IssueAuthority + " " + Convert.ToDateTime(customers.IssueDate).Date.ToString("dd.MM.yyyy");
+                    //lblCustomerAddress.Text = customers.RegistrationCityName + " " + customers.RegistrationStreet + " " + customers.RegistrationHouse + " " + customers.RegistrationFlat;
+                    //lblCustomerPassport.Text = customers.DocumentSeries + customers.DocumentNo + " " + customers.IssueAuthority + " " + Convert.ToDateTime(customers.IssueDate).Date.ToString("dd.MM.yyyy");
                     lblCustomerPassport2.Text = customers.DocumentSeries + customers.DocumentNo + " " + customers.IssueAuthority + " " + Convert.ToDateTime(customers.IssueDate).Date.ToString("dd.MM.yyyy");
                     lblCustomerPassport3.Text = customers.DocumentSeries + customers.DocumentNo + " " + customers.IssueAuthority + " " + Convert.ToDateTime(customers.IssueDate).Date.ToString("dd.MM.yyyy");
-                    decimal numtoword = dbRWZ.Requests.Where(r => r.RequestID == RequestID).ToList().FirstOrDefault().ProductPrice.Value;
+                    decimal numtoword = dbRWZ.Requests.Where(r => r.RequestID == RequestID).ToList().FirstOrDefault().RequestSumm.Value;
 
 
 
-                    lblTotalSum.Text = numtoword.ToString();
-                    lblSumToWord.Text = num2words.KgsPhrase(numtoword) + " т.";
+                    //lblTotalSum.Text = numtoword.ToString();
+                    //lblSumToWord.Text = num2words.KgsPhrase(numtoword) + " т.";
 
                     decimal? amountDownPayment = dbRWZ.Requests.Where(r => r.CreditID == Convert.ToInt32(Session["CreditID"].ToString())).FirstOrDefault().AmountDownPayment;
-                    lblAmountOfDownPayment.Text = amountDownPayment.ToString();
+                   // lblAmountOfDownPayment.Text = amountDownPayment.ToString();
 
                     decimal commision = 0; string NameOfCredit = "КапиталБанк";
                     if (request.RequestSumm > 99999) NameOfCredit = "Потребительский";
@@ -436,9 +436,9 @@ namespace СreditСonveyor.Microcredit
                     if ((request.RequestRate == 0) && (request.RequestPeriod == 12)) { commision = 0; NameOfCredit = "0-0-12"; }
                     if (request.IsEmployer == true) commision = 0;
                     //lblComission.Text = commision.ToString();
-                    lblProduct.Text = NameOfCredit;
-                    lblGroup.Text = dbRWZ.Groups.Where(r => r.GroupID == request.GroupID).ToList().FirstOrDefault().GroupName;
-                    lblGroup2.Text = dbRWZ.Groups.Where(r => r.GroupID == request.GroupID).ToList().FirstOrDefault().GroupName;
+                    //lblProduct.Text = NameOfCredit;
+                    //lblGroup.Text = dbRWZ.Groups.Where(r => r.GroupID == request.GroupID).ToList().FirstOrDefault().GroupName;
+                    //lblGroup2.Text = dbRWZ.Groups.Where(r => r.GroupID == request.GroupID).ToList().FirstOrDefault().GroupName;
 
 
                     //if ((request.GroupID == 113) || //ИП Субанбеков Нуртай Таалайбекович

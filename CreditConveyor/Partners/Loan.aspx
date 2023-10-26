@@ -471,6 +471,7 @@
      		                <asp:DropDownList ID="ddlProduct" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProduct_SelectedIndexChanged" class="form-control">
                                         <asp:ListItem Value="92">Потребительский кредит</asp:ListItem>
                                         <asp:ListItem Value="153">Рассрочка</asp:ListItem>
+                                        <asp:ListItem Value="135">Сотрудникам</asp:ListItem>
                                     </asp:DropDownList>
                                 </p>
                       </div>

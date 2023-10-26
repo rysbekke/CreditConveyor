@@ -40,6 +40,7 @@ using System.Drawing.Imaging;
 using Image = System.Drawing.Image;
 using Rectangle = System.Drawing.Rectangle;
 using Org.BouncyCastle.Crypto.IO;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 
 namespace СreditСonveyor.Microcredit
 {
@@ -289,7 +290,156 @@ namespace СreditСonveyor.Microcredit
 
         protected void btnSearchClient_Click(object sender, EventArgs e)
         {
-            SearchClient_Click();
+            //SearchClient_Click();
+            SearchClient_Click3();
+        }
+
+        protected void SearchClient_Click2()
+        {
+            dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+            var query = (from u in dbR.Customers where ((u.IdentificationNumber.Trim() == tbSearchINN.Text.Trim()) && (String.Concat(u.DocumentSeries, u.DocumentNo).Trim().ToUpper().Replace(" ", "") == tbSerialN.Text.Trim().ToUpper().Replace(" ", ""))) select u).ToList();
+            if (query != null)
+            {
+                gvUsers.DataSource = query;
+                gvUsers.DataBind();
+            }
+        }
+
+        protected void SearchClient_Click3()
+        {
+            dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+            var query = (from u in dbR.Customers where ((u.IdentificationNumber.Trim() == tbSearchINN.Text.Trim())) select u).ToList();
+            if (query != null)
+            {
+                gvUsers.DataSource = query;
+                gvUsers.DataBind();
+            }
+        }
+
+        protected void SearchClientWithCustomerID(int customerId)
+        {
+            btnSaveCustomer.Text = "Прикрепить";
+            disableCustomerFields();
+            dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+            //var query = (from u in dbR.Customers where ((u.IdentificationNumber == tbSearchINN.Text) && (u.DocumentSeries == tbSerialN.Text.Substring(0, 5)) && (u.DocumentNo == tbSerialN.Text.Substring(5, 4))) select u).ToList().FirstOrDefault();
+            var query = (from u in dbR.Customers where (u.CustomerID == customerId) select u).ToList().FirstOrDefault();
+            if (query != null)
+            {
+                pnlCustomer.Visible = true;
+                //pnlCredit.Visible = false;
+                //btnSaveCustomer.Enabled = false;
+                btnCredit.Enabled = true;
+                if (hfChooseClient.Value == "Выбрать клиента") hfCustomerID.Value = query.CustomerID.ToString();
+                if (hfChooseClient.Value == "Выбрать поручителя") hfGuarantorID.Value = query.CustomerID.ToString();
+                if (hfChooseClient.Value == "Выбрать залогодателя") hfPledgerID.Value = query.CustomerID.ToString();
+                //hfCustomerID.Value = query.CustomerID.ToString();
+                tbSurname.Text = query.Surname;
+                tbCustomerName.Text = query.CustomerName;
+                tbOtchestvo.Text = query.Otchestvo;
+                if (query.IsResident == true) { rbtIsResident.SelectedIndex = 0; } else { rbtIsResident.SelectedIndex = 1; }
+                tbIdentificationNumber.Text = query.IdentificationNumber;
+                tbDocumentSeries.Text = query.DocumentSeries + query.DocumentNo;
+                tbIssueDate.Text = Convert.ToDateTime(query.IssueDate).ToString("dd.MM.yyyy");
+                // tbValidTill.Text = Convert.ToDateTime(query.DocumentValidTill).ToString("yyyy-MM-dd");
+                //tbValidTill.Text = Convert.ToDateTime(query.DocumentValidTill).ToString("dd.MM.yyyy");
+                if ((query.IsDocUnlimited == false) || (query.IsDocUnlimited is null))
+                {
+                    tbValidTill.Text = Convert.ToDateTime(query.DocumentValidTill).ToString("dd.MM.yyyy");
+
+                    rbtnlistValidTill.Items[0].Selected = true;
+                    rbtnlistValidTill.Items[1].Selected = false;
+                }
+                else
+                {
+                    rbtnlistValidTill.Items[0].Selected = false;
+                    rbtnlistValidTill.Items[1].Selected = true;
+                }
+                tbIssueAuthority.Text = query.IssueAuthority;
+                if (query.Sex == true) { rbtSex.SelectedIndex = 0; } else { rbtSex.SelectedIndex = 1; }
+                tbDateOfBirth.Text = Convert.ToDateTime(query.DateOfBirth).ToString("dd.MM.yyyy");
+                tbRegistrationStreet.Text = query.RegistrationStreet;
+                tbRegistrationHouse.Text = query.RegistrationHouse;
+                tbRegistrationFlat.Text = query.RegistrationFlat;
+                tbResidenceStreet.Text = query.ResidenceStreet;
+                tbResidenceHouse.Text = query.ResidenceHouse;
+                tbContactPhone.Text = query.ContactPhone1;
+                tbResidenceFlat.Text = query.ResidenceFlat;
+                if (ddlDocumentTypeID.Items.Count > 0 && !string.IsNullOrEmpty(query.DocumentTypeID.ToString()))
+                    ddlDocumentTypeID.SelectedIndex = ddlDocumentTypeID.Items.IndexOf(ddlDocumentTypeID.Items.FindByValue(query.DocumentTypeID.ToString()));
+                if (ddlNationalityID.Items.Count > 0 && !string.IsNullOrEmpty(query.NationalityID.ToString()))
+                    ddlNationalityID.SelectedIndex = ddlNationalityID.Items.IndexOf(ddlNationalityID.Items.FindByValue(query.NationalityID.ToString()));
+
+                if (ddlBirthCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.BirthCountryID.ToString()))
+                    ddlBirthCountryID.SelectedIndex = ddlBirthCountryID.Items.IndexOf(ddlBirthCountryID.Items.FindByValue(query.BirthCountryID.ToString()));
+                var BirthCountry = (from u in dbR.Countries where ((u.CountryID == query.BirthCountryID)) select u).ToList().FirstOrDefault();
+                if (BirthCountry != null)
+                    ddlBirthCountryID.Items.Add(new ListItem { Text = BirthCountry.ShortName, Value = BirthCountry.CountryID.ToString() });
+
+                if (ddlRegistrationCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCountryID.ToString()))
+                    ddlRegistrationCountryID.SelectedIndex = ddlRegistrationCountryID.Items.IndexOf(ddlRegistrationCountryID.Items.FindByValue(query.RegistrationCountryID.ToString()));
+                var RegistrationCountry = (from u in dbR.Countries where ((u.CountryID == query.RegistrationCountryID)) select u).ToList().FirstOrDefault();
+                if (RegistrationCountry != null)
+                    ddlRegistrationCountryID.Items.Add(new ListItem { Text = RegistrationCountry.ShortName, Value = RegistrationCountry.CountryID.ToString() });
+
+
+
+                if (ddlResidenceCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCountryID.ToString()))
+                    ddlResidenceCountryID.SelectedIndex = ddlResidenceCountryID.Items.IndexOf(ddlResidenceCountryID.Items.FindByValue(query.ResidenceCountryID.ToString()));
+                var ResidenceCountry = (from u in dbR.Countries where ((u.CountryID == query.ResidenceCountryID)) select u).ToList().FirstOrDefault();
+                if (ResidenceCountry != null)
+                    ddlResidenceCountryID.Items.Add(new ListItem { Text = ResidenceCountry.ShortName, Value = ResidenceCountry.CountryID.ToString() });
+
+
+                if (ddlBirthCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.BirthCityID.ToString()))
+                    ddlBirthCityName.SelectedIndex = ddlBirthCityName.Items.IndexOf(ddlBirthCityName.Items.FindByValue(query.BirthCityID.ToString()));
+                var birthCity = dbR.GetTable<City>().Where(c => c.CityID == query.BirthCityID).FirstOrDefault();
+                if (birthCity != null)
+                {
+                    var region = dbR.GetTable<Zamat.Region>().Where(reg => reg.RegionID == birthCity.RegionID).FirstOrDefault();
+                    if (region.RegionName != null)
+                    {
+                    }
+                }
+
+
+                if (ddlRegistrationCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCityID.ToString()))
+                    ddlRegistrationCityName.SelectedIndex = ddlRegistrationCityName.Items.IndexOf(ddlRegistrationCityName.Items.FindByValue(query.RegistrationCityID.ToString()));
+                var RegistrationCity = (from u in dbR.Cities where ((u.CityID == query.RegistrationCityID)) select u).ToList().FirstOrDefault();
+                //ddlRegistrationCityName.Items.Add(RegistrationCity.CityName);
+                ddlRegistrationCityName.Items.Add(new ListItem { Text = RegistrationCity.CityName, Value = RegistrationCity.CityID.ToString() });
+                var registrationCity = dbR.GetTable<City>().Where(c => c.CityID == query.RegistrationCityID).FirstOrDefault();
+                if (registrationCity != null)
+                {
+                    var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == registrationCity.RegionID).FirstOrDefault();
+                }
+
+
+                if (ddlResidenceCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCityID.ToString()))
+                    ddlResidenceCityName.SelectedIndex = ddlResidenceCityName.Items.IndexOf(ddlResidenceCityName.Items.FindByValue(query.ResidenceCityID.ToString()));
+                var ResidenceCity = (from u in dbR.Cities where ((u.CityID == query.ResidenceCityID)) select u).ToList().FirstOrDefault();
+                //ddlResidenceCityName.Items.Add(ResidenceCity.CityName);
+                ddlResidenceCityName.Items.Add(new ListItem { Text = ResidenceCity.CityName, Value = ResidenceCity.CityID.ToString() });
+
+                var residenceCity = dbR.GetTable<City>().Where(c => c.CityID == query.ResidenceCityID).FirstOrDefault();
+                if (residenceCity != null)
+                {
+                    var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == residenceCity.RegionID).FirstOrDefault();
+                }
+
+
+
+
+
+
+            }
+            else
+            {
+                pnlCustomer.Visible = true;
+                //pnlCredit.Visible = false;
+                clearEditControls();
+                btnSaveCustomer.Enabled = true;
+                btnCredit.Enabled = false;
+            }
         }
         protected void SearchClient_Click()
         {
@@ -953,7 +1103,8 @@ namespace СreditСonveyor.Microcredit
                         
                         
                         
-                        var cust = dbR.Customers.Where(c => ((c.IdentificationNumber == tbIdentificationNumber.Text.Trim()) && (String.Concat(c.DocumentSeries, c.DocumentNo) == tbDocumentSeries.Text.Trim()))).ToList();
+                        //var cust = dbR.Customers.Where(c => ((c.IdentificationNumber == tbIdentificationNumber.Text.Trim()) && (String.Concat(c.DocumentSeries, c.DocumentNo) == tbDocumentSeries.Text.Trim()))).ToList();
+                        var cust = dbR.Customers.Where(c => (c.CustomerID == Convert.ToInt32(hfSelectCustomerID.Value))).ToList();
                         if (cust.Count == 0)
                         {
                             //Customer newItem = new Customer
@@ -1276,8 +1427,8 @@ namespace СreditСonveyor.Microcredit
                 //if (zp < 50000) y22 = 40;
 
                 if ((y1 >= 40) && (y2 < y22)) f = 1;
-                if (stavka == 0) { if (s > 100000) f = -100000; }
-                else { if (s > 100000) f = -100000; }
+                if (stavka == 0) { if (s > 250000) f = -100000; }
+                else { if (s > 250000) f = -100000; }
             }
             if (rbtnBusiness.SelectedIndex == 1)
             {
@@ -1298,6 +1449,8 @@ namespace СreditСonveyor.Microcredit
                     double y2 = 100 * (k + OtherLoans) / (valp + additionalIncome);
                     if ((y1 >= 40) && (y2 < y22)) f = 1;
                 }
+                //if (stavka == 0) { if (s > 100000) f = -100000; }
+                //else { if (s > 100000) f = -100000; }
                 if (stavka == 0) { if (s > 100000) f = -100000; }
                 else { if (s > 100000) f = -100000; }
             }
@@ -1734,6 +1887,7 @@ namespace СreditСonveyor.Microcredit
                 if (chkbxTypeOfCollateral.Items[1].Selected == true) mortrageTypeID = 14;
                 if (chkbxTypeOfCollateral.Items[2].Selected == true) mortrageTypeID = 2;
                 if ((chkbxTypeOfCollateral.Items[1].Selected == true) && (chkbxTypeOfCollateral.Items[2].Selected == true)) mortrageTypeID = 14;
+                //mortrageTypeID = 13;
                 mortrageTypeID = 13;
 
                 root3 root = new root3()
@@ -3294,7 +3448,7 @@ namespace СreditСonveyor.Microcredit
                     {
                         btnCancelReq.Visible = true; btnCancelReqExp.Visible = true;
                         btnProffer.Visible = true; // btnConfirm.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                        
                         showDcbService();
                         hideSmsService();
@@ -3303,8 +3457,8 @@ namespace СreditСonveyor.Microcredit
                     if (Convert.ToInt32(Session["RoleID"]) == 5)
                     {
                         btnCancelReq.Visible = true; btnCancelReqExp.Visible = true; btnProffer.Visible = true; //btnConfirm.Visible = false; 
-                        btnActAssessment.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
+                       
                         btnApproved.Visible = true;
                         btnApproved.Visible = true;
                         if (lst.GroupID == 110) btnFix.Visible = false;
@@ -3327,13 +3481,13 @@ namespace СreditСonveyor.Microcredit
                     if (Convert.ToInt32(Session["RoleID"]) == 2) //Эксперты Капитал
                     {
                         btnCancelReq.Visible = true; btnCancelReqExp.Visible = true; btnProffer.Visible = true; btnConfirm.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                         if (lst.Bussiness == 0) { pnlEmployment.Visible = true; }
                     }
                     if (Convert.ToInt32(Session["RoleID"]) == 5) //Эксперты ГБ Капитал
                     {
                         btnCancelReqExp.Visible = true; btnCancelReqExp.Visible = true; btnProffer.Visible = true; //btnConfirm.Visible = false; 
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                         btnApproved.Visible = true;
                         if (lst.Bussiness == 0) { pnlEmployment.Visible = true; }
                     }
@@ -3425,7 +3579,7 @@ namespace СreditСonveyor.Microcredit
                     if (Convert.ToInt32(Session["RoleID"]) == 2) //Эксперты Капитал
                     {
                         btnCancelReq.Visible = true; btnCancelReqExp.Visible = true; btnProffer.Visible = true;  
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                         if (lst.Bussiness == 0) { pnlEmployment.Visible = true; }
 
                         //lblNameDcbServ.Visible = true;
@@ -3445,7 +3599,7 @@ namespace СreditСonveyor.Microcredit
                     if (Convert.ToInt32(Session["RoleID"]) == 5) //Эксперты ГБ Капитал
                     {
                         btnCancelReq.Visible = true; btnCancelReqExp.Visible = true; btnProffer.Visible = true; btnApproved.Visible = true; btnFix.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                         if (lst.Bussiness == 0) { pnlEmployment.Visible = true; }
 
                         //lblNameDcbServ.Visible = true;
@@ -3488,13 +3642,13 @@ namespace СreditСonveyor.Microcredit
                     if (Convert.ToInt32(Session["RoleID"]) == 2) //Эксперты Капитал
                     {
                         btnProffer.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
 
                     }
                     if (Convert.ToInt32(Session["RoleID"]) == 5) //Эксперты ГБ Капитал
                     {
                         btnProffer.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                     }
                 }
                 if (lst.RequestStatus == "Отказано")
@@ -3506,13 +3660,13 @@ namespace СreditСonveyor.Microcredit
                     if (Convert.ToInt32(Session["RoleID"]) == 2) //Эксперты Капитал
                     {
                         btnProffer.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
 
                     }
                     if (Convert.ToInt32(Session["RoleID"]) == 5) //Эксперты ГБ Капитал
                     {
                         btnProffer.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                     }
                 }
                 if (lst.RequestStatus == "Подтверждено")
@@ -3526,7 +3680,7 @@ namespace СreditСonveyor.Microcredit
                     {
 
                         btnSendCreditRequest.Visible = true; btnProffer.Visible = true; btnCancelReq.Visible = true; btnCancelReqExp.Visible = true; btnCancelReq.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                         btnApproved.Visible = true;
                         if (lst.Bussiness == 0) { pnlEmployment.Visible = true; }
 
@@ -3534,7 +3688,7 @@ namespace СreditСonveyor.Microcredit
                     if (Convert.ToInt32(Session["RoleID"]) == 5) //Эксперты ГБ Капитал
                     {
                         btnSendCreditRequest.Visible = true; btnProffer.Visible = true; btnCancelReqExp.Visible = true; btnCancelReq.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                         btnApproved.Visible = true;
                         if (lst.Bussiness == 0) { pnlEmployment.Visible = true; }
                     }
@@ -3558,7 +3712,7 @@ namespace СreditСonveyor.Microcredit
 
                         btnCancelReq.Visible = true; btnCancelReqExp.Visible = true; btnCancelReq.Visible = true;
                         btnProffer.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                         btnSendCreditRequest.Visible = true;
                        // btnSendSMS.Visible = true;
                         if (lst.Bussiness == 0) { pnlEmployment.Visible = true; }
@@ -3580,7 +3734,7 @@ namespace СreditСonveyor.Microcredit
                     {
 
                         btnSendCreditRequest.Visible = true; btnProffer.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                         btnCancelReqExp.Visible = true; btnCancelReq.Visible = true;
                         //btnSendSMS.Visible = true;
                         if (lst.Bussiness == 0) { pnlEmployment.Visible = true; }
@@ -3619,7 +3773,7 @@ namespace СreditСonveyor.Microcredit
 
                         btnCancelReq.Visible = true; btnCancelReqExp.Visible = true; btnCancelReq.Visible = true;
                         btnProffer.Visible = true; //btnCancelReqExp.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                         btnSendCreditRequest.Visible = true;
                         if (lst.Bussiness == 0) { pnlEmployment.Visible = true; }
 
@@ -3637,7 +3791,7 @@ namespace СreditСonveyor.Microcredit
                     {
 
                         btnSendCreditRequest.Visible = true; btnProffer.Visible = true; btnCancelReqExp.Visible = true; btnCancelReq.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                         if (lst.Bussiness == 0) { pnlEmployment.Visible = true; }
 
                         //lblNameSMS.Visible = true;
@@ -3666,7 +3820,7 @@ namespace СreditСonveyor.Microcredit
 
                         btnCancelReq.Visible = true; btnCancelReqExp.Visible = true; btnCancelReq.Visible = true;
                         btnProffer.Visible = true; //btnCancelReqExp.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                         btnSendCreditRequest.Visible = true;
                         if (lst.Bussiness == 0) { pnlEmployment.Visible = true; }
 
@@ -3684,7 +3838,7 @@ namespace СreditСonveyor.Microcredit
                     {
 
                         btnSendCreditRequest.Visible = true; btnSendCreditRequest.Visible = true; btnProffer.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                         btnCancelReqExp.Visible = true; btnCancelReq.Visible = true;
                         if (lst.Bussiness == 0) { pnlEmployment.Visible = true; }
 
@@ -3720,13 +3874,13 @@ namespace СreditСonveyor.Microcredit
                     if (Convert.ToInt32(Session["RoleID"]) == 2) //Эксперты Капитал
                     {
                         btnProffer.Visible = true; btnReceived.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                         if (lst.Bussiness == 0) { pnlEmployment.Visible = true; }
                     }
                     if (Convert.ToInt32(Session["RoleID"]) == 5) //Эксперты ГБ Капитал
                     {
                         btnProffer.Visible = true; btnReceived.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                         if (lst.Bussiness == 0) { pnlEmployment.Visible = true; }
                         if (lst.GroupID != 110)
                         {
@@ -3754,13 +3908,13 @@ namespace СreditСonveyor.Microcredit
                     {
                         if (lst.Bussiness == 0) { pnlEmployment.Visible = true; }
                         btnProffer.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                     }
                     if (Convert.ToInt32(Session["RoleID"]) == 5) //Эксперты ГБ Капитал
                     {
                         if (lst.Bussiness == 0) { pnlEmployment.Visible = true; }
                         btnProffer.Visible = true;
-                        btnActAssessment.Visible = true;
+                        //btnActAssessment.Visible = true;
                     }
                     if (Convert.ToInt32(Session["RoleID"]) == 9) //Админы Билайн
                     {
@@ -9303,6 +9457,50 @@ namespace СreditСonveyor.Microcredit
                 //ltEmbed.Text = "sdsadsa";
 
                 ltEmbed.Text = string.Format(embed, "data:application/pdf;base64," + Convert.ToBase64String(data, 0, data.Length));
+            }
+        }
+
+        protected void gvUsers_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int id = Convert.ToInt32(e.CommandArgument);
+            //hfRequestID.Value = id.ToString();
+
+
+            //if (hfRequestsRowID.Value != "")
+            //{
+            //    GridViewRow gvtold = gvRequests.Rows[Convert.ToInt32(hfRequestsRowID.Value)];
+            //    gvtold.BackColor = System.Drawing.Color.Empty;
+            //}
+
+
+            foreach (GridViewRow row in gvUsers.Rows)
+            {
+                row.BackColor = System.Drawing.Color.Empty;
+            }
+
+
+            if (e.CommandName == "Sel")
+            {
+
+
+                ////editcommand(id);
+                //downloadFiles(id);
+                ////refreshfiles();
+                ////refreshGuarantees();
+
+                //gvUsers.BackColor = Color.White;
+                
+
+                LinkButton lb = e.CommandSource as LinkButton;
+                GridViewRow gvr = lb.Parent.Parent as GridViewRow;
+                //gvr.BackColor = System.Drawing.Color.Empty;
+                string hex = "#cbceea";
+                Color _color = System.Drawing.ColorTranslator.FromHtml(hex);
+                gvr.BackColor = _color;
+                //hfRequestsRowID.Value = gvr.RowIndex.ToString();
+                ////lbHistory_Click(new object(), new EventArgs());
+                hfSelectCustomerID.Value = id.ToString();
+                SearchClientWithCustomerID(id);
             }
         }
 

@@ -422,6 +422,7 @@
      		                <asp:DropDownList ID="ddlProduct" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProduct_SelectedIndexChanged" class="form-control">
                                         <asp:ListItem Value="92">Потребительский кредит</asp:ListItem>
                                         <asp:ListItem Value="153">Рассрочка</asp:ListItem>  
+                                        <%--<asp:ListItem Value="135">Сотрудникам</asp:ListItem>--%>
                                     </asp:DropDownList>
                                 
                       </div>
@@ -989,8 +990,8 @@
         <div>
             <p>
             <span class="fio">Серия№:</span>
-            <asp:TextBox ID="tbSerialN"  runat="server" class="form-control" ClientIDMode="Static"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="rfSerialN" runat="server" ControlToValidate="tbSerialN" ErrorMessage="Ошибка!" ValidationGroup="SearchCustomer"></asp:RequiredFieldValidator>
+            <asp:TextBox ID="tbSerialN"  runat="server" class="form-control" ClientIDMode="Static" Visible="false"></asp:TextBox>
+            <%--<asp:RequiredFieldValidator ID="rfSerialN" runat="server" ControlToValidate="tbSerialN" ErrorMessage="Ошибка!" ValidationGroup="SearchCustomer"></asp:RequiredFieldValidator>--%>
             </p>
         </div>
         <div>
@@ -1009,6 +1010,22 @@
             <asp:HiddenField ID="hfRequestStatus" runat="server" />
             <asp:HiddenField ID="hfAgentRoleID" runat="server" />
             <asp:HiddenField ID="hfRequestIDDel" runat="server" Value="-1" />
+            <asp:HiddenField ID="hfSelectCustomerID" runat="server" Value="" />
+            <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" OnRowCommand="gvUsers_RowCommand">
+                 <Columns>
+                            <asp:TemplateField HeaderText="Выбрать">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lbSelectUser" runat="server" CommandArgument='<%# Eval("CustomerID") %>' CommandName="Sel">Выбрать</asp:LinkButton>
+                                   <%-- <a href='/Microcredit/Loan?RequestID=<%# Eval("RequestID") %>' >Выбрать</a>--%>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="CustomerID" HeaderText="Номер" />
+                            <asp:BoundField DataField="Surname" HeaderText="CreditID" />
+                            <asp:BoundField DataField="CustomerName" HeaderText="Статус заявки" />
+                            <asp:BoundField DataField="Otchestvo" HeaderText="Фамилия" />
+                           
+                        </Columns>
+            </asp:GridView>
          </div>      
                     
 

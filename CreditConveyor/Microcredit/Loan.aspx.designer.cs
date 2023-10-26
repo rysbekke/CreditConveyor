@@ -1401,15 +1401,6 @@ namespace СreditСonveyor.Microcredit
         protected global::System.Web.UI.WebControls.TextBox tbSerialN;
 
         /// <summary>
-        /// rfSerialN control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfSerialN;
-
-        /// <summary>
         /// btnSearchClient control.
         /// </summary>
         /// <remarks>
@@ -1525,6 +1516,24 @@ namespace СreditСonveyor.Microcredit
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfRequestIDDel;
+
+        /// <summary>
+        /// hfSelectCustomerID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfSelectCustomerID;
+
+        /// <summary>
+        /// gvUsers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvUsers;
 
         /// <summary>
         /// pnlCustomer control.
