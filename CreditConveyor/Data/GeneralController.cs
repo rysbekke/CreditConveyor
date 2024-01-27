@@ -39,6 +39,7 @@ using Zamat;
 using System.Text.Json;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
+using static СreditСonveyor.Data.GeneralController;
 
 namespace СreditСonveyor.Data
 {
@@ -831,6 +832,14 @@ namespace СreditСonveyor.Data
             public int Status { get; set; }
         }
 
+        public class CreditOfficer
+        {
+            public string OfficerUserName { get; set; }
+            public int CreditOfficerTypeID { get; set; }
+            public DateTime CreditOfficerStartDate { get; set; }
+            public int OfficerID { get; set; }
+        }
+
         public class Root
         {
             public int CustomerID { get; set; }
@@ -845,15 +854,17 @@ namespace СreditСonveyor.Data
             public DateTime RequestDate { get; set; }
             //public string IssueAccountNo { get; set; }
             //public string OfficerUserName { get; set; }
-            public int CreditOfficerTypeID { get; set; }
-            public DateTime CreditOfficerStartDate { get; set; }
+            //public int CreditOfficerTypeID { get; set; }
+            //public DateTime CreditOfficerStartDate { get; set; }
             //public DateTime CreditOfficerEndDate { get; set; }
             //public int OfficeID { get; set; }
-            public int OfficerID { get; set; }
+            //public int OfficerID { get; set; }
             public List<IncomesStructuresActualDate> IncomesStructuresActualDates { get; set; }
             public List<Guarantor> Guarantors { get; set; }
             public List<Picture> Pictures { get; set; }
             public List<Partner> Partners { get; set; }
+
+            public List<CreditOfficer> CreditOfficers { get; set; }
             public int RequestPeriod { get; set; }
             public decimal RequestRate { get; set; }
             public int PaymentSourceID { get; set; }
@@ -878,6 +889,7 @@ namespace СreditСonveyor.Data
             //public object RequestReturnComissionType { get; set; }
             //public object RequestTrancheIssueComission { get; set; }
             //public object RequestTrancheIssueComissionType { get; set; }
+            
         }
 
 
@@ -906,6 +918,8 @@ namespace СreditСonveyor.Data
             public List<Guarantor> Guarantors { get; set; }
             public List<Picture> Pictures { get; set; }
             public List<Partner> Partners { get; set; }
+
+            public List<CreditOfficer> CreditOfficers { get; set; }
             public int RequestPeriod { get; set; }
             public decimal RequestRate { get; set; }
             //public int PaymentSourceID { get; set; }
@@ -956,6 +970,8 @@ namespace СreditСonveyor.Data
             public List<Guarantor> Guarantors { get; set; }
             public List<Picture> Pictures { get; set; }
             public List<Partner> Partners { get; set; }
+
+            public List<CreditOfficer> CreditOfficers { get; set; }
             public int RequestPeriod { get; set; }
             public decimal RequestRate { get; set; }
             //public int PaymentSourceID { get; set; }
@@ -1017,9 +1033,9 @@ namespace СreditСonveyor.Data
                 //IssueAccountNo = root.IssueAccountNo,
                 //OfficerUserName = root.OfficerUserName,
                 //CreditOfficerTypeID = root.CreditOfficerTypeID,
-                CreditOfficerStartDate = root.CreditOfficerStartDate,
+                CreditOfficerStartDate = root.CreditOfficers.LastOrDefault().CreditOfficerStartDate,
                 //CreditOfficerEndDate = root.CreditOfficerEndDate,
-                OfficerID = root.OfficerID,
+                OfficerID = root.CreditOfficers.LastOrDefault().OfficerID,
                 PaymentSourceID = root.
                 //NonPaymentRisk = root.
                 //CreditFraudStatus = root.CreditFraudStatus,

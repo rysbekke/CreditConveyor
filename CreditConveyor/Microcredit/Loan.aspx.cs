@@ -41,6 +41,7 @@ using Image = System.Drawing.Image;
 using Rectangle = System.Drawing.Rectangle;
 using Org.BouncyCastle.Crypto.IO;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using static СreditСonveyor.Data.GeneralController;
 
 namespace СreditСonveyor.Microcredit
 {
@@ -291,7 +292,134 @@ namespace СreditСonveyor.Microcredit
         protected void btnSearchClient_Click(object sender, EventArgs e)
         {
             //SearchClient_Click();
+            disableCustomerFields();
             SearchClient_Click3();
+        }
+
+        protected void SearchClient_Click()
+        {
+            btnSaveCustomer.Text = "Прикрепить";
+            disableCustomerFields();
+            dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+            //var query = (from u in dbR.Customers where ((u.IdentificationNumber == tbSearchINN.Text) && (u.DocumentSeries == tbSerialN.Text.Substring(0, 5)) && (u.DocumentNo == tbSerialN.Text.Substring(5, 4))) select u).ToList().FirstOrDefault();
+            var query = (from u in dbR.Customers where ((u.IdentificationNumber.Trim() == tbSearchINN.Text.Trim()) && (String.Concat(u.DocumentSeries, u.DocumentNo).Trim().ToUpper().Replace(" ", "") == tbSerialN.Text.Trim().ToUpper().Replace(" ", ""))) select u).ToList().FirstOrDefault();
+            if (query != null)
+            {
+                pnlCustomer.Visible = true;
+                //pnlCredit.Visible = false;
+                //btnSaveCustomer.Enabled = false;
+                btnCredit.Enabled = true;
+                if (hfChooseClient.Value == "Выбрать клиента") hfCustomerID.Value = query.CustomerID.ToString();
+                if (hfChooseClient.Value == "Выбрать поручителя") hfGuarantorID.Value = query.CustomerID.ToString();
+                if (hfChooseClient.Value == "Выбрать залогодателя") hfPledgerID.Value = query.CustomerID.ToString();
+                //hfCustomerID.Value = query.CustomerID.ToString();
+                tbSurname.Text = query.Surname;
+                tbCustomerName.Text = query.CustomerName;
+                tbOtchestvo.Text = query.Otchestvo;
+                if (query.IsResident == true) { rbtIsResident.SelectedIndex = 0; } else { rbtIsResident.SelectedIndex = 1; }
+                tbIdentificationNumber.Text = query.IdentificationNumber;
+                tbDocumentSeries.Text = query.DocumentSeries + query.DocumentNo;
+                tbIssueDate.Text = Convert.ToDateTime(query.IssueDate).ToString("dd.MM.yyyy");
+                // tbValidTill.Text = Convert.ToDateTime(query.DocumentValidTill).ToString("yyyy-MM-dd");
+                //tbValidTill.Text = Convert.ToDateTime(query.DocumentValidTill).ToString("dd.MM.yyyy");
+                if ((query.IsDocUnlimited == false) || (query.IsDocUnlimited is null))
+                {
+                    tbValidTill.Text = Convert.ToDateTime(query.DocumentValidTill).ToString("dd.MM.yyyy");
+
+                    rbtnlistValidTill.Items[0].Selected = true;
+                    rbtnlistValidTill.Items[1].Selected = false;
+                }
+                else
+                {
+                    rbtnlistValidTill.Items[0].Selected = false;
+                    rbtnlistValidTill.Items[1].Selected = true;
+                }
+                tbIssueAuthority.Text = query.IssueAuthority;
+                if (query.Sex == true) { rbtSex.SelectedIndex = 0; } else { rbtSex.SelectedIndex = 1; }
+                tbDateOfBirth.Text = Convert.ToDateTime(query.DateOfBirth).ToString("dd.MM.yyyy");
+                tbRegistrationStreet.Text = query.RegistrationStreet;
+                tbRegistrationHouse.Text = query.RegistrationHouse;
+                tbRegistrationFlat.Text = query.RegistrationFlat;
+                tbResidenceStreet.Text = query.ResidenceStreet;
+                tbResidenceHouse.Text = query.ResidenceHouse;
+                tbContactPhone.Text = query.ContactPhone1;
+                tbResidenceFlat.Text = query.ResidenceFlat;
+                if (ddlDocumentTypeID.Items.Count > 0 && !string.IsNullOrEmpty(query.DocumentTypeID.ToString()))
+                    ddlDocumentTypeID.SelectedIndex = ddlDocumentTypeID.Items.IndexOf(ddlDocumentTypeID.Items.FindByValue(query.DocumentTypeID.ToString()));
+                if (ddlNationalityID.Items.Count > 0 && !string.IsNullOrEmpty(query.NationalityID.ToString()))
+                    ddlNationalityID.SelectedIndex = ddlNationalityID.Items.IndexOf(ddlNationalityID.Items.FindByValue(query.NationalityID.ToString()));
+
+                if (ddlBirthCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.BirthCountryID.ToString()))
+                    ddlBirthCountryID.SelectedIndex = ddlBirthCountryID.Items.IndexOf(ddlBirthCountryID.Items.FindByValue(query.BirthCountryID.ToString()));
+                var BirthCountry = (from u in dbR.Countries where ((u.CountryID == query.BirthCountryID)) select u).ToList().FirstOrDefault();
+                if (BirthCountry != null)
+                    ddlBirthCountryID.Items.Add(new ListItem { Text = BirthCountry.ShortName, Value = BirthCountry.CountryID.ToString() });
+
+                if (ddlRegistrationCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCountryID.ToString()))
+                    ddlRegistrationCountryID.SelectedIndex = ddlRegistrationCountryID.Items.IndexOf(ddlRegistrationCountryID.Items.FindByValue(query.RegistrationCountryID.ToString()));
+                var RegistrationCountry = (from u in dbR.Countries where ((u.CountryID == query.RegistrationCountryID)) select u).ToList().FirstOrDefault();
+                if (RegistrationCountry != null)
+                    ddlRegistrationCountryID.Items.Add(new ListItem { Text = RegistrationCountry.ShortName, Value = RegistrationCountry.CountryID.ToString() });
+
+
+
+                if (ddlResidenceCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCountryID.ToString()))
+                    ddlResidenceCountryID.SelectedIndex = ddlResidenceCountryID.Items.IndexOf(ddlResidenceCountryID.Items.FindByValue(query.ResidenceCountryID.ToString()));
+                var ResidenceCountry = (from u in dbR.Countries where ((u.CountryID == query.ResidenceCountryID)) select u).ToList().FirstOrDefault();
+                if (ResidenceCountry != null)
+                    ddlResidenceCountryID.Items.Add(new ListItem { Text = ResidenceCountry.ShortName, Value = ResidenceCountry.CountryID.ToString() });
+
+
+                if (ddlBirthCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.BirthCityID.ToString()))
+                    ddlBirthCityName.SelectedIndex = ddlBirthCityName.Items.IndexOf(ddlBirthCityName.Items.FindByValue(query.BirthCityID.ToString()));
+                var birthCity = dbR.GetTable<City>().Where(c => c.CityID == query.BirthCityID).FirstOrDefault();
+                if (birthCity != null)
+                {
+                    var region = dbR.GetTable<Zamat.Region>().Where(reg => reg.RegionID == birthCity.RegionID).FirstOrDefault();
+                    if (region.RegionName != null)
+                    {
+                    }
+                }
+
+
+                if (ddlRegistrationCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCityID.ToString()))
+                    ddlRegistrationCityName.SelectedIndex = ddlRegistrationCityName.Items.IndexOf(ddlRegistrationCityName.Items.FindByValue(query.RegistrationCityID.ToString()));
+                var RegistrationCity = (from u in dbR.Cities where ((u.CityID == query.RegistrationCityID)) select u).ToList().FirstOrDefault();
+                //ddlRegistrationCityName.Items.Add(RegistrationCity.CityName);
+                ddlRegistrationCityName.Items.Add(new ListItem { Text = RegistrationCity.CityName, Value = RegistrationCity.CityID.ToString() });
+                var registrationCity = dbR.GetTable<City>().Where(c => c.CityID == query.RegistrationCityID).FirstOrDefault();
+                if (registrationCity != null)
+                {
+                    var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == registrationCity.RegionID).FirstOrDefault();
+                }
+
+
+                if (ddlResidenceCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCityID.ToString()))
+                    ddlResidenceCityName.SelectedIndex = ddlResidenceCityName.Items.IndexOf(ddlResidenceCityName.Items.FindByValue(query.ResidenceCityID.ToString()));
+                var ResidenceCity = (from u in dbR.Cities where ((u.CityID == query.ResidenceCityID)) select u).ToList().FirstOrDefault();
+                //ddlResidenceCityName.Items.Add(ResidenceCity.CityName);
+                ddlResidenceCityName.Items.Add(new ListItem { Text = ResidenceCity.CityName, Value = ResidenceCity.CityID.ToString() });
+
+                var residenceCity = dbR.GetTable<City>().Where(c => c.CityID == query.ResidenceCityID).FirstOrDefault();
+                if (residenceCity != null)
+                {
+                    var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == residenceCity.RegionID).FirstOrDefault();
+                }
+
+
+
+
+
+
+            }
+            else
+            {
+                pnlCustomer.Visible = true;
+                //pnlCredit.Visible = false;
+                clearEditControls();
+                btnSaveCustomer.Enabled = true;
+                btnCredit.Enabled = false;
+            }
         }
 
         protected void SearchClient_Click2()
@@ -307,12 +435,24 @@ namespace СreditСonveyor.Microcredit
 
         protected void SearchClient_Click3()
         {
+            hfSelectCustomerID.Value = "";
             dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
             var query = (from u in dbR.Customers where ((u.IdentificationNumber.Trim() == tbSearchINN.Text.Trim())) select u).ToList();
-            if (query != null)
+            if (query.Count > 0)
             {
                 gvUsers.DataSource = query;
                 gvUsers.DataBind();
+            }
+            else
+            {
+                gvUsers.DataSource = null;
+                gvUsers.DataBind();
+
+                pnlCustomer.Visible = true;
+                //pnlCredit.Visible = false;
+                clearEditControls();
+                btnSaveCustomer.Enabled = true;
+                btnCredit.Enabled = false;
             }
         }
 
@@ -441,131 +581,7 @@ namespace СreditСonveyor.Microcredit
                 btnCredit.Enabled = false;
             }
         }
-        protected void SearchClient_Click()
-        {
-            btnSaveCustomer.Text = "Прикрепить";
-            disableCustomerFields();
-            dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
-            //var query = (from u in dbR.Customers where ((u.IdentificationNumber == tbSearchINN.Text) && (u.DocumentSeries == tbSerialN.Text.Substring(0, 5)) && (u.DocumentNo == tbSerialN.Text.Substring(5, 4))) select u).ToList().FirstOrDefault();
-            var query = (from u in dbR.Customers where ((u.IdentificationNumber.Trim() == tbSearchINN.Text.Trim()) && (String.Concat(u.DocumentSeries, u.DocumentNo).Trim().ToUpper().Replace(" ", "") == tbSerialN.Text.Trim().ToUpper().Replace(" ", ""))) select u).ToList().FirstOrDefault();
-            if (query != null)
-            {
-                pnlCustomer.Visible = true;
-                //pnlCredit.Visible = false;
-                //btnSaveCustomer.Enabled = false;
-                btnCredit.Enabled = true;
-                if (hfChooseClient.Value == "Выбрать клиента") hfCustomerID.Value = query.CustomerID.ToString();
-                if (hfChooseClient.Value == "Выбрать поручителя") hfGuarantorID.Value = query.CustomerID.ToString();
-                if (hfChooseClient.Value == "Выбрать залогодателя") hfPledgerID.Value = query.CustomerID.ToString();
-                //hfCustomerID.Value = query.CustomerID.ToString();
-                tbSurname.Text = query.Surname;
-                tbCustomerName.Text = query.CustomerName;
-                tbOtchestvo.Text = query.Otchestvo;
-                if (query.IsResident == true) { rbtIsResident.SelectedIndex = 0; } else { rbtIsResident.SelectedIndex = 1; }
-                tbIdentificationNumber.Text = query.IdentificationNumber;
-                tbDocumentSeries.Text = query.DocumentSeries + query.DocumentNo;
-                tbIssueDate.Text = Convert.ToDateTime(query.IssueDate).ToString("dd.MM.yyyy");
-                // tbValidTill.Text = Convert.ToDateTime(query.DocumentValidTill).ToString("yyyy-MM-dd");
-                //tbValidTill.Text = Convert.ToDateTime(query.DocumentValidTill).ToString("dd.MM.yyyy");
-                if ((query.IsDocUnlimited == false) || (query.IsDocUnlimited is null))
-                {
-                    tbValidTill.Text = Convert.ToDateTime(query.DocumentValidTill).ToString("dd.MM.yyyy");
-
-                    rbtnlistValidTill.Items[0].Selected = true;
-                    rbtnlistValidTill.Items[1].Selected = false;
-                }
-                else
-                {
-                    rbtnlistValidTill.Items[0].Selected = false;
-                    rbtnlistValidTill.Items[1].Selected = true;
-                }
-                tbIssueAuthority.Text = query.IssueAuthority;
-                if (query.Sex == true) { rbtSex.SelectedIndex = 0; } else { rbtSex.SelectedIndex = 1; }
-                tbDateOfBirth.Text = Convert.ToDateTime(query.DateOfBirth).ToString("dd.MM.yyyy");
-                tbRegistrationStreet.Text = query.RegistrationStreet;
-                tbRegistrationHouse.Text = query.RegistrationHouse;
-                tbRegistrationFlat.Text = query.RegistrationFlat;
-                tbResidenceStreet.Text = query.ResidenceStreet;
-                tbResidenceHouse.Text = query.ResidenceHouse;
-                tbContactPhone.Text = query.ContactPhone1;
-                tbResidenceFlat.Text = query.ResidenceFlat;
-                if (ddlDocumentTypeID.Items.Count > 0 && !string.IsNullOrEmpty(query.DocumentTypeID.ToString()))
-                    ddlDocumentTypeID.SelectedIndex = ddlDocumentTypeID.Items.IndexOf(ddlDocumentTypeID.Items.FindByValue(query.DocumentTypeID.ToString()));
-                if (ddlNationalityID.Items.Count > 0 && !string.IsNullOrEmpty(query.NationalityID.ToString()))
-                    ddlNationalityID.SelectedIndex = ddlNationalityID.Items.IndexOf(ddlNationalityID.Items.FindByValue(query.NationalityID.ToString()));
-                
-                if (ddlBirthCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.BirthCountryID.ToString()))
-                    ddlBirthCountryID.SelectedIndex = ddlBirthCountryID.Items.IndexOf(ddlBirthCountryID.Items.FindByValue(query.BirthCountryID.ToString()));
-                var BirthCountry = (from u in dbR.Countries where ((u.CountryID == query.BirthCountryID)) select u).ToList().FirstOrDefault();
-                if (BirthCountry != null)
-                    ddlBirthCountryID.Items.Add(new ListItem { Text = BirthCountry.ShortName, Value = BirthCountry.CountryID.ToString() });
-
-                if (ddlRegistrationCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCountryID.ToString()))
-                    ddlRegistrationCountryID.SelectedIndex = ddlRegistrationCountryID.Items.IndexOf(ddlRegistrationCountryID.Items.FindByValue(query.RegistrationCountryID.ToString()));
-                var RegistrationCountry = (from u in dbR.Countries where ((u.CountryID == query.RegistrationCountryID)) select u).ToList().FirstOrDefault();
-                if (RegistrationCountry != null)
-                    ddlRegistrationCountryID.Items.Add(new ListItem { Text = RegistrationCountry.ShortName, Value = RegistrationCountry.CountryID.ToString() });
-
-
-
-                if (ddlResidenceCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCountryID.ToString()))
-                    ddlResidenceCountryID.SelectedIndex = ddlResidenceCountryID.Items.IndexOf(ddlResidenceCountryID.Items.FindByValue(query.ResidenceCountryID.ToString()));
-                var ResidenceCountry = (from u in dbR.Countries where ((u.CountryID == query.ResidenceCountryID)) select u).ToList().FirstOrDefault();
-                if (ResidenceCountry != null)
-                    ddlResidenceCountryID.Items.Add(new ListItem { Text = ResidenceCountry.ShortName, Value = ResidenceCountry.CountryID.ToString() });
-
-
-                if (ddlBirthCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.BirthCityID.ToString()))
-                    ddlBirthCityName.SelectedIndex = ddlBirthCityName.Items.IndexOf(ddlBirthCityName.Items.FindByValue(query.BirthCityID.ToString()));
-                var birthCity = dbR.GetTable<City>().Where(c => c.CityID == query.BirthCityID).FirstOrDefault();
-                if (birthCity != null)
-                {
-                    var region = dbR.GetTable<Zamat.Region>().Where(reg => reg.RegionID == birthCity.RegionID).FirstOrDefault();
-                    if (region.RegionName != null)
-                    {
-                    }
-                }
-
-
-                if (ddlRegistrationCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCityID.ToString()))
-                    ddlRegistrationCityName.SelectedIndex = ddlRegistrationCityName.Items.IndexOf(ddlRegistrationCityName.Items.FindByValue(query.RegistrationCityID.ToString()));
-                var RegistrationCity = (from u in dbR.Cities where ((u.CityID == query.RegistrationCityID)) select u).ToList().FirstOrDefault();
-                //ddlRegistrationCityName.Items.Add(RegistrationCity.CityName);
-                ddlRegistrationCityName.Items.Add(new ListItem { Text = RegistrationCity.CityName, Value = RegistrationCity.CityID.ToString() });
-                var registrationCity = dbR.GetTable<City>().Where(c => c.CityID == query.RegistrationCityID).FirstOrDefault();
-                if (registrationCity != null)
-                {
-                    var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == registrationCity.RegionID).FirstOrDefault();
-                }
-
-
-                if (ddlResidenceCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCityID.ToString()))
-                    ddlResidenceCityName.SelectedIndex = ddlResidenceCityName.Items.IndexOf(ddlResidenceCityName.Items.FindByValue(query.ResidenceCityID.ToString()));
-                var ResidenceCity = (from u in dbR.Cities where ((u.CityID == query.ResidenceCityID)) select u).ToList().FirstOrDefault();
-                //ddlResidenceCityName.Items.Add(ResidenceCity.CityName);
-                ddlResidenceCityName.Items.Add(new ListItem { Text = ResidenceCity.CityName, Value = ResidenceCity.CityID.ToString() });
-
-                var residenceCity = dbR.GetTable<City>().Where(c => c.CityID == query.ResidenceCityID).FirstOrDefault();
-                if (residenceCity != null)
-                {
-                    var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == residenceCity.RegionID).FirstOrDefault();
-                }
-
-
-
-               
-
-
-            }
-            else
-            {
-                pnlCustomer.Visible = true;
-                //pnlCredit.Visible = false;
-                clearEditControls();
-                btnSaveCustomer.Enabled = true;
-                btnCredit.Enabled = false;
-            }
-        }
+        
 
         public void databindDDL()
         {
@@ -1037,6 +1053,13 @@ namespace СreditСonveyor.Microcredit
             hfCustomerID.Value = "noselect";
             ddlDocumentTypeID.SelectedIndex = 0;
             rbtnlistValidTill.Enabled = false;
+
+            /*******/
+            gvUsers.DataSource = null;
+            gvUsers.DataBind();
+            hfSelectCustomerID.Value = "";
+            /*******/
+
         }
 
         public void clearEditControls()
@@ -1058,8 +1081,10 @@ namespace СreditСonveyor.Microcredit
             tbDateOfBirth.Text = "";
             tbContactPhone.Text = "";
             tbCustomerName.Text = "";
-            ddlRegistrationCityName.SelectedIndex = 0;
-            ddlResidenceCityName.SelectedIndex = 0;
+            //ddlRegistrationCityName.Text = "";
+            //ddlResidenceCityName.Text = "";
+            //ddlRegistrationCityName.SelectedIndex = 0;
+            //ddlResidenceCityName.SelectedIndex = 0;
             //RadNumTbSumMonthSalary.Text = "";
             //RadNumTbRevenueAgro.Text = "";
             //RadNumTbMinRevenue.Text = "";
@@ -1100,11 +1125,21 @@ namespace СreditСonveyor.Microcredit
                     {
                         dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
                         //var cust = dbR.Customers.Where(c => ((c.IdentificationNumber == tbIdentificationNumber.Text) && (c.DocumentSeries == tbDocumentSeries.Text.Substring(0, 5) && (c.DocumentNo == tbDocumentSeries.Text.Substring(5, 4))))).ToList();
-                        
-                        
-                        
+
+
+
                         //var cust = dbR.Customers.Where(c => ((c.IdentificationNumber == tbIdentificationNumber.Text.Trim()) && (String.Concat(c.DocumentSeries, c.DocumentNo) == tbDocumentSeries.Text.Trim()))).ToList();
-                        var cust = dbR.Customers.Where(c => (c.CustomerID == Convert.ToInt32(hfSelectCustomerID.Value))).ToList();
+                        //var cust = dbR.Customers.Where(c => (c.CustomerID == Convert.ToInt32(hfSelectCustomerID.Value))).ToList();
+                        List<Customer> cust;
+
+                        if (hfSelectCustomerID.Value != "") 
+                        {
+                            cust = dbR.Customers.Where(c => (c.CustomerID == Convert.ToInt32(hfSelectCustomerID.Value))).ToList();
+                        }
+                        else
+                        {
+                            cust = dbR.Customers.Where(c => ((c.IdentificationNumber == tbIdentificationNumber.Text.Trim()) && (String.Concat(c.DocumentSeries, c.DocumentNo) == tbDocumentSeries.Text.Trim()))).ToList();
+                        }
                         if (cust.Count == 0)
                         {
                             //Customer newItem = new Customer
@@ -1211,7 +1246,7 @@ namespace СreditСonveyor.Microcredit
                             //hfCustomerID.Value = newItem.CustomerID.ToString();
                             //hfCustomerID.Value = result.ToString();
                             btnCredit.Enabled = true;
-                            btnSaveCustomer.Enabled = false;
+                            //btnSaveCustomer.Enabled = false;
                             /*btnSave_click*/
                             pnlMenuCustomer.Visible = false;
                             //pnlCustomer.Visible = false;
@@ -1681,6 +1716,36 @@ namespace СreditСonveyor.Microcredit
             dbdataDataContext dbW = new dbdataDataContext(connectionStringW);
             dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
             dbdataDataContext dbRWZ = new dbdataDataContext(connectionStringRWZ);
+
+
+            int usrID = Convert.ToInt32(Session["UserID"].ToString());
+            int? usrRoleID = dbRWZ.RequestsUsersRoles.Where(r => r.UserID == usrID).FirstOrDefault().RoleID;
+            int officeID = dbRWZ.Users2s.Where(r => r.UserID == usrID).FirstOrDefault().OfficeID;
+            int? groupID = dbRWZ.Users2s.Where(r => r.UserID == usrID).FirstOrDefault().GroupID;
+            //int? orgID = db.RequestsRoles.Where(r => r.RoleID == usrRoleID).FirstOrDefault().OrgID;
+            int? orgID = dbRWZ.Groups.Where(r => r.GroupID == groupID).FirstOrDefault().OrgID;
+            int? GroupCode = dbRWZ.Groups.Where(r => r.GroupID == groupID).FirstOrDefault().GroupCode;
+            int branchID = dbR.Offices.Where(r => r.ID == officeID).FirstOrDefault().BranchID;
+            int? credOfficerID = 4583; //по умолч АЙбек
+            credOfficerID = dbRWZ.RequestsRedirect.Where(r => r.branchID == branchID).FirstOrDefault().creditOfficerID;
+            if (usrRoleID == 2)
+            {
+                string username = dbRWZ.Users2s.Where(x => x.UserID == usrID).FirstOrDefault().UserName;
+                credOfficerID = dbR.Users.Where(x => x.UserName == username).FirstOrDefault().UserID;
+            }
+            //if ((officeID == 1133) || (officeID == 1134)) credOfficerID = dbRWZ.RequestsRedirect.Where(r => r.officeID == officeID).FirstOrDefault().creditOfficerID;
+            hfAgentRoleID.Value = usrRoleID.ToString();
+            DateTime dateTimeServer = dateNowServer;
+            DateTime dateTimeNow = Convert.ToDateTime(DateTime.Now);
+
+            decimal commision = 0; string NameOfCredit = "КапиталБанк";
+            //int prodID = 1152; //КапиталБанк
+            //if (chbEmployer.Checked) prodID = 1153; else prodID = 1152; //КапиталБанк для сотруд иначе КапиталБанк
+            int prodID = Convert.ToInt32(ddlProduct.SelectedValue);
+            decimal rate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text);
+            byte period = Convert.ToByte(ddlRequestPeriod.SelectedValue);
+            bool isEmployer = chbEmployer.Checked ? true : false;
+
             if (hfRequestAction.Value == "new")
             {
                 string str = RadNumTbAverageMonthSalary.Text;
@@ -1688,33 +1753,7 @@ namespace СreditСonveyor.Microcredit
 
 
                 /*Новая заявка*/
-                int usrID = Convert.ToInt32(Session["UserID"].ToString());
-                int? usrRoleID = dbRWZ.RequestsUsersRoles.Where(r => r.UserID == usrID).FirstOrDefault().RoleID;
-                int officeID = dbRWZ.Users2s.Where(r => r.UserID == usrID).FirstOrDefault().OfficeID;
-                int? groupID = dbRWZ.Users2s.Where(r => r.UserID == usrID).FirstOrDefault().GroupID;
-                //int? orgID = db.RequestsRoles.Where(r => r.RoleID == usrRoleID).FirstOrDefault().OrgID;
-                int? orgID = dbRWZ.Groups.Where(r => r.GroupID == groupID).FirstOrDefault().OrgID;
-                int? GroupCode = dbRWZ.Groups.Where(r => r.GroupID == groupID).FirstOrDefault().GroupCode;
-                int branchID = dbR.Offices.Where(r => r.ID == officeID).FirstOrDefault().BranchID;
-                int? credOfficerID = 4583; //по умолч АЙбек
-                credOfficerID = dbRWZ.RequestsRedirect.Where(r => r.branchID == branchID).FirstOrDefault().creditOfficerID;
-                if (usrRoleID == 2)
-                {
-                    string username = dbRWZ.Users2s.Where(x => x.UserID == usrID).FirstOrDefault().UserName;
-                    credOfficerID = dbR.Users.Where(x => x.UserName == username).FirstOrDefault().UserID;
-                }
-                //if ((officeID == 1133) || (officeID == 1134)) credOfficerID = dbRWZ.RequestsRedirect.Where(r => r.officeID == officeID).FirstOrDefault().creditOfficerID;
-                hfAgentRoleID.Value = usrRoleID.ToString();
-                DateTime dateTimeServer = dateNowServer;
-                DateTime dateTimeNow = Convert.ToDateTime(DateTime.Now);
-
-                decimal commision = 0; string NameOfCredit = "КапиталБанк";
-                //int prodID = 1152; //КапиталБанк
-                //if (chbEmployer.Checked) prodID = 1153; else prodID = 1152; //КапиталБанк для сотруд иначе КапиталБанк
-                int prodID = Convert.ToInt32(ddlProduct.SelectedValue);
-                decimal rate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text);
-                byte period = Convert.ToByte(ddlRequestPeriod.SelectedValue);
-                bool isEmployer = chbEmployer.Checked ? true : false;
+                
 
                 ////if (Convert.ToDecimal(RadNumTbRequestSumm.Text) > 100000) { NameOfCredit = "Потребительский"; prodID = 109; }
                 //if ((rate == 0) && (period == 3)) { commision = 0; NameOfCredit = "0-0-3"; prodID = 1163; }
@@ -1879,6 +1918,17 @@ namespace СreditСonveyor.Microcredit
                     Status = 1,
                 };
 
+
+                GeneralController.CreditOfficer creditOfficer = new GeneralController.CreditOfficer()
+                {
+                    CreditOfficerTypeID = 1,
+                    CreditOfficerStartDate = Convert.ToDateTime(actdate).AddDays(-1), // creditOfficerStartDate, //Convert.ToDateTime(dateNow).AddDays(-1),  //Convert.ToDateTime("2021-09-19T11:28:42"),  //Convert.ToDateTime(actdate), //dateTimeNow, 
+                                                                                      //CreditOfficerEndDate = null, // Convert.ToDateTime(actdate), //dateTimeNow, 
+                                                                                      //OfficeID = officeID, //1105,
+
+                    OfficerID = Convert.ToInt32(credOfficerID), //6804,
+                };
+
                 //DateTime creditOfficerStartDate = (connectionStringActualDate == "") ? Convert.ToDateTime(dateNow).AddDays(-1) : Convert.ToDateTime(connectionStringActualDate).AddDays(-1);
                 DateTime creditOfficerStartDate = (connectionStringActualDate == "") ? Convert.ToDateTime(dateNow).AddDays(-1) : Convert.ToDateTime(connectionStringActualDate).AddDays(-1);
 
@@ -1904,23 +1954,18 @@ namespace СreditСonveyor.Microcredit
                     RequestDate = Convert.ToDateTime(actdate), //dateTimeNow, 
                                                                //IssueAccountNo = "",
                                                                //OfficerUserName = "",
-                    CreditOfficerTypeID = 1,
-                    CreditOfficerStartDate = Convert.ToDateTime(actdate).AddDays(-1), // creditOfficerStartDate, //Convert.ToDateTime(dateNow).AddDays(-1),  //Convert.ToDateTime("2021-09-19T11:28:42"),  //Convert.ToDateTime(actdate), //dateTimeNow, 
-                                                                                      //CreditOfficerEndDate = null, // Convert.ToDateTime(actdate), //dateTimeNow, 
-                                                                                      //OfficeID = officeID, //1105,
-
-                    OfficerID = Convert.ToInt32(credOfficerID), //6804,
+                    
 
                     IncomesStructuresActualDates = new List<GeneralController.IncomesStructuresActualDate>(),
                     Guarantors = new List<GeneralController.Guarantor>(),
                     Pictures = new List<GeneralController.Picture>(),
                     Partners = new List<GeneralController.Partner>(),
-
+                    CreditOfficers = new List<GeneralController.CreditOfficer>(),
 
                     RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue),
                     RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text), //0.0, // Convert.ToDouble(ddlRequestRate.SelectedItem.Text),
                     PaymentSourceID = 1,
-                    
+
                     //NonPaymentRisk = null,
                     //CreditFraudStatus = null,
                     //InformationID = null,
@@ -2009,7 +2054,7 @@ namespace СreditСonveyor.Microcredit
 
 
                 root.IncomesStructuresActualDates.Add(incomesstructuresactualdate);
-                //root.Partners.Add(partner);
+                root.CreditOfficers.Add(creditOfficer);
                 root.Pictures.Add(picture);
                 //if (hfGuarantorID.Value != "noselect") 
                 if (chkbxTypeOfCollateral.Items[1].Selected == true)
@@ -2118,8 +2163,9 @@ namespace СreditСonveyor.Microcredit
                         BairyCows = String.IsNullOrEmpty(txtbxBairyCows.Text) ? 0 : Convert.ToInt32(txtbxBairyCows.Text),
                         Sheeps = String.IsNullOrEmpty(txtbxSheeps.Text) ? 0 : Convert.ToInt32(txtbxSheeps.Text),
                         Horse = String.IsNullOrEmpty(txtbxHorse.Text) ? 0 : Convert.ToInt32(txtbxHorse.Text),
-                        ExperienceAnimals = String.IsNullOrEmpty(txtbxExperienceAnimals.Text) ? 0 : Convert.ToInt32(txtbxExperienceAnimals.Text)
-                        
+                        ExperienceAnimals = String.IsNullOrEmpty(txtbxExperienceAnimals.Text) ? 0 : Convert.ToInt32(txtbxExperienceAnimals.Text),
+                        RequestType = "MK"
+
                     };
                     
 
@@ -2243,21 +2289,21 @@ namespace СreditСonveyor.Microcredit
             if (hfRequestAction.Value == "edit")
             {
                 if (pnlPhoto.Visible == false) hfPhoto2.Value = "";
-                DateTime dateTimeServer = dateNowServer;
-                DateTime dateTimeNow = Convert.ToDateTime(DateTime.Now);
-                /*Edit*/
-                int usrID = Convert.ToInt32(Session["UserID"].ToString());
-                //int officeID = dbRWZ.Users2s.Where(r => r.UserID == usrID).FirstOrDefault().OfficeID;
-                int? officeID = dbRWZ.Requests.Where(r => r.CreditID == Convert.ToInt32(hfCreditID.Value)).FirstOrDefault().OfficeID;
+                //DateTime dateTimeServer = dateNowServer;
+                //DateTime dateTimeNow = Convert.ToDateTime(DateTime.Now);
+                ///*Edit*/
+                //int usrID = Convert.ToInt32(Session["UserID"].ToString());
+                ////int officeID = dbRWZ.Users2s.Where(r => r.UserID == usrID).FirstOrDefault().OfficeID;
+                //int? officeID = dbRWZ.Requests.Where(r => r.CreditID == Convert.ToInt32(hfCreditID.Value)).FirstOrDefault().OfficeID;
 
-                CreditController ctlCredit = new CreditController();
-                int prodID = Convert.ToInt32(ddlProduct.SelectedValue);
-                decimal commision = 0; string NameOfCredit = "КапиталБанк"; 
-                //int prodID = 1152; //КапиталБанк
-                //if (chbEmployer.Checked) prodID = 1153; else prodID = 1152; //КапиталБанк для сотруд иначе КапиталБанк
-                decimal rate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text);
-                byte period = Convert.ToByte(ddlRequestPeriod.SelectedValue);
-                bool isEmployer = chbEmployer.Checked ? true : false;
+                //CreditController ctlCredit = new CreditController();
+                //int prodID = Convert.ToInt32(ddlProduct.SelectedValue);
+                //decimal commision = 0; string NameOfCredit = "КапиталБанк"; 
+                ////int prodID = 1152; //КапиталБанк
+                ////if (chbEmployer.Checked) prodID = 1153; else prodID = 1152; //КапиталБанк для сотруд иначе КапиталБанк
+                //decimal rate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text);
+                //byte period = Convert.ToByte(ddlRequestPeriod.SelectedValue);
+                //bool isEmployer = chbEmployer.Checked ? true : false;
                 //prodID = 109;
 
                 ////if (Convert.ToDecimal(RadNumTbRequestSumm.Text) > 100000) { NameOfCredit = "Потребительский"; prodID = 109; }
@@ -2309,8 +2355,8 @@ namespace СreditСonveyor.Microcredit
                 string dateFirstPayment = tbActualDate.Text.Substring(6, 4) + "." + tbActualDate.Text.Substring(3, 2) + "." + tbActualDate.Text.Substring(0, 2);
                 var reqs = dbRWZ.Requests.Where(r => r.RequestID == Convert.ToInt32(hfRequestID.Value)).FirstOrDefault();
                 //int? groupID = dbRWZ.Users2s.Where(r => r.UserID == usrID).FirstOrDefault().GroupID;
-                int? groupID = reqs.GroupID;
-                int? GroupCode = dbRWZ.Groups.Where(r => r.GroupID == groupID).FirstOrDefault().GroupCode;
+                //int? groupID = reqs.GroupID;
+                //int? GroupCode = dbRWZ.Groups.Where(r => r.GroupID == groupID).FirstOrDefault().GroupCode;
                 int mortrageTypeID = 2;
                 //if (reqs.GroupID != 110)
                 //{
@@ -2336,26 +2382,34 @@ namespace СreditСonveyor.Microcredit
                         File = hfPhoto2.Value
                     };
 
-                    //GeneralController.Partner partner = new GeneralController.Partner()
-                    //{
-                    //    PartnerCompanyID = (int)GroupCode,
-                    //    LoanPartnerSumV = Convert.ToDecimal(RadNumTbRequestSumm.Text), //0,//50000.0,
-                    //    CommissionSum = Convert.ToDecimal(0.0),
-                    //    //IssueComissionPaymentTypeID = 1
-                    //};
+                //GeneralController.Partner partner = new GeneralController.Partner()
+                //{
+                //    PartnerCompanyID = (int)GroupCode,
+                //    LoanPartnerSumV = Convert.ToDecimal(RadNumTbRequestSumm.Text), //0,//50000.0,
+                //    CommissionSum = Convert.ToDecimal(0.0),
+                //    //IssueComissionPaymentTypeID = 1
+                //};
 
-                    //GeneralController.Guarantor guarantor = new GeneralController.Guarantor()
-                    //{
-                    //    CustomerID = 1397375,
-                    //    GuaranteeAmount = 50000,
-                    //    StartDate = Convert.ToDateTime(actdate),
-                    //    //EndDate = 
-                    //    Status = 1,
-                    //};
+                //GeneralController.Guarantor guarantor = new GeneralController.Guarantor()
+                //{
+                //    CustomerID = 1397375,
+                //    GuaranteeAmount = 50000,
+                //    StartDate = Convert.ToDateTime(actdate),
+                //    //EndDate = 
+                //    Status = 1,
+                //};
+
+                GeneralController.CreditOfficer creditOfficer = new GeneralController.CreditOfficer()
+                {
+                    CreditOfficerTypeID = 1,
+                    // CreditOfficerStartDate = Convert.ToDateTime(actdate).AddDays(-1), // creditOfficerStartDate, //Convert.ToDateTime(dateNow).AddDays(-1),  //Convert.ToDateTime("2021-09-19T11:28:42"),  //Convert.ToDateTime(actdate), //dateTimeNow, 
+                    // CreditOfficerEndDate = null, // Convert.ToDateTime(actdate), //dateTimeNow, 
+                    //OfficeID = officeID, //1105,
+                    OfficerID = Convert.ToInt32(credOfficerID), //6804,
+                };
 
 
-
-                    GeneralController.Guarantor guarantor = new GeneralController.Guarantor()
+                GeneralController.Guarantor guarantor = new GeneralController.Guarantor()
                     {
                         CustomerID = (hfGuarantorID.Value != "noselect") ? Convert.ToInt32(hfGuarantorID.Value) : 0,
                         GuaranteeAmount = Convert.ToDecimal(RadNumTbRequestSumm.Text),
@@ -2399,7 +2453,7 @@ namespace СreditСonveyor.Microcredit
                         Guarantors = new List<GeneralController.Guarantor>(),
                         Pictures = new List<GeneralController.Picture>(),
                         Partners = new List<GeneralController.Partner>(),
-                        
+                        CreditOfficers = new List<GeneralController.CreditOfficer>(),
 
                         RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue),
                         RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text), //0.0, // Convert.ToDouble(ddlRequestRate.SelectedItem.Text),
@@ -2490,8 +2544,9 @@ namespace СreditСonveyor.Microcredit
 
 
                     root.IncomesStructuresActualDates.Add(incomesstructuresactualdate);
-                    //root.Partners.Add(partner);
-                    root.Pictures.Add(picture);
+                root.CreditOfficers.Add(creditOfficer);
+                //root.Partners.Add(partner);
+                root.Pictures.Add(picture);
                     //root.Guarantors.Add(guarantor);
                     //if (hfGuarantorID.Value != "noselect")
                     if (chkbxTypeOfCollateral.Items[1].Selected == true)
@@ -8055,7 +8110,7 @@ namespace СreditСonveyor.Microcredit
                         client3.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                         client3.BaseAddress = new Uri(connectionStringKIB + "/api/Cib/GetPdfReport");
 
-                        var u3 = connectionStringKIB + "/api/Cib/GetPdfReport";
+                        var u3 = connectionStringKIB + "/api/Cib/SoapGetPdfReport";
                         var json3 = "{\"IdNumber\": \"12303199400514\", \"typeReport\": \"CondensedReportPlus\"}";
 
                         var builder3 = new UriBuilder(u3);

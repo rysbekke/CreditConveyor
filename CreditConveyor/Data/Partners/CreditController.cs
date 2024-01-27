@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using Zamat;
 
@@ -51,6 +53,7 @@ namespace СreditСonveyor.Data.Partners
             itm = dbR.Histories.Where(g => g.CreditID == itemid).FirstOrDefault();
             return itm;
         }
+
         public void HistoryUpd(History item)
         {
             //dbdataDataContext db = new dbdataDataContext(connectionString);
@@ -309,8 +312,18 @@ namespace СreditСonveyor.Data.Partners
             itm = dbR.PartnersHistories.Where(g => g.CreditID == itemid).FirstOrDefault();
             return itm;
         }
-
-
+        /*******************************************************************/
+        //public void UpdateRequest(Request item)
+        //{
+        //    dbdataDataContext dbW = new dbdataDataContext(connectionStringW);
+        //    var lst = dbW.Requests.Where(r => r.RequestID == item.RequestID).FirstOrDefault();
+        //    foreach (FieldInfo field in item.GetType().GetFields()) 
+        //    {
+        //        lst. = Convert.ToInt32(result.ToString());
+        //    }
+            
+        //    dbW.PartnersHistories.Context.SubmitChanges();
+        //}
 
     }
 }

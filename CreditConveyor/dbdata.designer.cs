@@ -22,7 +22,7 @@ namespace Zamat
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="CapitalDB3_Update")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="CreditConveyorWF")]
 	public partial class dbdataDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -204,19 +204,13 @@ namespace Zamat
     partial void InsertJournalScoring(JournalScoring instance);
     partial void UpdateJournalScoring(JournalScoring instance);
     partial void DeleteJournalScoring(JournalScoring instance);
-    partial void InsertRequest(Request instance);
-    partial void UpdateRequest(Request instance);
-    partial void DeleteRequest(Request instance);
     partial void InsertHistory(History instance);
     partial void UpdateHistory(History instance);
     partial void DeleteHistory(History instance);
+    partial void InsertRequest(Request instance);
+    partial void UpdateRequest(Request instance);
+    partial void DeleteRequest(Request instance);
     #endregion
-		
-		public dbdataDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringOBR"].ConnectionString, mappingSource)
-		{
-			OnCreated();
-		}
 		
 		public dbdataDataContext(string connection) : 
 				base(connection, mappingSource)
@@ -722,19 +716,19 @@ namespace Zamat
 			}
 		}
 		
-		public System.Data.Linq.Table<Request> Requests
-		{
-			get
-			{
-				return this.GetTable<Request>();
-			}
-		}
-		
 		public System.Data.Linq.Table<History> Histories
 		{
 			get
 			{
 				return this.GetTable<History>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Request> Requests
+		{
+			get
+			{
+				return this.GetTable<Request>();
 			}
 		}
 		
@@ -26963,6 +26957,2531 @@ namespace Zamat
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Credits.Histories")]
+	public partial class History : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CreditID;
+		
+		private int _ProductID;
+		
+		private System.DateTime _RequestDate;
+		
+		private int _RequestCurrencyID;
+		
+		private System.Nullable<short> _RequestPeriod;
+		
+		private System.Nullable<decimal> _RequestRate;
+		
+		private System.Nullable<int> _PaymentSourceID;
+		
+		private byte _LanguageID;
+		
+		private System.Nullable<int> _RequestMortrageTypeID;
+		
+		private System.Nullable<int> _IncomeApproveTypeID;
+		
+		private string _LoanLocation;
+		
+		private System.Nullable<int> _MarketingSourceID;
+		
+		private System.Nullable<decimal> _RequestGrantComission;
+		
+		private System.Nullable<byte> _RequestGrantComissionType;
+		
+		private System.Nullable<decimal> _RequestReturnComission;
+		
+		private System.Nullable<byte> _RequestReturnComissionType;
+		
+		private System.Nullable<decimal> _RequestTrancheIssueComission;
+		
+		private System.Nullable<byte> _RequestTrancheIssueComissionType;
+		
+		private System.Nullable<decimal> _RequestTrancheSupportComission;
+		
+		private System.Nullable<byte> _RequestTrancheSupportComissionType;
+		
+		private System.Nullable<decimal> _RequestRateForNotUsedTranche;
+		
+		private string _GroupName;
+		
+		private System.Nullable<int> _PartnerCompanyID;
+		
+		private string _DecisionNo;
+		
+		private string _AgreementNo;
+		
+		private System.Nullable<int> _ApprovedCurrencyID;
+		
+		private System.Nullable<short> _ApprovedPeriod;
+		
+		private System.Nullable<decimal> _ApprovedRate;
+		
+		private System.Nullable<decimal> _ApprovedGrantComission;
+		
+		private System.Nullable<byte> _ApprovedGrantComissionType;
+		
+		private System.Nullable<decimal> _ApprovedReturnComission;
+		
+		private System.Nullable<byte> _ApprovedReturnComissionType;
+		
+		private System.Nullable<decimal> _ApprovedTrancheIssueComission;
+		
+		private System.Nullable<byte> _ApprovedTrancheIssueComissionType;
+		
+		private System.Nullable<decimal> _ApprovedTrancheSupportComission;
+		
+		private System.Nullable<byte> _ApprovedTrancheSupportComissionType;
+		
+		private System.Nullable<decimal> _ApprovedRateForNotUsedTranche;
+		
+		private int _OfficeID;
+		
+		private string _CurrentObligations;
+		
+		private string _GuaranteeContractNo;
+		
+		private string _GuaranteeContractDescription;
+		
+		private System.Nullable<int> _GuaranteeBeneficiaryID;
+		
+		private string _GuaranteeSpecialInstructions;
+		
+		private System.Nullable<int> _GuaranteePurposeID;
+		
+		private System.Nullable<int> _LoanPurposeTypeID;
+		
+		private System.Nullable<byte> _CalculationTypeID;
+		
+		private System.Nullable<System.DateTime> _GuaranteeEndDate;
+		
+		private System.Nullable<int> _FinancingSourceID;
+		
+		private System.Nullable<int> _CreditFraudStatus;
+		
+		private System.Nullable<int> _InformationID;
+		
+		private System.Nullable<int> _ParallelRelativeCredit;
+		
+		private System.Nullable<int> _Options;
+		
+		private System.Nullable<int> _ExternalProgramID;
+		
+		private System.Nullable<int> _RedealType;
+		
+		private System.Nullable<int> _CustomerAwayReasonDictionaryID;
+		
+		private System.Nullable<int> _NonPaymentRisk;
+		
+		private System.Nullable<int> _ExternalCashDeskID;
+		
+		private System.Nullable<byte> _IssueComissionPaymentTypeID;
+		
+		private System.Nullable<System.DateTime> _IssueDate;
+		
+		private string _CurrentAssets;
+		
+		private string _MainAssets;
+		
+		private string _EquityCapital;
+		
+		private string _ProfitBeforeLoanRepayment;
+		
+		private string _NetProfitAfterLoanRepayment;
+		
+		private System.Nullable<int> _ReasonID;
+		
+		private System.Nullable<decimal> _SalaryReduceNegativeImpact;
+		
+		private System.Nullable<int> _LoanIssuePaymentTypeID;
+		
+		private string _WalletNo;
+		
+		private string _PaymentCardNo;
+		
+		private System.Nullable<int> _ProviderID;
+		
+		private System.Nullable<int> _IssueOfficeID;
+		
+		private System.DateTime _AgreementNoDate;
+		
+		private System.Nullable<decimal> _RequestOverdueMainSummRate;
+		
+		private System.Nullable<decimal> _RequestDeferredMainSummRate;
+		
+		private System.Nullable<decimal> _ApprovedOverdueMainSummRate;
+		
+		private System.Nullable<decimal> _ApprovedDeferredMainSummRate;
+		
+		private System.Nullable<decimal> _FixedRate;
+		
+		private System.Nullable<decimal> _FloatingRate;
+		
+		private System.Nullable<System.DateTime> _FloatingRateDate;
+		
+		private System.Nullable<decimal> _NominalRate;
+		
+		private System.Nullable<System.DateTime> _StartDate;
+		
+		private System.Nullable<System.DateTime> _EndDate;
+		
+		private string _DocumentNumber;
+		
+		private System.Nullable<byte> _CommissionTaxType;
+		
+		private System.Nullable<byte> _TaxType;
+		
+		private System.Nullable<int> _SegmentID;
+		
+		private System.Nullable<int> _LinkedLoanID;
+		
+		private System.Nullable<System.DateTime> _IssuePrevDate;
+		
+		private System.Nullable<bool> _IsIssuePrevDate;
+		
+		private EntitySet<HistoriesStatuse> _HistoriesStatuses;
+		
+		private EntityRef<RejectedHistoriesReason> _RejectedHistoriesReason;
+		
+		private EntitySet<HistoriesCustomer> _HistoriesCustomers;
+		
+		private EntitySet<HistoriesEarlyPaymentComission> _HistoriesEarlyPaymentComissions;
+		
+		private EntitySet<HistoriesOfficer> _HistoriesOfficers;
+		
+		private EntitySet<IncomesStructuresActualDate> _IncomesStructuresActualDates;
+		
+		private EntitySet<Graphic> _Graphics;
+		
+		private EntitySet<CreditsAccount> _CreditsAccounts;
+		
+		private EntityRef<Currency> _Currency;
+		
+		private EntityRef<Customer> _Customer;
+		
+		private EntityRef<Office> _Office;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCreditIDChanging(int value);
+    partial void OnCreditIDChanged();
+    partial void OnProductIDChanging(int value);
+    partial void OnProductIDChanged();
+    partial void OnRequestDateChanging(System.DateTime value);
+    partial void OnRequestDateChanged();
+    partial void OnRequestCurrencyIDChanging(int value);
+    partial void OnRequestCurrencyIDChanged();
+    partial void OnRequestPeriodChanging(System.Nullable<short> value);
+    partial void OnRequestPeriodChanged();
+    partial void OnRequestRateChanging(System.Nullable<decimal> value);
+    partial void OnRequestRateChanged();
+    partial void OnPaymentSourceIDChanging(System.Nullable<int> value);
+    partial void OnPaymentSourceIDChanged();
+    partial void OnLanguageIDChanging(byte value);
+    partial void OnLanguageIDChanged();
+    partial void OnRequestMortrageTypeIDChanging(System.Nullable<int> value);
+    partial void OnRequestMortrageTypeIDChanged();
+    partial void OnIncomeApproveTypeIDChanging(System.Nullable<int> value);
+    partial void OnIncomeApproveTypeIDChanged();
+    partial void OnLoanLocationChanging(string value);
+    partial void OnLoanLocationChanged();
+    partial void OnMarketingSourceIDChanging(System.Nullable<int> value);
+    partial void OnMarketingSourceIDChanged();
+    partial void OnRequestGrantComissionChanging(System.Nullable<decimal> value);
+    partial void OnRequestGrantComissionChanged();
+    partial void OnRequestGrantComissionTypeChanging(System.Nullable<byte> value);
+    partial void OnRequestGrantComissionTypeChanged();
+    partial void OnRequestReturnComissionChanging(System.Nullable<decimal> value);
+    partial void OnRequestReturnComissionChanged();
+    partial void OnRequestReturnComissionTypeChanging(System.Nullable<byte> value);
+    partial void OnRequestReturnComissionTypeChanged();
+    partial void OnRequestTrancheIssueComissionChanging(System.Nullable<decimal> value);
+    partial void OnRequestTrancheIssueComissionChanged();
+    partial void OnRequestTrancheIssueComissionTypeChanging(System.Nullable<byte> value);
+    partial void OnRequestTrancheIssueComissionTypeChanged();
+    partial void OnRequestTrancheSupportComissionChanging(System.Nullable<decimal> value);
+    partial void OnRequestTrancheSupportComissionChanged();
+    partial void OnRequestTrancheSupportComissionTypeChanging(System.Nullable<byte> value);
+    partial void OnRequestTrancheSupportComissionTypeChanged();
+    partial void OnRequestRateForNotUsedTrancheChanging(System.Nullable<decimal> value);
+    partial void OnRequestRateForNotUsedTrancheChanged();
+    partial void OnGroupNameChanging(string value);
+    partial void OnGroupNameChanged();
+    partial void OnPartnerCompanyIDChanging(System.Nullable<int> value);
+    partial void OnPartnerCompanyIDChanged();
+    partial void OnDecisionNoChanging(string value);
+    partial void OnDecisionNoChanged();
+    partial void OnAgreementNoChanging(string value);
+    partial void OnAgreementNoChanged();
+    partial void OnApprovedCurrencyIDChanging(System.Nullable<int> value);
+    partial void OnApprovedCurrencyIDChanged();
+    partial void OnApprovedPeriodChanging(System.Nullable<short> value);
+    partial void OnApprovedPeriodChanged();
+    partial void OnApprovedRateChanging(System.Nullable<decimal> value);
+    partial void OnApprovedRateChanged();
+    partial void OnApprovedGrantComissionChanging(System.Nullable<decimal> value);
+    partial void OnApprovedGrantComissionChanged();
+    partial void OnApprovedGrantComissionTypeChanging(System.Nullable<byte> value);
+    partial void OnApprovedGrantComissionTypeChanged();
+    partial void OnApprovedReturnComissionChanging(System.Nullable<decimal> value);
+    partial void OnApprovedReturnComissionChanged();
+    partial void OnApprovedReturnComissionTypeChanging(System.Nullable<byte> value);
+    partial void OnApprovedReturnComissionTypeChanged();
+    partial void OnApprovedTrancheIssueComissionChanging(System.Nullable<decimal> value);
+    partial void OnApprovedTrancheIssueComissionChanged();
+    partial void OnApprovedTrancheIssueComissionTypeChanging(System.Nullable<byte> value);
+    partial void OnApprovedTrancheIssueComissionTypeChanged();
+    partial void OnApprovedTrancheSupportComissionChanging(System.Nullable<decimal> value);
+    partial void OnApprovedTrancheSupportComissionChanged();
+    partial void OnApprovedTrancheSupportComissionTypeChanging(System.Nullable<byte> value);
+    partial void OnApprovedTrancheSupportComissionTypeChanged();
+    partial void OnApprovedRateForNotUsedTrancheChanging(System.Nullable<decimal> value);
+    partial void OnApprovedRateForNotUsedTrancheChanged();
+    partial void OnOfficeIDChanging(int value);
+    partial void OnOfficeIDChanged();
+    partial void OnCurrentObligationsChanging(string value);
+    partial void OnCurrentObligationsChanged();
+    partial void OnGuaranteeContractNoChanging(string value);
+    partial void OnGuaranteeContractNoChanged();
+    partial void OnGuaranteeContractDescriptionChanging(string value);
+    partial void OnGuaranteeContractDescriptionChanged();
+    partial void OnGuaranteeBeneficiaryIDChanging(System.Nullable<int> value);
+    partial void OnGuaranteeBeneficiaryIDChanged();
+    partial void OnGuaranteeSpecialInstructionsChanging(string value);
+    partial void OnGuaranteeSpecialInstructionsChanged();
+    partial void OnGuaranteePurposeIDChanging(System.Nullable<int> value);
+    partial void OnGuaranteePurposeIDChanged();
+    partial void OnLoanPurposeTypeIDChanging(System.Nullable<int> value);
+    partial void OnLoanPurposeTypeIDChanged();
+    partial void OnCalculationTypeIDChanging(System.Nullable<byte> value);
+    partial void OnCalculationTypeIDChanged();
+    partial void OnGuaranteeEndDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnGuaranteeEndDateChanged();
+    partial void OnFinancingSourceIDChanging(System.Nullable<int> value);
+    partial void OnFinancingSourceIDChanged();
+    partial void OnCreditFraudStatusChanging(System.Nullable<int> value);
+    partial void OnCreditFraudStatusChanged();
+    partial void OnInformationIDChanging(System.Nullable<int> value);
+    partial void OnInformationIDChanged();
+    partial void OnParallelRelativeCreditChanging(System.Nullable<int> value);
+    partial void OnParallelRelativeCreditChanged();
+    partial void OnOptionsChanging(System.Nullable<int> value);
+    partial void OnOptionsChanged();
+    partial void OnExternalProgramIDChanging(System.Nullable<int> value);
+    partial void OnExternalProgramIDChanged();
+    partial void OnRedealTypeChanging(System.Nullable<int> value);
+    partial void OnRedealTypeChanged();
+    partial void OnCustomerAwayReasonDictionaryIDChanging(System.Nullable<int> value);
+    partial void OnCustomerAwayReasonDictionaryIDChanged();
+    partial void OnNonPaymentRiskChanging(System.Nullable<int> value);
+    partial void OnNonPaymentRiskChanged();
+    partial void OnExternalCashDeskIDChanging(System.Nullable<int> value);
+    partial void OnExternalCashDeskIDChanged();
+    partial void OnIssueComissionPaymentTypeIDChanging(System.Nullable<byte> value);
+    partial void OnIssueComissionPaymentTypeIDChanged();
+    partial void OnIssueDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnIssueDateChanged();
+    partial void OnCurrentAssetsChanging(string value);
+    partial void OnCurrentAssetsChanged();
+    partial void OnMainAssetsChanging(string value);
+    partial void OnMainAssetsChanged();
+    partial void OnEquityCapitalChanging(string value);
+    partial void OnEquityCapitalChanged();
+    partial void OnProfitBeforeLoanRepaymentChanging(string value);
+    partial void OnProfitBeforeLoanRepaymentChanged();
+    partial void OnNetProfitAfterLoanRepaymentChanging(string value);
+    partial void OnNetProfitAfterLoanRepaymentChanged();
+    partial void OnReasonIDChanging(System.Nullable<int> value);
+    partial void OnReasonIDChanged();
+    partial void OnSalaryReduceNegativeImpactChanging(System.Nullable<decimal> value);
+    partial void OnSalaryReduceNegativeImpactChanged();
+    partial void OnLoanIssuePaymentTypeIDChanging(System.Nullable<int> value);
+    partial void OnLoanIssuePaymentTypeIDChanged();
+    partial void OnWalletNoChanging(string value);
+    partial void OnWalletNoChanged();
+    partial void OnPaymentCardNoChanging(string value);
+    partial void OnPaymentCardNoChanged();
+    partial void OnProviderIDChanging(System.Nullable<int> value);
+    partial void OnProviderIDChanged();
+    partial void OnIssueOfficeIDChanging(System.Nullable<int> value);
+    partial void OnIssueOfficeIDChanged();
+    partial void OnAgreementNoDateChanging(System.DateTime value);
+    partial void OnAgreementNoDateChanged();
+    partial void OnRequestOverdueMainSummRateChanging(System.Nullable<decimal> value);
+    partial void OnRequestOverdueMainSummRateChanged();
+    partial void OnRequestDeferredMainSummRateChanging(System.Nullable<decimal> value);
+    partial void OnRequestDeferredMainSummRateChanged();
+    partial void OnApprovedOverdueMainSummRateChanging(System.Nullable<decimal> value);
+    partial void OnApprovedOverdueMainSummRateChanged();
+    partial void OnApprovedDeferredMainSummRateChanging(System.Nullable<decimal> value);
+    partial void OnApprovedDeferredMainSummRateChanged();
+    partial void OnFixedRateChanging(System.Nullable<decimal> value);
+    partial void OnFixedRateChanged();
+    partial void OnFloatingRateChanging(System.Nullable<decimal> value);
+    partial void OnFloatingRateChanged();
+    partial void OnFloatingRateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnFloatingRateDateChanged();
+    partial void OnNominalRateChanging(System.Nullable<decimal> value);
+    partial void OnNominalRateChanged();
+    partial void OnStartDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnStartDateChanged();
+    partial void OnEndDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnEndDateChanged();
+    partial void OnDocumentNumberChanging(string value);
+    partial void OnDocumentNumberChanged();
+    partial void OnCommissionTaxTypeChanging(System.Nullable<byte> value);
+    partial void OnCommissionTaxTypeChanged();
+    partial void OnTaxTypeChanging(System.Nullable<byte> value);
+    partial void OnTaxTypeChanged();
+    partial void OnSegmentIDChanging(System.Nullable<int> value);
+    partial void OnSegmentIDChanged();
+    partial void OnLinkedLoanIDChanging(System.Nullable<int> value);
+    partial void OnLinkedLoanIDChanged();
+    partial void OnIssuePrevDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnIssuePrevDateChanged();
+    partial void OnIsIssuePrevDateChanging(System.Nullable<bool> value);
+    partial void OnIsIssuePrevDateChanged();
+    #endregion
+		
+		public History()
+		{
+			this._HistoriesStatuses = new EntitySet<HistoriesStatuse>(new Action<HistoriesStatuse>(this.attach_HistoriesStatuses), new Action<HistoriesStatuse>(this.detach_HistoriesStatuses));
+			this._RejectedHistoriesReason = default(EntityRef<RejectedHistoriesReason>);
+			this._HistoriesCustomers = new EntitySet<HistoriesCustomer>(new Action<HistoriesCustomer>(this.attach_HistoriesCustomers), new Action<HistoriesCustomer>(this.detach_HistoriesCustomers));
+			this._HistoriesEarlyPaymentComissions = new EntitySet<HistoriesEarlyPaymentComission>(new Action<HistoriesEarlyPaymentComission>(this.attach_HistoriesEarlyPaymentComissions), new Action<HistoriesEarlyPaymentComission>(this.detach_HistoriesEarlyPaymentComissions));
+			this._HistoriesOfficers = new EntitySet<HistoriesOfficer>(new Action<HistoriesOfficer>(this.attach_HistoriesOfficers), new Action<HistoriesOfficer>(this.detach_HistoriesOfficers));
+			this._IncomesStructuresActualDates = new EntitySet<IncomesStructuresActualDate>(new Action<IncomesStructuresActualDate>(this.attach_IncomesStructuresActualDates), new Action<IncomesStructuresActualDate>(this.detach_IncomesStructuresActualDates));
+			this._Graphics = new EntitySet<Graphic>(new Action<Graphic>(this.attach_Graphics), new Action<Graphic>(this.detach_Graphics));
+			this._CreditsAccounts = new EntitySet<CreditsAccount>(new Action<CreditsAccount>(this.attach_CreditsAccounts), new Action<CreditsAccount>(this.detach_CreditsAccounts));
+			this._Currency = default(EntityRef<Currency>);
+			this._Customer = default(EntityRef<Customer>);
+			this._Office = default(EntityRef<Office>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreditID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CreditID
+		{
+			get
+			{
+				return this._CreditID;
+			}
+			set
+			{
+				if ((this._CreditID != value))
+				{
+					this.OnCreditIDChanging(value);
+					this.SendPropertyChanging();
+					this._CreditID = value;
+					this.SendPropertyChanged("CreditID");
+					this.OnCreditIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductID", DbType="Int NOT NULL")]
+		public int ProductID
+		{
+			get
+			{
+				return this._ProductID;
+			}
+			set
+			{
+				if ((this._ProductID != value))
+				{
+					this.OnProductIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProductID = value;
+					this.SendPropertyChanged("ProductID");
+					this.OnProductIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestDate", DbType="DateTime NOT NULL")]
+		public System.DateTime RequestDate
+		{
+			get
+			{
+				return this._RequestDate;
+			}
+			set
+			{
+				if ((this._RequestDate != value))
+				{
+					this.OnRequestDateChanging(value);
+					this.SendPropertyChanging();
+					this._RequestDate = value;
+					this.SendPropertyChanged("RequestDate");
+					this.OnRequestDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestCurrencyID", DbType="Int NOT NULL")]
+		public int RequestCurrencyID
+		{
+			get
+			{
+				return this._RequestCurrencyID;
+			}
+			set
+			{
+				if ((this._RequestCurrencyID != value))
+				{
+					if (this._Currency.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnRequestCurrencyIDChanging(value);
+					this.SendPropertyChanging();
+					this._RequestCurrencyID = value;
+					this.SendPropertyChanged("RequestCurrencyID");
+					this.OnRequestCurrencyIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestPeriod", DbType="SmallInt")]
+		public System.Nullable<short> RequestPeriod
+		{
+			get
+			{
+				return this._RequestPeriod;
+			}
+			set
+			{
+				if ((this._RequestPeriod != value))
+				{
+					this.OnRequestPeriodChanging(value);
+					this.SendPropertyChanging();
+					this._RequestPeriod = value;
+					this.SendPropertyChanged("RequestPeriod");
+					this.OnRequestPeriodChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestRate", DbType="Decimal(15,6)")]
+		public System.Nullable<decimal> RequestRate
+		{
+			get
+			{
+				return this._RequestRate;
+			}
+			set
+			{
+				if ((this._RequestRate != value))
+				{
+					this.OnRequestRateChanging(value);
+					this.SendPropertyChanging();
+					this._RequestRate = value;
+					this.SendPropertyChanged("RequestRate");
+					this.OnRequestRateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentSourceID", DbType="Int")]
+		public System.Nullable<int> PaymentSourceID
+		{
+			get
+			{
+				return this._PaymentSourceID;
+			}
+			set
+			{
+				if ((this._PaymentSourceID != value))
+				{
+					this.OnPaymentSourceIDChanging(value);
+					this.SendPropertyChanging();
+					this._PaymentSourceID = value;
+					this.SendPropertyChanged("PaymentSourceID");
+					this.OnPaymentSourceIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LanguageID", DbType="TinyInt NOT NULL")]
+		public byte LanguageID
+		{
+			get
+			{
+				return this._LanguageID;
+			}
+			set
+			{
+				if ((this._LanguageID != value))
+				{
+					this.OnLanguageIDChanging(value);
+					this.SendPropertyChanging();
+					this._LanguageID = value;
+					this.SendPropertyChanged("LanguageID");
+					this.OnLanguageIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestMortrageTypeID", DbType="Int")]
+		public System.Nullable<int> RequestMortrageTypeID
+		{
+			get
+			{
+				return this._RequestMortrageTypeID;
+			}
+			set
+			{
+				if ((this._RequestMortrageTypeID != value))
+				{
+					this.OnRequestMortrageTypeIDChanging(value);
+					this.SendPropertyChanging();
+					this._RequestMortrageTypeID = value;
+					this.SendPropertyChanged("RequestMortrageTypeID");
+					this.OnRequestMortrageTypeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IncomeApproveTypeID", DbType="Int")]
+		public System.Nullable<int> IncomeApproveTypeID
+		{
+			get
+			{
+				return this._IncomeApproveTypeID;
+			}
+			set
+			{
+				if ((this._IncomeApproveTypeID != value))
+				{
+					this.OnIncomeApproveTypeIDChanging(value);
+					this.SendPropertyChanging();
+					this._IncomeApproveTypeID = value;
+					this.SendPropertyChanged("IncomeApproveTypeID");
+					this.OnIncomeApproveTypeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoanLocation", DbType="NVarChar(300)")]
+		public string LoanLocation
+		{
+			get
+			{
+				return this._LoanLocation;
+			}
+			set
+			{
+				if ((this._LoanLocation != value))
+				{
+					this.OnLoanLocationChanging(value);
+					this.SendPropertyChanging();
+					this._LoanLocation = value;
+					this.SendPropertyChanged("LoanLocation");
+					this.OnLoanLocationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MarketingSourceID", DbType="Int")]
+		public System.Nullable<int> MarketingSourceID
+		{
+			get
+			{
+				return this._MarketingSourceID;
+			}
+			set
+			{
+				if ((this._MarketingSourceID != value))
+				{
+					this.OnMarketingSourceIDChanging(value);
+					this.SendPropertyChanging();
+					this._MarketingSourceID = value;
+					this.SendPropertyChanged("MarketingSourceID");
+					this.OnMarketingSourceIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestGrantComission", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> RequestGrantComission
+		{
+			get
+			{
+				return this._RequestGrantComission;
+			}
+			set
+			{
+				if ((this._RequestGrantComission != value))
+				{
+					this.OnRequestGrantComissionChanging(value);
+					this.SendPropertyChanging();
+					this._RequestGrantComission = value;
+					this.SendPropertyChanged("RequestGrantComission");
+					this.OnRequestGrantComissionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestGrantComissionType", DbType="TinyInt")]
+		public System.Nullable<byte> RequestGrantComissionType
+		{
+			get
+			{
+				return this._RequestGrantComissionType;
+			}
+			set
+			{
+				if ((this._RequestGrantComissionType != value))
+				{
+					this.OnRequestGrantComissionTypeChanging(value);
+					this.SendPropertyChanging();
+					this._RequestGrantComissionType = value;
+					this.SendPropertyChanged("RequestGrantComissionType");
+					this.OnRequestGrantComissionTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestReturnComission", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> RequestReturnComission
+		{
+			get
+			{
+				return this._RequestReturnComission;
+			}
+			set
+			{
+				if ((this._RequestReturnComission != value))
+				{
+					this.OnRequestReturnComissionChanging(value);
+					this.SendPropertyChanging();
+					this._RequestReturnComission = value;
+					this.SendPropertyChanged("RequestReturnComission");
+					this.OnRequestReturnComissionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestReturnComissionType", DbType="TinyInt")]
+		public System.Nullable<byte> RequestReturnComissionType
+		{
+			get
+			{
+				return this._RequestReturnComissionType;
+			}
+			set
+			{
+				if ((this._RequestReturnComissionType != value))
+				{
+					this.OnRequestReturnComissionTypeChanging(value);
+					this.SendPropertyChanging();
+					this._RequestReturnComissionType = value;
+					this.SendPropertyChanged("RequestReturnComissionType");
+					this.OnRequestReturnComissionTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestTrancheIssueComission", DbType="Decimal(15,6)")]
+		public System.Nullable<decimal> RequestTrancheIssueComission
+		{
+			get
+			{
+				return this._RequestTrancheIssueComission;
+			}
+			set
+			{
+				if ((this._RequestTrancheIssueComission != value))
+				{
+					this.OnRequestTrancheIssueComissionChanging(value);
+					this.SendPropertyChanging();
+					this._RequestTrancheIssueComission = value;
+					this.SendPropertyChanged("RequestTrancheIssueComission");
+					this.OnRequestTrancheIssueComissionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestTrancheIssueComissionType", DbType="TinyInt")]
+		public System.Nullable<byte> RequestTrancheIssueComissionType
+		{
+			get
+			{
+				return this._RequestTrancheIssueComissionType;
+			}
+			set
+			{
+				if ((this._RequestTrancheIssueComissionType != value))
+				{
+					this.OnRequestTrancheIssueComissionTypeChanging(value);
+					this.SendPropertyChanging();
+					this._RequestTrancheIssueComissionType = value;
+					this.SendPropertyChanged("RequestTrancheIssueComissionType");
+					this.OnRequestTrancheIssueComissionTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestTrancheSupportComission", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> RequestTrancheSupportComission
+		{
+			get
+			{
+				return this._RequestTrancheSupportComission;
+			}
+			set
+			{
+				if ((this._RequestTrancheSupportComission != value))
+				{
+					this.OnRequestTrancheSupportComissionChanging(value);
+					this.SendPropertyChanging();
+					this._RequestTrancheSupportComission = value;
+					this.SendPropertyChanged("RequestTrancheSupportComission");
+					this.OnRequestTrancheSupportComissionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestTrancheSupportComissionType", DbType="TinyInt")]
+		public System.Nullable<byte> RequestTrancheSupportComissionType
+		{
+			get
+			{
+				return this._RequestTrancheSupportComissionType;
+			}
+			set
+			{
+				if ((this._RequestTrancheSupportComissionType != value))
+				{
+					this.OnRequestTrancheSupportComissionTypeChanging(value);
+					this.SendPropertyChanging();
+					this._RequestTrancheSupportComissionType = value;
+					this.SendPropertyChanged("RequestTrancheSupportComissionType");
+					this.OnRequestTrancheSupportComissionTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestRateForNotUsedTranche", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> RequestRateForNotUsedTranche
+		{
+			get
+			{
+				return this._RequestRateForNotUsedTranche;
+			}
+			set
+			{
+				if ((this._RequestRateForNotUsedTranche != value))
+				{
+					this.OnRequestRateForNotUsedTrancheChanging(value);
+					this.SendPropertyChanging();
+					this._RequestRateForNotUsedTranche = value;
+					this.SendPropertyChanged("RequestRateForNotUsedTranche");
+					this.OnRequestRateForNotUsedTrancheChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupName", DbType="NVarChar(50)")]
+		public string GroupName
+		{
+			get
+			{
+				return this._GroupName;
+			}
+			set
+			{
+				if ((this._GroupName != value))
+				{
+					this.OnGroupNameChanging(value);
+					this.SendPropertyChanging();
+					this._GroupName = value;
+					this.SendPropertyChanged("GroupName");
+					this.OnGroupNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartnerCompanyID", DbType="Int")]
+		public System.Nullable<int> PartnerCompanyID
+		{
+			get
+			{
+				return this._PartnerCompanyID;
+			}
+			set
+			{
+				if ((this._PartnerCompanyID != value))
+				{
+					this.OnPartnerCompanyIDChanging(value);
+					this.SendPropertyChanging();
+					this._PartnerCompanyID = value;
+					this.SendPropertyChanged("PartnerCompanyID");
+					this.OnPartnerCompanyIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DecisionNo", DbType="NVarChar(20)")]
+		public string DecisionNo
+		{
+			get
+			{
+				return this._DecisionNo;
+			}
+			set
+			{
+				if ((this._DecisionNo != value))
+				{
+					this.OnDecisionNoChanging(value);
+					this.SendPropertyChanging();
+					this._DecisionNo = value;
+					this.SendPropertyChanged("DecisionNo");
+					this.OnDecisionNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementNo", DbType="NVarChar(40)")]
+		public string AgreementNo
+		{
+			get
+			{
+				return this._AgreementNo;
+			}
+			set
+			{
+				if ((this._AgreementNo != value))
+				{
+					this.OnAgreementNoChanging(value);
+					this.SendPropertyChanging();
+					this._AgreementNo = value;
+					this.SendPropertyChanged("AgreementNo");
+					this.OnAgreementNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedCurrencyID", DbType="Int")]
+		public System.Nullable<int> ApprovedCurrencyID
+		{
+			get
+			{
+				return this._ApprovedCurrencyID;
+			}
+			set
+			{
+				if ((this._ApprovedCurrencyID != value))
+				{
+					this.OnApprovedCurrencyIDChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovedCurrencyID = value;
+					this.SendPropertyChanged("ApprovedCurrencyID");
+					this.OnApprovedCurrencyIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedPeriod", DbType="SmallInt")]
+		public System.Nullable<short> ApprovedPeriod
+		{
+			get
+			{
+				return this._ApprovedPeriod;
+			}
+			set
+			{
+				if ((this._ApprovedPeriod != value))
+				{
+					this.OnApprovedPeriodChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovedPeriod = value;
+					this.SendPropertyChanged("ApprovedPeriod");
+					this.OnApprovedPeriodChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedRate", DbType="Decimal(15,6)")]
+		public System.Nullable<decimal> ApprovedRate
+		{
+			get
+			{
+				return this._ApprovedRate;
+			}
+			set
+			{
+				if ((this._ApprovedRate != value))
+				{
+					this.OnApprovedRateChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovedRate = value;
+					this.SendPropertyChanged("ApprovedRate");
+					this.OnApprovedRateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedGrantComission", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> ApprovedGrantComission
+		{
+			get
+			{
+				return this._ApprovedGrantComission;
+			}
+			set
+			{
+				if ((this._ApprovedGrantComission != value))
+				{
+					this.OnApprovedGrantComissionChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovedGrantComission = value;
+					this.SendPropertyChanged("ApprovedGrantComission");
+					this.OnApprovedGrantComissionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedGrantComissionType", DbType="TinyInt")]
+		public System.Nullable<byte> ApprovedGrantComissionType
+		{
+			get
+			{
+				return this._ApprovedGrantComissionType;
+			}
+			set
+			{
+				if ((this._ApprovedGrantComissionType != value))
+				{
+					this.OnApprovedGrantComissionTypeChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovedGrantComissionType = value;
+					this.SendPropertyChanged("ApprovedGrantComissionType");
+					this.OnApprovedGrantComissionTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedReturnComission", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> ApprovedReturnComission
+		{
+			get
+			{
+				return this._ApprovedReturnComission;
+			}
+			set
+			{
+				if ((this._ApprovedReturnComission != value))
+				{
+					this.OnApprovedReturnComissionChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovedReturnComission = value;
+					this.SendPropertyChanged("ApprovedReturnComission");
+					this.OnApprovedReturnComissionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedReturnComissionType", DbType="TinyInt")]
+		public System.Nullable<byte> ApprovedReturnComissionType
+		{
+			get
+			{
+				return this._ApprovedReturnComissionType;
+			}
+			set
+			{
+				if ((this._ApprovedReturnComissionType != value))
+				{
+					this.OnApprovedReturnComissionTypeChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovedReturnComissionType = value;
+					this.SendPropertyChanged("ApprovedReturnComissionType");
+					this.OnApprovedReturnComissionTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedTrancheIssueComission", DbType="Decimal(15,6)")]
+		public System.Nullable<decimal> ApprovedTrancheIssueComission
+		{
+			get
+			{
+				return this._ApprovedTrancheIssueComission;
+			}
+			set
+			{
+				if ((this._ApprovedTrancheIssueComission != value))
+				{
+					this.OnApprovedTrancheIssueComissionChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovedTrancheIssueComission = value;
+					this.SendPropertyChanged("ApprovedTrancheIssueComission");
+					this.OnApprovedTrancheIssueComissionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedTrancheIssueComissionType", DbType="TinyInt")]
+		public System.Nullable<byte> ApprovedTrancheIssueComissionType
+		{
+			get
+			{
+				return this._ApprovedTrancheIssueComissionType;
+			}
+			set
+			{
+				if ((this._ApprovedTrancheIssueComissionType != value))
+				{
+					this.OnApprovedTrancheIssueComissionTypeChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovedTrancheIssueComissionType = value;
+					this.SendPropertyChanged("ApprovedTrancheIssueComissionType");
+					this.OnApprovedTrancheIssueComissionTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedTrancheSupportComission", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> ApprovedTrancheSupportComission
+		{
+			get
+			{
+				return this._ApprovedTrancheSupportComission;
+			}
+			set
+			{
+				if ((this._ApprovedTrancheSupportComission != value))
+				{
+					this.OnApprovedTrancheSupportComissionChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovedTrancheSupportComission = value;
+					this.SendPropertyChanged("ApprovedTrancheSupportComission");
+					this.OnApprovedTrancheSupportComissionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedTrancheSupportComissionType", DbType="TinyInt")]
+		public System.Nullable<byte> ApprovedTrancheSupportComissionType
+		{
+			get
+			{
+				return this._ApprovedTrancheSupportComissionType;
+			}
+			set
+			{
+				if ((this._ApprovedTrancheSupportComissionType != value))
+				{
+					this.OnApprovedTrancheSupportComissionTypeChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovedTrancheSupportComissionType = value;
+					this.SendPropertyChanged("ApprovedTrancheSupportComissionType");
+					this.OnApprovedTrancheSupportComissionTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedRateForNotUsedTranche", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> ApprovedRateForNotUsedTranche
+		{
+			get
+			{
+				return this._ApprovedRateForNotUsedTranche;
+			}
+			set
+			{
+				if ((this._ApprovedRateForNotUsedTranche != value))
+				{
+					this.OnApprovedRateForNotUsedTrancheChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovedRateForNotUsedTranche = value;
+					this.SendPropertyChanged("ApprovedRateForNotUsedTranche");
+					this.OnApprovedRateForNotUsedTrancheChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OfficeID", DbType="Int NOT NULL")]
+		public int OfficeID
+		{
+			get
+			{
+				return this._OfficeID;
+			}
+			set
+			{
+				if ((this._OfficeID != value))
+				{
+					if (this._Office.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnOfficeIDChanging(value);
+					this.SendPropertyChanging();
+					this._OfficeID = value;
+					this.SendPropertyChanged("OfficeID");
+					this.OnOfficeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentObligations", DbType="NVarChar(300)")]
+		public string CurrentObligations
+		{
+			get
+			{
+				return this._CurrentObligations;
+			}
+			set
+			{
+				if ((this._CurrentObligations != value))
+				{
+					this.OnCurrentObligationsChanging(value);
+					this.SendPropertyChanging();
+					this._CurrentObligations = value;
+					this.SendPropertyChanged("CurrentObligations");
+					this.OnCurrentObligationsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GuaranteeContractNo", DbType="NVarChar(100)")]
+		public string GuaranteeContractNo
+		{
+			get
+			{
+				return this._GuaranteeContractNo;
+			}
+			set
+			{
+				if ((this._GuaranteeContractNo != value))
+				{
+					this.OnGuaranteeContractNoChanging(value);
+					this.SendPropertyChanging();
+					this._GuaranteeContractNo = value;
+					this.SendPropertyChanged("GuaranteeContractNo");
+					this.OnGuaranteeContractNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GuaranteeContractDescription", DbType="NVarChar(300)")]
+		public string GuaranteeContractDescription
+		{
+			get
+			{
+				return this._GuaranteeContractDescription;
+			}
+			set
+			{
+				if ((this._GuaranteeContractDescription != value))
+				{
+					this.OnGuaranteeContractDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._GuaranteeContractDescription = value;
+					this.SendPropertyChanged("GuaranteeContractDescription");
+					this.OnGuaranteeContractDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GuaranteeBeneficiaryID", DbType="Int")]
+		public System.Nullable<int> GuaranteeBeneficiaryID
+		{
+			get
+			{
+				return this._GuaranteeBeneficiaryID;
+			}
+			set
+			{
+				if ((this._GuaranteeBeneficiaryID != value))
+				{
+					if (this._Customer.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnGuaranteeBeneficiaryIDChanging(value);
+					this.SendPropertyChanging();
+					this._GuaranteeBeneficiaryID = value;
+					this.SendPropertyChanged("GuaranteeBeneficiaryID");
+					this.OnGuaranteeBeneficiaryIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GuaranteeSpecialInstructions", DbType="NVarChar(500)")]
+		public string GuaranteeSpecialInstructions
+		{
+			get
+			{
+				return this._GuaranteeSpecialInstructions;
+			}
+			set
+			{
+				if ((this._GuaranteeSpecialInstructions != value))
+				{
+					this.OnGuaranteeSpecialInstructionsChanging(value);
+					this.SendPropertyChanging();
+					this._GuaranteeSpecialInstructions = value;
+					this.SendPropertyChanged("GuaranteeSpecialInstructions");
+					this.OnGuaranteeSpecialInstructionsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GuaranteePurposeID", DbType="Int")]
+		public System.Nullable<int> GuaranteePurposeID
+		{
+			get
+			{
+				return this._GuaranteePurposeID;
+			}
+			set
+			{
+				if ((this._GuaranteePurposeID != value))
+				{
+					this.OnGuaranteePurposeIDChanging(value);
+					this.SendPropertyChanging();
+					this._GuaranteePurposeID = value;
+					this.SendPropertyChanged("GuaranteePurposeID");
+					this.OnGuaranteePurposeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoanPurposeTypeID", DbType="Int")]
+		public System.Nullable<int> LoanPurposeTypeID
+		{
+			get
+			{
+				return this._LoanPurposeTypeID;
+			}
+			set
+			{
+				if ((this._LoanPurposeTypeID != value))
+				{
+					this.OnLoanPurposeTypeIDChanging(value);
+					this.SendPropertyChanging();
+					this._LoanPurposeTypeID = value;
+					this.SendPropertyChanged("LoanPurposeTypeID");
+					this.OnLoanPurposeTypeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CalculationTypeID", DbType="TinyInt")]
+		public System.Nullable<byte> CalculationTypeID
+		{
+			get
+			{
+				return this._CalculationTypeID;
+			}
+			set
+			{
+				if ((this._CalculationTypeID != value))
+				{
+					this.OnCalculationTypeIDChanging(value);
+					this.SendPropertyChanging();
+					this._CalculationTypeID = value;
+					this.SendPropertyChanged("CalculationTypeID");
+					this.OnCalculationTypeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GuaranteeEndDate", DbType="Date")]
+		public System.Nullable<System.DateTime> GuaranteeEndDate
+		{
+			get
+			{
+				return this._GuaranteeEndDate;
+			}
+			set
+			{
+				if ((this._GuaranteeEndDate != value))
+				{
+					this.OnGuaranteeEndDateChanging(value);
+					this.SendPropertyChanging();
+					this._GuaranteeEndDate = value;
+					this.SendPropertyChanged("GuaranteeEndDate");
+					this.OnGuaranteeEndDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinancingSourceID", DbType="Int")]
+		public System.Nullable<int> FinancingSourceID
+		{
+			get
+			{
+				return this._FinancingSourceID;
+			}
+			set
+			{
+				if ((this._FinancingSourceID != value))
+				{
+					this.OnFinancingSourceIDChanging(value);
+					this.SendPropertyChanging();
+					this._FinancingSourceID = value;
+					this.SendPropertyChanged("FinancingSourceID");
+					this.OnFinancingSourceIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreditFraudStatus", DbType="Int")]
+		public System.Nullable<int> CreditFraudStatus
+		{
+			get
+			{
+				return this._CreditFraudStatus;
+			}
+			set
+			{
+				if ((this._CreditFraudStatus != value))
+				{
+					this.OnCreditFraudStatusChanging(value);
+					this.SendPropertyChanging();
+					this._CreditFraudStatus = value;
+					this.SendPropertyChanged("CreditFraudStatus");
+					this.OnCreditFraudStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InformationID", DbType="Int")]
+		public System.Nullable<int> InformationID
+		{
+			get
+			{
+				return this._InformationID;
+			}
+			set
+			{
+				if ((this._InformationID != value))
+				{
+					this.OnInformationIDChanging(value);
+					this.SendPropertyChanging();
+					this._InformationID = value;
+					this.SendPropertyChanged("InformationID");
+					this.OnInformationIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParallelRelativeCredit", DbType="Int")]
+		public System.Nullable<int> ParallelRelativeCredit
+		{
+			get
+			{
+				return this._ParallelRelativeCredit;
+			}
+			set
+			{
+				if ((this._ParallelRelativeCredit != value))
+				{
+					this.OnParallelRelativeCreditChanging(value);
+					this.SendPropertyChanging();
+					this._ParallelRelativeCredit = value;
+					this.SendPropertyChanged("ParallelRelativeCredit");
+					this.OnParallelRelativeCreditChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Options", DbType="Int")]
+		public System.Nullable<int> Options
+		{
+			get
+			{
+				return this._Options;
+			}
+			set
+			{
+				if ((this._Options != value))
+				{
+					this.OnOptionsChanging(value);
+					this.SendPropertyChanging();
+					this._Options = value;
+					this.SendPropertyChanged("Options");
+					this.OnOptionsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExternalProgramID", DbType="Int")]
+		public System.Nullable<int> ExternalProgramID
+		{
+			get
+			{
+				return this._ExternalProgramID;
+			}
+			set
+			{
+				if ((this._ExternalProgramID != value))
+				{
+					this.OnExternalProgramIDChanging(value);
+					this.SendPropertyChanging();
+					this._ExternalProgramID = value;
+					this.SendPropertyChanged("ExternalProgramID");
+					this.OnExternalProgramIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RedealType", DbType="Int")]
+		public System.Nullable<int> RedealType
+		{
+			get
+			{
+				return this._RedealType;
+			}
+			set
+			{
+				if ((this._RedealType != value))
+				{
+					this.OnRedealTypeChanging(value);
+					this.SendPropertyChanging();
+					this._RedealType = value;
+					this.SendPropertyChanged("RedealType");
+					this.OnRedealTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerAwayReasonDictionaryID", DbType="Int")]
+		public System.Nullable<int> CustomerAwayReasonDictionaryID
+		{
+			get
+			{
+				return this._CustomerAwayReasonDictionaryID;
+			}
+			set
+			{
+				if ((this._CustomerAwayReasonDictionaryID != value))
+				{
+					this.OnCustomerAwayReasonDictionaryIDChanging(value);
+					this.SendPropertyChanging();
+					this._CustomerAwayReasonDictionaryID = value;
+					this.SendPropertyChanged("CustomerAwayReasonDictionaryID");
+					this.OnCustomerAwayReasonDictionaryIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NonPaymentRisk", DbType="Int")]
+		public System.Nullable<int> NonPaymentRisk
+		{
+			get
+			{
+				return this._NonPaymentRisk;
+			}
+			set
+			{
+				if ((this._NonPaymentRisk != value))
+				{
+					this.OnNonPaymentRiskChanging(value);
+					this.SendPropertyChanging();
+					this._NonPaymentRisk = value;
+					this.SendPropertyChanged("NonPaymentRisk");
+					this.OnNonPaymentRiskChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExternalCashDeskID", DbType="Int")]
+		public System.Nullable<int> ExternalCashDeskID
+		{
+			get
+			{
+				return this._ExternalCashDeskID;
+			}
+			set
+			{
+				if ((this._ExternalCashDeskID != value))
+				{
+					this.OnExternalCashDeskIDChanging(value);
+					this.SendPropertyChanging();
+					this._ExternalCashDeskID = value;
+					this.SendPropertyChanged("ExternalCashDeskID");
+					this.OnExternalCashDeskIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IssueComissionPaymentTypeID", DbType="TinyInt")]
+		public System.Nullable<byte> IssueComissionPaymentTypeID
+		{
+			get
+			{
+				return this._IssueComissionPaymentTypeID;
+			}
+			set
+			{
+				if ((this._IssueComissionPaymentTypeID != value))
+				{
+					this.OnIssueComissionPaymentTypeIDChanging(value);
+					this.SendPropertyChanging();
+					this._IssueComissionPaymentTypeID = value;
+					this.SendPropertyChanged("IssueComissionPaymentTypeID");
+					this.OnIssueComissionPaymentTypeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IssueDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> IssueDate
+		{
+			get
+			{
+				return this._IssueDate;
+			}
+			set
+			{
+				if ((this._IssueDate != value))
+				{
+					this.OnIssueDateChanging(value);
+					this.SendPropertyChanging();
+					this._IssueDate = value;
+					this.SendPropertyChanged("IssueDate");
+					this.OnIssueDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentAssets", DbType="NVarChar(50)")]
+		public string CurrentAssets
+		{
+			get
+			{
+				return this._CurrentAssets;
+			}
+			set
+			{
+				if ((this._CurrentAssets != value))
+				{
+					this.OnCurrentAssetsChanging(value);
+					this.SendPropertyChanging();
+					this._CurrentAssets = value;
+					this.SendPropertyChanged("CurrentAssets");
+					this.OnCurrentAssetsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MainAssets", DbType="NVarChar(50)")]
+		public string MainAssets
+		{
+			get
+			{
+				return this._MainAssets;
+			}
+			set
+			{
+				if ((this._MainAssets != value))
+				{
+					this.OnMainAssetsChanging(value);
+					this.SendPropertyChanging();
+					this._MainAssets = value;
+					this.SendPropertyChanged("MainAssets");
+					this.OnMainAssetsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquityCapital", DbType="NVarChar(50)")]
+		public string EquityCapital
+		{
+			get
+			{
+				return this._EquityCapital;
+			}
+			set
+			{
+				if ((this._EquityCapital != value))
+				{
+					this.OnEquityCapitalChanging(value);
+					this.SendPropertyChanging();
+					this._EquityCapital = value;
+					this.SendPropertyChanged("EquityCapital");
+					this.OnEquityCapitalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfitBeforeLoanRepayment", DbType="NVarChar(50)")]
+		public string ProfitBeforeLoanRepayment
+		{
+			get
+			{
+				return this._ProfitBeforeLoanRepayment;
+			}
+			set
+			{
+				if ((this._ProfitBeforeLoanRepayment != value))
+				{
+					this.OnProfitBeforeLoanRepaymentChanging(value);
+					this.SendPropertyChanging();
+					this._ProfitBeforeLoanRepayment = value;
+					this.SendPropertyChanged("ProfitBeforeLoanRepayment");
+					this.OnProfitBeforeLoanRepaymentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NetProfitAfterLoanRepayment", DbType="NVarChar(50)")]
+		public string NetProfitAfterLoanRepayment
+		{
+			get
+			{
+				return this._NetProfitAfterLoanRepayment;
+			}
+			set
+			{
+				if ((this._NetProfitAfterLoanRepayment != value))
+				{
+					this.OnNetProfitAfterLoanRepaymentChanging(value);
+					this.SendPropertyChanging();
+					this._NetProfitAfterLoanRepayment = value;
+					this.SendPropertyChanged("NetProfitAfterLoanRepayment");
+					this.OnNetProfitAfterLoanRepaymentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReasonID", DbType="Int")]
+		public System.Nullable<int> ReasonID
+		{
+			get
+			{
+				return this._ReasonID;
+			}
+			set
+			{
+				if ((this._ReasonID != value))
+				{
+					this.OnReasonIDChanging(value);
+					this.SendPropertyChanging();
+					this._ReasonID = value;
+					this.SendPropertyChanged("ReasonID");
+					this.OnReasonIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalaryReduceNegativeImpact", DbType="Decimal(9,2)")]
+		public System.Nullable<decimal> SalaryReduceNegativeImpact
+		{
+			get
+			{
+				return this._SalaryReduceNegativeImpact;
+			}
+			set
+			{
+				if ((this._SalaryReduceNegativeImpact != value))
+				{
+					this.OnSalaryReduceNegativeImpactChanging(value);
+					this.SendPropertyChanging();
+					this._SalaryReduceNegativeImpact = value;
+					this.SendPropertyChanged("SalaryReduceNegativeImpact");
+					this.OnSalaryReduceNegativeImpactChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoanIssuePaymentTypeID", DbType="Int")]
+		public System.Nullable<int> LoanIssuePaymentTypeID
+		{
+			get
+			{
+				return this._LoanIssuePaymentTypeID;
+			}
+			set
+			{
+				if ((this._LoanIssuePaymentTypeID != value))
+				{
+					this.OnLoanIssuePaymentTypeIDChanging(value);
+					this.SendPropertyChanging();
+					this._LoanIssuePaymentTypeID = value;
+					this.SendPropertyChanged("LoanIssuePaymentTypeID");
+					this.OnLoanIssuePaymentTypeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WalletNo", DbType="NVarChar(50)")]
+		public string WalletNo
+		{
+			get
+			{
+				return this._WalletNo;
+			}
+			set
+			{
+				if ((this._WalletNo != value))
+				{
+					this.OnWalletNoChanging(value);
+					this.SendPropertyChanging();
+					this._WalletNo = value;
+					this.SendPropertyChanged("WalletNo");
+					this.OnWalletNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentCardNo", DbType="NVarChar(50)")]
+		public string PaymentCardNo
+		{
+			get
+			{
+				return this._PaymentCardNo;
+			}
+			set
+			{
+				if ((this._PaymentCardNo != value))
+				{
+					this.OnPaymentCardNoChanging(value);
+					this.SendPropertyChanging();
+					this._PaymentCardNo = value;
+					this.SendPropertyChanged("PaymentCardNo");
+					this.OnPaymentCardNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProviderID", DbType="Int")]
+		public System.Nullable<int> ProviderID
+		{
+			get
+			{
+				return this._ProviderID;
+			}
+			set
+			{
+				if ((this._ProviderID != value))
+				{
+					this.OnProviderIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProviderID = value;
+					this.SendPropertyChanged("ProviderID");
+					this.OnProviderIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IssueOfficeID", DbType="Int")]
+		public System.Nullable<int> IssueOfficeID
+		{
+			get
+			{
+				return this._IssueOfficeID;
+			}
+			set
+			{
+				if ((this._IssueOfficeID != value))
+				{
+					this.OnIssueOfficeIDChanging(value);
+					this.SendPropertyChanging();
+					this._IssueOfficeID = value;
+					this.SendPropertyChanged("IssueOfficeID");
+					this.OnIssueOfficeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementNoDate", DbType="Date NOT NULL")]
+		public System.DateTime AgreementNoDate
+		{
+			get
+			{
+				return this._AgreementNoDate;
+			}
+			set
+			{
+				if ((this._AgreementNoDate != value))
+				{
+					this.OnAgreementNoDateChanging(value);
+					this.SendPropertyChanging();
+					this._AgreementNoDate = value;
+					this.SendPropertyChanged("AgreementNoDate");
+					this.OnAgreementNoDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestOverdueMainSummRate", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> RequestOverdueMainSummRate
+		{
+			get
+			{
+				return this._RequestOverdueMainSummRate;
+			}
+			set
+			{
+				if ((this._RequestOverdueMainSummRate != value))
+				{
+					this.OnRequestOverdueMainSummRateChanging(value);
+					this.SendPropertyChanging();
+					this._RequestOverdueMainSummRate = value;
+					this.SendPropertyChanged("RequestOverdueMainSummRate");
+					this.OnRequestOverdueMainSummRateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestDeferredMainSummRate", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> RequestDeferredMainSummRate
+		{
+			get
+			{
+				return this._RequestDeferredMainSummRate;
+			}
+			set
+			{
+				if ((this._RequestDeferredMainSummRate != value))
+				{
+					this.OnRequestDeferredMainSummRateChanging(value);
+					this.SendPropertyChanging();
+					this._RequestDeferredMainSummRate = value;
+					this.SendPropertyChanged("RequestDeferredMainSummRate");
+					this.OnRequestDeferredMainSummRateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedOverdueMainSummRate", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> ApprovedOverdueMainSummRate
+		{
+			get
+			{
+				return this._ApprovedOverdueMainSummRate;
+			}
+			set
+			{
+				if ((this._ApprovedOverdueMainSummRate != value))
+				{
+					this.OnApprovedOverdueMainSummRateChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovedOverdueMainSummRate = value;
+					this.SendPropertyChanged("ApprovedOverdueMainSummRate");
+					this.OnApprovedOverdueMainSummRateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedDeferredMainSummRate", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> ApprovedDeferredMainSummRate
+		{
+			get
+			{
+				return this._ApprovedDeferredMainSummRate;
+			}
+			set
+			{
+				if ((this._ApprovedDeferredMainSummRate != value))
+				{
+					this.OnApprovedDeferredMainSummRateChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovedDeferredMainSummRate = value;
+					this.SendPropertyChanged("ApprovedDeferredMainSummRate");
+					this.OnApprovedDeferredMainSummRateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FixedRate", DbType="Decimal(15,6)")]
+		public System.Nullable<decimal> FixedRate
+		{
+			get
+			{
+				return this._FixedRate;
+			}
+			set
+			{
+				if ((this._FixedRate != value))
+				{
+					this.OnFixedRateChanging(value);
+					this.SendPropertyChanging();
+					this._FixedRate = value;
+					this.SendPropertyChanged("FixedRate");
+					this.OnFixedRateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FloatingRate", DbType="Decimal(15,6)")]
+		public System.Nullable<decimal> FloatingRate
+		{
+			get
+			{
+				return this._FloatingRate;
+			}
+			set
+			{
+				if ((this._FloatingRate != value))
+				{
+					this.OnFloatingRateChanging(value);
+					this.SendPropertyChanging();
+					this._FloatingRate = value;
+					this.SendPropertyChanged("FloatingRate");
+					this.OnFloatingRateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FloatingRateDate", DbType="Date")]
+		public System.Nullable<System.DateTime> FloatingRateDate
+		{
+			get
+			{
+				return this._FloatingRateDate;
+			}
+			set
+			{
+				if ((this._FloatingRateDate != value))
+				{
+					this.OnFloatingRateDateChanging(value);
+					this.SendPropertyChanging();
+					this._FloatingRateDate = value;
+					this.SendPropertyChanged("FloatingRateDate");
+					this.OnFloatingRateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NominalRate", DbType="Decimal(15,6)")]
+		public System.Nullable<decimal> NominalRate
+		{
+			get
+			{
+				return this._NominalRate;
+			}
+			set
+			{
+				if ((this._NominalRate != value))
+				{
+					this.OnNominalRateChanging(value);
+					this.SendPropertyChanging();
+					this._NominalRate = value;
+					this.SendPropertyChanged("NominalRate");
+					this.OnNominalRateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Date")]
+		public System.Nullable<System.DateTime> StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this.OnStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._StartDate = value;
+					this.SendPropertyChanged("StartDate");
+					this.OnStartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="Date")]
+		public System.Nullable<System.DateTime> EndDate
+		{
+			get
+			{
+				return this._EndDate;
+			}
+			set
+			{
+				if ((this._EndDate != value))
+				{
+					this.OnEndDateChanging(value);
+					this.SendPropertyChanging();
+					this._EndDate = value;
+					this.SendPropertyChanged("EndDate");
+					this.OnEndDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocumentNumber", DbType="NVarChar(127)")]
+		public string DocumentNumber
+		{
+			get
+			{
+				return this._DocumentNumber;
+			}
+			set
+			{
+				if ((this._DocumentNumber != value))
+				{
+					this.OnDocumentNumberChanging(value);
+					this.SendPropertyChanging();
+					this._DocumentNumber = value;
+					this.SendPropertyChanged("DocumentNumber");
+					this.OnDocumentNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CommissionTaxType", DbType="TinyInt")]
+		public System.Nullable<byte> CommissionTaxType
+		{
+			get
+			{
+				return this._CommissionTaxType;
+			}
+			set
+			{
+				if ((this._CommissionTaxType != value))
+				{
+					this.OnCommissionTaxTypeChanging(value);
+					this.SendPropertyChanging();
+					this._CommissionTaxType = value;
+					this.SendPropertyChanged("CommissionTaxType");
+					this.OnCommissionTaxTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxType", DbType="TinyInt")]
+		public System.Nullable<byte> TaxType
+		{
+			get
+			{
+				return this._TaxType;
+			}
+			set
+			{
+				if ((this._TaxType != value))
+				{
+					this.OnTaxTypeChanging(value);
+					this.SendPropertyChanging();
+					this._TaxType = value;
+					this.SendPropertyChanged("TaxType");
+					this.OnTaxTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SegmentID", DbType="Int")]
+		public System.Nullable<int> SegmentID
+		{
+			get
+			{
+				return this._SegmentID;
+			}
+			set
+			{
+				if ((this._SegmentID != value))
+				{
+					this.OnSegmentIDChanging(value);
+					this.SendPropertyChanging();
+					this._SegmentID = value;
+					this.SendPropertyChanged("SegmentID");
+					this.OnSegmentIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LinkedLoanID", DbType="Int")]
+		public System.Nullable<int> LinkedLoanID
+		{
+			get
+			{
+				return this._LinkedLoanID;
+			}
+			set
+			{
+				if ((this._LinkedLoanID != value))
+				{
+					this.OnLinkedLoanIDChanging(value);
+					this.SendPropertyChanging();
+					this._LinkedLoanID = value;
+					this.SendPropertyChanged("LinkedLoanID");
+					this.OnLinkedLoanIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IssuePrevDate", DbType="Date")]
+		public System.Nullable<System.DateTime> IssuePrevDate
+		{
+			get
+			{
+				return this._IssuePrevDate;
+			}
+			set
+			{
+				if ((this._IssuePrevDate != value))
+				{
+					this.OnIssuePrevDateChanging(value);
+					this.SendPropertyChanging();
+					this._IssuePrevDate = value;
+					this.SendPropertyChanged("IssuePrevDate");
+					this.OnIssuePrevDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsIssuePrevDate", DbType="Bit")]
+		public System.Nullable<bool> IsIssuePrevDate
+		{
+			get
+			{
+				return this._IsIssuePrevDate;
+			}
+			set
+			{
+				if ((this._IsIssuePrevDate != value))
+				{
+					this.OnIsIssuePrevDateChanging(value);
+					this.SendPropertyChanging();
+					this._IsIssuePrevDate = value;
+					this.SendPropertyChanged("IsIssuePrevDate");
+					this.OnIsIssuePrevDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="History_HistoriesStatuse", Storage="_HistoriesStatuses", ThisKey="CreditID", OtherKey="CreditID")]
+		public EntitySet<HistoriesStatuse> HistoriesStatuses
+		{
+			get
+			{
+				return this._HistoriesStatuses;
+			}
+			set
+			{
+				this._HistoriesStatuses.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="History_RejectedHistoriesReason", Storage="_RejectedHistoriesReason", ThisKey="CreditID", OtherKey="CreditID", IsUnique=true, IsForeignKey=false)]
+		public RejectedHistoriesReason RejectedHistoriesReason
+		{
+			get
+			{
+				return this._RejectedHistoriesReason.Entity;
+			}
+			set
+			{
+				RejectedHistoriesReason previousValue = this._RejectedHistoriesReason.Entity;
+				if (((previousValue != value) 
+							|| (this._RejectedHistoriesReason.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._RejectedHistoriesReason.Entity = null;
+						previousValue.History = null;
+					}
+					this._RejectedHistoriesReason.Entity = value;
+					if ((value != null))
+					{
+						value.History = this;
+					}
+					this.SendPropertyChanged("RejectedHistoriesReason");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="History_HistoriesCustomer", Storage="_HistoriesCustomers", ThisKey="CreditID", OtherKey="CreditID")]
+		public EntitySet<HistoriesCustomer> HistoriesCustomers
+		{
+			get
+			{
+				return this._HistoriesCustomers;
+			}
+			set
+			{
+				this._HistoriesCustomers.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="History_HistoriesEarlyPaymentComission", Storage="_HistoriesEarlyPaymentComissions", ThisKey="CreditID", OtherKey="CreditID")]
+		public EntitySet<HistoriesEarlyPaymentComission> HistoriesEarlyPaymentComissions
+		{
+			get
+			{
+				return this._HistoriesEarlyPaymentComissions;
+			}
+			set
+			{
+				this._HistoriesEarlyPaymentComissions.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="History_HistoriesOfficer", Storage="_HistoriesOfficers", ThisKey="CreditID", OtherKey="CreditID")]
+		public EntitySet<HistoriesOfficer> HistoriesOfficers
+		{
+			get
+			{
+				return this._HistoriesOfficers;
+			}
+			set
+			{
+				this._HistoriesOfficers.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="History_IncomesStructuresActualDate", Storage="_IncomesStructuresActualDates", ThisKey="CreditID", OtherKey="CreditID")]
+		public EntitySet<IncomesStructuresActualDate> IncomesStructuresActualDates
+		{
+			get
+			{
+				return this._IncomesStructuresActualDates;
+			}
+			set
+			{
+				this._IncomesStructuresActualDates.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="History_Graphic", Storage="_Graphics", ThisKey="CreditID", OtherKey="CreditID")]
+		public EntitySet<Graphic> Graphics
+		{
+			get
+			{
+				return this._Graphics;
+			}
+			set
+			{
+				this._Graphics.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="History_CreditsAccount", Storage="_CreditsAccounts", ThisKey="CreditID", OtherKey="CreditID")]
+		public EntitySet<CreditsAccount> CreditsAccounts
+		{
+			get
+			{
+				return this._CreditsAccounts;
+			}
+			set
+			{
+				this._CreditsAccounts.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Currency_History", Storage="_Currency", ThisKey="RequestCurrencyID", OtherKey="CurrencyID", IsForeignKey=true)]
+		public Currency Currency
+		{
+			get
+			{
+				return this._Currency.Entity;
+			}
+			set
+			{
+				Currency previousValue = this._Currency.Entity;
+				if (((previousValue != value) 
+							|| (this._Currency.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Currency.Entity = null;
+						previousValue.Histories.Remove(this);
+					}
+					this._Currency.Entity = value;
+					if ((value != null))
+					{
+						value.Histories.Add(this);
+						this._RequestCurrencyID = value.CurrencyID;
+					}
+					else
+					{
+						this._RequestCurrencyID = default(int);
+					}
+					this.SendPropertyChanged("Currency");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_History", Storage="_Customer", ThisKey="GuaranteeBeneficiaryID", OtherKey="CustomerID", IsForeignKey=true)]
+		public Customer Customer
+		{
+			get
+			{
+				return this._Customer.Entity;
+			}
+			set
+			{
+				Customer previousValue = this._Customer.Entity;
+				if (((previousValue != value) 
+							|| (this._Customer.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Customer.Entity = null;
+						previousValue.Histories.Remove(this);
+					}
+					this._Customer.Entity = value;
+					if ((value != null))
+					{
+						value.Histories.Add(this);
+						this._GuaranteeBeneficiaryID = value.CustomerID;
+					}
+					else
+					{
+						this._GuaranteeBeneficiaryID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Customer");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Office_History", Storage="_Office", ThisKey="OfficeID", OtherKey="ID", IsForeignKey=true)]
+		public Office Office
+		{
+			get
+			{
+				return this._Office.Entity;
+			}
+			set
+			{
+				Office previousValue = this._Office.Entity;
+				if (((previousValue != value) 
+							|| (this._Office.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Office.Entity = null;
+						previousValue.Histories.Remove(this);
+					}
+					this._Office.Entity = value;
+					if ((value != null))
+					{
+						value.Histories.Add(this);
+						this._OfficeID = value.ID;
+					}
+					else
+					{
+						this._OfficeID = default(int);
+					}
+					this.SendPropertyChanged("Office");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_HistoriesStatuses(HistoriesStatuse entity)
+		{
+			this.SendPropertyChanging();
+			entity.History = this;
+		}
+		
+		private void detach_HistoriesStatuses(HistoriesStatuse entity)
+		{
+			this.SendPropertyChanging();
+			entity.History = null;
+		}
+		
+		private void attach_HistoriesCustomers(HistoriesCustomer entity)
+		{
+			this.SendPropertyChanging();
+			entity.History = this;
+		}
+		
+		private void detach_HistoriesCustomers(HistoriesCustomer entity)
+		{
+			this.SendPropertyChanging();
+			entity.History = null;
+		}
+		
+		private void attach_HistoriesEarlyPaymentComissions(HistoriesEarlyPaymentComission entity)
+		{
+			this.SendPropertyChanging();
+			entity.History = this;
+		}
+		
+		private void detach_HistoriesEarlyPaymentComissions(HistoriesEarlyPaymentComission entity)
+		{
+			this.SendPropertyChanging();
+			entity.History = null;
+		}
+		
+		private void attach_HistoriesOfficers(HistoriesOfficer entity)
+		{
+			this.SendPropertyChanging();
+			entity.History = this;
+		}
+		
+		private void detach_HistoriesOfficers(HistoriesOfficer entity)
+		{
+			this.SendPropertyChanging();
+			entity.History = null;
+		}
+		
+		private void attach_IncomesStructuresActualDates(IncomesStructuresActualDate entity)
+		{
+			this.SendPropertyChanging();
+			entity.History = this;
+		}
+		
+		private void detach_IncomesStructuresActualDates(IncomesStructuresActualDate entity)
+		{
+			this.SendPropertyChanging();
+			entity.History = null;
+		}
+		
+		private void attach_Graphics(Graphic entity)
+		{
+			this.SendPropertyChanging();
+			entity.History = this;
+		}
+		
+		private void detach_Graphics(Graphic entity)
+		{
+			this.SendPropertyChanging();
+			entity.History = null;
+		}
+		
+		private void attach_CreditsAccounts(CreditsAccount entity)
+		{
+			this.SendPropertyChanging();
+			entity.History = this;
+		}
+		
+		private void detach_CreditsAccounts(CreditsAccount entity)
+		{
+			this.SendPropertyChanging();
+			entity.History = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="onlineCredits.Requests")]
 	public partial class Request : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -27159,6 +29678,18 @@ namespace Zamat
 		
 		private string _SerialNumber;
 		
+		private string _RequestType;
+		
+		private System.Nullable<System.DateTime> _DateOfBirth;
+		
+		private System.Nullable<System.DateTime> _IssueDate;
+		
+		private System.Nullable<System.DateTime> _ValidTill;
+		
+		private string _IssueAuthority;
+		
+		private string _Email;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -27353,6 +29884,18 @@ namespace Zamat
     partial void OnTypeOfIssueChanged();
     partial void OnSerialNumberChanging(string value);
     partial void OnSerialNumberChanged();
+    partial void OnRequestTypeChanging(string value);
+    partial void OnRequestTypeChanged();
+    partial void OnDateOfBirthChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateOfBirthChanged();
+    partial void OnIssueDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnIssueDateChanged();
+    partial void OnValidTillChanging(System.Nullable<System.DateTime> value);
+    partial void OnValidTillChanged();
+    partial void OnIssueAuthorityChanging(string value);
+    partial void OnIssueAuthorityChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
     #endregion
 		
 		public Request()
@@ -29260,1553 +31803,42 @@ namespace Zamat
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="Credits.Histories")]
-	public partial class History : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _CreditID;
-		
-		private int _ProductID;
-		
-		private System.DateTime _RequestDate;
-		
-		private int _RequestCurrencyID;
-		
-		private System.Nullable<byte> _RequestPeriod;
-		
-		private System.Nullable<decimal> _RequestRate;
-		
-		private System.Nullable<int> _PaymentSourceID;
-		
-		private byte _LanguageID;
-		
-		private System.Nullable<int> _RequestMortrageTypeID;
-		
-		private System.Nullable<int> _IncomeApproveTypeID;
-		
-		private string _LoanLocation;
-		
-		private System.Nullable<int> _MarketingSourceID;
-		
-		private System.Nullable<decimal> _RequestGrantComission;
-		
-		private System.Nullable<byte> _RequestGrantComissionType;
-		
-		private System.Nullable<decimal> _RequestReturnComission;
-		
-		private System.Nullable<byte> _RequestReturnComissionType;
-		
-		private System.Nullable<decimal> _RequestTrancheIssueComission;
-		
-		private System.Nullable<byte> _RequestTrancheIssueComissionType;
-		
-		private System.Nullable<decimal> _RequestTrancheSupportComission;
-		
-		private System.Nullable<byte> _RequestTrancheSupportComissionType;
-		
-		private System.Nullable<decimal> _RequestRateForNotUsedTranche;
-		
-		private string _GroupName;
-		
-		private System.Nullable<int> _PartnerCompanyID;
-		
-		private string _DecisionNo;
-		
-		private string _AgreementNo;
-		
-		private System.Nullable<int> _ApprovedCurrencyID;
-		
-		private System.Nullable<byte> _ApprovedPeriod;
-		
-		private System.Nullable<decimal> _ApprovedRate;
-		
-		private System.Nullable<decimal> _ApprovedGrantComission;
-		
-		private System.Nullable<byte> _ApprovedGrantComissionType;
-		
-		private System.Nullable<decimal> _ApprovedReturnComission;
-		
-		private System.Nullable<byte> _ApprovedReturnComissionType;
-		
-		private System.Nullable<decimal> _ApprovedTrancheIssueComission;
-		
-		private System.Nullable<byte> _ApprovedTrancheIssueComissionType;
-		
-		private System.Nullable<decimal> _ApprovedTrancheSupportComission;
-		
-		private System.Nullable<byte> _ApprovedTrancheSupportComissionType;
-		
-		private System.Nullable<decimal> _ApprovedRateForNotUsedTranche;
-		
-		private int _OfficeID;
-		
-		private string _CurrentObligations;
-		
-		private string _GuaranteeContractNo;
-		
-		private string _GuaranteeContractDescription;
-		
-		private System.Nullable<int> _GuaranteeBeneficiaryID;
-		
-		private string _GuaranteeSpecialInstructions;
-		
-		private System.Nullable<int> _GuaranteePurposeID;
-		
-		private System.Nullable<int> _LoanPurposeTypeID;
-		
-		private System.Nullable<byte> _CalculationTypeID;
-		
-		private System.Nullable<System.DateTime> _GuaranteeEndDate;
-		
-		private System.Nullable<int> _FinancingSourceID;
-		
-		private System.Nullable<int> _CreditFraudStatus;
-		
-		private System.Nullable<int> _InformationID;
-		
-		private System.Nullable<int> _ParallelRelativeCredit;
-		
-		private System.Nullable<int> _Options;
-		
-		private System.Nullable<int> _ExternalProgramID;
-		
-		private System.Nullable<int> _RedealType;
-		
-		private System.Nullable<int> _CustomerAwayReasonDictionaryID;
-		
-		private System.Nullable<int> _NonPaymentRisk;
-		
-		private System.Nullable<int> _ExternalCashDeskID;
-		
-		private string _IssueAccountNo;
-		
-		private System.Nullable<byte> _IssueComissionPaymentTypeID;
-		
-		private System.Nullable<System.DateTime> _IssueDate;
-		
-		private string _CurrentAssets;
-		
-		private string _MainAssets;
-		
-		private string _EquityCapital;
-		
-		private string _ProfitBeforeLoanRepayment;
-		
-		private string _NetProfitAfterLoanRepayment;
-		
-		private System.Nullable<int> _ReasonID;
-		
-		private System.Nullable<decimal> _SalaryReduceNegativeImpact;
-		
-		private System.Nullable<int> _LoanIssuePaymentTypeID;
-		
-		private string _WalletNo;
-		
-		private string _PaymentCardNo;
-		
-		private System.Nullable<int> _ProviderID;
-		
-		private System.Nullable<int> _IssueOfficeID;
-		
-		private EntitySet<HistoriesStatuse> _HistoriesStatuses;
-		
-		private EntityRef<RejectedHistoriesReason> _RejectedHistoriesReason;
-		
-		private EntitySet<HistoriesCustomer> _HistoriesCustomers;
-		
-		private EntitySet<HistoriesEarlyPaymentComission> _HistoriesEarlyPaymentComissions;
-		
-		private EntitySet<HistoriesOfficer> _HistoriesOfficers;
-		
-		private EntitySet<IncomesStructuresActualDate> _IncomesStructuresActualDates;
-		
-		private EntitySet<Graphic> _Graphics;
-		
-		private EntitySet<CreditsAccount> _CreditsAccounts;
-		
-		private EntityRef<Currency> _Currency;
-		
-		private EntityRef<Customer> _Customer;
-		
-		private EntityRef<Office> _Office;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnCreditIDChanging(int value);
-    partial void OnCreditIDChanged();
-    partial void OnProductIDChanging(int value);
-    partial void OnProductIDChanged();
-    partial void OnRequestDateChanging(System.DateTime value);
-    partial void OnRequestDateChanged();
-    partial void OnRequestCurrencyIDChanging(int value);
-    partial void OnRequestCurrencyIDChanged();
-    partial void OnRequestPeriodChanging(System.Nullable<byte> value);
-    partial void OnRequestPeriodChanged();
-    partial void OnRequestRateChanging(System.Nullable<decimal> value);
-    partial void OnRequestRateChanged();
-    partial void OnPaymentSourceIDChanging(System.Nullable<int> value);
-    partial void OnPaymentSourceIDChanged();
-    partial void OnLanguageIDChanging(byte value);
-    partial void OnLanguageIDChanged();
-    partial void OnRequestMortrageTypeIDChanging(System.Nullable<int> value);
-    partial void OnRequestMortrageTypeIDChanged();
-    partial void OnIncomeApproveTypeIDChanging(System.Nullable<int> value);
-    partial void OnIncomeApproveTypeIDChanged();
-    partial void OnLoanLocationChanging(string value);
-    partial void OnLoanLocationChanged();
-    partial void OnMarketingSourceIDChanging(System.Nullable<int> value);
-    partial void OnMarketingSourceIDChanged();
-    partial void OnRequestGrantComissionChanging(System.Nullable<decimal> value);
-    partial void OnRequestGrantComissionChanged();
-    partial void OnRequestGrantComissionTypeChanging(System.Nullable<byte> value);
-    partial void OnRequestGrantComissionTypeChanged();
-    partial void OnRequestReturnComissionChanging(System.Nullable<decimal> value);
-    partial void OnRequestReturnComissionChanged();
-    partial void OnRequestReturnComissionTypeChanging(System.Nullable<byte> value);
-    partial void OnRequestReturnComissionTypeChanged();
-    partial void OnRequestTrancheIssueComissionChanging(System.Nullable<decimal> value);
-    partial void OnRequestTrancheIssueComissionChanged();
-    partial void OnRequestTrancheIssueComissionTypeChanging(System.Nullable<byte> value);
-    partial void OnRequestTrancheIssueComissionTypeChanged();
-    partial void OnRequestTrancheSupportComissionChanging(System.Nullable<decimal> value);
-    partial void OnRequestTrancheSupportComissionChanged();
-    partial void OnRequestTrancheSupportComissionTypeChanging(System.Nullable<byte> value);
-    partial void OnRequestTrancheSupportComissionTypeChanged();
-    partial void OnRequestRateForNotUsedTrancheChanging(System.Nullable<decimal> value);
-    partial void OnRequestRateForNotUsedTrancheChanged();
-    partial void OnGroupNameChanging(string value);
-    partial void OnGroupNameChanged();
-    partial void OnPartnerCompanyIDChanging(System.Nullable<int> value);
-    partial void OnPartnerCompanyIDChanged();
-    partial void OnDecisionNoChanging(string value);
-    partial void OnDecisionNoChanged();
-    partial void OnAgreementNoChanging(string value);
-    partial void OnAgreementNoChanged();
-    partial void OnApprovedCurrencyIDChanging(System.Nullable<int> value);
-    partial void OnApprovedCurrencyIDChanged();
-    partial void OnApprovedPeriodChanging(System.Nullable<byte> value);
-    partial void OnApprovedPeriodChanged();
-    partial void OnApprovedRateChanging(System.Nullable<decimal> value);
-    partial void OnApprovedRateChanged();
-    partial void OnApprovedGrantComissionChanging(System.Nullable<decimal> value);
-    partial void OnApprovedGrantComissionChanged();
-    partial void OnApprovedGrantComissionTypeChanging(System.Nullable<byte> value);
-    partial void OnApprovedGrantComissionTypeChanged();
-    partial void OnApprovedReturnComissionChanging(System.Nullable<decimal> value);
-    partial void OnApprovedReturnComissionChanged();
-    partial void OnApprovedReturnComissionTypeChanging(System.Nullable<byte> value);
-    partial void OnApprovedReturnComissionTypeChanged();
-    partial void OnApprovedTrancheIssueComissionChanging(System.Nullable<decimal> value);
-    partial void OnApprovedTrancheIssueComissionChanged();
-    partial void OnApprovedTrancheIssueComissionTypeChanging(System.Nullable<byte> value);
-    partial void OnApprovedTrancheIssueComissionTypeChanged();
-    partial void OnApprovedTrancheSupportComissionChanging(System.Nullable<decimal> value);
-    partial void OnApprovedTrancheSupportComissionChanged();
-    partial void OnApprovedTrancheSupportComissionTypeChanging(System.Nullable<byte> value);
-    partial void OnApprovedTrancheSupportComissionTypeChanged();
-    partial void OnApprovedRateForNotUsedTrancheChanging(System.Nullable<decimal> value);
-    partial void OnApprovedRateForNotUsedTrancheChanged();
-    partial void OnOfficeIDChanging(int value);
-    partial void OnOfficeIDChanged();
-    partial void OnCurrentObligationsChanging(string value);
-    partial void OnCurrentObligationsChanged();
-    partial void OnGuaranteeContractNoChanging(string value);
-    partial void OnGuaranteeContractNoChanged();
-    partial void OnGuaranteeContractDescriptionChanging(string value);
-    partial void OnGuaranteeContractDescriptionChanged();
-    partial void OnGuaranteeBeneficiaryIDChanging(System.Nullable<int> value);
-    partial void OnGuaranteeBeneficiaryIDChanged();
-    partial void OnGuaranteeSpecialInstructionsChanging(string value);
-    partial void OnGuaranteeSpecialInstructionsChanged();
-    partial void OnGuaranteePurposeIDChanging(System.Nullable<int> value);
-    partial void OnGuaranteePurposeIDChanged();
-    partial void OnLoanPurposeTypeIDChanging(System.Nullable<int> value);
-    partial void OnLoanPurposeTypeIDChanged();
-    partial void OnCalculationTypeIDChanging(System.Nullable<byte> value);
-    partial void OnCalculationTypeIDChanged();
-    partial void OnGuaranteeEndDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnGuaranteeEndDateChanged();
-    partial void OnFinancingSourceIDChanging(System.Nullable<int> value);
-    partial void OnFinancingSourceIDChanged();
-    partial void OnCreditFraudStatusChanging(System.Nullable<int> value);
-    partial void OnCreditFraudStatusChanged();
-    partial void OnInformationIDChanging(System.Nullable<int> value);
-    partial void OnInformationIDChanged();
-    partial void OnParallelRelativeCreditChanging(System.Nullable<int> value);
-    partial void OnParallelRelativeCreditChanged();
-    partial void OnOptionsChanging(System.Nullable<int> value);
-    partial void OnOptionsChanged();
-    partial void OnExternalProgramIDChanging(System.Nullable<int> value);
-    partial void OnExternalProgramIDChanged();
-    partial void OnRedealTypeChanging(System.Nullable<int> value);
-    partial void OnRedealTypeChanged();
-    partial void OnCustomerAwayReasonDictionaryIDChanging(System.Nullable<int> value);
-    partial void OnCustomerAwayReasonDictionaryIDChanged();
-    partial void OnNonPaymentRiskChanging(System.Nullable<int> value);
-    partial void OnNonPaymentRiskChanged();
-    partial void OnExternalCashDeskIDChanging(System.Nullable<int> value);
-    partial void OnExternalCashDeskIDChanged();
-    partial void OnIssueAccountNoChanging(string value);
-    partial void OnIssueAccountNoChanged();
-    partial void OnIssueComissionPaymentTypeIDChanging(System.Nullable<byte> value);
-    partial void OnIssueComissionPaymentTypeIDChanged();
-    partial void OnIssueDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnIssueDateChanged();
-    partial void OnCurrentAssetsChanging(string value);
-    partial void OnCurrentAssetsChanged();
-    partial void OnMainAssetsChanging(string value);
-    partial void OnMainAssetsChanged();
-    partial void OnEquityCapitalChanging(string value);
-    partial void OnEquityCapitalChanged();
-    partial void OnProfitBeforeLoanRepaymentChanging(string value);
-    partial void OnProfitBeforeLoanRepaymentChanged();
-    partial void OnNetProfitAfterLoanRepaymentChanging(string value);
-    partial void OnNetProfitAfterLoanRepaymentChanged();
-    partial void OnReasonIDChanging(System.Nullable<int> value);
-    partial void OnReasonIDChanged();
-    partial void OnSalaryReduceNegativeImpactChanging(System.Nullable<decimal> value);
-    partial void OnSalaryReduceNegativeImpactChanged();
-    partial void OnLoanIssuePaymentTypeIDChanging(System.Nullable<int> value);
-    partial void OnLoanIssuePaymentTypeIDChanged();
-    partial void OnWalletNoChanging(string value);
-    partial void OnWalletNoChanged();
-    partial void OnPaymentCardNoChanging(string value);
-    partial void OnPaymentCardNoChanged();
-    partial void OnProviderIDChanging(System.Nullable<int> value);
-    partial void OnProviderIDChanged();
-    partial void OnIssueOfficeIDChanging(System.Nullable<int> value);
-    partial void OnIssueOfficeIDChanged();
-    #endregion
-		
-		public History()
-		{
-			this._HistoriesStatuses = new EntitySet<HistoriesStatuse>(new Action<HistoriesStatuse>(this.attach_HistoriesStatuses), new Action<HistoriesStatuse>(this.detach_HistoriesStatuses));
-			this._RejectedHistoriesReason = default(EntityRef<RejectedHistoriesReason>);
-			this._HistoriesCustomers = new EntitySet<HistoriesCustomer>(new Action<HistoriesCustomer>(this.attach_HistoriesCustomers), new Action<HistoriesCustomer>(this.detach_HistoriesCustomers));
-			this._HistoriesEarlyPaymentComissions = new EntitySet<HistoriesEarlyPaymentComission>(new Action<HistoriesEarlyPaymentComission>(this.attach_HistoriesEarlyPaymentComissions), new Action<HistoriesEarlyPaymentComission>(this.detach_HistoriesEarlyPaymentComissions));
-			this._HistoriesOfficers = new EntitySet<HistoriesOfficer>(new Action<HistoriesOfficer>(this.attach_HistoriesOfficers), new Action<HistoriesOfficer>(this.detach_HistoriesOfficers));
-			this._IncomesStructuresActualDates = new EntitySet<IncomesStructuresActualDate>(new Action<IncomesStructuresActualDate>(this.attach_IncomesStructuresActualDates), new Action<IncomesStructuresActualDate>(this.detach_IncomesStructuresActualDates));
-			this._Graphics = new EntitySet<Graphic>(new Action<Graphic>(this.attach_Graphics), new Action<Graphic>(this.detach_Graphics));
-			this._CreditsAccounts = new EntitySet<CreditsAccount>(new Action<CreditsAccount>(this.attach_CreditsAccounts), new Action<CreditsAccount>(this.detach_CreditsAccounts));
-			this._Currency = default(EntityRef<Currency>);
-			this._Customer = default(EntityRef<Customer>);
-			this._Office = default(EntityRef<Office>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreditID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int CreditID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestType", DbType="NVarChar(2)")]
+		public string RequestType
 		{
 			get
 			{
-				return this._CreditID;
+				return this._RequestType;
 			}
 			set
 			{
-				if ((this._CreditID != value))
+				if ((this._RequestType != value))
 				{
-					this.OnCreditIDChanging(value);
+					this.OnRequestTypeChanging(value);
 					this.SendPropertyChanging();
-					this._CreditID = value;
-					this.SendPropertyChanged("CreditID");
-					this.OnCreditIDChanged();
+					this._RequestType = value;
+					this.SendPropertyChanged("RequestType");
+					this.OnRequestTypeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductID", DbType="Int NOT NULL")]
-		public int ProductID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateOfBirth", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateOfBirth
 		{
 			get
 			{
-				return this._ProductID;
+				return this._DateOfBirth;
 			}
 			set
 			{
-				if ((this._ProductID != value))
+				if ((this._DateOfBirth != value))
 				{
-					this.OnProductIDChanging(value);
+					this.OnDateOfBirthChanging(value);
 					this.SendPropertyChanging();
-					this._ProductID = value;
-					this.SendPropertyChanged("ProductID");
-					this.OnProductIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestDate", DbType="DateTime NOT NULL")]
-		public System.DateTime RequestDate
-		{
-			get
-			{
-				return this._RequestDate;
-			}
-			set
-			{
-				if ((this._RequestDate != value))
-				{
-					this.OnRequestDateChanging(value);
-					this.SendPropertyChanging();
-					this._RequestDate = value;
-					this.SendPropertyChanged("RequestDate");
-					this.OnRequestDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestCurrencyID", DbType="Int NOT NULL")]
-		public int RequestCurrencyID
-		{
-			get
-			{
-				return this._RequestCurrencyID;
-			}
-			set
-			{
-				if ((this._RequestCurrencyID != value))
-				{
-					if (this._Currency.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnRequestCurrencyIDChanging(value);
-					this.SendPropertyChanging();
-					this._RequestCurrencyID = value;
-					this.SendPropertyChanged("RequestCurrencyID");
-					this.OnRequestCurrencyIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestPeriod", DbType="TinyInt")]
-		public System.Nullable<byte> RequestPeriod
-		{
-			get
-			{
-				return this._RequestPeriod;
-			}
-			set
-			{
-				if ((this._RequestPeriod != value))
-				{
-					this.OnRequestPeriodChanging(value);
-					this.SendPropertyChanging();
-					this._RequestPeriod = value;
-					this.SendPropertyChanged("RequestPeriod");
-					this.OnRequestPeriodChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestRate", DbType="Decimal(15,2)")]
-		public System.Nullable<decimal> RequestRate
-		{
-			get
-			{
-				return this._RequestRate;
-			}
-			set
-			{
-				if ((this._RequestRate != value))
-				{
-					this.OnRequestRateChanging(value);
-					this.SendPropertyChanging();
-					this._RequestRate = value;
-					this.SendPropertyChanged("RequestRate");
-					this.OnRequestRateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentSourceID", DbType="Int")]
-		public System.Nullable<int> PaymentSourceID
-		{
-			get
-			{
-				return this._PaymentSourceID;
-			}
-			set
-			{
-				if ((this._PaymentSourceID != value))
-				{
-					this.OnPaymentSourceIDChanging(value);
-					this.SendPropertyChanging();
-					this._PaymentSourceID = value;
-					this.SendPropertyChanged("PaymentSourceID");
-					this.OnPaymentSourceIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LanguageID", DbType="TinyInt NOT NULL")]
-		public byte LanguageID
-		{
-			get
-			{
-				return this._LanguageID;
-			}
-			set
-			{
-				if ((this._LanguageID != value))
-				{
-					this.OnLanguageIDChanging(value);
-					this.SendPropertyChanging();
-					this._LanguageID = value;
-					this.SendPropertyChanged("LanguageID");
-					this.OnLanguageIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestMortrageTypeID", DbType="Int")]
-		public System.Nullable<int> RequestMortrageTypeID
-		{
-			get
-			{
-				return this._RequestMortrageTypeID;
-			}
-			set
-			{
-				if ((this._RequestMortrageTypeID != value))
-				{
-					this.OnRequestMortrageTypeIDChanging(value);
-					this.SendPropertyChanging();
-					this._RequestMortrageTypeID = value;
-					this.SendPropertyChanged("RequestMortrageTypeID");
-					this.OnRequestMortrageTypeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IncomeApproveTypeID", DbType="Int")]
-		public System.Nullable<int> IncomeApproveTypeID
-		{
-			get
-			{
-				return this._IncomeApproveTypeID;
-			}
-			set
-			{
-				if ((this._IncomeApproveTypeID != value))
-				{
-					this.OnIncomeApproveTypeIDChanging(value);
-					this.SendPropertyChanging();
-					this._IncomeApproveTypeID = value;
-					this.SendPropertyChanged("IncomeApproveTypeID");
-					this.OnIncomeApproveTypeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoanLocation", DbType="NVarChar(300)")]
-		public string LoanLocation
-		{
-			get
-			{
-				return this._LoanLocation;
-			}
-			set
-			{
-				if ((this._LoanLocation != value))
-				{
-					this.OnLoanLocationChanging(value);
-					this.SendPropertyChanging();
-					this._LoanLocation = value;
-					this.SendPropertyChanged("LoanLocation");
-					this.OnLoanLocationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MarketingSourceID", DbType="Int")]
-		public System.Nullable<int> MarketingSourceID
-		{
-			get
-			{
-				return this._MarketingSourceID;
-			}
-			set
-			{
-				if ((this._MarketingSourceID != value))
-				{
-					this.OnMarketingSourceIDChanging(value);
-					this.SendPropertyChanging();
-					this._MarketingSourceID = value;
-					this.SendPropertyChanged("MarketingSourceID");
-					this.OnMarketingSourceIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestGrantComission", DbType="Decimal(15,2)")]
-		public System.Nullable<decimal> RequestGrantComission
-		{
-			get
-			{
-				return this._RequestGrantComission;
-			}
-			set
-			{
-				if ((this._RequestGrantComission != value))
-				{
-					this.OnRequestGrantComissionChanging(value);
-					this.SendPropertyChanging();
-					this._RequestGrantComission = value;
-					this.SendPropertyChanged("RequestGrantComission");
-					this.OnRequestGrantComissionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestGrantComissionType", DbType="TinyInt")]
-		public System.Nullable<byte> RequestGrantComissionType
-		{
-			get
-			{
-				return this._RequestGrantComissionType;
-			}
-			set
-			{
-				if ((this._RequestGrantComissionType != value))
-				{
-					this.OnRequestGrantComissionTypeChanging(value);
-					this.SendPropertyChanging();
-					this._RequestGrantComissionType = value;
-					this.SendPropertyChanged("RequestGrantComissionType");
-					this.OnRequestGrantComissionTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestReturnComission", DbType="Decimal(15,2)")]
-		public System.Nullable<decimal> RequestReturnComission
-		{
-			get
-			{
-				return this._RequestReturnComission;
-			}
-			set
-			{
-				if ((this._RequestReturnComission != value))
-				{
-					this.OnRequestReturnComissionChanging(value);
-					this.SendPropertyChanging();
-					this._RequestReturnComission = value;
-					this.SendPropertyChanged("RequestReturnComission");
-					this.OnRequestReturnComissionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestReturnComissionType", DbType="TinyInt")]
-		public System.Nullable<byte> RequestReturnComissionType
-		{
-			get
-			{
-				return this._RequestReturnComissionType;
-			}
-			set
-			{
-				if ((this._RequestReturnComissionType != value))
-				{
-					this.OnRequestReturnComissionTypeChanging(value);
-					this.SendPropertyChanging();
-					this._RequestReturnComissionType = value;
-					this.SendPropertyChanged("RequestReturnComissionType");
-					this.OnRequestReturnComissionTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestTrancheIssueComission", DbType="Decimal(15,6)")]
-		public System.Nullable<decimal> RequestTrancheIssueComission
-		{
-			get
-			{
-				return this._RequestTrancheIssueComission;
-			}
-			set
-			{
-				if ((this._RequestTrancheIssueComission != value))
-				{
-					this.OnRequestTrancheIssueComissionChanging(value);
-					this.SendPropertyChanging();
-					this._RequestTrancheIssueComission = value;
-					this.SendPropertyChanged("RequestTrancheIssueComission");
-					this.OnRequestTrancheIssueComissionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestTrancheIssueComissionType", DbType="TinyInt")]
-		public System.Nullable<byte> RequestTrancheIssueComissionType
-		{
-			get
-			{
-				return this._RequestTrancheIssueComissionType;
-			}
-			set
-			{
-				if ((this._RequestTrancheIssueComissionType != value))
-				{
-					this.OnRequestTrancheIssueComissionTypeChanging(value);
-					this.SendPropertyChanging();
-					this._RequestTrancheIssueComissionType = value;
-					this.SendPropertyChanged("RequestTrancheIssueComissionType");
-					this.OnRequestTrancheIssueComissionTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestTrancheSupportComission", DbType="Decimal(15,2)")]
-		public System.Nullable<decimal> RequestTrancheSupportComission
-		{
-			get
-			{
-				return this._RequestTrancheSupportComission;
-			}
-			set
-			{
-				if ((this._RequestTrancheSupportComission != value))
-				{
-					this.OnRequestTrancheSupportComissionChanging(value);
-					this.SendPropertyChanging();
-					this._RequestTrancheSupportComission = value;
-					this.SendPropertyChanged("RequestTrancheSupportComission");
-					this.OnRequestTrancheSupportComissionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestTrancheSupportComissionType", DbType="TinyInt")]
-		public System.Nullable<byte> RequestTrancheSupportComissionType
-		{
-			get
-			{
-				return this._RequestTrancheSupportComissionType;
-			}
-			set
-			{
-				if ((this._RequestTrancheSupportComissionType != value))
-				{
-					this.OnRequestTrancheSupportComissionTypeChanging(value);
-					this.SendPropertyChanging();
-					this._RequestTrancheSupportComissionType = value;
-					this.SendPropertyChanged("RequestTrancheSupportComissionType");
-					this.OnRequestTrancheSupportComissionTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestRateForNotUsedTranche", DbType="Decimal(15,2)")]
-		public System.Nullable<decimal> RequestRateForNotUsedTranche
-		{
-			get
-			{
-				return this._RequestRateForNotUsedTranche;
-			}
-			set
-			{
-				if ((this._RequestRateForNotUsedTranche != value))
-				{
-					this.OnRequestRateForNotUsedTrancheChanging(value);
-					this.SendPropertyChanging();
-					this._RequestRateForNotUsedTranche = value;
-					this.SendPropertyChanged("RequestRateForNotUsedTranche");
-					this.OnRequestRateForNotUsedTrancheChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupName", DbType="NVarChar(50)")]
-		public string GroupName
-		{
-			get
-			{
-				return this._GroupName;
-			}
-			set
-			{
-				if ((this._GroupName != value))
-				{
-					this.OnGroupNameChanging(value);
-					this.SendPropertyChanging();
-					this._GroupName = value;
-					this.SendPropertyChanged("GroupName");
-					this.OnGroupNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartnerCompanyID", DbType="Int")]
-		public System.Nullable<int> PartnerCompanyID
-		{
-			get
-			{
-				return this._PartnerCompanyID;
-			}
-			set
-			{
-				if ((this._PartnerCompanyID != value))
-				{
-					this.OnPartnerCompanyIDChanging(value);
-					this.SendPropertyChanging();
-					this._PartnerCompanyID = value;
-					this.SendPropertyChanged("PartnerCompanyID");
-					this.OnPartnerCompanyIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DecisionNo", DbType="NVarChar(20)")]
-		public string DecisionNo
-		{
-			get
-			{
-				return this._DecisionNo;
-			}
-			set
-			{
-				if ((this._DecisionNo != value))
-				{
-					this.OnDecisionNoChanging(value);
-					this.SendPropertyChanging();
-					this._DecisionNo = value;
-					this.SendPropertyChanged("DecisionNo");
-					this.OnDecisionNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementNo", DbType="NVarChar(40)")]
-		public string AgreementNo
-		{
-			get
-			{
-				return this._AgreementNo;
-			}
-			set
-			{
-				if ((this._AgreementNo != value))
-				{
-					this.OnAgreementNoChanging(value);
-					this.SendPropertyChanging();
-					this._AgreementNo = value;
-					this.SendPropertyChanged("AgreementNo");
-					this.OnAgreementNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedCurrencyID", DbType="Int")]
-		public System.Nullable<int> ApprovedCurrencyID
-		{
-			get
-			{
-				return this._ApprovedCurrencyID;
-			}
-			set
-			{
-				if ((this._ApprovedCurrencyID != value))
-				{
-					this.OnApprovedCurrencyIDChanging(value);
-					this.SendPropertyChanging();
-					this._ApprovedCurrencyID = value;
-					this.SendPropertyChanged("ApprovedCurrencyID");
-					this.OnApprovedCurrencyIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedPeriod", DbType="TinyInt")]
-		public System.Nullable<byte> ApprovedPeriod
-		{
-			get
-			{
-				return this._ApprovedPeriod;
-			}
-			set
-			{
-				if ((this._ApprovedPeriod != value))
-				{
-					this.OnApprovedPeriodChanging(value);
-					this.SendPropertyChanging();
-					this._ApprovedPeriod = value;
-					this.SendPropertyChanged("ApprovedPeriod");
-					this.OnApprovedPeriodChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedRate", DbType="Decimal(15,2)")]
-		public System.Nullable<decimal> ApprovedRate
-		{
-			get
-			{
-				return this._ApprovedRate;
-			}
-			set
-			{
-				if ((this._ApprovedRate != value))
-				{
-					this.OnApprovedRateChanging(value);
-					this.SendPropertyChanging();
-					this._ApprovedRate = value;
-					this.SendPropertyChanged("ApprovedRate");
-					this.OnApprovedRateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedGrantComission", DbType="Decimal(15,2)")]
-		public System.Nullable<decimal> ApprovedGrantComission
-		{
-			get
-			{
-				return this._ApprovedGrantComission;
-			}
-			set
-			{
-				if ((this._ApprovedGrantComission != value))
-				{
-					this.OnApprovedGrantComissionChanging(value);
-					this.SendPropertyChanging();
-					this._ApprovedGrantComission = value;
-					this.SendPropertyChanged("ApprovedGrantComission");
-					this.OnApprovedGrantComissionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedGrantComissionType", DbType="TinyInt")]
-		public System.Nullable<byte> ApprovedGrantComissionType
-		{
-			get
-			{
-				return this._ApprovedGrantComissionType;
-			}
-			set
-			{
-				if ((this._ApprovedGrantComissionType != value))
-				{
-					this.OnApprovedGrantComissionTypeChanging(value);
-					this.SendPropertyChanging();
-					this._ApprovedGrantComissionType = value;
-					this.SendPropertyChanged("ApprovedGrantComissionType");
-					this.OnApprovedGrantComissionTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedReturnComission", DbType="Decimal(15,2)")]
-		public System.Nullable<decimal> ApprovedReturnComission
-		{
-			get
-			{
-				return this._ApprovedReturnComission;
-			}
-			set
-			{
-				if ((this._ApprovedReturnComission != value))
-				{
-					this.OnApprovedReturnComissionChanging(value);
-					this.SendPropertyChanging();
-					this._ApprovedReturnComission = value;
-					this.SendPropertyChanged("ApprovedReturnComission");
-					this.OnApprovedReturnComissionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedReturnComissionType", DbType="TinyInt")]
-		public System.Nullable<byte> ApprovedReturnComissionType
-		{
-			get
-			{
-				return this._ApprovedReturnComissionType;
-			}
-			set
-			{
-				if ((this._ApprovedReturnComissionType != value))
-				{
-					this.OnApprovedReturnComissionTypeChanging(value);
-					this.SendPropertyChanging();
-					this._ApprovedReturnComissionType = value;
-					this.SendPropertyChanged("ApprovedReturnComissionType");
-					this.OnApprovedReturnComissionTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedTrancheIssueComission", DbType="Decimal(15,6)")]
-		public System.Nullable<decimal> ApprovedTrancheIssueComission
-		{
-			get
-			{
-				return this._ApprovedTrancheIssueComission;
-			}
-			set
-			{
-				if ((this._ApprovedTrancheIssueComission != value))
-				{
-					this.OnApprovedTrancheIssueComissionChanging(value);
-					this.SendPropertyChanging();
-					this._ApprovedTrancheIssueComission = value;
-					this.SendPropertyChanged("ApprovedTrancheIssueComission");
-					this.OnApprovedTrancheIssueComissionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedTrancheIssueComissionType", DbType="TinyInt")]
-		public System.Nullable<byte> ApprovedTrancheIssueComissionType
-		{
-			get
-			{
-				return this._ApprovedTrancheIssueComissionType;
-			}
-			set
-			{
-				if ((this._ApprovedTrancheIssueComissionType != value))
-				{
-					this.OnApprovedTrancheIssueComissionTypeChanging(value);
-					this.SendPropertyChanging();
-					this._ApprovedTrancheIssueComissionType = value;
-					this.SendPropertyChanged("ApprovedTrancheIssueComissionType");
-					this.OnApprovedTrancheIssueComissionTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedTrancheSupportComission", DbType="Decimal(15,2)")]
-		public System.Nullable<decimal> ApprovedTrancheSupportComission
-		{
-			get
-			{
-				return this._ApprovedTrancheSupportComission;
-			}
-			set
-			{
-				if ((this._ApprovedTrancheSupportComission != value))
-				{
-					this.OnApprovedTrancheSupportComissionChanging(value);
-					this.SendPropertyChanging();
-					this._ApprovedTrancheSupportComission = value;
-					this.SendPropertyChanged("ApprovedTrancheSupportComission");
-					this.OnApprovedTrancheSupportComissionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedTrancheSupportComissionType", DbType="TinyInt")]
-		public System.Nullable<byte> ApprovedTrancheSupportComissionType
-		{
-			get
-			{
-				return this._ApprovedTrancheSupportComissionType;
-			}
-			set
-			{
-				if ((this._ApprovedTrancheSupportComissionType != value))
-				{
-					this.OnApprovedTrancheSupportComissionTypeChanging(value);
-					this.SendPropertyChanging();
-					this._ApprovedTrancheSupportComissionType = value;
-					this.SendPropertyChanged("ApprovedTrancheSupportComissionType");
-					this.OnApprovedTrancheSupportComissionTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedRateForNotUsedTranche", DbType="Decimal(15,2)")]
-		public System.Nullable<decimal> ApprovedRateForNotUsedTranche
-		{
-			get
-			{
-				return this._ApprovedRateForNotUsedTranche;
-			}
-			set
-			{
-				if ((this._ApprovedRateForNotUsedTranche != value))
-				{
-					this.OnApprovedRateForNotUsedTrancheChanging(value);
-					this.SendPropertyChanging();
-					this._ApprovedRateForNotUsedTranche = value;
-					this.SendPropertyChanged("ApprovedRateForNotUsedTranche");
-					this.OnApprovedRateForNotUsedTrancheChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OfficeID", DbType="Int NOT NULL")]
-		public int OfficeID
-		{
-			get
-			{
-				return this._OfficeID;
-			}
-			set
-			{
-				if ((this._OfficeID != value))
-				{
-					if (this._Office.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnOfficeIDChanging(value);
-					this.SendPropertyChanging();
-					this._OfficeID = value;
-					this.SendPropertyChanged("OfficeID");
-					this.OnOfficeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentObligations", DbType="NVarChar(300)")]
-		public string CurrentObligations
-		{
-			get
-			{
-				return this._CurrentObligations;
-			}
-			set
-			{
-				if ((this._CurrentObligations != value))
-				{
-					this.OnCurrentObligationsChanging(value);
-					this.SendPropertyChanging();
-					this._CurrentObligations = value;
-					this.SendPropertyChanged("CurrentObligations");
-					this.OnCurrentObligationsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GuaranteeContractNo", DbType="NVarChar(100)")]
-		public string GuaranteeContractNo
-		{
-			get
-			{
-				return this._GuaranteeContractNo;
-			}
-			set
-			{
-				if ((this._GuaranteeContractNo != value))
-				{
-					this.OnGuaranteeContractNoChanging(value);
-					this.SendPropertyChanging();
-					this._GuaranteeContractNo = value;
-					this.SendPropertyChanged("GuaranteeContractNo");
-					this.OnGuaranteeContractNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GuaranteeContractDescription", DbType="NVarChar(300)")]
-		public string GuaranteeContractDescription
-		{
-			get
-			{
-				return this._GuaranteeContractDescription;
-			}
-			set
-			{
-				if ((this._GuaranteeContractDescription != value))
-				{
-					this.OnGuaranteeContractDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._GuaranteeContractDescription = value;
-					this.SendPropertyChanged("GuaranteeContractDescription");
-					this.OnGuaranteeContractDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GuaranteeBeneficiaryID", DbType="Int")]
-		public System.Nullable<int> GuaranteeBeneficiaryID
-		{
-			get
-			{
-				return this._GuaranteeBeneficiaryID;
-			}
-			set
-			{
-				if ((this._GuaranteeBeneficiaryID != value))
-				{
-					if (this._Customer.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnGuaranteeBeneficiaryIDChanging(value);
-					this.SendPropertyChanging();
-					this._GuaranteeBeneficiaryID = value;
-					this.SendPropertyChanged("GuaranteeBeneficiaryID");
-					this.OnGuaranteeBeneficiaryIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GuaranteeSpecialInstructions", DbType="NVarChar(500)")]
-		public string GuaranteeSpecialInstructions
-		{
-			get
-			{
-				return this._GuaranteeSpecialInstructions;
-			}
-			set
-			{
-				if ((this._GuaranteeSpecialInstructions != value))
-				{
-					this.OnGuaranteeSpecialInstructionsChanging(value);
-					this.SendPropertyChanging();
-					this._GuaranteeSpecialInstructions = value;
-					this.SendPropertyChanged("GuaranteeSpecialInstructions");
-					this.OnGuaranteeSpecialInstructionsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GuaranteePurposeID", DbType="Int")]
-		public System.Nullable<int> GuaranteePurposeID
-		{
-			get
-			{
-				return this._GuaranteePurposeID;
-			}
-			set
-			{
-				if ((this._GuaranteePurposeID != value))
-				{
-					this.OnGuaranteePurposeIDChanging(value);
-					this.SendPropertyChanging();
-					this._GuaranteePurposeID = value;
-					this.SendPropertyChanged("GuaranteePurposeID");
-					this.OnGuaranteePurposeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoanPurposeTypeID", DbType="Int")]
-		public System.Nullable<int> LoanPurposeTypeID
-		{
-			get
-			{
-				return this._LoanPurposeTypeID;
-			}
-			set
-			{
-				if ((this._LoanPurposeTypeID != value))
-				{
-					this.OnLoanPurposeTypeIDChanging(value);
-					this.SendPropertyChanging();
-					this._LoanPurposeTypeID = value;
-					this.SendPropertyChanged("LoanPurposeTypeID");
-					this.OnLoanPurposeTypeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CalculationTypeID", DbType="TinyInt")]
-		public System.Nullable<byte> CalculationTypeID
-		{
-			get
-			{
-				return this._CalculationTypeID;
-			}
-			set
-			{
-				if ((this._CalculationTypeID != value))
-				{
-					this.OnCalculationTypeIDChanging(value);
-					this.SendPropertyChanging();
-					this._CalculationTypeID = value;
-					this.SendPropertyChanged("CalculationTypeID");
-					this.OnCalculationTypeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GuaranteeEndDate", DbType="Date")]
-		public System.Nullable<System.DateTime> GuaranteeEndDate
-		{
-			get
-			{
-				return this._GuaranteeEndDate;
-			}
-			set
-			{
-				if ((this._GuaranteeEndDate != value))
-				{
-					this.OnGuaranteeEndDateChanging(value);
-					this.SendPropertyChanging();
-					this._GuaranteeEndDate = value;
-					this.SendPropertyChanged("GuaranteeEndDate");
-					this.OnGuaranteeEndDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinancingSourceID", DbType="Int")]
-		public System.Nullable<int> FinancingSourceID
-		{
-			get
-			{
-				return this._FinancingSourceID;
-			}
-			set
-			{
-				if ((this._FinancingSourceID != value))
-				{
-					this.OnFinancingSourceIDChanging(value);
-					this.SendPropertyChanging();
-					this._FinancingSourceID = value;
-					this.SendPropertyChanged("FinancingSourceID");
-					this.OnFinancingSourceIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreditFraudStatus", DbType="Int")]
-		public System.Nullable<int> CreditFraudStatus
-		{
-			get
-			{
-				return this._CreditFraudStatus;
-			}
-			set
-			{
-				if ((this._CreditFraudStatus != value))
-				{
-					this.OnCreditFraudStatusChanging(value);
-					this.SendPropertyChanging();
-					this._CreditFraudStatus = value;
-					this.SendPropertyChanged("CreditFraudStatus");
-					this.OnCreditFraudStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InformationID", DbType="Int")]
-		public System.Nullable<int> InformationID
-		{
-			get
-			{
-				return this._InformationID;
-			}
-			set
-			{
-				if ((this._InformationID != value))
-				{
-					this.OnInformationIDChanging(value);
-					this.SendPropertyChanging();
-					this._InformationID = value;
-					this.SendPropertyChanged("InformationID");
-					this.OnInformationIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParallelRelativeCredit", DbType="Int")]
-		public System.Nullable<int> ParallelRelativeCredit
-		{
-			get
-			{
-				return this._ParallelRelativeCredit;
-			}
-			set
-			{
-				if ((this._ParallelRelativeCredit != value))
-				{
-					this.OnParallelRelativeCreditChanging(value);
-					this.SendPropertyChanging();
-					this._ParallelRelativeCredit = value;
-					this.SendPropertyChanged("ParallelRelativeCredit");
-					this.OnParallelRelativeCreditChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Options", DbType="Int")]
-		public System.Nullable<int> Options
-		{
-			get
-			{
-				return this._Options;
-			}
-			set
-			{
-				if ((this._Options != value))
-				{
-					this.OnOptionsChanging(value);
-					this.SendPropertyChanging();
-					this._Options = value;
-					this.SendPropertyChanged("Options");
-					this.OnOptionsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExternalProgramID", DbType="Int")]
-		public System.Nullable<int> ExternalProgramID
-		{
-			get
-			{
-				return this._ExternalProgramID;
-			}
-			set
-			{
-				if ((this._ExternalProgramID != value))
-				{
-					this.OnExternalProgramIDChanging(value);
-					this.SendPropertyChanging();
-					this._ExternalProgramID = value;
-					this.SendPropertyChanged("ExternalProgramID");
-					this.OnExternalProgramIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RedealType", DbType="Int")]
-		public System.Nullable<int> RedealType
-		{
-			get
-			{
-				return this._RedealType;
-			}
-			set
-			{
-				if ((this._RedealType != value))
-				{
-					this.OnRedealTypeChanging(value);
-					this.SendPropertyChanging();
-					this._RedealType = value;
-					this.SendPropertyChanged("RedealType");
-					this.OnRedealTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerAwayReasonDictionaryID", DbType="Int")]
-		public System.Nullable<int> CustomerAwayReasonDictionaryID
-		{
-			get
-			{
-				return this._CustomerAwayReasonDictionaryID;
-			}
-			set
-			{
-				if ((this._CustomerAwayReasonDictionaryID != value))
-				{
-					this.OnCustomerAwayReasonDictionaryIDChanging(value);
-					this.SendPropertyChanging();
-					this._CustomerAwayReasonDictionaryID = value;
-					this.SendPropertyChanged("CustomerAwayReasonDictionaryID");
-					this.OnCustomerAwayReasonDictionaryIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NonPaymentRisk", DbType="Int")]
-		public System.Nullable<int> NonPaymentRisk
-		{
-			get
-			{
-				return this._NonPaymentRisk;
-			}
-			set
-			{
-				if ((this._NonPaymentRisk != value))
-				{
-					this.OnNonPaymentRiskChanging(value);
-					this.SendPropertyChanging();
-					this._NonPaymentRisk = value;
-					this.SendPropertyChanged("NonPaymentRisk");
-					this.OnNonPaymentRiskChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExternalCashDeskID", DbType="Int")]
-		public System.Nullable<int> ExternalCashDeskID
-		{
-			get
-			{
-				return this._ExternalCashDeskID;
-			}
-			set
-			{
-				if ((this._ExternalCashDeskID != value))
-				{
-					this.OnExternalCashDeskIDChanging(value);
-					this.SendPropertyChanging();
-					this._ExternalCashDeskID = value;
-					this.SendPropertyChanged("ExternalCashDeskID");
-					this.OnExternalCashDeskIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IssueAccountNo", DbType="NVarChar(50)")]
-		public string IssueAccountNo
-		{
-			get
-			{
-				return this._IssueAccountNo;
-			}
-			set
-			{
-				if ((this._IssueAccountNo != value))
-				{
-					this.OnIssueAccountNoChanging(value);
-					this.SendPropertyChanging();
-					this._IssueAccountNo = value;
-					this.SendPropertyChanged("IssueAccountNo");
-					this.OnIssueAccountNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IssueComissionPaymentTypeID", DbType="TinyInt")]
-		public System.Nullable<byte> IssueComissionPaymentTypeID
-		{
-			get
-			{
-				return this._IssueComissionPaymentTypeID;
-			}
-			set
-			{
-				if ((this._IssueComissionPaymentTypeID != value))
-				{
-					this.OnIssueComissionPaymentTypeIDChanging(value);
-					this.SendPropertyChanging();
-					this._IssueComissionPaymentTypeID = value;
-					this.SendPropertyChanged("IssueComissionPaymentTypeID");
-					this.OnIssueComissionPaymentTypeIDChanged();
+					this._DateOfBirth = value;
+					this.SendPropertyChanged("DateOfBirth");
+					this.OnDateOfBirthChanged();
 				}
 			}
 		}
@@ -30831,464 +31863,62 @@ namespace Zamat
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentAssets", DbType="NVarChar(50)")]
-		public string CurrentAssets
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValidTill", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ValidTill
 		{
 			get
 			{
-				return this._CurrentAssets;
+				return this._ValidTill;
 			}
 			set
 			{
-				if ((this._CurrentAssets != value))
+				if ((this._ValidTill != value))
 				{
-					this.OnCurrentAssetsChanging(value);
+					this.OnValidTillChanging(value);
 					this.SendPropertyChanging();
-					this._CurrentAssets = value;
-					this.SendPropertyChanged("CurrentAssets");
-					this.OnCurrentAssetsChanged();
+					this._ValidTill = value;
+					this.SendPropertyChanged("ValidTill");
+					this.OnValidTillChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MainAssets", DbType="NVarChar(50)")]
-		public string MainAssets
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IssueAuthority", DbType="NVarChar(50)")]
+		public string IssueAuthority
 		{
 			get
 			{
-				return this._MainAssets;
+				return this._IssueAuthority;
 			}
 			set
 			{
-				if ((this._MainAssets != value))
+				if ((this._IssueAuthority != value))
 				{
-					this.OnMainAssetsChanging(value);
+					this.OnIssueAuthorityChanging(value);
 					this.SendPropertyChanging();
-					this._MainAssets = value;
-					this.SendPropertyChanged("MainAssets");
-					this.OnMainAssetsChanged();
+					this._IssueAuthority = value;
+					this.SendPropertyChanged("IssueAuthority");
+					this.OnIssueAuthorityChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquityCapital", DbType="NVarChar(50)")]
-		public string EquityCapital
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50)")]
+		public string Email
 		{
 			get
 			{
-				return this._EquityCapital;
+				return this._Email;
 			}
 			set
 			{
-				if ((this._EquityCapital != value))
+				if ((this._Email != value))
 				{
-					this.OnEquityCapitalChanging(value);
+					this.OnEmailChanging(value);
 					this.SendPropertyChanging();
-					this._EquityCapital = value;
-					this.SendPropertyChanged("EquityCapital");
-					this.OnEquityCapitalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfitBeforeLoanRepayment", DbType="NVarChar(50)")]
-		public string ProfitBeforeLoanRepayment
-		{
-			get
-			{
-				return this._ProfitBeforeLoanRepayment;
-			}
-			set
-			{
-				if ((this._ProfitBeforeLoanRepayment != value))
-				{
-					this.OnProfitBeforeLoanRepaymentChanging(value);
-					this.SendPropertyChanging();
-					this._ProfitBeforeLoanRepayment = value;
-					this.SendPropertyChanged("ProfitBeforeLoanRepayment");
-					this.OnProfitBeforeLoanRepaymentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NetProfitAfterLoanRepayment", DbType="NVarChar(50)")]
-		public string NetProfitAfterLoanRepayment
-		{
-			get
-			{
-				return this._NetProfitAfterLoanRepayment;
-			}
-			set
-			{
-				if ((this._NetProfitAfterLoanRepayment != value))
-				{
-					this.OnNetProfitAfterLoanRepaymentChanging(value);
-					this.SendPropertyChanging();
-					this._NetProfitAfterLoanRepayment = value;
-					this.SendPropertyChanged("NetProfitAfterLoanRepayment");
-					this.OnNetProfitAfterLoanRepaymentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReasonID", DbType="Int")]
-		public System.Nullable<int> ReasonID
-		{
-			get
-			{
-				return this._ReasonID;
-			}
-			set
-			{
-				if ((this._ReasonID != value))
-				{
-					this.OnReasonIDChanging(value);
-					this.SendPropertyChanging();
-					this._ReasonID = value;
-					this.SendPropertyChanged("ReasonID");
-					this.OnReasonIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalaryReduceNegativeImpact", DbType="Decimal(9,2)")]
-		public System.Nullable<decimal> SalaryReduceNegativeImpact
-		{
-			get
-			{
-				return this._SalaryReduceNegativeImpact;
-			}
-			set
-			{
-				if ((this._SalaryReduceNegativeImpact != value))
-				{
-					this.OnSalaryReduceNegativeImpactChanging(value);
-					this.SendPropertyChanging();
-					this._SalaryReduceNegativeImpact = value;
-					this.SendPropertyChanged("SalaryReduceNegativeImpact");
-					this.OnSalaryReduceNegativeImpactChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoanIssuePaymentTypeID", DbType="Int")]
-		public System.Nullable<int> LoanIssuePaymentTypeID
-		{
-			get
-			{
-				return this._LoanIssuePaymentTypeID;
-			}
-			set
-			{
-				if ((this._LoanIssuePaymentTypeID != value))
-				{
-					this.OnLoanIssuePaymentTypeIDChanging(value);
-					this.SendPropertyChanging();
-					this._LoanIssuePaymentTypeID = value;
-					this.SendPropertyChanged("LoanIssuePaymentTypeID");
-					this.OnLoanIssuePaymentTypeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WalletNo", DbType="NVarChar(50)")]
-		public string WalletNo
-		{
-			get
-			{
-				return this._WalletNo;
-			}
-			set
-			{
-				if ((this._WalletNo != value))
-				{
-					this.OnWalletNoChanging(value);
-					this.SendPropertyChanging();
-					this._WalletNo = value;
-					this.SendPropertyChanged("WalletNo");
-					this.OnWalletNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentCardNo", DbType="NVarChar(50)")]
-		public string PaymentCardNo
-		{
-			get
-			{
-				return this._PaymentCardNo;
-			}
-			set
-			{
-				if ((this._PaymentCardNo != value))
-				{
-					this.OnPaymentCardNoChanging(value);
-					this.SendPropertyChanging();
-					this._PaymentCardNo = value;
-					this.SendPropertyChanged("PaymentCardNo");
-					this.OnPaymentCardNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProviderID", DbType="Int")]
-		public System.Nullable<int> ProviderID
-		{
-			get
-			{
-				return this._ProviderID;
-			}
-			set
-			{
-				if ((this._ProviderID != value))
-				{
-					this.OnProviderIDChanging(value);
-					this.SendPropertyChanging();
-					this._ProviderID = value;
-					this.SendPropertyChanged("ProviderID");
-					this.OnProviderIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IssueOfficeID", DbType="Int")]
-		public System.Nullable<int> IssueOfficeID
-		{
-			get
-			{
-				return this._IssueOfficeID;
-			}
-			set
-			{
-				if ((this._IssueOfficeID != value))
-				{
-					this.OnIssueOfficeIDChanging(value);
-					this.SendPropertyChanging();
-					this._IssueOfficeID = value;
-					this.SendPropertyChanged("IssueOfficeID");
-					this.OnIssueOfficeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="History_HistoriesStatuse", Storage="_HistoriesStatuses", ThisKey="CreditID", OtherKey="CreditID")]
-		public EntitySet<HistoriesStatuse> HistoriesStatuses
-		{
-			get
-			{
-				return this._HistoriesStatuses;
-			}
-			set
-			{
-				this._HistoriesStatuses.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="History_RejectedHistoriesReason", Storage="_RejectedHistoriesReason", ThisKey="CreditID", OtherKey="CreditID", IsUnique=true, IsForeignKey=false)]
-		public RejectedHistoriesReason RejectedHistoriesReason
-		{
-			get
-			{
-				return this._RejectedHistoriesReason.Entity;
-			}
-			set
-			{
-				RejectedHistoriesReason previousValue = this._RejectedHistoriesReason.Entity;
-				if (((previousValue != value) 
-							|| (this._RejectedHistoriesReason.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._RejectedHistoriesReason.Entity = null;
-						previousValue.History = null;
-					}
-					this._RejectedHistoriesReason.Entity = value;
-					if ((value != null))
-					{
-						value.History = this;
-					}
-					this.SendPropertyChanged("RejectedHistoriesReason");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="History_HistoriesCustomer", Storage="_HistoriesCustomers", ThisKey="CreditID", OtherKey="CreditID")]
-		public EntitySet<HistoriesCustomer> HistoriesCustomers
-		{
-			get
-			{
-				return this._HistoriesCustomers;
-			}
-			set
-			{
-				this._HistoriesCustomers.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="History_HistoriesEarlyPaymentComission", Storage="_HistoriesEarlyPaymentComissions", ThisKey="CreditID", OtherKey="CreditID")]
-		public EntitySet<HistoriesEarlyPaymentComission> HistoriesEarlyPaymentComissions
-		{
-			get
-			{
-				return this._HistoriesEarlyPaymentComissions;
-			}
-			set
-			{
-				this._HistoriesEarlyPaymentComissions.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="History_HistoriesOfficer", Storage="_HistoriesOfficers", ThisKey="CreditID", OtherKey="CreditID")]
-		public EntitySet<HistoriesOfficer> HistoriesOfficers
-		{
-			get
-			{
-				return this._HistoriesOfficers;
-			}
-			set
-			{
-				this._HistoriesOfficers.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="History_IncomesStructuresActualDate", Storage="_IncomesStructuresActualDates", ThisKey="CreditID", OtherKey="CreditID")]
-		public EntitySet<IncomesStructuresActualDate> IncomesStructuresActualDates
-		{
-			get
-			{
-				return this._IncomesStructuresActualDates;
-			}
-			set
-			{
-				this._IncomesStructuresActualDates.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="History_Graphic", Storage="_Graphics", ThisKey="CreditID", OtherKey="CreditID")]
-		public EntitySet<Graphic> Graphics
-		{
-			get
-			{
-				return this._Graphics;
-			}
-			set
-			{
-				this._Graphics.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="History_CreditsAccount", Storage="_CreditsAccounts", ThisKey="CreditID", OtherKey="CreditID")]
-		public EntitySet<CreditsAccount> CreditsAccounts
-		{
-			get
-			{
-				return this._CreditsAccounts;
-			}
-			set
-			{
-				this._CreditsAccounts.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Currency_History", Storage="_Currency", ThisKey="RequestCurrencyID", OtherKey="CurrencyID", IsForeignKey=true)]
-		public Currency Currency
-		{
-			get
-			{
-				return this._Currency.Entity;
-			}
-			set
-			{
-				Currency previousValue = this._Currency.Entity;
-				if (((previousValue != value) 
-							|| (this._Currency.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Currency.Entity = null;
-						previousValue.Histories.Remove(this);
-					}
-					this._Currency.Entity = value;
-					if ((value != null))
-					{
-						value.Histories.Add(this);
-						this._RequestCurrencyID = value.CurrencyID;
-					}
-					else
-					{
-						this._RequestCurrencyID = default(int);
-					}
-					this.SendPropertyChanged("Currency");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_History", Storage="_Customer", ThisKey="GuaranteeBeneficiaryID", OtherKey="CustomerID", IsForeignKey=true)]
-		public Customer Customer
-		{
-			get
-			{
-				return this._Customer.Entity;
-			}
-			set
-			{
-				Customer previousValue = this._Customer.Entity;
-				if (((previousValue != value) 
-							|| (this._Customer.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Customer.Entity = null;
-						previousValue.Histories.Remove(this);
-					}
-					this._Customer.Entity = value;
-					if ((value != null))
-					{
-						value.Histories.Add(this);
-						this._GuaranteeBeneficiaryID = value.CustomerID;
-					}
-					else
-					{
-						this._GuaranteeBeneficiaryID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Customer");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Office_History", Storage="_Office", ThisKey="OfficeID", OtherKey="ID", IsForeignKey=true)]
-		public Office Office
-		{
-			get
-			{
-				return this._Office.Entity;
-			}
-			set
-			{
-				Office previousValue = this._Office.Entity;
-				if (((previousValue != value) 
-							|| (this._Office.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Office.Entity = null;
-						previousValue.Histories.Remove(this);
-					}
-					this._Office.Entity = value;
-					if ((value != null))
-					{
-						value.Histories.Add(this);
-						this._OfficeID = value.ID;
-					}
-					else
-					{
-						this._OfficeID = default(int);
-					}
-					this.SendPropertyChanged("Office");
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
 				}
 			}
 		}
@@ -31311,90 +31941,6 @@ namespace Zamat
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_HistoriesStatuses(HistoriesStatuse entity)
-		{
-			this.SendPropertyChanging();
-			entity.History = this;
-		}
-		
-		private void detach_HistoriesStatuses(HistoriesStatuse entity)
-		{
-			this.SendPropertyChanging();
-			entity.History = null;
-		}
-		
-		private void attach_HistoriesCustomers(HistoriesCustomer entity)
-		{
-			this.SendPropertyChanging();
-			entity.History = this;
-		}
-		
-		private void detach_HistoriesCustomers(HistoriesCustomer entity)
-		{
-			this.SendPropertyChanging();
-			entity.History = null;
-		}
-		
-		private void attach_HistoriesEarlyPaymentComissions(HistoriesEarlyPaymentComission entity)
-		{
-			this.SendPropertyChanging();
-			entity.History = this;
-		}
-		
-		private void detach_HistoriesEarlyPaymentComissions(HistoriesEarlyPaymentComission entity)
-		{
-			this.SendPropertyChanging();
-			entity.History = null;
-		}
-		
-		private void attach_HistoriesOfficers(HistoriesOfficer entity)
-		{
-			this.SendPropertyChanging();
-			entity.History = this;
-		}
-		
-		private void detach_HistoriesOfficers(HistoriesOfficer entity)
-		{
-			this.SendPropertyChanging();
-			entity.History = null;
-		}
-		
-		private void attach_IncomesStructuresActualDates(IncomesStructuresActualDate entity)
-		{
-			this.SendPropertyChanging();
-			entity.History = this;
-		}
-		
-		private void detach_IncomesStructuresActualDates(IncomesStructuresActualDate entity)
-		{
-			this.SendPropertyChanging();
-			entity.History = null;
-		}
-		
-		private void attach_Graphics(Graphic entity)
-		{
-			this.SendPropertyChanging();
-			entity.History = this;
-		}
-		
-		private void detach_Graphics(Graphic entity)
-		{
-			this.SendPropertyChanging();
-			entity.History = null;
-		}
-		
-		private void attach_CreditsAccounts(CreditsAccount entity)
-		{
-			this.SendPropertyChanging();
-			entity.History = this;
-		}
-		
-		private void detach_CreditsAccounts(CreditsAccount entity)
-		{
-			this.SendPropertyChanging();
-			entity.History = null;
 		}
 	}
 }

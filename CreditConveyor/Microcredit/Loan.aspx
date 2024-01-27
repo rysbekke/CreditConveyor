@@ -83,15 +83,15 @@
  
    <ul class="tabs nav nav-tabs">
  
-      <li><a href="#main" data-tab='main' class="active selected"><b>Заявка</b></a></li>
-      <li><a href="#documents" data-tab='documents'><b>Документы</b></a></li>
-      <li><a href="#customer" data-tab='customer'><b>Клиент</b></a></li>
+      <li><a href="#tabmain" data-tab='tabmain' class="active selected"><b>Заявка</b></a></li>
+      <li><a href="#tabdocuments" data-tab='tabdocuments'><b>Документы</b></a></li>
+      <li><a href="#tabcustomer" data-tab='tabcustomer'><b>Клиент</b></a></li>
   </ul>
 
   <!-- Tab panes -->
   
    
-    <div data-content="main" class='tab-content fade-in'>
+    <div data-content="tabmain" class='tab-content fade-in'>
         
 
 
@@ -751,7 +751,7 @@
 
 
 
-    <div data-content="documents" class='tab-content'>
+    <div data-content="tabdocuments" class='tab-content'>
         <div id="divDocuments" class="divDocuments" runat="server" visible="false">
             
 			<p><b>Документы:</b></p>
@@ -973,7 +973,7 @@
   
 
 
-    <div data-content="customer" class='tab-content'>
+    <div data-content="tabcustomer" class='tab-content'>
     
 
         <asp:Panel ID="pnlMenuCustomer" runat="server" Visible="true" CssClass="panels">
@@ -1345,7 +1345,7 @@
 		</asp:Panel>
 
 		
-<div data-content="main" class='tab-content'>
+<div data-content="tabmain" class='tab-content'>
 
 		<br />
 		<asp:Panel ID="pnlMenuRequest" runat="server" ClientIDMode="Static">
@@ -1488,15 +1488,15 @@
 
         function onTabClick($targ) {
             var tabName = $targ.attr('href').replace('#', '');
-            if (tabName == 'main')
+            if (tabName == 'tabmain')
             {
                 sessionStorage.setItem('tab', '1');
             }
-            if (tabName == 'documents')
+            if (tabName == 'tabdocuments')
             {
                 sessionStorage.setItem('tab', '2');
             }
-            if (tabName == 'customer') {
+            if (tabName == 'tabcustomer') {
                 sessionStorage.setItem('tab', '3');
             }
 
@@ -1516,7 +1516,7 @@
             $targ.addClass('selected');
             $('[data-content]').removeClass('fade-in').hide();
 
-            var targetContent = '[data-content=' + 'main' + ']';
+            var targetContent = '[data-content=' + 'tabmain' + ']';
             $(targetContent).addClass('fade-in').show();
         });
 
@@ -1527,7 +1527,7 @@
             $targ.addClass('selected');
             $('[data-content]').removeClass('fade-in').hide();
 
-            var targetContent = '[data-content=' + 'main' + ']';
+            var targetContent = '[data-content=' + 'tabmain' + ']';
             $(targetContent).addClass('fade-in').show();
         });
         
@@ -1545,7 +1545,7 @@
             $('.tabs li a').addClass('selected');
             $('[data-content]').removeClass('fade-in').hide();
 
-            var targetContent = '[data-content=' + 'customer' + ']';
+            var targetContent = '[data-content=' + 'tabcustomer' + ']';
             $(targetContent).addClass('fade-in').show();
 
             sessionStorage.setItem('tab', '3');
@@ -1580,7 +1580,7 @@
             $('.tabs li a').addClass('selected');
             $('[data-content]').removeClass('fade-in').hide();
 
-            var targetContent = '[data-content=' + 'customer' + ']';
+            var targetContent = '[data-content=' + 'tabcustomer' + ']';
             $(targetContent).addClass('fade-in').show();
 
             sessionStorage.setItem('tab', '3');
@@ -1616,7 +1616,7 @@
             $('.tabs li a').addClass('selected');
             $('[data-content]').removeClass('fade-in').hide();
 
-            var targetContent = '[data-content=' + 'customer' + ']';
+            var targetContent = '[data-content=' + 'tabcustomer' + ']';
             $(targetContent).addClass('fade-in').show();
 
             sessionStorage.setItem('tab', '3');
@@ -1649,13 +1649,13 @@
     $(document).ready(function () {
         //this.Session["description"] = description;    
         //var tab = '@Session["tab"]';
-        var targetContent = '[data-content=main]';
+        var targetContent = '[data-content=tabmain]';
         $(targetContent).addClass('fade-in').show();
 
-        var targetContent = '[data-content=documents]';
+        var targetContent = '[data-content=tabdocuments]';
         $(targetContent).addClass('fade-in').hide();
 
-        var targetContent = '[data-content=customer]';
+        var targetContent = '[data-content=tabcustomer]';
         $(targetContent).addClass('fade-in').hide();
 
         var tab = sessionStorage.getItem('tab');
@@ -1672,7 +1672,7 @@
             //next.style.backgroundColor = '#eee';
             $('[data-content]').removeClass('fade-in').hide();
 
-            var targetContent = '[data-content=documents]';
+            var targetContent = '[data-content=tabdocuments]';
             $(targetContent).addClass('fade-in').show();
 
 
@@ -1691,7 +1691,7 @@
             //next.style.backgroundColor = '#eee';
             $('[data-content]').removeClass('fade-in').hide();
 
-            var targetContent = '[data-content=main]';
+            var targetContent = '[data-content=tabmain]';
             $(targetContent).addClass('fade-in').show();
 
         } else if (tab == 3)
@@ -1707,7 +1707,7 @@
             //next.style.backgroundColor = '#eee';
             $('[data-content]').removeClass('fade-in').hide();
 
-            var targetContent = '[data-content=customer]';
+            var targetContent = '[data-content=tabcustomer]';
             $(targetContent).addClass('fade-in').show();
         }
     })   

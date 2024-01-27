@@ -1645,6 +1645,16 @@ namespace СreditСonveyor.Microcredit
                     Status = 1,
                 };
 
+
+                GeneralController.CreditOfficer creditOfficers = new GeneralController.CreditOfficer()
+                {
+                    CreditOfficerTypeID = 1,
+                    CreditOfficerStartDate = Convert.ToDateTime(actdate).AddDays(-1), // creditOfficerStartDate, //Convert.ToDateTime(dateNow).AddDays(-1),  //Convert.ToDateTime("2021-09-19T11:28:42"),  //Convert.ToDateTime(actdate), //dateTimeNow, 
+                                                                                      //CreditOfficerEndDate = null, // Convert.ToDateTime(actdate), //dateTimeNow, 
+                                                                                      //OfficeID = officeID, //1105,
+                    OfficerID = Convert.ToInt32(credOfficerID), //6804,
+                };
+
                 DateTime creditOfficerStartDate = (connectionStringActualDate == "") ? Convert.ToDateTime(dateNow).AddDays(-1) : Convert.ToDateTime(connectionStringActualDate).AddDays(-1);
 
                 int mortrageTypeID = 2;
@@ -1668,17 +1678,13 @@ namespace СreditСonveyor.Microcredit
                     RequestDate = Convert.ToDateTime(actdate), //dateTimeNow, 
                                                                //IssueAccountNo = "",
                                                                //OfficerUserName = "",
-                    CreditOfficerTypeID = 1,
-                    CreditOfficerStartDate = creditOfficerStartDate, //Convert.ToDateTime(dateNow).AddDays(-1),  //Convert.ToDateTime("2021-09-19T11:28:42"),  //Convert.ToDateTime(actdate), //dateTimeNow, 
-                                                                     //CreditOfficerEndDate = null, // Convert.ToDateTime(actdate), //dateTimeNow, 
-                                                                     //OfficeID = officeID, //1105,
-                    OfficerID = Convert.ToInt32(credOfficerID), //6804,
+                    
 
                     IncomesStructuresActualDates = new List<GeneralController.IncomesStructuresActualDate>(),
                     Guarantors = new List<GeneralController.Guarantor>(),
                     Pictures = new List<GeneralController.Picture>(),
                     Partners = new List<GeneralController.Partner>(),
-
+                    CreditOfficers = new List<GeneralController.CreditOfficer>(),
 
                     RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue),
                     RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text), //0.0, // Convert.ToDouble(ddlRequestRate.SelectedItem.Text),

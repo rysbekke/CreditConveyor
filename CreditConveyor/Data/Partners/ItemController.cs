@@ -371,8 +371,8 @@ namespace СreditСonveyor.Data.Partners
             }
             else lst0 = (from v in dbRWZ.Requests where ((v.RequestDate.Value.Date == DateTime.ParseExact(date1, "yyyy-MM-dd", CultureInfo.InvariantCulture)) || (v.RequestDate.Value.Date > DateTime.ParseExact(date1, "yyyy-MM-dd", CultureInfo.InvariantCulture)) && (v.RequestDate.Value.Date < DateTime.ParseExact(date2, "yyyy-MM-dd", CultureInfo.InvariantCulture)) || (v.RequestDate.Value.Date == DateTime.ParseExact(date2, "yyyy-MM-dd", CultureInfo.InvariantCulture))) select v).ToList();
             //lst0 = (from v in lst0 where ((v.AgentRoleID == agentRoleID) || (v.AgentRoleID == 19)) select v).ToList();
-            lst0 = (from v in lst0 where (v.AgentRoleID == 13) select v).ToList();
-
+            //lst0 = (from v in lst0 where (v.AgentRoleID == 13) select v).ToList();
+            lst0 = (from v in lst0 where ((v.RequestType == "PA")) select v).ToList();
             //var lst0 = ((nRequest != "") || (inn != "") || (creditID != "") || (surname != "") || (name != "")) ? (from v in dbRWZ.Requests select v).ToList() : (from v in dbRWZ.Requests where ((v.RequestDate.Value.Date == DateTime.ParseExact(date1, "yyyy.MM.dd", CultureInfo.InvariantCulture)) || (v.RequestDate.Value.Date > DateTime.ParseExact(date1, "yyyy.MM.dd", CultureInfo.InvariantCulture)) && (v.RequestDate.Value.Date < DateTime.ParseExact(date2, "yyyy.MM.dd", CultureInfo.InvariantCulture)) || (v.RequestDate.Value.Date == DateTime.ParseExact(date2, "yyyy.MM.dd", CultureInfo.InvariantCulture))) select v).ToList();
             //var lst1 = (inn == "") ? (from v in lst0 where ((v.AgentRoleID == agentRoleID) || (v.AgentRoleID == 19)) select v).ToList() : (from v in lst0 where ((v.IdentificationNumber == inn) && ((v.AgentRoleID == agentRoleID) || (v.AgentRoleID == 19))) select v).ToList();
             //var lst1_5 = (nRequest == "") ? lst1 : (from v in lst1 where (v.RequestID == Convert.ToInt32(nRequest)) select v).ToList();
@@ -588,8 +588,8 @@ namespace СreditСonveyor.Data.Partners
             }
             //else lst0 = (from v in dbRWZ.Requests where ((v.RequestDate.Value.Date == DateTime.ParseExact(date1, "yyyy.MM.dd", CultureInfo.InvariantCulture)) || (v.RequestDate.Value.Date > DateTime.ParseExact(date1, "yyyy.MM.dd", CultureInfo.InvariantCulture)) && (v.RequestDate.Value.Date < DateTime.ParseExact(date2, "yyyy.MM.dd", CultureInfo.InvariantCulture)) || (v.RequestDate.Value.Date == DateTime.ParseExact(date2, "yyyy.MM.dd", CultureInfo.InvariantCulture))) select v).ToList();
             else lst0 = (from v in dbRWZ.Requests where ((v.RequestDate.Value.Date == Convert.ToDateTime(date1) || (v.RequestDate.Value.Date > Convert.ToDateTime(date1)) && (v.RequestDate.Value.Date < Convert.ToDateTime(date2)) || (v.RequestDate.Value.Date == Convert.ToDateTime(date2)))) select v).ToList();
-            lst0 = (from v in lst0 where ((v.AgentRoleID == 13) && (v.BranchID == branchID)) select v).ToList();
-
+            //lst0 = (from v in lst0 where ((v.AgentRoleID == 13) && (v.BranchID == branchID)) select v).ToList();
+            lst0 = (from v in lst0 where ((v.RequestType == "PA") && (v.BranchID == branchID)) select v).ToList();
             //var lst0 = ((nRequest != "") || (inn != "") || (creditID != "") || (surname != "") || (name != "")) ? (from v in dbRWZ.Requests select v).ToList() : (from v in dbRWZ.Requests where ((v.RequestDate.Value.Date == DateTime.ParseExact(date1, "yyyy.MM.dd", CultureInfo.InvariantCulture)) || (v.RequestDate.Value.Date > DateTime.ParseExact(date1, "yyyy.MM.dd", CultureInfo.InvariantCulture)) && (v.RequestDate.Value.Date < DateTime.ParseExact(date2, "yyyy.MM.dd", CultureInfo.InvariantCulture)) || (v.RequestDate.Value.Date == DateTime.ParseExact(date2, "yyyy.MM.dd", CultureInfo.InvariantCulture))) select v).ToList();
             //var lst1 = (inn == "") ? (from v in lst0 where (((v.AgentRoleID == agentRoleID) || (v.AgentRoleID == 19)) && (v.BranchID == branchID)) select v).ToList() : (from v in lst0 where ((v.IdentificationNumber == inn) && ((v.AgentRoleID == agentRoleID) || (v.AgentRoleID == 19)) && (v.BranchID == branchID)) select v).ToList();
             //var lst1_5 = (nRequest == "") ? lst1 : (from v in lst1 where (v.RequestID == Convert.ToInt32(nRequest)) select v).ToList();

@@ -61,7 +61,7 @@
         <asp:Label ID="lblAgreementDate" runat="server" Text="Кредит.ДатаДоговора"></asp:Label>&nbsp;г.</b>
 <br />
         <br />
-        <b>ОАО «КапиталБанк»</b>, именуемое в дальнейшем <b>«Кредитор»</b>, в лице 
+        <b>ОАО «Капитал Банк Центральной Азии»</b>, именуемое в дальнейшем <b>«Кредитор»</b>, в лице 
         <b><asp:Label ID="lblManagerFIO" runat="server" Text="[Агент.Руководитель.ФИО]"></asp:Label></b>
         &nbsp;действующего(-ей) на основании Доверенности № <asp:Label ID="lblManagerDocNum" runat="server" Text="Филиал.НомерДокумента"></asp:Label> &nbsp; от &nbsp <asp:Label ID="lblManagerDocDate" runat="server" Text="Филиал.Документ.ДатаВыдачи"></asp:Label> г. с одной стороны, и гр.
        <b><asp:Label ID="lblCustomerFIO" runat="server" Text="[Клиент.ФИО]"></asp:Label></b> ,

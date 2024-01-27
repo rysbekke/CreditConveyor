@@ -204,6 +204,7 @@
     <Content Include="js\chosen.jquery.min.js" />
     <Content Include="js\select2.js" />
     <Content Include="js\jquery.mask.min.js" />
+    <Content Include="Microcredit\rptAgreesPartner.aspx" />
     <Content Include="Partners\actAssessment.aspx" />
     <Content Include="Partners\Loan.aspx" />
     <Content Include="Partners\Loans.aspx" />
@@ -429,6 +430,13 @@
     </Compile>
     <Compile Include="Errors.aspx.designer.cs">
       <DependentUpon>Errors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Microcredit\rptAgreesPartner.aspx.cs">
+      <DependentUpon>rptAgreesPartner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Microcredit\rptAgreesPartner.aspx.designer.cs">
+      <DependentUpon>rptAgreesPartner.aspx</DependentUpon>
     </Compile>
     <Compile Include="Partners\actAssessment.aspx.cs">
       <DependentUpon>actAssessment.aspx</DependentUpon>

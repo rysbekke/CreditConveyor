@@ -129,21 +129,19 @@
             
 <div>
   <!-- Nav tabs -->
-  <%--<ul class="nav nav-tabs" role="tablist">--%>
+
    <ul class="tabs nav nav-tabs">
-    <%--<li role="presentation" class="active">
-        <a href="#home" aria-controls="home" role="tab" data-toggle="tab"><b>Данные</b></a>     </li>
-    <li role="presentation">
-        <a href="#office" aria-controls="profile" role="tab" data-toggle="tab"><b>Документы</b></a>
-    </li>--%>
-      <li><a href="#main" data-tab='main' class="active selected"><b>Данные</b></a></li>
-      <li><a href="#remediation" data-tab='remediation'><b>Документы</b></a></li>
+  
+      <li><a href="#tabmain" data-tab='tabmain' class="active selected"><b>Данные</b></a></li>
+      <li><a href="#tabdocuments" data-tab='tabdocuments'><b>Документы</b></a></li>
+      <li><a href="#tabcustomer" data-tab='tabcustomer'><b>Клиент</b></a></li>
+
   </ul>
 
   <!-- Tab panes -->
   
-    <%--<div role="tabpanel" class="tab-pane active" id="home">--%>
-    <div data-content="main" class='tab-content fade-in'>
+   
+    <div data-content="tabmain" class='tab-content fade-in'>
         
 
 
@@ -198,7 +196,8 @@
 
 
                       <%--<div><p>Клиент (счет для погашения)<b class="red"><asp:Label ID="lblAccount" runat="server"></asp:Label></b></p></div>--%>
-                     <asp:Button ID="btnCustomerSearch" runat="server" class="btn btn-primary" OnClick="btnCustomerSearch_Click" Text="Выбрать клиента" /><br />
+                     <a href="#customer1" id="customer1" data-tab='customer' class="btn btn-primary"><b>Выбрать клиента</b></a>
+                     <asp:Button ID="btnCustomerSearch" runat="server" class="btn btn-primary" OnClick="btnCustomerSearch_Click" Text="Выбрать клиента" Visible="False" /><br />
 <%--                     <asp:Button ID="btnCustomerEdit" runat="server" Text="Редактировать" class="btn btn-primary" OnClick="btnCustomerEdit_Click" Enabled="False" /><br />--%>
                      <asp:Button ID="btnUpdFIO" runat="server" Text="Обновить ФИО" class="btn btn-primary" OnClick="btnUpdFIO_Click"  /><br />
                        <div style="display:none">
@@ -915,8 +914,10 @@
             <%--<asp:TextBox ID="tbNote" runat="server" class="form-control" ClientIDMode="Static" TextMode="MultiLine" Width="0" Height="0"></asp:TextBox>--%>
         <asp:HiddenField ID="hfNote" runat="server" ClientIDMode="Static"/>
     </div>
-    <%--<div role="tabpanel" class="tab-pane" id="office">--%>
-    <div data-content="remediation" class='tab-content'>
+  
+
+
+    <div data-content="tabdocuments" class='tab-content'>
         <div id="divDocuments" class="divDocuments" runat="server" visible="false">
             
 			<p><b>Документы:</b></p>
@@ -1032,7 +1033,8 @@
             <div>
             <asp:Button ID="btnKIB" runat="server" Text="КИБ (полный)" class="btn btn-primary" OnClick="btnKIB_Click" />  
             <asp:Button ID="btnKIB2" runat="server" Text="КИБ (сжатый)" class="btn btn-primary" OnClick="btnKIB2_Click" />
-               
+            <asp:Button ID="btnGetWorkPeriodInfoWithSum" runat="server" Text="Зарплата" class="btn btn-primary" OnClick="btnGetWorkPeriodInfoWithSum_Click"  />
+             <asp:Button ID="btnGetPensionInfoWithSum" runat="server" Text="Пенсия" class="btn btn-primary" OnClick="btnGetPensionInfoWithSum_Click"  />
             </div>
 
             <div>
@@ -1060,8 +1062,30 @@
             <asp:Button ID="btnPension" runat="server" OnClick="btnPension_Click" class="btn btn-primary" Text="Пенсия" />
             </div>
 
-          
+                     <div>
+      <%--<embed src="@ViewBag.Base64String" width="auto" height="900" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">--%>
+    
+     <asp:Literal ID="ltEmbed" runat="server" />
+     
+      <br />
+      <br />
+      <asp:FileUpload ID="FileUpload1" runat="server" />
+      <asp:FileUpload ID="FileUpload2" runat="server" />
+      <asp:FileUpload ID="FileUpload3" runat="server" />
+     
+ </div>
+           <asp:Button ID="btnInitPermSF" runat="server" Text="Запрос на разрешение" class="btn btn-primary" OnClick="btnInitPermSF_Click"  />
+     <br />
+     <asp:Label ID="lblReqForInitPerm" runat="server" Text="Label"></asp:Label>
+     <br />
+</div>
             <%--<hr />--%>
+
+<div>
+ <asp:TextBox ID="txtCodePermSF" runat="server" class="form-control" CssClass ="txtCodePerm"></asp:TextBox>
+ <asp:Button ID="btnConfPermSF" runat="server" class="btn btn-primary" Text="Отравить код" OnClick="btnConfPermSF_Click"  />
+     <br />
+ </div>
 
 
             <div class="chkbxhead"><p style="color:green"><asp:Label ID="lblNameSMS" runat="server" Text="СМС"></asp:Label></p></div>
@@ -1129,6 +1153,338 @@
     </div>
   
 
+    <div data-content="tabcustomer" class='tab-content'>
+
+        <asp:Panel ID="pnlMenuCustomer" runat="server" Visible="True" CssClass="panels">
+    <asp:Button ID="btnBackToCreditForm" runat="server" Text="Назад" class="btn btn-primary" OnClick="btnBackToCreditForm_Click" Visible="false" />
+    <br />
+     <div>
+         <p>
+         <span class="fio">ИНН:</span>
+		 <asp:TextBox ID="tbSearchINN" runat="server" class="form-control" ClientIDMode="Static"></asp:TextBox>
+		 <asp:RequiredFieldValidator ID="rfSearchCustomer" runat="server" ControlToValidate="tbSearchINN" ErrorMessage="Ошибка!" ValidationGroup="SearchCustomer"></asp:RequiredFieldValidator>
+         </p>
+	</div>
+    
+    <div>
+        <p>
+        <span class="fio">Серия№:</span>
+        <asp:TextBox ID="tbSerialN"  runat="server" class="form-control" ClientIDMode="Static" Visible="false"></asp:TextBox>
+        <%--<asp:RequiredFieldValidator ID="rfSerialN" runat="server" ControlToValidate="tbSerialN" ErrorMessage="Ошибка!" ValidationGroup="SearchCustomer"></asp:RequiredFieldValidator>--%>
+        </p>
+    </div>
+    <div>
+        <asp:Button ID="btnSearchClient" runat="server" Text="Поиск" class="btn btn-primary" OnClick="btnSearchClient_Click" ValidationGroup="SearchCustomer" />
+        <asp:Button ID="btnNewCustomer" runat="server" Text="Новый клиент" class="btn btn-primary" OnClick="btnNewCustomer_Click" />
+        <asp:Button ID="btnCredit" runat="server" Text="Выбрать клиента" Enabled="False" class="btn btn-primary" OnClick="btnCredit_Click" Visible="False" />
+    </div>
+
+    <div>
+        <asp:HiddenField ID="hfChooseClient" runat="server" ClientIDMode="Static" />
+        <asp:HiddenField ID="hfUserID" runat="server" />
+    	<asp:HiddenField ID="hfCustomerID" runat="server" Value="noselect" />
+		<asp:HiddenField ID="hfGuarantorID" runat="server" Value="noselect" />
+        <asp:HiddenField ID="hfPledgerID" runat="server" Value="noselect" />
+		<asp:HiddenField ID="hfCreditID" runat="server" />
+		<asp:HiddenField ID="hfRequestID" runat="server" />
+        <asp:HiddenField ID="hfRequestStatus" runat="server" />
+        <asp:HiddenField ID="hfAgentRoleID" runat="server" />
+        <asp:HiddenField ID="hfRequestIDDel" runat="server" Value="-1" />
+        <asp:HiddenField ID="hfSelectCustomerID" runat="server" Value="" />
+
+        <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" OnRowCommand="gvUsers_RowCommand" >
+         <Columns>
+                <asp:TemplateField HeaderText="Выбрать">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="lbSelectUser" runat="server" CommandArgument='<%# Eval("CustomerID") %>' CommandName="Sel">Выбрать</asp:LinkButton>
+                       <%-- <a href='/Microcredit/Loan?RequestID=<%# Eval("RequestID") %>' >Выбрать</a>--%>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField DataField="CustomerID" HeaderText="Номер" />
+                <asp:BoundField DataField="Surname" HeaderText="CreditID" />
+                <asp:BoundField DataField="CustomerName" HeaderText="Статус заявки" />
+                <asp:BoundField DataField="Otchestvo" HeaderText="Фамилия" />
+               
+           </Columns>
+         </asp:GridView>
+     </div>      
+                
+
+</asp:Panel>
+
+        <asp:Panel ID="pnlCustomer" runat="server" Visible="True" CssClass="panels">
+       
+	<h3>Форма клиента</h3>
+<div class="row">
+       <%--******************************************--%>
+        <asp:HiddenField ID="hfIsNewCustomer" runat="server" />
+        <div class="col-md-4">
+            <div><b>Данные клиента</b></div>
+            <div class="row">  
+                   <span class="fio">Фамилия:</span>
+				<asp:TextBox ID="tbSurname" runat="server" TabIndex="1" class="form-control" AutoCompleteType="Disabled" ></asp:TextBox>
+				<asp:RequiredFieldValidator ID="rfSurname" runat="server" ControlToValidate="tbSurname" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+                   <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="tbSurname" ErrorMessage="в фио все буквы должны быть на русском" ValidationExpression="^[а-яА-ЯёЁъЪ -]{1,32}$" CssClass="SaveCustomers" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
+                  
+		 </div>
+            <div class="row">
+                  
+                   <span class="fio">Имя:</span>
+				<asp:TextBox ID="tbCustomerName" runat="server" TabIndex="2" class="form-control" AutoCompleteType="Disabled"></asp:TextBox>
+				<asp:RequiredFieldValidator ID="rfCustomerName" runat="server" ControlToValidate="tbCustomerName" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+                   <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="tbCustomerName" ErrorMessage="в фио все буквы должны быть на русском" ValidationExpression="^[а-яА-ЯёЁъЪ -]{1,32}$" CssClass="SaveCustomers" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
+                  
+            </div>
+            <div class="row">
+                
+                <span class="fio">Отчество:</span>
+			 <asp:TextBox ID="tbOtchestvo" runat="server" TabIndex="3" class="form-control" AutoCompleteType="Disabled"></asp:TextBox>
+              
+            </div>
+
+            <div class="row">
+       
+               
+                <span class="fio">ИНН:</span>
+       <asp:UpdatePanel ID="UpdatePanel3" runat="server"><ContentTemplate>
+				<asp:TextBox ID="tbIdentificationNumber" ClientIDMode="Static" runat="server" class="form-control" TabIndex="4" OnTextChanged="tbIdentificationNumber_TextChanged" ></asp:TextBox>
+				<asp:RequiredFieldValidator ID="rfIdentificationNumber" runat="server" ErrorMessage="Ошибка!" ControlToValidate="tbIdentificationNumber" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+				<asp:RegularExpressionValidator ID="rfedentificationNumber" runat="server" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers" ControlToValidate="tbIdentificationNumber" ValidationExpression="\d\d\d\d\d\d\d\d\d\d\d\d\d\d"></asp:RegularExpressionValidator>
+                   </ContentTemplate></asp:UpdatePanel>
+               
+		 </div>
+            <div class="row">
+                
+                   <span class="fio">Телефон:</span>
+                   <asp:TextBox ID="tbContactPhone" runat="server" ClientIDMode="Static" class="form-control" AutoCompleteType="Disabled" ></asp:TextBox>
+                   <asp:RequiredFieldValidator ID="rfvContactPhone" runat="server" ControlToValidate="tbContactPhone" CssClass="SaveCustomers" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers"></asp:RequiredFieldValidator>
+                
+                   &nbsp;<asp:RegularExpressionValidator ID="revContactPhone" runat="server" ControlToValidate="tbContactPhone" CssClass="SaveCustomers" ErrorMessage="+996 ### ######" ValidationExpression="^\+\d{3}\ \d{3}\ \d{6}$" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
+                
+		</div>
+        </div>
+        <%--******************************************--%>
+        <div class="col-md-4">
+            <div><b>Паспортные данные</b></div>
+            <div class="row">
+                <span class="fio">Вид паспорта:</span>
+                   <asp:UpdatePanel ID="UpdatePanel1" runat="server"><ContentTemplate>  
+                   	<asp:DropDownList ID="ddlDocumentTypeID" class="chosen" runat="server" DataTextField="TypeName" DataValueField="DocumentTypeID" TabIndex="11" Width="260px" OnSelectedIndexChanged="ddlDocumentTypeID_SelectedIndexChanged" >
+                       <asp:ListItem Value="0">Не выбрано</asp:ListItem>
+                       <asp:ListItem Value="3">Паспорт (серия AN) образца 2004 года</asp:ListItem>
+                       <asp:ListItem Value="14">Биометрический паспорт (серия ID)</asp:ListItem>
+                   </asp:DropDownList>
+				<asp:RequiredFieldValidator ID="rfDocumentType" runat="server" ControlToValidate="ddlDocumentTypeID" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+                   </ContentTemplate></asp:UpdatePanel>  
+                   
+            </div>
+	        <div class="row">
+                   
+                   <span class="fio">Серия и номер:</span>
+				<asp:TextBox ID="tbDocumentSeries" ClientIDMode="Static" runat="server" class="form-control" TabIndex="12" OnTextChanged="tbDocumentSeries_TextChanged" ></asp:TextBox>
+				<asp:RequiredFieldValidator ID="rfDocumentSeries" runat="server" ControlToValidate="tbDocumentSeries" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+				<asp:RegularExpressionValidator ID="revDocumentSeries" runat="server" ErrorMessage="Ошибка!" ControlToValidate="tbDocumentSeries" ValidationExpression="[A-Z][A-Z]\d\d\d\d\d\d\d" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RegularExpressionValidator>
+                   
+			</div>
+               <div class="row">
+                  
+                   <span class="fio">Кем выдан:</span>
+				<asp:TextBox ID="tbIssueAuthority" runat="server" class="form-control" ValidationGroup="SaveCustomers" TabIndex="19" AutoCompleteType="Disabled"></asp:TextBox>
+				<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tbIssueAuthority" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+                   
+			</div>
+			<div class="row">
+                  
+                   <span class="fio">Дата выдачи:</span>
+				<asp:TextBox ID="tbIssueDate" runat="server" class="form-control" ClientIDMode="Static" TabIndex="20" onfocus="this.select();lcs(this)" onclick="event.cancelBubble=true;this.select();lcs(this)" AutoCompleteType="Disabled"></asp:TextBox>
+				<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbIssueDate" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+				<asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="tbIssueDate" ErrorMessage="dd.mm.yyyy" ValidationExpression="\d\d.\d\d.\d\d\d\d" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
+                   
+			</div>
+               <div class="row">
+                   
+                   <asp:RadioButtonList ID="rbtnlistValidTill" runat="server" AutoPostBack="True" OnSelectedIndexChanged="rbtnlistValidTill_SelectedIndexChanged">
+                       <asp:ListItem Selected="True">Дата окончания</asp:ListItem>
+                       <asp:ListItem>Бессрочный</asp:ListItem>
+                   </asp:RadioButtonList>
+                   <asp:TextBox ID="tbValidTill" runat="server" class="form-control" ClientIDMode="Static" TabIndex="20" onfocus="this.select();lcs(this)" onclick="event.cancelBubble=true;this.select();lcs(this)" AutoCompleteType="Disabled"></asp:TextBox>
+				<asp:RequiredFieldValidator ID="rfvValidTill" runat="server" ControlToValidate="tbValidTill" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+				<asp:RegularExpressionValidator ID="revValidTill" runat="server" ControlToValidate="tbValidTill" ErrorMessage="dd.mm.yyyy" ValidationExpression="\d\d.\d\d.\d\d\d\d" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
+                  
+               </div>
+               <div class="row"> 
+                  
+                   <span class="fio">Дата рождения:</span>
+				<asp:TextBox ID="tbDateOfBirth" runat="server" class="form-control" ClientIDMode="Static" TabIndex="13" onfocus="this.select();lcs(this)" onclick="event.cancelBubble=true;this.select();lcs(this)" AutoCompleteType="Disabled"></asp:TextBox>
+				<asp:RequiredFieldValidator ID="rfDateOfBirth" runat="server" ControlToValidate="tbDateOfBirth" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+			    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="tbDateOfBirth" ErrorMessage="dd.mm.yyyy" ValidationExpression="\d\d.\d\d.\d\d\d\d" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
+                  
+			</div>
+			
+			<div class="row">
+                  
+
+                   <span class="fio">Пол</span>
+                       <asp:UpdatePanel ID="UpdatePanel6" runat="server"><ContentTemplate>
+                       <asp:RadioButtonList ID="rbtSex" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="rbtSex_SelectedIndexChanged">
+					<asp:ListItem Selected="True">Мужской</asp:ListItem>
+					<asp:ListItem>Женский</asp:ListItem></asp:RadioButtonList>
+                       </ContentTemplate></asp:UpdatePanel>
+				
+                      
+				
+                     
+			</div>
+             <br /><br />
+            <div><b>Гражданство</b></div>
+              <div class="row">
+				<asp:RadioButtonList ID="rbtIsResident" runat="server" RepeatDirection="Horizontal" Visible="False">
+					<asp:ListItem Selected="True">Резидент</asp:ListItem>
+					<asp:ListItem>Неризидент</asp:ListItem>
+				</asp:RadioButtonList>
+			</div>
+								
+			<div class="row">
+                   <span class="fio">Страна:</span>
+				<asp:DropDownList ID="ddlNationalityID" runat="server" DataTextField="ShortName" DataValueField="CountryID" Visible="True" TabIndex="5" class="chosen"></asp:DropDownList>
+				<asp:RequiredFieldValidator ID="rfCountry" Visible="false" runat="server" ErrorMessage="Ошибка!" ControlToValidate="ddlNationalityID" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+			</div>
+
+               <br /><br />
+               <div><b>Место рождения</b></div>
+			<div class="row">
+                   <span class="fio">Страна:</span>
+                   <asp:DropDownList ID="ddlBirthCountryID" runat="server" DataTextField="ShortName" DataValueField="CountryID" Visible="True" TabIndex="21" class="chosen"></asp:DropDownList>
+				<asp:RequiredFieldValidator ID="rfBirthofCountry" Visible="false" runat="server" ControlToValidate="ddlBirthCountryID" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+
+			</div>
+			
+		   
+			<div class="row">
+                   <span class="fio">Нас.пункт:</span>
+                   <asp:DropDownList ID="ddlBirthCityName" runat="server" DataTextField="CityName" DataValueField="CityID" TabIndex="22" Visible="True" class="chosen"></asp:DropDownList>
+				<asp:RequiredFieldValidator ID="rfBirthCityName" Visible="false" runat="server" ControlToValidate="ddlBirthCityName" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+			</div>
+
+
+        </div>
+        <%--******************************************--%>
+        <div class="col-md-4">
+        
+               <div><b>Адрес по прописке</b></div>
+               <div class="row">
+                   <span class="fio">Страна:</span>
+				<asp:DropDownList ID="ddlRegistrationCountryID" runat="server" DataTextField="ShortName" DataValueField="CountryID" Visible="True" TabIndex="6" class="chosen"></asp:DropDownList>
+				<asp:RequiredFieldValidator ID="rfvRegistrationCountryID" runat="server" ErrorMessage="Ошибка!" ControlToValidate="ddlRegistrationCountryID" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+                  
+			</div>
+			<div class="row">
+                   <span class="fio">Нас.пункт:</span>
+				<asp:DropDownList ID="ddlRegistrationCityName" class="chosen" data-live-search="true" runat="server" DataTextField="CityName" DataValueField="CityID" TabIndex="7"></asp:DropDownList>
+				<asp:RequiredFieldValidator ID="rfvRegistrationCityName" runat="server" ErrorMessage="Ошибка!" ControlToValidate="ddlRegistrationCityName" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+                   
+			</div>
+			<div class="row">
+                   
+                   <span class="fio">Улица:</span>
+				<asp:TextBox ID="tbRegistrationStreet" runat="server" class="form-control" TabIndex="8" AutoCompleteType="Disabled"></asp:TextBox>
+				<asp:RequiredFieldValidator ID="rfvRegistrationStreet" runat="server" ErrorMessage="Ошибка!" ControlToValidate="tbRegistrationStreet" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+                   
+			</div>
+			<div class="row">
+                   
+                   <span class="fio">Дом:</span>
+				<asp:TextBox ID="tbRegistrationHouse" runat="server" class="form-control" TabIndex="9" AutoCompleteType="Disabled"></asp:TextBox>
+				<asp:RequiredFieldValidator ID="rfvRegistrationHouse" runat="server" ErrorMessage="Ошибка!" ControlToValidate="tbRegistrationHouse" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+			    <asp:RegularExpressionValidator ID="revRegistrationHouse" runat="server" ControlToValidate="tbRegistrationHouse" ErrorMessage="Ошибка!" ValidationExpression="^[а-яА-ЯёЁa-zA-Z0-9 -/.,]{0,10}$" CssClass="SaveCustomers" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
+			    
+               </div>
+			<div class="row">
+                  
+                   <span class="fio">Кв:</span>
+				<asp:TextBox ID="tbRegistrationFlat" runat="server" class="form-control" TabIndex="10" AutoCompleteType="Disabled"></asp:TextBox>
+			    <asp:RegularExpressionValidator ID="revRegistrationFlat" runat="server" ControlToValidate="tbRegistrationFlat" ErrorMessage="Ошибка!" ValidationExpression="^[а-яА-ЯёЁa-zA-Z0-9 -/.,]{0,10}$" CssClass="SaveCustomers" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
+                   
+			</div>
+			
+			
+			
+			
+			
+               <div><b>Адрес фактического проживания:</b><br /></div>
+               <div class="row">
+                   
+                   
+                   <asp:CheckBox ID="chkbxAsRegistration" runat="server" OnCheckedChanged="chkbxAsRegistration_CheckedChanged" Text="как в прописке" AutoPostBack="True" />
+                   
+			<div class="row">
+                   <span class="fio">Страна:</span>
+				<asp:DropDownList ID="ddlResidenceCountryID" runat="server" DataTextField="ShortName" DataValueField="CountryID" Visible="True" TabIndex="14" class="chosen"></asp:DropDownList>
+                   
+			</div>
+               <div class="row">
+                  
+                   <span class="fio">Нас.пункт:</span>
+				    <asp:DropDownList ID="ddlResidenceCityName" class="chosen" runat="server" DataTextField="CityName" DataValueField="CityID" TabIndex="15"></asp:DropDownList>
+				    <asp:RequiredFieldValidator ID="rfvResidenceCityName" runat="server" ControlToValidate="ddlResidenceCityName" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+                       
+			</div>
+               <div class="row">
+                   
+                   <span class="fio">Улица:</span>
+				<asp:TextBox ID="tbResidenceStreet" runat="server" class="form-control" TabIndex="16" AutoCompleteType="Disabled"></asp:TextBox>
+				<asp:RequiredFieldValidator ID="rfvResidenceStreet" runat="server" ControlToValidate="tbResidenceStreet" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+                   
+			</div>
+			<div class="row">
+                  
+                   <span class="fio">Дом:</span>
+				<asp:TextBox ID="tbResidenceHouse" runat="server" class="form-control" TabIndex="17" AutoCompleteType="Disabled"></asp:TextBox>
+				<asp:RequiredFieldValidator ID="rfvResidenceHouse" runat="server" ControlToValidate="tbResidenceHouse" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
+			    <asp:RegularExpressionValidator ID="revResidenceHouse" runat="server" ControlToValidate="tbResidenceHouse" CssClass="SaveCustomers" ErrorMessage="Ошибка!" ValidationExpression="^[а-яА-ЯёЁa-zA-Z0-9 -/.,]{0,10}$" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
+                  
+			</div>
+               <div class="row">
+                  
+                   <span class="fio">Кв:</span>
+				<asp:TextBox ID="tbResidenceFlat" runat="server" class="form-control" TabIndex="18" AutoCompleteType="Disabled"></asp:TextBox>
+			    <asp:RegularExpressionValidator ID="revResidenceFlat" runat="server" ControlToValidate="tbResidenceFlat" CssClass="SaveCustomers" ErrorMessage="Ошибка!" ValidationExpression="^[а-яА-ЯёЁa-zA-Z0-9 -/.,]{0,10}$" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
+                  
+			</div>
+
+        </div>
+       
+ </div>
+       <%--******************************************--%>
+</div>	
+			
+			
+		     
+			
+		
+	
+
+	<asp:Panel ID="pnlSaveCustomer" runat="server">
+         <asp:RadioButton ID="rbtnClientType1" runat="server" Text="Клиент" Checked="True" ClientIDMode="Static" GroupName="clientType" />
+ <asp:RadioButton ID="rbtnClientType2" runat="server" Text="Поручитель" ClientIDMode="Static" GroupName="clientType" Enabled="False" />
+ <asp:RadioButton ID="rbtnClientType3" runat="server" Text="Залогодатель" ClientIDMode="Static" GroupName="clientType" Enabled="False" />
+ <br /><br />
+		<table>
+			<tr>
+				<td>&nbsp;</td>
+				<td><asp:Button ID="btnSaveCustomer" runat="server" Text="Сохранить" ValidationGroup="SaveCustomers" class="btn btn-primary" OnClick="btnSaveCustomer_Click" ClientIDMode="Static" /></td>
+				<td>&nbsp;</td>
+				<td><asp:Button ID="btnCancel" runat="server" Text="Отменить" class="btn btn-dark" OnClick="btnCancel_Click" /></td>
+				<td>&nbsp;</td>
+				<td></td>
+			</tr>
+		</table>
+	</asp:Panel>
+
+</asp:Panel>
+
+    </div>
+
 </div>
            
                    
@@ -1137,7 +1493,7 @@
 		</asp:Panel>
 
 		
-<div data-content="main" class='tab-content'>
+<div data-content="tabmain" class='tab-content'>
 
 		<br />
 		<asp:Panel ID="pnlMenuRequest" runat="server" ClientIDMode="Static">
@@ -1180,7 +1536,7 @@
 
     
 					
-					<asp:Button ID="btnNewRequest" runat="server" Text="Новая заявка" class="btn btn-primary" OnClick="btnNewRequest_Click1" />
+					<asp:Button ID="btnNewRequest" runat="server" Text="Новая заявка" class="btn btn-primary" OnClick="btnNewRequest_Click" />
 					
 					<asp:Button ID="btnSendCreditRequest" runat="server" Text="Сохранить" class="btn btn-success" OnClick="btnSendCreditRequest_Click" ValidationGroup="SaveRequest" Visible="False" onClientclick="myComment()"/>
 					
@@ -1192,315 +1548,7 @@
 	</asp:Panel>
 
 
-	<asp:Panel ID="pnlMenuCustomer" runat="server" Visible="False" CssClass="panels">
-        <asp:Button ID="btnBackToCreditForm" runat="server" Text="Назад" class="btn btn-primary" OnClick="btnBackToCreditForm_Click" />
-        <br />
-         <div>
-             <p>
-             <span class="fio">ИНН:</span>
-			 <asp:TextBox ID="tbSearchINN" runat="server" class="form-control" ClientIDMode="Static"></asp:TextBox>
-			 <asp:RequiredFieldValidator ID="rfSearchCustomer" runat="server" ControlToValidate="tbSearchINN" ErrorMessage="Ошибка!" ValidationGroup="SearchCustomer"></asp:RequiredFieldValidator>
-             </p>
-		</div>
-        
-        <div>
-            <p>
-            <span class="fio">Серия№:</span>
-            <asp:TextBox ID="tbSerialN"  runat="server" class="form-control" ClientIDMode="Static"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="rfSerialN" runat="server" ControlToValidate="tbSerialN" ErrorMessage="Ошибка!" ValidationGroup="SearchCustomer"></asp:RequiredFieldValidator>
-            </p>
-        </div>
-        <div>
-            <asp:Button ID="btnSearchClient" runat="server" Text="Поиск" class="btn btn-primary" OnClick="btnSearchClient_Click" ValidationGroup="SearchCustomer" />
-            <asp:Button ID="btnNewCustomer" runat="server" Text="Новый клиент" class="btn btn-primary" OnClick="btnNewCustomer_Click" />
-            <asp:Button ID="btnCredit" runat="server" Text="Выбрать клиента" Enabled="False" class="btn btn-primary" OnClick="btnCredit_Click" Visible="False" />
-        </div>
-        <div>
-            <asp:HiddenField ID="hfChooseClient" runat="server" />
-            <asp:HiddenField ID="hfUserID" runat="server" />
-	    	<asp:HiddenField ID="hfCustomerID" runat="server" Value="noselect" />
-			<asp:HiddenField ID="hfGuarantorID" runat="server" Value="noselect" />
-            <asp:HiddenField ID="hfPledgerID" runat="server" Value="noselect" />
-			<asp:HiddenField ID="hfCreditID" runat="server" />
-			<asp:HiddenField ID="hfRequestID" runat="server" />
-            <asp:HiddenField ID="hfRequestStatus" runat="server" />
-            <asp:HiddenField ID="hfAgentRoleID" runat="server" />
-            <asp:HiddenField ID="hfRequestIDDel" runat="server" Value="-1" />
-         </div>      
-                    
 
-	</asp:Panel>
-  <%--  <asp:UpdatePanel ID="UpdatePanel7" runat="server">
-        <ContentTemplate>--%>
-
-	<asp:Panel ID="pnlCustomer" runat="server" Visible="False" CssClass="panels">
-        
-		<h3>Форма клиента</h3>
- <div class="row">
-        <%--******************************************--%>
-         <asp:HiddenField ID="hfIsNewCustomer" runat="server" />
-         <div class="col-md-4">
-             <div><b>Данные клиента</b></div>
-             <div class="row">  
-                    <span class="fio">Фамилия:</span>
-					<asp:TextBox ID="tbSurname" runat="server" TabIndex="1" class="form-control" AutoCompleteType="Disabled" ></asp:TextBox>
-					<asp:RequiredFieldValidator ID="rfSurname" runat="server" ControlToValidate="tbSurname" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="tbSurname" ErrorMessage="в фио все буквы должны быть на русском" ValidationExpression="^[а-яА-ЯёЁъЪ -]{1,32}$" CssClass="SaveCustomers" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
-                   
-			 </div>
-             <div class="row">
-                   
-                    <span class="fio">Имя:</span>
-					<asp:TextBox ID="tbCustomerName" runat="server" TabIndex="2" class="form-control" AutoCompleteType="Disabled"></asp:TextBox>
-					<asp:RequiredFieldValidator ID="rfCustomerName" runat="server" ControlToValidate="tbCustomerName" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="tbCustomerName" ErrorMessage="в фио все буквы должны быть на русском" ValidationExpression="^[а-яА-ЯёЁъЪ -]{1,32}$" CssClass="SaveCustomers" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
-                   
-             </div>
-             <div class="row">
-                 
-                 <span class="fio">Отчество:</span>
-				 <asp:TextBox ID="tbOtchestvo" runat="server" TabIndex="3" class="form-control" AutoCompleteType="Disabled"></asp:TextBox>
-               
-             </div>
-
-             <div class="row">
-        
-                
-                 <span class="fio">ИНН:</span>
-        <asp:UpdatePanel ID="UpdatePanel3" runat="server"><ContentTemplate>
-					<asp:TextBox ID="tbIdentificationNumber" ClientIDMode="Static" runat="server" class="form-control" TabIndex="4" OnTextChanged="tbIdentificationNumber_TextChanged" ></asp:TextBox>
-					<asp:RequiredFieldValidator ID="rfIdentificationNumber" runat="server" ErrorMessage="Ошибка!" ControlToValidate="tbIdentificationNumber" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-					<asp:RegularExpressionValidator ID="rfedentificationNumber" runat="server" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers" ControlToValidate="tbIdentificationNumber" ValidationExpression="\d\d\d\d\d\d\d\d\d\d\d\d\d\d"></asp:RegularExpressionValidator>
-                    </ContentTemplate></asp:UpdatePanel>
-                
-			 </div>
-             <div class="row">
-                 
-                    <span class="fio">Телефон:</span>
-                    <asp:TextBox ID="tbContactPhone" runat="server" ClientIDMode="Static" class="form-control" AutoCompleteType="Disabled" ></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvContactPhone" runat="server" ControlToValidate="tbContactPhone" CssClass="SaveCustomers" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers"></asp:RequiredFieldValidator>
-                 
-                    &nbsp;<asp:RegularExpressionValidator ID="revContactPhone" runat="server" ControlToValidate="tbContactPhone" CssClass="SaveCustomers" ErrorMessage="+996 ### ######" ValidationExpression="^\+\d{3}\ \d{3}\ \d{6}$" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
-                 
-			</div>
-         </div>
-         <%--******************************************--%>
-         <div class="col-md-4">
-             <div><b>Паспортные данные</b></div>
-             <div class="row">
-                 <span class="fio">Вид паспорта:</span>
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server"><ContentTemplate>
-                    	<asp:DropDownList ID="ddlDocumentTypeID" class="chosen" runat="server" DataTextField="TypeName" DataValueField="DocumentTypeID" TabIndex="11" Width="260px" OnSelectedIndexChanged="ddlDocumentTypeID_SelectedIndexChanged" >
-                        <asp:ListItem Value="3">Паспорт (серия AN) образца 2004 года</asp:ListItem>
-                        <asp:ListItem Value="14">Биометрический паспорт (серия ID)</asp:ListItem>
-                    </asp:DropDownList>
-					<asp:RequiredFieldValidator ID="rfDocumentType" runat="server" ControlToValidate="ddlDocumentTypeID" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-                    </ContentTemplate></asp:UpdatePanel>
-                    
-             </div>
-		        <div class="row">
-                    
-                    <span class="fio">Серия и номер:</span>
-					<asp:TextBox ID="tbDocumentSeries" ClientIDMode="Static" runat="server" class="form-control" TabIndex="12" OnTextChanged="tbDocumentSeries_TextChanged" ></asp:TextBox>
-					<asp:RequiredFieldValidator ID="rfDocumentSeries" runat="server" ControlToValidate="tbDocumentSeries" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-					<asp:RegularExpressionValidator ID="revDocumentSeries" runat="server" ErrorMessage="Ошибка!" ControlToValidate="tbDocumentSeries" ValidationExpression="[A-Z][A-Z]\d\d\d\d\d\d\d" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RegularExpressionValidator>
-                    
-				</div>
-                <div class="row">
-                   
-                    <span class="fio">Кем выдан:</span>
-					<asp:TextBox ID="tbIssueAuthority" runat="server" class="form-control" ValidationGroup="SaveCustomers" TabIndex="19" AutoCompleteType="Disabled"></asp:TextBox>
-					<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tbIssueAuthority" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-                    
-				</div>
-				<div class="row">
-                   
-                    <span class="fio">Дата выдачи:</span>
-					<asp:TextBox ID="tbIssueDate" runat="server" class="form-control" ClientIDMode="Static" TabIndex="20" onfocus="this.select();lcs(this)" onclick="event.cancelBubble=true;this.select();lcs(this)" AutoCompleteType="Disabled"></asp:TextBox>
-					<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbIssueDate" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-					<asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="tbIssueDate" ErrorMessage="dd.mm.yyyy" ValidationExpression="\d\d.\d\d.\d\d\d\d" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
-                    
-				</div>
-                <div class="row">
-                    
-                    <asp:RadioButtonList ID="rbtnlistValidTill" runat="server" AutoPostBack="True" OnSelectedIndexChanged="rbtnlistValidTill_SelectedIndexChanged">
-                        <asp:ListItem Selected="True">Дата окончания</asp:ListItem>
-                        <asp:ListItem>Бессрочный</asp:ListItem>
-                    </asp:RadioButtonList>
-                    <asp:TextBox ID="tbValidTill" runat="server" class="form-control" ClientIDMode="Static" TabIndex="20" onfocus="this.select();lcs(this)" onclick="event.cancelBubble=true;this.select();lcs(this)" AutoCompleteType="Disabled"></asp:TextBox>
-					<asp:RequiredFieldValidator ID="rfvValidTill" runat="server" ControlToValidate="tbValidTill" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-					<asp:RegularExpressionValidator ID="revValidTill" runat="server" ControlToValidate="tbValidTill" ErrorMessage="dd.mm.yyyy" ValidationExpression="\d\d.\d\d.\d\d\d\d" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
-                   
-                </div>
-                <div class="row"> 
-                   
-                    <span class="fio">Дата рождения:</span>
-					<asp:TextBox ID="tbDateOfBirth" runat="server" class="form-control" ClientIDMode="Static" TabIndex="13" onfocus="this.select();lcs(this)" onclick="event.cancelBubble=true;this.select();lcs(this)" AutoCompleteType="Disabled"></asp:TextBox>
-					<asp:RequiredFieldValidator ID="rfDateOfBirth" runat="server" ControlToValidate="tbDateOfBirth" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-				    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="tbDateOfBirth" ErrorMessage="dd.mm.yyyy" ValidationExpression="\d\d.\d\d.\d\d\d\d" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
-                   
-				</div>
-				
-				<div class="row">
-                   
-
-                    <span class="fio">Пол</span>
-                        <asp:UpdatePanel ID="UpdatePanel6" runat="server"><ContentTemplate>
-                        <asp:RadioButtonList ID="rbtSex" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="rbtSex_SelectedIndexChanged">
-						<asp:ListItem Selected="True">Мужской</asp:ListItem>
-						<asp:ListItem>Женский</asp:ListItem></asp:RadioButtonList>
-                        </ContentTemplate></asp:UpdatePanel>
-					
-                       
-					
-                      
-				</div>
-              <br /><br />
-             <div><b>Гражданство</b></div>
-               <div class="row">
-					<asp:RadioButtonList ID="rbtIsResident" runat="server" RepeatDirection="Horizontal" Visible="False">
-						<asp:ListItem Selected="True">Резидент</asp:ListItem>
-						<asp:ListItem>Неризидент</asp:ListItem>
-					</asp:RadioButtonList>
-				</div>
-									
-				<div class="row">
-                    <span class="fio">Страна:</span>
-					<asp:DropDownList ID="ddlNationalityID" runat="server" DataTextField="ShortName" DataValueField="CountryID" Visible="True" TabIndex="5" class="chosen"></asp:DropDownList>
-					<asp:RequiredFieldValidator ID="rfCountry" Visible="false" runat="server" ErrorMessage="Ошибка!" ControlToValidate="ddlNationalityID" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-				</div>
-
-                <br /><br />
-                <div><b>Место рождения</b></div>
-				<div class="row">
-                    <span class="fio">Страна:</span>
-                    <asp:DropDownList ID="ddlBirthCountryID" runat="server" DataTextField="ShortName" DataValueField="CountryID" Visible="True" TabIndex="21" class="chosen"></asp:DropDownList>
-					<asp:RequiredFieldValidator ID="rfBirthofCountry" Visible="false" runat="server" ControlToValidate="ddlBirthCountryID" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-
-				</div>
-				
-			   
-				<div class="row">
-                    <span class="fio">Нас.пункт:</span>
-                    <asp:DropDownList ID="ddlBirthCityName" runat="server" DataTextField="CityName" DataValueField="CityID" TabIndex="22" Visible="True" class="chosen"></asp:DropDownList>
-					<asp:RequiredFieldValidator ID="rfBirthCityName" Visible="false" runat="server" ControlToValidate="ddlBirthCityName" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-				</div>
-
-
-         </div>
-         <%--******************************************--%>
-         <div class="col-md-4">
-         
-                <div><b>Адрес по прописке</b></div>
-                <div class="row">
-                    <span class="fio">Страна:</span>
-					<asp:DropDownList ID="ddlRegistrationCountryID" runat="server" DataTextField="ShortName" DataValueField="CountryID" Visible="True" TabIndex="6" class="chosen"></asp:DropDownList>
-					<asp:RequiredFieldValidator ID="rfvRegistrationCountryID" runat="server" ErrorMessage="Ошибка!" ControlToValidate="ddlRegistrationCountryID" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-                   
-				</div>
-				<div class="row">
-                    <span class="fio">Нас.пункт:</span>
-					<asp:DropDownList ID="ddlRegistrationCityName" class="chosen" data-live-search="true" runat="server" DataTextField="CityName" DataValueField="CityID" TabIndex="7"></asp:DropDownList>
-					<asp:RequiredFieldValidator ID="rfvRegistrationCityName" runat="server" ErrorMessage="Ошибка!" ControlToValidate="ddlRegistrationCityName" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-                    
-				</div>
-				<div class="row">
-                    
-                    <span class="fio">Улица:</span>
-					<asp:TextBox ID="tbRegistrationStreet" runat="server" class="form-control" TabIndex="8" AutoCompleteType="Disabled"></asp:TextBox>
-					<asp:RequiredFieldValidator ID="rfvRegistrationStreet" runat="server" ErrorMessage="Ошибка!" ControlToValidate="tbRegistrationStreet" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-                    
-				</div>
-				<div class="row">
-                    
-                    <span class="fio">Дом:</span>
-					<asp:TextBox ID="tbRegistrationHouse" runat="server" class="form-control" TabIndex="9" AutoCompleteType="Disabled"></asp:TextBox>
-					<asp:RequiredFieldValidator ID="rfvRegistrationHouse" runat="server" ErrorMessage="Ошибка!" ControlToValidate="tbRegistrationHouse" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-				    <asp:RegularExpressionValidator ID="revRegistrationHouse" runat="server" ControlToValidate="tbRegistrationHouse" ErrorMessage="Ошибка!" ValidationExpression="^[а-яА-ЯёЁa-zA-Z0-9 -/.,]{0,10}$" CssClass="SaveCustomers" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
-				    
-                </div>
-				<div class="row">
-                   
-                    <span class="fio">Кв:</span>
-					<asp:TextBox ID="tbRegistrationFlat" runat="server" class="form-control" TabIndex="10" AutoCompleteType="Disabled"></asp:TextBox>
-				    <asp:RegularExpressionValidator ID="revRegistrationFlat" runat="server" ControlToValidate="tbRegistrationFlat" ErrorMessage="Ошибка!" ValidationExpression="^[а-яА-ЯёЁa-zA-Z0-9 -/.,]{0,10}$" CssClass="SaveCustomers" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
-                    
-				</div>
-				
-				
-				
-				
-				
-                <div><b>Адрес фактического проживания:</b><br /></div>
-                <div class="row">
-                    
-                    
-                    <asp:CheckBox ID="chkbxAsRegistration" runat="server" OnCheckedChanged="chkbxAsRegistration_CheckedChanged" Text="как в прописке" AutoPostBack="True" />
-                    
-				<div class="row">
-                    <span class="fio">Страна:</span>
-					<asp:DropDownList ID="ddlResidenceCountryID" runat="server" DataTextField="ShortName" DataValueField="CountryID" Visible="True" TabIndex="14" class="chosen"></asp:DropDownList>
-                    
-				</div>
-                <div class="row">
-                   
-                    <span class="fio">Нас.пункт:</span>
-					    <asp:DropDownList ID="ddlResidenceCityName" class="chosen" runat="server" DataTextField="CityName" DataValueField="CityID" TabIndex="15"></asp:DropDownList>
-					    <asp:RequiredFieldValidator ID="rfvResidenceCityName" runat="server" ControlToValidate="ddlResidenceCityName" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-                        
-				</div>
-                <div class="row">
-                    
-                    <span class="fio">Улица:</span>
-					<asp:TextBox ID="tbResidenceStreet" runat="server" class="form-control" TabIndex="16" AutoCompleteType="Disabled"></asp:TextBox>
-					<asp:RequiredFieldValidator ID="rfvResidenceStreet" runat="server" ControlToValidate="tbResidenceStreet" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-                    
-				</div>
-				<div class="row">
-                   
-                    <span class="fio">Дом:</span>
-					<asp:TextBox ID="tbResidenceHouse" runat="server" class="form-control" TabIndex="17" AutoCompleteType="Disabled"></asp:TextBox>
-					<asp:RequiredFieldValidator ID="rfvResidenceHouse" runat="server" ControlToValidate="tbResidenceHouse" ErrorMessage="Ошибка!" ValidationGroup="SaveCustomers" CssClass="SaveCustomers"></asp:RequiredFieldValidator>
-				    <asp:RegularExpressionValidator ID="revResidenceHouse" runat="server" ControlToValidate="tbResidenceHouse" CssClass="SaveCustomers" ErrorMessage="Ошибка!" ValidationExpression="^[а-яА-ЯёЁa-zA-Z0-9 -/.,]{0,10}$" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
-                   
-				</div>
-                <div class="row">
-                   
-                    <span class="fio">Кв:</span>
-					<asp:TextBox ID="tbResidenceFlat" runat="server" class="form-control" TabIndex="18" AutoCompleteType="Disabled"></asp:TextBox>
-				    <asp:RegularExpressionValidator ID="revResidenceFlat" runat="server" ControlToValidate="tbResidenceFlat" CssClass="SaveCustomers" ErrorMessage="Ошибка!" ValidationExpression="^[а-яА-ЯёЁa-zA-Z0-9 -/.,]{0,10}$" ValidationGroup="SaveCustomers"></asp:RegularExpressionValidator>
-                   
-				</div>
-
-         </div>
-        
-  </div>
-        <%--******************************************--%>
- </div>	
-				
-				
-			     
-				
-			
-		
-
-		<asp:Panel ID="pnlSaveCustomer" runat="server">
-			<table>
-				<tr>
-					<td>&nbsp;</td>
-					<td><asp:Button ID="btnSaveCustomer" runat="server" Text="Сохранить" ValidationGroup="SaveCustomers" class="btn btn-primary" OnClick="btnSaveCustomer_Click" /></td>
-					<td>&nbsp;</td>
-					<td><asp:Button ID="btnCancel" runat="server" Text="Отменить" class="btn btn-dark" OnClick="btnCancel_Click" /></td>
-					<td>&nbsp;</td>
-					<td></td>
-				</tr>
-			</table>
-		</asp:Panel>
-
-	</asp:Panel>
-	
-       <%-- </ContentTemplate>
-    </asp:UpdatePanel>--%>
 
 
 </asp:Panel> <!--pnlUser-->
@@ -1593,14 +1641,18 @@
 
         function onTabClick($targ) {
             var tabName = $targ.attr('href').replace('#', '');
-            if (tabName == 'main')
+            if (tabName == 'tabmain')
             {
                 sessionStorage.setItem('tab', '1');
             }
-            if (tabName == 'remediation')
+            if (tabName == 'tabdocuments')
             {
                 sessionStorage.setItem('tab', '2');
             }
+            if (tabName == 'tabcustomer') {
+                sessionStorage.setItem('tab', '3');
+            }
+
             $('.tabs li a').removeClass('selected');
             $targ.addClass('selected');
             $('[data-content]').removeClass('fade-in').hide();
@@ -1609,13 +1661,155 @@
             $(targetContent).addClass('fade-in').show();
         }
 
+        $('#btnSaveCustomer').click(function () {
+            //alert("ok");
+            sessionStorage.setItem('tab', '1');
+            $('.tabs li a').removeClass('selected');
+            $targ.addClass('selected');
+            $('[data-content]').removeClass('fade-in').hide();
+
+            var targetContent = '[data-content=' + 'tabmain' + ']';
+            $(targetContent).addClass('fade-in').show();
+        });
+
+        $('#btnCustomerSearch').click(function () {
+            //alert("ok");
+            sessionStorage.setItem('tab', '2');
+            $('.tabs li a').removeClass('selected');
+            $targ.addClass('selected');
+            $('[data-content]').removeClass('fade-in').hide();
+
+            var targetContent = '[data-content=' + 'tabmain' + ']';
+            $(targetContent).addClass('fade-in').show();
+        });
+
     });
 </script>
 
 <script>
+
+
+
+    $(document).ready(function () {
+        $("#customer1").click(function () {
+
+            $('.tabs li a').removeClass('selected');
+            $('.tabs li a').addClass('selected');
+            $('[data-content]').removeClass('fade-in').hide();
+
+            var targetContent = '[data-content=' + 'tabcustomer' + ']';
+            $(targetContent).addClass('fade-in').show();
+
+            sessionStorage.setItem('tab', '3');
+            var tab = sessionStorage.getItem('tab');
+            if (tab == 3) {
+                $('.tabs li a').removeClass('active');
+                $('.tabs li a').removeClass('selected');
+                //var li = $('.tabs li a').first();
+                var li = $('.tabs li');
+                var next = $('.tabs li:nth-child(3) a')
+                next.addClass('active selected');
+
+
+                //next.style.backgroundColor = '#eee';
+                //$('[data-content]').removeClass('fade-in').hide();
+
+                //var targetContent = '[data-content=customer]';
+                //$(targetContent).addClass('fade-in').show();
+            }
+
+            document.getElementById('hfChooseClient').value = 'Выбрать клиента';
+            $('#rbtnClientType1').prop('checked', true);
+        });
+
+    })
+
+
+    $(document).ready(function () {
+        $("#customer2").click(function () {
+
+            $('.tabs li a').removeClass('selected');
+            $('.tabs li a').addClass('selected');
+            $('[data-content]').removeClass('fade-in').hide();
+
+            var targetContent = '[data-content=' + 'tabcustomer' + ']';
+            $(targetContent).addClass('fade-in').show();
+
+            sessionStorage.setItem('tab', '3');
+            var tab = sessionStorage.getItem('tab');
+            if (tab == 3) {
+                $('.tabs li a').removeClass('active');
+                $('.tabs li a').removeClass('selected');
+                //var li = $('.tabs li a').first();
+                var li = $('.tabs li');
+                var next = $('.tabs li:nth-child(3) a')
+                next.addClass('active selected');
+
+
+                //next.style.backgroundColor = '#eee';
+                //$('[data-content]').removeClass('fade-in').hide();
+
+                //var targetContent = '[data-content=customer]';
+                //$(targetContent).addClass('fade-in').show();
+            }
+
+            document.getElementById('hfChooseClient').value = 'Выбрать поручителя';
+            $('#rbtnClientType2').prop('checked', true);
+        });
+
+    })
+
+
+
+    $(document).ready(function () {
+        $("#customer3").click(function () {
+
+            $('.tabs li a').removeClass('selected');
+            $('.tabs li a').addClass('selected');
+            $('[data-content]').removeClass('fade-in').hide();
+
+            var targetContent = '[data-content=' + 'tabcustomer' + ']';
+            $(targetContent).addClass('fade-in').show();
+
+            sessionStorage.setItem('tab', '3');
+            var tab = sessionStorage.getItem('tab');
+            if (tab == 3) {
+                $('.tabs li a').removeClass('active');
+                $('.tabs li a').removeClass('selected');
+                //var li = $('.tabs li a').first();
+                var li = $('.tabs li');
+                var next = $('.tabs li:nth-child(3) a')
+                next.addClass('active selected');
+
+
+                //next.style.backgroundColor = '#eee';
+                //$('[data-content]').removeClass('fade-in').hide();
+
+                //var targetContent = '[data-content=customer]';
+                //$(targetContent).addClass('fade-in').show();
+            }
+
+            document.getElementById('hfChooseClient').value = 'Выбрать залогодателя';
+            $('#rbtnClientType3').prop('checked', true);
+        });
+
+    })
+
+
+
+
     $(document).ready(function () {
         //this.Session["description"] = description;    
         //var tab = '@Session["tab"]';
+        var targetContent = '[data-content=tabmain]';
+        $(targetContent).addClass('fade-in').show();
+
+        var targetContent = '[data-content=tabdocuments]';
+        $(targetContent).addClass('fade-in').hide();
+
+        var targetContent = '[data-content=tabcustomer]';
+        $(targetContent).addClass('fade-in').hide();
+
         var tab = sessionStorage.getItem('tab');
         if (tab == 2) {
 
@@ -1630,13 +1824,82 @@
             //next.style.backgroundColor = '#eee';
             $('[data-content]').removeClass('fade-in').hide();
 
-            var targetContent = '[data-content=remediation]';
+            var targetContent = '[data-content=tabdocuments]';
+            $(targetContent).addClass('fade-in').show();
+
+
+
+
+        } else if (tab == 1) {
+
+            $('.tabs li a').removeClass('active');
+            $('.tabs li a').removeClass('selected');
+            //var li = $('.tabs li a').first();
+            var li = $('.tabs li');
+            var next = $('.tabs li:nth-child(1) a')
+            next.addClass('active selected');
+
+
+            //next.style.backgroundColor = '#eee';
+            $('[data-content]').removeClass('fade-in').hide();
+
+            var targetContent = '[data-content=tabmain]';
+            $(targetContent).addClass('fade-in').show();
+
+        } else if (tab == 3) {
+            $('.tabs li a').removeClass('active');
+            $('.tabs li a').removeClass('selected');
+            //var li = $('.tabs li a').first();
+            var li = $('.tabs li');
+            var next = $('.tabs li:nth-child(3) a')
+            next.addClass('active selected');
+
+
+            //next.style.backgroundColor = '#eee';
+            $('[data-content]').removeClass('fade-in').hide();
+
+            var targetContent = '[data-content=tabcustomer]';
+            $(targetContent).addClass('fade-in').show();
+        }
+    })
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        //this.Session["description"] = description;
+        //var tab = '@Session["tab"]';
+
+        var targetContent = '[data-content=tabmain]';
+        $(targetContent).addClass('fade-in').show();
+
+        var targetContent = '[data-content=tabdocuments]';
+        $(targetContent).addClass('fade-in').hide();
+
+        var targetContent = '[data-content=tabcustomer]';
+        $(targetContent).addClass('fade-in').hide();
+
+        var tab = sessionStorage.getItem('tab');
+        if (tab == 2) {
+
+            $('.tabs li a').removeClass('active');
+            $('.tabs li a').removeClass('selected');
+            //var li = $('.tabs li a').first();
+            var li = $('.tabs li');
+            var next = $('.tabs li:nth-child(2) a')
+            next.addClass('active selected');
+
+
+            //next.style.backgroundColor = '#eee';
+            $('[data-content]').removeClass('fade-in').hide();
+
+            var targetContent = '[data-content=tabdocuments]';
             $(targetContent).addClass('fade-in').show();
 
             
             
 
-        } else
+        } else if (tab == 1)
         {
 
             $('.tabs li a').removeClass('active');
@@ -1650,9 +1913,23 @@
             //next.style.backgroundColor = '#eee';
             $('[data-content]').removeClass('fade-in').hide();
 
-            var targetContent = '[data-content=main]';
+            var targetContent = '[data-content=tabmain]';
             $(targetContent).addClass('fade-in').show();
             
+        } else if (tab == 3) {
+            $('.tabs li a').removeClass('active');
+            $('.tabs li a').removeClass('selected');
+            //var li = $('.tabs li a').first();
+            var li = $('.tabs li');
+            var next = $('.tabs li:nth-child(3) a')
+            next.addClass('active selected');
+
+
+            //next.style.backgroundColor = '#eee';
+            $('[data-content]').removeClass('fade-in').hide();
+
+            var targetContent = '[data-content=tabcustomer]';
+            $(targetContent).addClass('fade-in').show();
         }
     })   
 

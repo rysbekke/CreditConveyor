@@ -15,6 +15,7 @@ using System.Drawing;
 using System.Web.Helpers;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using Zamat;
+using System.Data.Entity;
 
 namespace СreditСonveyor.Account
 {
@@ -313,7 +314,11 @@ namespace СreditСonveyor.Account
         //Разблокировка логов пользователя
         public void logAuthUnBlock() 
         {
-            string sqlExpression = "update [CreditConveyorWF].[dbo].[LogAuthorization] set IsBlocked = 0 where IsBlocked = 1 and UserName = '" + Email.Text.Trim() + "'";
+            //SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(connectionStringZ);
+            //string database = builder.InitialCatalog;
+
+            //string sqlExpression = "update ["+ database + "].[dbo].[LogAuthorization] set IsBlocked = 0 where IsBlocked = 1 and UserName = '" + Email.Text.Trim() + "'";
+            string sqlExpression = "update [dbo].[LogAuthorization] set IsBlocked = 0 where IsBlocked = 1 and UserName = '" + Email.Text.Trim() + "'";
 
             using (SqlConnection connection = new SqlConnection(connectionStringZ))
             {
@@ -421,35 +426,37 @@ namespace СreditСonveyor.Account
             {
                 var lst = db.LogAuthorizations.Where(x => x.UserName == username && x.Note == "unsuccessful").ToList().LastOrDefault();
                 var now = DateTime.Now;
-
-                TimeSpan elapsed = (TimeSpan) (DateTime.Now - lst.DateOfFailedAuth);
-                
-                //txtDays.Text = elapsed.TotalDays.ToString();
-                //txtHours.Text = elapsed.TotalHours.ToString();
-                //txtMinutes.Text = elapsed.TotalMinutes.ToString();
-
-                //var z = (now - lst.DateOfFailedAuth);
-                if (elapsed.TotalMinutes > 1) //Таймер времени
-                {
-                    //var lst = dbRWZ.Users2s.Where(r => r.UserName.Trim() == tbUserName.Text.Trim()).FirstOrDefault();
-                    //usr2.FirstOrDefault().isBlocked = false;
-                    //dbRWZ.Users2s.Context.SubmitChanges();
-
-                    unBlockUser(); //разблокировка пользователя
-                    logAuthUnBlock(); //раблокировка логов
-
-                    LogAuthorization logAuth = new LogAuthorization()
+                    if (lst != null)
                     {
-                        UserName = lst.UserName,
-                        DateOfFailedAuth = DateTime.Now,
-                        IsBlocked = 0,
-                        Note = "" // Session["UserName"] as string
-                    };
-                    dbRWZ.LogAuthorizations.InsertOnSubmit(logAuth);
-                    dbRWZ.LogAuthorizations.Context.SubmitChanges();
-                }
-                else
-                return 2; //пользователь блокирован
+                        TimeSpan elapsed = (TimeSpan)(DateTime.Now - lst.DateOfFailedAuth);
+
+                        //txtDays.Text = elapsed.TotalDays.ToString();
+                        //txtHours.Text = elapsed.TotalHours.ToString();
+                        //txtMinutes.Text = elapsed.TotalMinutes.ToString();
+
+                        //var z = (now - lst.DateOfFailedAuth);
+                        if (elapsed.TotalMinutes > 1) //Таймер времени
+                        {
+                            //var lst = dbRWZ.Users2s.Where(r => r.UserName.Trim() == tbUserName.Text.Trim()).FirstOrDefault();
+                            //usr2.FirstOrDefault().isBlocked = false;
+                            //dbRWZ.Users2s.Context.SubmitChanges();
+
+                            unBlockUser(); //разблокировка пользователя
+                            logAuthUnBlock(); //раблокировка логов
+
+                            LogAuthorization logAuth = new LogAuthorization()
+                            {
+                                UserName = lst.UserName,
+                                DateOfFailedAuth = DateTime.Now,
+                                IsBlocked = 0,
+                                Note = "" // Session["UserName"] as string
+                            };
+                            dbRWZ.LogAuthorizations.InsertOnSubmit(logAuth);
+                            dbRWZ.LogAuthorizations.Context.SubmitChanges();
+                        }
+                        else
+                            return 2; //пользователь блокирован
+                    }
             }
             if (usr.Count > 0)
             {
@@ -485,9 +492,13 @@ namespace СreditСonveyor.Account
             dbdataDataContext dbRWZ = new dbdataDataContext(connectionStringZ);
             var usr = (from u in dbRWZ.Users2s where ((u.UserName == username)) select u).ToList();
 
+            //SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(connectionStringZ);
+            //string database = builder.InitialCatalog;
+
             if (usrOB.Count > 0)
             {
-                string sqlExpression = "update [CreditConveyorWF].[onlineCredits].[Users2] set Password = '" + usrOB.FirstOrDefault().Password + "' where UserName = '" + usr.FirstOrDefault().UserName + "'";
+                //string sqlExpression = "update ["+ database + "].[onlineCredits].[Users2] set Password = '" + usrOB.FirstOrDefault().Password + "' where UserName = '" + usr.FirstOrDefault().UserName + "'";
+                string sqlExpression = "update [onlineCredits].[Users2] set Password = '" + usrOB.FirstOrDefault().Password + "' where UserName = '" + usr.FirstOrDefault().UserName + "'";
 
                 using (SqlConnection connection = new SqlConnection(connectionStringZ))
                 {

@@ -35,6 +35,7 @@ using iTextSharp.text;
 using ListItem = System.Web.UI.WebControls.ListItem;
 using Zamat;
 using Region = Zamat.Region;
+using static СreditСonveyor.Data.GeneralController;
 
 namespace СreditСonveyor.Partners
 {
@@ -345,15 +346,16 @@ namespace СreditСonveyor.Partners
             return Convert.ToDateTime(o).Date.ToString("yyyy.MM.dd");
         }
 
-        protected void btnSearchClient_Click(object sender, EventArgs e)
+        protected void SearchClientWithInnDocSeriesNumber()
         {
+            btnSaveCustomer.Text = "Прикрепить";
             disableCustomerFields();
             dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
             //var query = (from u in dbR.Customers where ((u.IdentificationNumber == tbSearchINN.Text) && (u.DocumentSeries == tbSerialN.Text.Substring(0, 5)) && (u.DocumentNo == tbSerialN.Text.Substring(5, 4))) select u).ToList().FirstOrDefault();
             var query = (from u in dbR.Customers where ((u.IdentificationNumber.Trim() == tbSearchINN.Text.Trim()) && (String.Concat(u.DocumentSeries, u.DocumentNo).Trim().ToUpper().Replace(" ", "") == tbSerialN.Text.Trim().ToUpper().Replace(" ", ""))) select u).ToList().FirstOrDefault();
             if (query != null)
             {
-                //pnlCustomer.Visible = true;
+                pnlCustomer.Visible = true;
                 //pnlCredit.Visible = false;
                 //btnSaveCustomer.Enabled = false;
                 btnCredit.Enabled = true;
@@ -396,46 +398,95 @@ namespace СreditСonveyor.Partners
                     ddlDocumentTypeID.SelectedIndex = ddlDocumentTypeID.Items.IndexOf(ddlDocumentTypeID.Items.FindByValue(query.DocumentTypeID.ToString()));
                 if (ddlNationalityID.Items.Count > 0 && !string.IsNullOrEmpty(query.NationalityID.ToString()))
                     ddlNationalityID.SelectedIndex = ddlNationalityID.Items.IndexOf(ddlNationalityID.Items.FindByValue(query.NationalityID.ToString()));
+
                 if (ddlBirthCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.BirthCountryID.ToString()))
                     ddlBirthCountryID.SelectedIndex = ddlBirthCountryID.Items.IndexOf(ddlBirthCountryID.Items.FindByValue(query.BirthCountryID.ToString()));
+                var BirthCountry = (from u in dbR.Countries where ((u.CountryID == query.BirthCountryID)) select u).ToList().FirstOrDefault();
+                if (BirthCountry != null)
+                    ddlBirthCountryID.Items.Add(new ListItem { Text = BirthCountry.ShortName, Value = BirthCountry.CountryID.ToString() });
+
                 if (ddlRegistrationCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCountryID.ToString()))
                     ddlRegistrationCountryID.SelectedIndex = ddlRegistrationCountryID.Items.IndexOf(ddlRegistrationCountryID.Items.FindByValue(query.RegistrationCountryID.ToString()));
+                var RegistrationCountry = (from u in dbR.Countries where ((u.CountryID == query.RegistrationCountryID)) select u).ToList().FirstOrDefault();
+                if (RegistrationCountry != null)
+                    ddlRegistrationCountryID.Items.Add(new ListItem { Text = RegistrationCountry.ShortName, Value = RegistrationCountry.CountryID.ToString() });
+
+
+
                 if (ddlResidenceCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCountryID.ToString()))
                     ddlResidenceCountryID.SelectedIndex = ddlResidenceCountryID.Items.IndexOf(ddlResidenceCountryID.Items.FindByValue(query.ResidenceCountryID.ToString()));
+                var ResidenceCountry = (from u in dbR.Countries where ((u.CountryID == query.ResidenceCountryID)) select u).ToList().FirstOrDefault();
+                if (ResidenceCountry != null)
+                    ddlResidenceCountryID.Items.Add(new ListItem { Text = ResidenceCountry.ShortName, Value = ResidenceCountry.CountryID.ToString() });
+
+
                 if (ddlBirthCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.BirthCityID.ToString()))
                     ddlBirthCityName.SelectedIndex = ddlBirthCityName.Items.IndexOf(ddlBirthCityName.Items.FindByValue(query.BirthCityID.ToString()));
                 var birthCity = dbR.GetTable<City>().Where(c => c.CityID == query.BirthCityID).FirstOrDefault();
                 if (birthCity != null)
                 {
-                    var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == birthCity.RegionID).FirstOrDefault();
+                    var region = dbR.GetTable<Zamat.Region>().Where(reg => reg.RegionID == birthCity.RegionID).FirstOrDefault();
                     if (region.RegionName != null)
                     {
                     }
                 }
+
+
                 if (ddlRegistrationCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCityID.ToString()))
                     ddlRegistrationCityName.SelectedIndex = ddlRegistrationCityName.Items.IndexOf(ddlRegistrationCityName.Items.FindByValue(query.RegistrationCityID.ToString()));
                 var RegistrationCity = (from u in dbR.Cities where ((u.CityID == query.RegistrationCityID)) select u).ToList().FirstOrDefault();
-                ddlRegistrationCityName.Items.Add(RegistrationCity.CityName);
-
+                //ddlRegistrationCityName.Items.Add(RegistrationCity.CityName);
+                ddlRegistrationCityName.Items.Add(new ListItem { Text = RegistrationCity.CityName, Value = RegistrationCity.CityID.ToString() });
                 var registrationCity = dbR.GetTable<City>().Where(c => c.CityID == query.RegistrationCityID).FirstOrDefault();
                 if (registrationCity != null)
                 {
                     var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == registrationCity.RegionID).FirstOrDefault();
                 }
+
+
                 if (ddlResidenceCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCityID.ToString()))
                     ddlResidenceCityName.SelectedIndex = ddlResidenceCityName.Items.IndexOf(ddlResidenceCityName.Items.FindByValue(query.ResidenceCityID.ToString()));
                 var ResidenceCity = (from u in dbR.Cities where ((u.CityID == query.ResidenceCityID)) select u).ToList().FirstOrDefault();
-                ddlResidenceCityName.Items.Add(ResidenceCity.CityName);
+                //ddlResidenceCityName.Items.Add(ResidenceCity.CityName);
+                ddlResidenceCityName.Items.Add(new ListItem { Text = ResidenceCity.CityName, Value = ResidenceCity.CityID.ToString() });
 
                 var residenceCity = dbR.GetTable<City>().Where(c => c.CityID == query.ResidenceCityID).FirstOrDefault();
                 if (residenceCity != null)
                 {
                     var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == residenceCity.RegionID).FirstOrDefault();
                 }
+
+
+
+
+
+
             }
             else
             {
-                //pnlCustomer.Visible = true;
+                pnlCustomer.Visible = true;
+                //pnlCredit.Visible = false;
+                clearEditControls();
+                btnSaveCustomer.Enabled = true;
+                btnCredit.Enabled = false;
+            }
+        }
+        protected void SearchClientWithINN()
+        {
+            hfSelectCustomerID.Value = "";
+            dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+            var query = (from u in dbR.Customers where ((u.IdentificationNumber.Trim() == tbSearchINN.Text.Trim())) select u).ToList();
+            if (query.Count > 0)
+            {
+                gvUsers.DataSource = query;
+                gvUsers.DataBind();
+            }
+            else
+            {
+                gvUsers.DataSource = null;
+                gvUsers.DataBind();
+
+                pnlCustomer.Visible = true;
                 //pnlCredit.Visible = false;
                 clearEditControls();
                 btnSaveCustomer.Enabled = true;
@@ -443,20 +494,142 @@ namespace СreditСonveyor.Partners
             }
         }
 
+        
+
+        protected void btnSearchClient_Click(object sender, EventArgs e)
+        {
+            disableCustomerFields();
+            SearchClientWithINN();
+
+            //disableCustomerFields();
+            //dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+            //var query = (from u in dbR.Customers where ((u.IdentificationNumber.Trim() == tbSearchINN.Text.Trim()) && (String.Concat(u.DocumentSeries, u.DocumentNo).Trim().ToUpper().Replace(" ", "") == tbSerialN.Text.Trim().ToUpper().Replace(" ", ""))) select u).ToList().FirstOrDefault();
+            //if (query != null)
+            //{
+            //    btnCredit.Enabled = true;
+            //    if (hfChooseClient.Value == "Выбрать клиента") hfCustomerID.Value = query.CustomerID.ToString();
+            //    if (hfChooseClient.Value == "Выбрать поручителя") hfGuarantorID.Value = query.CustomerID.ToString();
+            //    if (hfChooseClient.Value == "Выбрать залогодателя") hfPledgerID.Value = query.CustomerID.ToString();
+            //    tbSurname.Text = query.Surname;
+            //    tbCustomerName.Text = query.CustomerName;
+            //    tbOtchestvo.Text = query.Otchestvo;
+            //    if (query.IsResident == true) { rbtIsResident.SelectedIndex = 0; } else { rbtIsResident.SelectedIndex = 1; }
+            //    tbIdentificationNumber.Text = query.IdentificationNumber;
+            //    tbDocumentSeries.Text = query.DocumentSeries + query.DocumentNo;
+            //    tbIssueDate.Text = Convert.ToDateTime(query.IssueDate).ToString("dd.MM.yyyy");
+            //    if ((query.IsDocUnlimited == false) || (query.IsDocUnlimited is null))
+            //    {
+            //        tbValidTill.Text = Convert.ToDateTime(query.DocumentValidTill).ToString("dd.MM.yyyy");
+
+            //        rbtnlistValidTill.Items[0].Selected = true;
+            //        rbtnlistValidTill.Items[1].Selected = false;
+            //    }
+            //    else
+            //    {
+            //        rbtnlistValidTill.Items[0].Selected = false;
+            //        rbtnlistValidTill.Items[1].Selected = true;
+            //    }
+            //    tbIssueAuthority.Text = query.IssueAuthority;
+            //    if (query.Sex == true) { rbtSex.SelectedIndex = 0; } else { rbtSex.SelectedIndex = 1; }
+            //    tbDateOfBirth.Text = Convert.ToDateTime(query.DateOfBirth).ToString("dd.MM.yyyy");
+            //    tbRegistrationStreet.Text = query.RegistrationStreet;
+            //    tbRegistrationHouse.Text = query.RegistrationHouse;
+            //    tbRegistrationFlat.Text = query.RegistrationFlat;
+            //    tbResidenceStreet.Text = query.ResidenceStreet;
+            //    tbResidenceHouse.Text = query.ResidenceHouse;
+            //    tbContactPhone.Text = query.ContactPhone1;
+            //    tbResidenceFlat.Text = query.ResidenceFlat;
+            //    if (ddlDocumentTypeID.Items.Count > 0 && !string.IsNullOrEmpty(query.DocumentTypeID.ToString()))
+            //        ddlDocumentTypeID.SelectedIndex = ddlDocumentTypeID.Items.IndexOf(ddlDocumentTypeID.Items.FindByValue(query.DocumentTypeID.ToString()));
+            //    if (ddlNationalityID.Items.Count > 0 && !string.IsNullOrEmpty(query.NationalityID.ToString()))
+            //        ddlNationalityID.SelectedIndex = ddlNationalityID.Items.IndexOf(ddlNationalityID.Items.FindByValue(query.NationalityID.ToString()));
+            //    if (ddlBirthCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.BirthCountryID.ToString()))
+            //        ddlBirthCountryID.SelectedIndex = ddlBirthCountryID.Items.IndexOf(ddlBirthCountryID.Items.FindByValue(query.BirthCountryID.ToString()));
+            //    if (ddlRegistrationCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCountryID.ToString()))
+            //        ddlRegistrationCountryID.SelectedIndex = ddlRegistrationCountryID.Items.IndexOf(ddlRegistrationCountryID.Items.FindByValue(query.RegistrationCountryID.ToString()));
+            //    if (ddlResidenceCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCountryID.ToString()))
+            //        ddlResidenceCountryID.SelectedIndex = ddlResidenceCountryID.Items.IndexOf(ddlResidenceCountryID.Items.FindByValue(query.ResidenceCountryID.ToString()));
+            //    if (ddlBirthCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.BirthCityID.ToString()))
+            //        ddlBirthCityName.SelectedIndex = ddlBirthCityName.Items.IndexOf(ddlBirthCityName.Items.FindByValue(query.BirthCityID.ToString()));
+            //    var birthCity = dbR.GetTable<City>().Where(c => c.CityID == query.BirthCityID).FirstOrDefault();
+            //    if (birthCity != null)
+            //    {
+            //        var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == birthCity.RegionID).FirstOrDefault();
+            //        if (region.RegionName != null)
+            //        {
+            //        }
+            //    }
+            //    if (ddlRegistrationCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCityID.ToString()))
+            //        ddlRegistrationCityName.SelectedIndex = ddlRegistrationCityName.Items.IndexOf(ddlRegistrationCityName.Items.FindByValue(query.RegistrationCityID.ToString()));
+            //    var RegistrationCity = (from u in dbR.Cities where ((u.CityID == query.RegistrationCityID)) select u).ToList().FirstOrDefault();
+            //    ddlRegistrationCityName.Items.Add(RegistrationCity.CityName);
+
+            //    var registrationCity = dbR.GetTable<City>().Where(c => c.CityID == query.RegistrationCityID).FirstOrDefault();
+            //    if (registrationCity != null)
+            //    {
+            //        var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == registrationCity.RegionID).FirstOrDefault();
+            //    }
+            //    if (ddlResidenceCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCityID.ToString()))
+            //        ddlResidenceCityName.SelectedIndex = ddlResidenceCityName.Items.IndexOf(ddlResidenceCityName.Items.FindByValue(query.ResidenceCityID.ToString()));
+            //    var ResidenceCity = (from u in dbR.Cities where ((u.CityID == query.ResidenceCityID)) select u).ToList().FirstOrDefault();
+            //    ddlResidenceCityName.Items.Add(ResidenceCity.CityName);
+
+            //    var residenceCity = dbR.GetTable<City>().Where(c => c.CityID == query.ResidenceCityID).FirstOrDefault();
+            //    if (residenceCity != null)
+            //    {
+            //        var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == residenceCity.RegionID).FirstOrDefault();
+            //    }
+            //}
+            //else
+            //{
+            //    clearEditControls();
+            //    btnSaveCustomer.Enabled = true;
+            //    btnCredit.Enabled = false;
+            //}
+        }
+
         public void databindDDL()
         {
             dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
-            ddlNationalityID.DataSource = dbR.GetTable<Country>();
-            ddlNationalityID.DataBind();
-            ddlBirthCountryID.DataSource = dbR.GetTable<Country>();
-            ddlBirthCountryID.DataBind();
-            ddlRegistrationCountryID.DataSource = dbR.GetTable<Country>();
-            ddlRegistrationCountryID.DataBind();
-            ddlResidenceCountryID.DataSource = dbR.GetTable<Country>();
-            ddlResidenceCountryID.DataBind();
+
+            
+            ddlNationalityID.Items.Clear();
+            ddlNationalityID.Items.Add("Не выбрано");
+            ddlBirthCountryID.Items.Clear();
+            ddlBirthCountryID.Items.Add("Не выбрано");
+            ddlRegistrationCountryID.Items.Clear();
+            ddlRegistrationCountryID.Items.Add("Не выбрано");
+            ddlResidenceCountryID.Items.Clear();
+            ddlResidenceCountryID.Items.Add("Не выбрано");
+
+
+            List<Country> country = dbR.GetTable<Country>().ToList();
+
+            foreach (var u in country)
+            {
+                ddlNationalityID.Items.Add(new ListItem(u.ShortName, u.CountryID.ToString()));
+                ddlBirthCountryID.Items.Add(new ListItem(u.ShortName, u.CountryID.ToString()));
+                ddlRegistrationCountryID.Items.Add(new ListItem(u.ShortName, u.CountryID.ToString()));
+                ddlResidenceCountryID.Items.Add(new ListItem(u.ShortName, u.CountryID.ToString()));
+            }
+
+
+            //ddlNationalityID.DataSource = dbR.GetTable<Country>();
+            //ddlNationalityID.DataBind();
+            //ddlBirthCountryID.DataSource = dbR.GetTable<Country>();
+            //ddlBirthCountryID.DataBind();
+            //ddlRegistrationCountryID.DataSource = dbR.GetTable<Country>();
+            //ddlRegistrationCountryID.DataBind();
+            //ddlResidenceCountryID.DataSource = dbR.GetTable<Country>();
+            //ddlResidenceCountryID.DataBind();
+
+
             ddlBirthCityName.Items.Clear();
+            ddlBirthCityName.Items.Add("Не выбрано");
             ddlRegistrationCityName.Items.Clear();
+            ddlRegistrationCityName.Items.Add("Не выбрано");
             ddlResidenceCityName.Items.Clear();
+            ddlResidenceCityName.Items.Add("Не выбрано");
             var tblCity = dbR.GetTable<City>();
             foreach (var rowCity in tblCity)
             {
@@ -902,16 +1075,22 @@ namespace СreditСonveyor.Partners
 
         protected void btnNewCustomer_Click(object sender, EventArgs e)
         {
+            btnSaveCustomer.Text = "Сохранить";
             databindDDL();
             enableCustomerFields();
             clearEditControls();
             btnSaveCustomer.Enabled = true;
             btnCredit.Enabled = false;
             pnlCustomer.Visible = true;
-            pnlCredit.Visible = false;
+            //pnlCredit.Visible = false;
             hfCustomerID.Value = "noselect";
             ddlDocumentTypeID.SelectedIndex = 0;
             rbtnlistValidTill.Enabled = false;
+            /*******/
+            gvUsers.DataSource = null;
+            gvUsers.DataBind();
+            hfSelectCustomerID.Value = "";
+            /*******/
         }
 
         public void clearEditControls()
@@ -941,6 +1120,7 @@ namespace СreditСonveyor.Partners
 
         protected void btnSaveCustomer_Click(object sender, EventArgs e)
         {
+            dbdataDataContext dbRWZ = new dbdataDataContext(connectionStringRWZ);
             if (Page.IsValid)
             {
                 //DateTime DocumentValidTill = Convert.ToDateTime(tbValidTill.Text.Substring(3, 2) + "." + tbValidTill.Text.Substring(0, 2) + "." + tbValidTill.Text.Substring(6, 4));
@@ -972,7 +1152,18 @@ namespace СreditСonveyor.Partners
                     if ((hfCustomerID.Value == "noselect") && (hfGuarantorID.Value == "noselect") && (hfPledgerID.Value == "noselect"))
                     {
                         dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
-                        var cust = dbR.Customers.Where(c => ((c.IdentificationNumber == tbIdentificationNumber.Text) && (c.DocumentSeries == tbDocumentSeries.Text.Substring(0, 5) && (c.DocumentNo == tbDocumentSeries.Text.Substring(5, 4))))).ToList();
+                        //var cust = dbR.Customers.Where(c => ((c.IdentificationNumber == tbIdentificationNumber.Text) && (c.DocumentSeries == tbDocumentSeries.Text.Substring(0, 5) && (c.DocumentNo == tbDocumentSeries.Text.Substring(5, 4))))).ToList();
+                        List<Customer> cust;
+
+                        if (hfSelectCustomerID.Value != "")
+                        {
+                            cust = dbR.Customers.Where(c => (c.CustomerID == Convert.ToInt32(hfSelectCustomerID.Value))).ToList();
+                        }
+                        else
+                        {
+                            cust = dbR.Customers.Where(c => ((c.IdentificationNumber == tbIdentificationNumber.Text.Trim()) && (String.Concat(c.DocumentSeries, c.DocumentNo) == tbDocumentSeries.Text.Trim()))).ToList();
+                        }
+
                         if (cust.Count == 0)
                         {
                             //Customer newItem = new Customer
@@ -1030,7 +1221,6 @@ namespace СreditСonveyor.Partners
                             dCustomer.Data.Otchestvo = tbOtchestvo.Text.Trim();
                             dCustomer.Data.CustomerTypeID = 1;
                             dCustomer.Data.PersonActivityTypeID = 19;
-                            
                             //    WorkTypeID = 0,
                             dCustomer.Data.IsResident = (rbtIsResident.SelectedIndex == 0) ? true : false;
                             dCustomer.Data.IdentificationNumber = tbIdentificationNumber.Text;
@@ -1061,10 +1251,11 @@ namespace СreditСonveyor.Partners
                             dCustomer.Data.ResidenceHouse = tbResidenceHouse.Text;
                             dCustomer.Data.ResidenceFlat = tbResidenceFlat.Text;
                             dCustomer.Data.DocumentTypeID = Convert.ToInt32(ddlDocumentTypeID.SelectedValue);
+
                             dCustomer.Data.NationalityID = Convert.ToInt32(ddlNationalityID.SelectedItem.Value);
                             dCustomer.Data.BirthCountryID = Convert.ToInt32(ddlBirthCountryID.SelectedItem.Value);
-                            dCustomer.Data.RegistrationCountryID = Convert.ToInt32(ddlBirthCountryID.SelectedItem.Value);
-                            
+
+                            dCustomer.Data.RegistrationCountryID = Convert.ToInt32(ddlRegistrationCountryID.SelectedItem.Value);
                             dCustomer.Data.ResidenceCountryID = Convert.ToInt32(ddlResidenceCountryID.SelectedItem.Value);
                             dCustomer.Data.BirthCityID = Convert.ToInt32(ddlBirthCityName.SelectedItem.Value);
                             dCustomer.Data.RegistrationCityID = Convert.ToInt32(ddlRegistrationCityName.SelectedItem.Value);
@@ -1077,12 +1268,12 @@ namespace СreditСonveyor.Partners
                             string result = gctx.CreateCustomerWithAPI(dCustomer);
 
                             //hfCustomerID.Value = newItem.CustomerID.ToString();
-                            //hfCustomerID.Value = result.ToString();
+                            hfCustomerID.Value = result.ToString();
                             btnCredit.Enabled = true;
                             btnSaveCustomer.Enabled = false;
                             /*btnSave_click*/
                             pnlMenuCustomer.Visible = false;
-                            pnlCustomer.Visible = false;
+                            //pnlCustomer.Visible = false;
                             pnlCredit.Visible = true;
                             if (hfChooseClient.Value == "Выбрать клиента")
                             {
@@ -1090,14 +1281,13 @@ namespace СreditСonveyor.Partners
                                 tbSurname2.Text = tbSurname.Text;
                                 tbCustomerName2.Text = tbCustomerName.Text;
                                 tbOtchestvo2.Text = tbOtchestvo.Text;
-                                
                                 //tbINN2.Text = tbIdentificationNumber.Text;
                                 lblFIO.Text = tbSurname2.Text + " " + tbCustomerName2.Text + " " + tbOtchestvo2.Text;
                                 lblINN.Text = tbIdentificationNumber.Text;
                             }
                             //if (hfChooseClient.Value == "Выбрать поручителя")
                             //{
-                            //    hfGuarantorID.Value = result.ToString(); 
+                            //    hfGuarantorID.Value = result.ToString();
                             //    tbGuarantorSurname.Text = tbSurname.Text;
                             //    tbGuarantorName.Text = tbCustomerName.Text;
                             //    tbGuarantorOtchestvo.Text = tbOtchestvo.Text;
@@ -1105,19 +1295,68 @@ namespace СreditСonveyor.Partners
                             //}
                             //if (hfChooseClient.Value == "Выбрать залогодателя")
                             //{
-                            //    hfPledgerID.Value = result.ToString(); 
+                            //    hfPledgerID.Value = result.ToString();
                             //    tbPledgerSurname.Text = tbSurname.Text;
                             //    tbPledgerName.Text = tbCustomerName.Text;
                             //    tbPledgerOtchestvo.Text = tbOtchestvo.Text;
                             //    tbPledgerINN.Text = tbIdentificationNumber.Text;
                             //}
+
+                            //dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+                            //if (hfRequestID.Value != "0")
+                            {
+                                var req = dbRWZ.Requests.Where(r => r.RequestID == Convert.ToInt32(hfRequestID.Value)).FirstOrDefault();
+                                if (req != null)
+                                if (req.CustomerID == 0)
+                                    updateRequestCustomerID(Convert.ToInt32(result.ToString()));
+                            }
                         }
                         else
                         {
                             //*****/ DotNetNuke.UI.Skins.Skin.AddModuleMessage(this, "Клиент есть в базе, сделайте поиск по ИНН", DotNetNuke.UI.Skins.Controls.ModuleMessage.ModuleMessageType.RedError);
-                            MsgBox("Клиент есть в базе, сделайте поиск по ИНН", this.Page, this);
+                            if (btnSaveCustomer.Text == "Прикрепить")
+                            {
+                                hfChooseClient.Value = "Выбрать клиента";
+                                if (hfChooseClient.Value == "Выбрать клиента")
+                                {
+                                    hfCustomerID.Value = cust.FirstOrDefault().CustomerID.ToString();
+                                    tbSurname2.Text = tbSurname.Text;
+                                    tbCustomerName2.Text = tbCustomerName.Text;
+                                    tbOtchestvo2.Text = tbOtchestvo.Text;
+                                    //tbINN2.Text = tbIdentificationNumber.Text;
+                                    lblFIO.Text = tbSurname2.Text + " " + tbCustomerName2.Text + " " + tbOtchestvo2.Text;
+                                    lblINN.Text = tbIdentificationNumber.Text;
+                                }
+                                //if (hfChooseClient.Value == "Выбрать поручителя")
+                                //{
+                                //    hfGuarantorID.Value = cust.FirstOrDefault().CustomerID.ToString();
+                                //    tbGuarantorSurname.Text = tbSurname.Text;
+                                //    tbGuarantorName.Text = tbCustomerName.Text;
+                                //    tbGuarantorOtchestvo.Text = tbOtchestvo.Text;
+                                //    tbGuarantorINN.Text = tbIdentificationNumber.Text;
+                                //}
+                                //if (hfChooseClient.Value == "Выбрать залогодателя")
+                                //{
+                                //    hfPledgerID.Value = cust.FirstOrDefault().CustomerID.ToString();
+                                //    tbPledgerSurname.Text = tbSurname.Text;
+                                //    tbPledgerName.Text = tbCustomerName.Text;
+                                //    tbPledgerOtchestvo.Text = tbOtchestvo.Text;
+                                //    tbPledgerINN.Text = tbIdentificationNumber.Text;
+                                //}
+                                if (Convert.ToInt32(hfRequestID.Value) > 0)
+                                {
+                                    var req = dbRWZ.Requests.Where(r => r.RequestID == Convert.ToInt32(hfRequestID.Value)).FirstOrDefault();
+                                    if (req.CustomerID == 0)
+                                        updateRequestCustomerID(cust.FirstOrDefault().CustomerID);
+                                }
+                                
+                            }
+                            else
+                                MsgBox("Клиент есть в базе, сделайте поиск по ИНН", this.Page, this);
                             //MsgBox("Выдача кредита не возможна, возрастное ограничение 23-70 (не должно превышать 70 на момент окончания кредита клиенту)", this.Page, this);
                         }
+
+
                         /*btnSave_click*/
                     }
                     else
@@ -1143,11 +1382,11 @@ namespace СreditСonveyor.Partners
                         //cust.ResidenceStreet = tbResidenceStreet.Text;
                         //cust.ResidenceHouse = tbResidenceHouse.Text;
                         //cust.ResidenceFlat = tbResidenceFlat.Text;
-                        cust.ContactPhone1 = tbContactPhone.Text;
+                        //cust.ContactPhone1 = tbContactPhone.Text;
                         //ctx.CustomerUpdItem(cust);
-                        pnlCredit.Visible = true;
-                        pnlMenuCustomer.Visible = false;
-                        pnlCustomer.Visible = false;
+                        //pnlCredit.Visible = true;
+                        //pnlMenuCustomer.Visible = false;
+                        //pnlCustomer.Visible = false;
                         //if (hfChooseClient.Value == "Выбрать клиента")
                         //{
                         //    hfCustomerID.Value = hfCustomerID.Value;
@@ -1183,17 +1422,57 @@ namespace СreditСonveyor.Partners
                         //    tbPledgerOtchestvo.Text = tbOtchestvo.Text;
                         //    tbPledgerINN.Text = tbIdentificationNumber.Text;
                         //}
+                        
                     }
                 }
             }
+        }
+
+
+        protected void updateRequestCustomerID(int custId)
+        {
+            dbdataDataContext dbRWZ = new dbdataDataContext(connectionStringRWZ);
+            var lst = dbRWZ.Requests.Where(r => r.RequestID == Convert.ToInt16(hfRequestID.Value)).FirstOrDefault();
+            lst.CustomerID = custId;
+            lst.Surname = tbSurname.Text;
+            lst.CustomerName = tbCustomerName.Text;
+            lst.Otchestvo = tbOtchestvo.Text;
+            lst.IdentificationNumber = tbIdentificationNumber.Text;
+            lst.ContactPhone1 = tbContactPhone.Text;
+            lst.IssueAuthority = tbIssueAuthority.Text;
+            //lst.IssueDate = tbIssueDate;
+            //lst.ValidTill = tbValidTill.Text;
+            //lst.DateOfBirth = tbDateOfBirth.Text;
+            
+
+            dbRWZ.Requests.Context.SubmitChanges();
+        }
+
+        protected void updateRequestCreditID(int creditId)
+        {
+            dbdataDataContext dbRWZ = new dbdataDataContext(connectionStringRWZ);
+            var lst = dbRWZ.Requests.Where(r => r.RequestID == Convert.ToInt16(hfRequestID.Value)).FirstOrDefault();
+            lst.CreditID = creditId;
+            lst.Surname = tbSurname.Text;
+            lst.CustomerName = tbCustomerName.Text;
+            lst.Otchestvo = tbOtchestvo.Text;
+            lst.IdentificationNumber = tbIdentificationNumber.Text;
+            lst.ContactPhone1 = tbContactPhone.Text;
+            lst.IssueAuthority = tbIssueAuthority.Text;
+            //lst.IssueDate = tbIssueDate;
+            //lst.ValidTill = tbValidTill.Text;
+            //lst.DateOfBirth = tbDateOfBirth.Text;
+
+
+            dbRWZ.Requests.Context.SubmitChanges();
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             clearEditControls();
             btnCredit.Enabled = false;
-            pnlMenuCustomer.Visible = false;
-            pnlCustomer.Visible = false;
+            //pnlMenuCustomer.Visible = false;
+            //pnlCustomer.Visible = false;
             pnlCredit.Visible = true;
         }
 
@@ -1510,6 +1789,206 @@ namespace СreditСonveyor.Partners
             return b;
         }
 
+
+        protected int AddRequestToOB(int prodID, int credOfficerID, int mortrageTypeID)
+        {
+            GeneralController gctx = new GeneralController();
+
+            //string dateFirstPayment = Convert.ToDateTime(tbActualDate.Text).ToString("dd.MM.yyyy");  
+            
+
+
+
+            GeneralController.IncomesStructure incomesstructure = new GeneralController.IncomesStructure()
+            {
+                CurrencyID = 417,
+                TotalPercents = 100,
+            };
+
+            GeneralController.IncomesStructuresActualDate incomesstructuresactualdate = new GeneralController.IncomesStructuresActualDate()
+            {
+                ActualDate = Convert.ToDateTime(actdate), //Convert.ToDateTime(tbActualDate.Text),
+                IncomesStructures = new List<GeneralController.IncomesStructure>(),
+            };
+
+            GeneralController.Picture picture = new GeneralController.Picture()
+            {
+                //FileName = "https://credit.doscredobank.kg/Portals/0/Credits/Nurcredits/2021/10/28/okmasro4/Screenshot_1.jpg",
+                //ChangeDate = Convert.ToDateTime(actdate),
+                File = hfPhoto2.Value
+            };
+
+            //GeneralController.Partner partner = new GeneralController.Partner()
+            //{
+            //    PartnerCompanyID = (int)GroupCode,
+            //    LoanPartnerSumV = Convert.ToDecimal(RadNumTbRequestSumm.Text), //0,//50000.0,
+            //    CommissionSum = 0
+            //    //IssueComissionPaymentTypeID = null
+            //};
+
+            GeneralController.Guarantor guarantor = new GeneralController.Guarantor()
+            {
+                CustomerID = (hfGuarantorID.Value != "noselect") ? Convert.ToInt32(hfGuarantorID.Value) : 0,
+                GuaranteeAmount = Convert.ToDecimal(RadNumTbRequestSumm.Text),
+                StartDate = Convert.ToDateTime(actdate),
+                //EndDate = 
+                Status = 1,
+            };
+
+
+            GeneralController.CreditOfficer creditOfficer = new GeneralController.CreditOfficer()
+            {
+                CreditOfficerTypeID = 1,
+                CreditOfficerStartDate = Convert.ToDateTime(actdate).AddDays(-1), // creditOfficerStartDate, //Convert.ToDateTime(dateNow).AddDays(-1),  //Convert.ToDateTime("2021-09-19T11:28:42"),  //Convert.ToDateTime(actdate), //dateTimeNow, 
+                                                                                  //CreditOfficerEndDate = null, // Convert.ToDateTime(actdate), //dateTimeNow, 
+                                                                                  //OfficeID = officeID, //1105,
+                OfficerID = Convert.ToInt32(credOfficerID), //6804,
+            };
+
+            //DateTime creditOfficerStartDate = (connectionStringActualDate == "") ? Convert.ToDateTime(dateNow).AddDays(-1) : Convert.ToDateTime(connectionStringActualDate).AddDays(-1);
+            DateTime creditOfficerStartDate = (connectionStringActualDate == "") ? Convert.ToDateTime(dateNow).AddDays(-1) : Convert.ToDateTime(connectionStringActualDate).AddDays(-1);
+
+            
+
+            root3 root = new root3()
+            {
+                CustomerID = Convert.ToInt32(hfCustomerID.Value),
+                ProductID = prodID, //1164, //prodID,
+                                    //LoanStatus = 0,
+                CreditID = 0,
+                MortrageTypeID = mortrageTypeID,  //Вид обеспечения 16-приобретаемая имущество
+                IncomeApproveTypeID = 1,                                  //IncomeApproveTypeID = 1,
+                RequestCurrencyID = 417,
+                RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text),
+                MarketingSourceID = 1,
+                RequestDate = Convert.ToDateTime(actdate), //dateTimeNow, 
+                                                           //IssueAccountNo = "",
+                                                           //OfficerUserName = "",
+                
+
+                IncomesStructuresActualDates = new List<GeneralController.IncomesStructuresActualDate>(),
+                Guarantors = new List<GeneralController.Guarantor>(),
+                Pictures = new List<GeneralController.Picture>(),
+                Partners = new List<GeneralController.Partner>(),
+                CreditOfficers = new List<GeneralController.CreditOfficer>(),
+
+                RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue),
+                RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text), //0.0, // Convert.ToDouble(ddlRequestRate.SelectedItem.Text),
+                PaymentSourceID = 1,
+                //NonPaymentRisk = null,
+                //CreditFraudStatus = null,
+                //InformationID = null,
+                //ParallelRelativeCredit = null,
+                CreditPurpose = 2,
+                LoanPurposeTypeID = 2,
+                IssueAccountNo = "",
+                LoanLocation = "", //
+                                   //Options = null,
+                                   //ReasonRefinancing = null,
+                                   //ExternalProgramID = null,
+                                   //ExternalCashDeskID = null,
+                                   //RedealType = null,
+                                   //IsGroup = false,
+                                   //GroupName = "",
+                                   //CreditGroupCode = null,
+                                   //RequestGrantComission = null,
+                                   //RequestGrantComissionType = 1,
+                                   //RequestReturnComission = null,
+                                   //RequestReturnComissionType = null,
+                                   //RequestTrancheIssueComission = null,
+                                   //RequestTrancheIssueComissionType = null
+
+            };
+
+
+
+
+            //GeneralController.Root root = new GeneralController.Root()
+            //{
+
+            //    CustomerID = Convert.ToInt32(hfCustomerID.Value),
+            //    ProductID = prodID, //1164, //prodID,
+            //    //LoanStatus = 0,
+            //    CreditID = 0,
+            //    MortrageTypeID = mortrageTypeID,  //Вид обеспечения 16-приобретаемая имущество
+            //    //IncomeApproveTypeID = 1,
+            //    RequestCurrencyID = 417,
+            //    RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text),
+            //    //MarketingSourceID = 5,
+            //    RequestDate = Convert.ToDateTime(actdate), //dateTimeNow, 
+            //    //IssueAccountNo = "",
+            //    //OfficerUserName = "",
+            //    CreditOfficerTypeID = 1,
+            //    CreditOfficerStartDate = creditOfficerStartDate, //Convert.ToDateTime(dateNow).AddDays(-1),  //Convert.ToDateTime("2021-09-19T11:28:42"),  //Convert.ToDateTime(actdate), //dateTimeNow, 
+            //    //CreditOfficerEndDate = null, // Convert.ToDateTime(actdate), //dateTimeNow, 
+            //    //OfficeID = officeID, //1105,
+            //    OfficerID = Convert.ToInt32(credOfficerID), //6804,
+
+            //    IncomesStructuresActualDates = new List<GeneralController.IncomesStructuresActualDate>(),
+            //    Guarantors = new List<GeneralController.Guarantor>(),
+            //    Pictures = new List<GeneralController.Picture>(),
+            //    Partners = new List<GeneralController.Partner>(),
+
+
+            //    RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue),
+            //    RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text), //0.0, // Convert.ToDouble(ddlRequestRate.SelectedItem.Text),
+            //    PaymentSourceID = 1,
+            //    //NonPaymentRisk = null,
+            //    //CreditFraudStatus = null,
+            //    //InformationID = null,
+            //    //ParallelRelativeCredit = null,
+            //    CreditPurpose = "Потребительская",
+            //    LoanPurposeTypeID = 2,
+            //    LoanLocation = "", //
+            //    //Options = null,
+            //    //ReasonRefinancing = null,
+            //    //ExternalProgramID = null,
+            //    //ExternalCashDeskID = null,
+            //    //RedealType = null,
+            //    //IsGroup = false,
+            //    //GroupName = "",
+            //    //CreditGroupCode = null,
+            //    //RequestGrantComission = null,
+            //    //RequestGrantComissionType = 1,
+            //    //RequestReturnComission = null,
+            //    //RequestReturnComissionType = null,
+            //    //RequestTrancheIssueComission = null,
+            //    //RequestTrancheIssueComissionType = null
+            //};
+
+
+            incomesstructuresactualdate.ActualDate = Convert.ToDateTime(actdate); //Convert.ToDateTime(dateTimeNow);
+            incomesstructuresactualdate.IncomesStructures.Add(incomesstructure);
+
+
+
+            root.IncomesStructuresActualDates.Add(incomesstructuresactualdate);
+            root.CreditOfficers.Add(creditOfficer);
+            root.Pictures.Add(picture);
+            //if (hfGuarantorID.Value != "noselect") 
+            //if (chkbxTypeOfCollateral.Items[1].Selected == true)
+            //    root.Guarantors.Add(guarantor);
+
+
+            //string str = SendPostOBCreateRequest(root);
+
+            string result = gctx.CreateRequestWithAPI(root);  //кафка
+            int CreditsHistoriesID = 0;
+            try
+            {
+                CreditsHistoriesID = Convert.ToInt32(gctx.getCreditID(result)); //кафка
+            }
+            catch (Exception ex)
+            {
+                MsgBox("Ошибка:" + result, this.Page, this); //кафка
+                lblError.Text = result;  //кафка
+
+            }
+            return CreditsHistoriesID;
+
+        }
+
+
         protected void AddRequest()
         {
             decimal MinRevenue = (RadNumTbMinRevenue.Text != "") ? Convert.ToDecimal(RadNumTbMinRevenue.Text) : 0;
@@ -1517,6 +1996,39 @@ namespace СreditСonveyor.Partners
             dbdataDataContext dbW = new dbdataDataContext(connectionStringW);
             dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
             dbdataDataContext dbRWZ = new dbdataDataContext(connectionStringRWZ);
+            int usrID = Convert.ToInt32(Session["UserID"].ToString());
+            int? usrRoleID = dbRWZ.RequestsUsersRoles.Where(r => r.UserID == usrID).FirstOrDefault().RoleID;
+            int officeID = dbRWZ.Users2s.Where(r => r.UserID == usrID).FirstOrDefault().OfficeID;
+            int? groupID = dbRWZ.Users2s.Where(r => r.UserID == usrID).FirstOrDefault().GroupID;
+            //int? orgID = db.RequestsRoles.Where(r => r.RoleID == usrRoleID).FirstOrDefault().OrgID;
+            int? orgID = dbRWZ.Groups.Where(r => r.GroupID == groupID).FirstOrDefault().OrgID;
+            int? GroupCode = dbRWZ.Groups.Where(r => r.GroupID == groupID).FirstOrDefault().GroupCode;
+            int branchID = dbR.Offices.Where(r => r.ID == officeID).FirstOrDefault().BranchID;
+            int credOfficerID = 4583; //по умолч АЙбек
+            credOfficerID = Convert.ToInt32(dbRWZ.RequestsRedirect.Where(r => r.branchID == branchID).FirstOrDefault().creditOfficerID);
+            if ((officeID == 1133) || (officeID == 1134)) credOfficerID = Convert.ToInt32(dbRWZ.RequestsRedirect.Where(r => r.officeID == officeID).FirstOrDefault().creditOfficerID);
+            hfAgentRoleID.Value = usrRoleID.ToString();
+            DateTime dateTimeServer = dateNowServer;
+            DateTime dateTimeNow = Convert.ToDateTime(DateTime.Now);
+
+            decimal commision = 0; string NameOfCredit = "Потребительский";
+            //int prodID = 1152; //КапиталБанк
+            //if (chbEmployer.Checked) prodID = 1153; else prodID = 1152; //КапиталБанк для сотруд иначе КапиталБанк
+            int prodID = Convert.ToInt32(ddlProduct.SelectedValue);
+            decimal rate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text);
+            byte period = Convert.ToByte(ddlRequestPeriod.SelectedValue);
+            bool isEmployer = chbEmployer.Checked ? true : false;
+
+            int mortrageTypeID = 2;
+            //if (chkbxTypeOfCollateral.Items[0].Selected == true) mortrageTypeID = 13;
+            //if (chkbxTypeOfCollateral.Items[1].Selected == true) mortrageTypeID = 14;
+            //if (chkbxTypeOfCollateral.Items[2].Selected == true) mortrageTypeID = 2;
+            //if ((chkbxTypeOfCollateral.Items[1].Selected == true) && (chkbxTypeOfCollateral.Items[2].Selected == true)) mortrageTypeID = 14;
+            mortrageTypeID = 13;
+
+            string dateFirstPayment = DateTime.ParseExact(tbActualDate.Text, "dd.MM.yyyy", null).ToString("dd.MM.yyyy");
+
+
             if (hfRequestAction.Value == "new")
             {
                 string str = RadNumTbAverageMonthSalary.Text;
@@ -1524,343 +2036,17 @@ namespace СreditСonveyor.Partners
 
 
                 /*Новая заявка*/
-                int usrID = Convert.ToInt32(Session["UserID"].ToString());
-                int? usrRoleID = dbRWZ.RequestsUsersRoles.Where(r => r.UserID == usrID).FirstOrDefault().RoleID;
-                int officeID = dbRWZ.Users2s.Where(r => r.UserID == usrID).FirstOrDefault().OfficeID;
-                int? groupID = dbRWZ.Users2s.Where(r => r.UserID == usrID).FirstOrDefault().GroupID;
-                //int? orgID = db.RequestsRoles.Where(r => r.RoleID == usrRoleID).FirstOrDefault().OrgID;
-                int? orgID = dbRWZ.Groups.Where(r => r.GroupID == groupID).FirstOrDefault().OrgID;
-                int? GroupCode = dbRWZ.Groups.Where(r => r.GroupID == groupID).FirstOrDefault().GroupCode;
-                int branchID = dbR.Offices.Where(r => r.ID == officeID).FirstOrDefault().BranchID;
-                int? credOfficerID = 4583; //по умолч АЙбек
-                credOfficerID = dbRWZ.RequestsRedirect.Where(r => r.branchID == branchID).FirstOrDefault().creditOfficerID;
-                if ((officeID == 1133) || (officeID == 1134)) credOfficerID = dbRWZ.RequestsRedirect.Where(r => r.officeID == officeID).FirstOrDefault().creditOfficerID;
-                hfAgentRoleID.Value = usrRoleID.ToString();
-                DateTime dateTimeServer = dateNowServer;
-                DateTime dateTimeNow = Convert.ToDateTime(DateTime.Now);
-
-                decimal commision = 0; string NameOfCredit = "Потребительский";
-                //int prodID = 1152; //КапиталБанк
-                //if (chbEmployer.Checked) prodID = 1153; else prodID = 1152; //КапиталБанк для сотруд иначе КапиталБанк
-                int prodID = Convert.ToInt32(ddlProduct.SelectedValue);
-                decimal rate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text);
-                byte period = Convert.ToByte(ddlRequestPeriod.SelectedValue);
-                bool isEmployer = chbEmployer.Checked ? true : false;
-
-                ////if (Convert.ToDecimal(RadNumTbRequestSumm.Text) > 100000) { NameOfCredit = "Потребительский"; prodID = 109; }
-                //if ((rate == 0) && (period == 3)) { commision = 0; NameOfCredit = "0-0-3"; prodID = 1163; }
-                //if ((rate == 0) && (period == 6)) { commision = 0; NameOfCredit = "0-0-6"; prodID = 1164; }
-                ////if ((rate == 0) && (period == 9)) { commision = 0; NameOfCredit = "0-0-9"; prodID = 1165; }
-                //if ((rate == 0) && (period == 12)) { commision = 0; NameOfCredit = "0-0-12"; prodID = 1177; }
-                
-                //if (ddlProduct.SelectedValue == "003") { commision = 0; NameOfCredit = "0-0-3"; prodID = 1163; }
-                //if (ddlProduct.SelectedValue == "006") { commision = 0; NameOfCredit = "0-0-6"; prodID = 1164; }
-                //if (ddlProduct.SelectedValue == "006(Honor S7)") { commision = 0; NameOfCredit = "0-0-6 (Honor S7)"; prodID = 1202; }
-                ////if (ddlProduct.SelectedValue == "006(Honor S7)") { commision = 0; NameOfCredit = "0-0-6 (Honor S7)"; prodID = 1193; }
-                //if (ddlProduct.SelectedValue == "009") { commision = 0; NameOfCredit = "0-0-9"; prodID = 1165; }
-                //if (ddlProduct.SelectedValue == "0012") { commision = 0; NameOfCredit = "0-0-12"; prodID = 1177; }
-                //if (ddlProduct.SelectedValue == "0012(Honor S7)") { commision = 0; NameOfCredit = "0-0-12 (Honor S7)"; prodID = 1201; }
-                ////if (ddlProduct.SelectedValue == "0012(Honor S7)") { commision = 0; NameOfCredit = "0-0-12 (Honor S7)"; prodID = 1189; }
-                //if (ddlProduct.SelectedValue == "0018") { commision = 0; NameOfCredit = "0-0-18"; prodID = 1190; }
+               
 
                 if (isEmployer == true) commision = 0;
 
-                //History newItemHistory = new History
-                //{
-                //    ProductID = prodID, // КапиталБанк для сотрудников
-                //    RequestDate = dateTimeServer, // Convert.ToDateTime(DateTime.Now),
-                //    RequestCurrencyID = 417,
-                //    RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue),
-                //    RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Value),
-                //    PaymentSourceID = 1, //1-зп 2-бизнес
-                //    LanguageID = 1,
-                //    //RequestMortrageTypeID = 14, //14-поручительство, 1-недвижимость
-                //    IncomeApproveTypeID = 1, //непонятно
-                //                             //LoanLocation = 
-                //                             //MarketingSourceID = 
-                //                             //RequestGrantComission
-                //                             //RequestGrantComissionType
-                //    OfficeID = officeID,  // 1105-центральный // officeID,
-                //    LoanPurposeTypeID = 2,
-                //    CalculationTypeID = 1,
-                //    //PartnerCompanyID = 1511854 // Для Нуртел - 1511854
-                //    //PartnerCompanyID = GroupCode,
-                //    ApprovedCurrencyID = 417,
-                //    ApprovedPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue),
-                //    ApprovedRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Value),
-                //    //ApprovedGrantComission = commision,
-                //    ApprovedGrantComissionType = 1
-                //};
-
-                //CreditController ctx = new CreditController();
-                //int CreditsHistoriesID = ctx.HistoriesAddItem(newItemHistory);
-                ///*----------------------------------------------------*/
-
-                //PartnersHistory parthis = new PartnersHistory()
-                //{
-                //    CompanyID = (int)GroupCode,
-                //    CreditID = CreditsHistoriesID,
-                //    TranchID = 1,
-                //    SumV = Convert.ToDecimal(RadNumTbRequestSumm.Text),
-                //    ComissionSum = 0,
-                //    IssueComissionPaymentTypeID = 1
-                //};
-                //ctx.PartnerHistoriesAddItem(parthis);
-                ///*----------------------------------------------------*/
-                //HistoriesCustomer newItemHistoriesCustomer = new HistoriesCustomer
-                //{
-                //    CreditID = CreditsHistoriesID,
-                //    CustomerID = Convert.ToInt32(hfCustomerID.Value),
-                //    IsLeader = true,
-                //    RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text),
-                //    ApprovedSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text),
-                //    CreditPurpose = tbCreditPurpose.Text,
-                //    //ApprovedSumm = /непонятно
-                //};
-                //ctx.HistoriesCustomerAddItem(newItemHistoriesCustomer);
-                ///*----------------------------------------------------*/
-                //var ProductsEarlyPaymentComissions = dbR.ProductsEarlyPaymentComissions.Where(r => r.ProductID == prodID).ToList().OrderBy(o => o.ChangeDate);
-                //decimal? RequestPartialComissionType = ProductsEarlyPaymentComissions.LastOrDefault().PartialComission;
-                //decimal? RequestFullPaymentComissionType = ProductsEarlyPaymentComissions.LastOrDefault().FullPaymentComission;
-                //HistoriesEarlyPaymentComission newItemHistoriesEarlyPaymentComission = new HistoriesEarlyPaymentComission
-                //{
-                //    CreditID = CreditsHistoriesID,
-                //    Period = 1,
-                //    RequestPartialComissionType = 2, //непонятно
-                //    RequestFullPaymentComissionType = 2,
-                //    ApprovedPartialComissionType = 2,
-                //    ApprovedFullPaymentComissionType = 2,
-                //    RequestPartialComission = Convert.ToByte(RequestPartialComissionType),
-                //    ApprovedPartialComission = Convert.ToByte(RequestPartialComissionType),
-                //    RequestFullPaymentComission = Convert.ToByte(RequestFullPaymentComissionType),
-                //    ApprovedFullPaymentComission = Convert.ToByte(RequestFullPaymentComissionType),
-                //};
-                //ctx.HistoriesEarlyPaymentComissionAddItem(newItemHistoriesEarlyPaymentComission);
-                ///*----------------------------------------------------*/
-                //HistoriesOfficer newItemHistoriesOfficer = new HistoriesOfficer
-                //{
-                //    CreditID = CreditsHistoriesID,
-                //    OfficerTypeID = 1, //уточнить
-                //    StartDate = dateTimeServer, //уточнить
-                //    UserID = credOfficerID, // 4583- Код Айбека  //usrID
-                //};
-                //ctx.HistoriesOfficerAddItem(newItemHistoriesOfficer);
-                ///*----------------------------------------------------*/
-                //string actdate = tbActualDate.Text.Substring(6, 4) + "." + tbActualDate.Text.Substring(3, 2) + "." + tbActualDate.Text.Substring(0, 2);
-
-                //IncomesStructuresActualDate newItemIncomesStructuresActualDate = new IncomesStructuresActualDate
-                //{
-                //    CreditID = CreditsHistoriesID,
-                //    ActualDate = dateTimeServer //Convert.ToDateTime(actdate), // dateTimeServer //Convert.ToDateTime(actdate),
-                //};
-                //ctx.IncomesStructuresActualDateAddItem(newItemIncomesStructuresActualDate);
-                ///*----------------------------------------------------*/
-                //IncomesStructure newItemIncomesStructures = new IncomesStructure
-                //{
-                //    CreditID = CreditsHistoriesID,
-                //    ActualDate = dateTimeServer,//Convert.ToDateTime(actdate), // dateTimeServer, //Convert.ToDateTime(actdate),
-                //    CurrencyID = 417,
-                //    TotalPercents = 100
-                //};
-                //ctx.ItemIncomesStructuresAddItem(newItemIncomesStructures);
-                ///*----------------------------------------------------*/ //save to dnn
-                ///
-
-                CreditController ctx = new CreditController();
-                GeneralController gctx = new GeneralController();
-
-                //string dateFirstPayment = Convert.ToDateTime(tbActualDate.Text).ToString("dd.MM.yyyy");  
-                string dateFirstPayment = DateTime.ParseExact(tbActualDate.Text, "dd.MM.yyyy", null).ToString("dd.MM.yyyy");
+                int CreditsHistoriesID = AddRequestToOB(prodID, Convert.ToInt32(credOfficerID), mortrageTypeID);
 
 
-
-                GeneralController.IncomesStructure incomesstructure = new GeneralController.IncomesStructure()
-                {
-                    CurrencyID = 417,
-                    TotalPercents = 100,
-                };
-
-                GeneralController.IncomesStructuresActualDate incomesstructuresactualdate = new GeneralController.IncomesStructuresActualDate()
-                {
-                    ActualDate = Convert.ToDateTime(actdate), //Convert.ToDateTime(tbActualDate.Text),
-                    IncomesStructures = new List<GeneralController.IncomesStructure>(),
-                };
-
-                GeneralController.Picture picture = new GeneralController.Picture()
-                {
-                    //FileName = "https://credit.doscredobank.kg/Portals/0/Credits/Nurcredits/2021/10/28/okmasro4/Screenshot_1.jpg",
-                    //ChangeDate = Convert.ToDateTime(actdate),
-                    File = hfPhoto2.Value
-                };
-
-                //GeneralController.Partner partner = new GeneralController.Partner()
-                //{
-                //    PartnerCompanyID = (int)GroupCode,
-                //    LoanPartnerSumV = Convert.ToDecimal(RadNumTbRequestSumm.Text), //0,//50000.0,
-                //    CommissionSum = 0
-                //    //IssueComissionPaymentTypeID = null
-                //};
-
-                GeneralController.Guarantor guarantor = new GeneralController.Guarantor()
-                {
-                    CustomerID = (hfGuarantorID.Value != "noselect") ? Convert.ToInt32(hfGuarantorID.Value) : 0,
-                    GuaranteeAmount = Convert.ToDecimal(RadNumTbRequestSumm.Text),
-                    StartDate = Convert.ToDateTime(actdate),
-                    //EndDate = 
-                    Status = 1,
-                };
-
-                //DateTime creditOfficerStartDate = (connectionStringActualDate == "") ? Convert.ToDateTime(dateNow).AddDays(-1) : Convert.ToDateTime(connectionStringActualDate).AddDays(-1);
-                DateTime creditOfficerStartDate = (connectionStringActualDate == "") ? Convert.ToDateTime(dateNow).AddDays(-1) : Convert.ToDateTime(connectionStringActualDate).AddDays(-1);
-
-                int mortrageTypeID = 2;
-                //if (chkbxTypeOfCollateral.Items[0].Selected == true) mortrageTypeID = 13;
-                //if (chkbxTypeOfCollateral.Items[1].Selected == true) mortrageTypeID = 14;
-                //if (chkbxTypeOfCollateral.Items[2].Selected == true) mortrageTypeID = 2;
-                //if ((chkbxTypeOfCollateral.Items[1].Selected == true) && (chkbxTypeOfCollateral.Items[2].Selected == true)) mortrageTypeID = 14;
-                mortrageTypeID = 13;
-
-                root3 root = new root3()
-                {
-                    CustomerID = Convert.ToInt32(hfCustomerID.Value),
-                    ProductID = prodID, //1164, //prodID,
-                                        //LoanStatus = 0,
-                    CreditID = 0,
-                    MortrageTypeID = mortrageTypeID,  //Вид обеспечения 16-приобретаемая имущество
-                    IncomeApproveTypeID = 1,                                  //IncomeApproveTypeID = 1,
-                    RequestCurrencyID = 417,
-                    RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text),
-                    MarketingSourceID = 1,
-                    RequestDate = Convert.ToDateTime(actdate), //dateTimeNow, 
-                                                               //IssueAccountNo = "",
-                                                               //OfficerUserName = "",
-                    CreditOfficerTypeID = 1,
-                    CreditOfficerStartDate = Convert.ToDateTime(actdate).AddDays(-1), // creditOfficerStartDate, //Convert.ToDateTime(dateNow).AddDays(-1),  //Convert.ToDateTime("2021-09-19T11:28:42"),  //Convert.ToDateTime(actdate), //dateTimeNow, 
-                                                                     //CreditOfficerEndDate = null, // Convert.ToDateTime(actdate), //dateTimeNow, 
-                                                                     //OfficeID = officeID, //1105,
-                    OfficerID = Convert.ToInt32(credOfficerID), //6804,
-
-                    IncomesStructuresActualDates = new List<GeneralController.IncomesStructuresActualDate>(),
-                    Guarantors = new List<GeneralController.Guarantor>(),
-                    Pictures = new List<GeneralController.Picture>(),
-                    Partners = new List<GeneralController.Partner>(),
-
-
-                    RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue),
-                    RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text), //0.0, // Convert.ToDouble(ddlRequestRate.SelectedItem.Text),
-                    PaymentSourceID = 1,
-                    //NonPaymentRisk = null,
-                    //CreditFraudStatus = null,
-                    //InformationID = null,
-                    //ParallelRelativeCredit = null,
-                    CreditPurpose = 2,
-                    LoanPurposeTypeID = 2,
-                    IssueAccountNo = "",
-                    LoanLocation = "", //
-                                       //Options = null,
-                                       //ReasonRefinancing = null,
-                                       //ExternalProgramID = null,
-                                       //ExternalCashDeskID = null,
-                                       //RedealType = null,
-                                       //IsGroup = false,
-                                       //GroupName = "",
-                                       //CreditGroupCode = null,
-                                       //RequestGrantComission = null,
-                                       //RequestGrantComissionType = 1,
-                                       //RequestReturnComission = null,
-                                       //RequestReturnComissionType = null,
-                                       //RequestTrancheIssueComission = null,
-                                       //RequestTrancheIssueComissionType = null
-
-                };
-
-
-
-
-                //GeneralController.Root root = new GeneralController.Root()
-                //{
-
-                //    CustomerID = Convert.ToInt32(hfCustomerID.Value),
-                //    ProductID = prodID, //1164, //prodID,
-                //    //LoanStatus = 0,
-                //    CreditID = 0,
-                //    MortrageTypeID = mortrageTypeID,  //Вид обеспечения 16-приобретаемая имущество
-                //    //IncomeApproveTypeID = 1,
-                //    RequestCurrencyID = 417,
-                //    RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text),
-                //    //MarketingSourceID = 5,
-                //    RequestDate = Convert.ToDateTime(actdate), //dateTimeNow, 
-                //    //IssueAccountNo = "",
-                //    //OfficerUserName = "",
-                //    CreditOfficerTypeID = 1,
-                //    CreditOfficerStartDate = creditOfficerStartDate, //Convert.ToDateTime(dateNow).AddDays(-1),  //Convert.ToDateTime("2021-09-19T11:28:42"),  //Convert.ToDateTime(actdate), //dateTimeNow, 
-                //    //CreditOfficerEndDate = null, // Convert.ToDateTime(actdate), //dateTimeNow, 
-                //    //OfficeID = officeID, //1105,
-                //    OfficerID = Convert.ToInt32(credOfficerID), //6804,
-
-                //    IncomesStructuresActualDates = new List<GeneralController.IncomesStructuresActualDate>(),
-                //    Guarantors = new List<GeneralController.Guarantor>(),
-                //    Pictures = new List<GeneralController.Picture>(),
-                //    Partners = new List<GeneralController.Partner>(),
-
-
-                //    RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue),
-                //    RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text), //0.0, // Convert.ToDouble(ddlRequestRate.SelectedItem.Text),
-                //    PaymentSourceID = 1,
-                //    //NonPaymentRisk = null,
-                //    //CreditFraudStatus = null,
-                //    //InformationID = null,
-                //    //ParallelRelativeCredit = null,
-                //    CreditPurpose = "Потребительская",
-                //    LoanPurposeTypeID = 2,
-                //    LoanLocation = "", //
-                //    //Options = null,
-                //    //ReasonRefinancing = null,
-                //    //ExternalProgramID = null,
-                //    //ExternalCashDeskID = null,
-                //    //RedealType = null,
-                //    //IsGroup = false,
-                //    //GroupName = "",
-                //    //CreditGroupCode = null,
-                //    //RequestGrantComission = null,
-                //    //RequestGrantComissionType = 1,
-                //    //RequestReturnComission = null,
-                //    //RequestReturnComissionType = null,
-                //    //RequestTrancheIssueComission = null,
-                //    //RequestTrancheIssueComissionType = null
-                //};
-
-
-                incomesstructuresactualdate.ActualDate = Convert.ToDateTime(actdate); //Convert.ToDateTime(dateTimeNow);
-                incomesstructuresactualdate.IncomesStructures.Add(incomesstructure);
-
-
-
-                root.IncomesStructuresActualDates.Add(incomesstructuresactualdate);
-                //root.Partners.Add(partner);
-                root.Pictures.Add(picture);
-                //if (hfGuarantorID.Value != "noselect") 
-                //if (chkbxTypeOfCollateral.Items[1].Selected == true)
-                //    root.Guarantors.Add(guarantor);
-
-
-                //string str = SendPostOBCreateRequest(root);
-
-                string result = gctx.CreateRequestWithAPI(root);  //кафка
-                int CreditsHistoriesID = 0;
-                try
-                {
-                    CreditsHistoriesID = Convert.ToInt32(gctx.getCreditID(result)); //кафка
-                }
-                catch (Exception ex)
-                {
-                    MsgBox("Ошибка:" + result, this.Page, this); //кафка
-                    lblError.Text = result;  //кафка
-                    
-                }
 
                 if (CreditsHistoriesID != 0)  //кафка
                 {
+                    CreditController ctx = new CreditController();
                     savePhoto("new", CreditsHistoriesID);
                     string comment = "";
                     //if (rbtnBusiness.SelectedIndex == 1) { fexp = (RadNumTbFamilyExpenses.Text != "") ? Convert.ToDecimal(RadNumTbFamilyExpenses.Text) : 0; comment = txtBusinessComment.Text; }
@@ -1875,7 +2061,7 @@ namespace СreditСonveyor.Partners
                         CreditPurpose = tbCreditPurpose.Text,
                         RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue),
                         CreditProduct = ddlProduct.SelectedValue,
-
+                        SerialNumber = tbDocumentSeries.Text,
                         RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text),
                         AmountDownPayment = Convert.ToDecimal(TbAmountOfDownPayment.Text),
                         RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text),
@@ -1947,8 +2133,8 @@ namespace СreditСonveyor.Partners
                         BairyCows = String.IsNullOrEmpty(txtbxBairyCows.Text) ? 0 : Convert.ToInt32(txtbxBairyCows.Text),
                         Sheeps = String.IsNullOrEmpty(txtbxSheeps.Text) ? 0 : Convert.ToInt32(txtbxSheeps.Text),
                         Horse = String.IsNullOrEmpty(txtbxHorse.Text) ? 0 : Convert.ToInt32(txtbxHorse.Text),
-                        ExperienceAnimals = String.IsNullOrEmpty(txtbxExperienceAnimals.Text) ? 0 : Convert.ToInt32(txtbxExperienceAnimals.Text)
-                        
+                        ExperienceAnimals = String.IsNullOrEmpty(txtbxExperienceAnimals.Text) ? 0 : Convert.ToInt32(txtbxExperienceAnimals.Text),
+                        RequestType = "PA" 
                     };
                     
 
@@ -2079,22 +2265,23 @@ namespace СreditСonveyor.Partners
             if (hfRequestAction.Value == "edit")
             {
                 if (pnlPhoto.Visible == false) hfPhoto2.Value = "";
-                DateTime dateTimeServer = dateNowServer;
-                DateTime dateTimeNow = Convert.ToDateTime(DateTime.Now);
+                //DateTime dateTimeServer = dateNowServer;
+                //DateTime dateTimeNow = Convert.ToDateTime(DateTime.Now);
                 /*Edit*/
-                int usrID = Convert.ToInt32(Session["UserID"].ToString());
+                //int usrID = Convert.ToInt32(Session["UserID"].ToString());
                 //int officeID = dbRWZ.Users2s.Where(r => r.UserID == usrID).FirstOrDefault().OfficeID;
-                int? officeID = dbRWZ.Requests.Where(r => r.CreditID == Convert.ToInt32(hfCreditID.Value)).FirstOrDefault().OfficeID;
-
+                var request = dbRWZ.Requests.Where(r => r.RequestID == Convert.ToInt32(hfRequestID.Value)).FirstOrDefault();
+                
+                officeID = Convert.ToInt32(request.OfficeID);
                 CreditController ctlCredit = new CreditController();
 
-                decimal commision = 0; string NameOfCredit = "КапиталБанк"; //int prodID = 1152; //КапиталБанк
+                commision = 0;  NameOfCredit = "КапиталБанк"; //int prodID = 1152; //КапиталБанк
                 //if (chbEmployer.Checked) prodID = 1153; else prodID = 1152; //КапиталБанк для сотруд иначе КапиталБанк
-                decimal rate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text);
-                byte period = Convert.ToByte(ddlRequestPeriod.SelectedValue);
-                bool isEmployer = chbEmployer.Checked ? true : false;
+                rate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text);
+                period = Convert.ToByte(ddlRequestPeriod.SelectedValue);
+                isEmployer = chbEmployer.Checked ? true : false;
                 //prodID = 109;
-                int prodID = Convert.ToInt32(ddlProduct.SelectedValue);
+                prodID = Convert.ToInt32(ddlProduct.SelectedValue);
                 ////if (Convert.ToDecimal(RadNumTbRequestSumm.Text) > 100000) { NameOfCredit = "Потребительский"; prodID = 109; }
                 //if ((rate == 0) && (period == 3)) { commision = 0; NameOfCredit = "0-0-3"; prodID = 1163; }
                 //if ((rate == 0) && (period == 6)) { commision = 0; NameOfCredit = "0-0-6"; prodID = 1164; }
@@ -2121,51 +2308,67 @@ namespace СreditСonveyor.Partners
                 if (rbtnBusiness.SelectedIndex == 1) comment = txtBusinessComment.Text;
                 if (rbtnBusiness.SelectedIndex == 2) comment = txtAgroComment.Text;
 
+                if (request.CreditID == 0)
+                {
+                    int creditId = AddRequestToOB(prodID, credOfficerID, mortrageTypeID);
+                    hfCreditID.Value = creditId.ToString();
+                    updateRequestCreditID(Convert.ToInt32(hfCreditID.Value));
+                }
+
+
+              
                 /*----------------------------------------------------*/
                 //HistoriesCustomer editItemHistoryCustomer = new HistoriesCustomer();
                 //editItemHistoryCustomer = ctlCredit.GetHistoriesCustomerByCreditID(Convert.ToInt32(hfCreditID.Value));
                 //editItemHistoryCustomer.RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text);
                 //editItemHistoryCustomer.ApprovedSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text);
-                
+
                 ////editItemHistory.PartnerCompanyID = GroupCode;
                 //ctlCredit.HistoriesCustomerUpd(editItemHistoryCustomer);
 
 
-                History editItemHistory = new History();
-                editItemHistory = ctlCredit.GetHistoryByCreditID(Convert.ToInt32(hfCreditID.Value));
-                editItemHistory.RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue);
-                editItemHistory.RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Value);
-                editItemHistory.ProductID = prodID;
-                editItemHistory.ApprovedPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue);
-                editItemHistory.ApprovedRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Value);
-                //editItemHistory.PartnerCompanyID = GroupCode;
-                ctlCredit.HistoryUpd(editItemHistory);
+                //History editItemHistory = new History();
+                ////editItemHistory = ctlCredit.GetHistoryByCreditID(Convert.ToInt32(hfRequestID.Value));
+                //editItemHistory = ctlCredit.GetHistoryByCreditID (Convert.ToInt32(hfRequestID.Value));
+                //editItemHistory.RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue);
+                //editItemHistory.RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Value);
+                //editItemHistory.ProductID = prodID;
+                //editItemHistory.ApprovedPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue);
+                //editItemHistory.ApprovedRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Value);
+                ////editItemHistory.PartnerCompanyID = GroupCode;
+                //ctlCredit.HistoryUpd(editItemHistory);
 
 
-                /*----------------------------------------------------*/
-                HistoriesCustomer editItemHistoriesCustomer = new HistoriesCustomer();
-                editItemHistoriesCustomer = ctlCredit.GetHistoriesCustomerByCreditID(Convert.ToInt32(hfCreditID.Value));
-                editItemHistoriesCustomer.CreditPurpose = tbCreditPurpose.Text;
-                editItemHistoriesCustomer.RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text);
-                editItemHistoriesCustomer.ApprovedSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text);
-                editItemHistoriesCustomer.CustomerID = Convert.ToInt32(hfCustomerID.Value);
-                ctlCredit.HistoriesCustomerUpd(editItemHistoriesCustomer);
                 ///*----------------------------------------------------*/
-                HistoriesEarlyPaymentComission editItemHistoriesEarlyPaymentComission = new HistoriesEarlyPaymentComission();
-                editItemHistoriesEarlyPaymentComission = ctlCredit.GetHistoriesEarlyPaymentComissionByCreditID(Convert.ToInt32(hfCreditID.Value));
-                editItemHistoriesEarlyPaymentComission.Period = 1;
-                editItemHistoriesEarlyPaymentComission.RequestPartialComissionType = 2; //непонятно
-                editItemHistoriesEarlyPaymentComission.RequestFullPaymentComissionType = 2;
-                ctlCredit.HistoriesEarlyPaymentComissionUpd(editItemHistoriesEarlyPaymentComission);
+                //HistoriesCustomer editItemHistoriesCustomer = new HistoriesCustomer();
+                //editItemHistoriesCustomer = ctlCredit.GetHistoriesCustomerByCreditID(Convert.ToInt32(hfCreditID.Value));
+                //editItemHistoriesCustomer.CreditPurpose = tbCreditPurpose.Text;
+                //editItemHistoriesCustomer.RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text);
+                //editItemHistoriesCustomer.ApprovedSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text);
+                //editItemHistoriesCustomer.CustomerID = Convert.ToInt32(hfCustomerID.Value);
+                //ctlCredit.HistoriesCustomerUpd(editItemHistoriesCustomer);
+                /////*----------------------------------------------------*/
+                //HistoriesEarlyPaymentComission editItemHistoriesEarlyPaymentComission = new HistoriesEarlyPaymentComission();
+                //editItemHistoriesEarlyPaymentComission = ctlCredit.GetHistoriesEarlyPaymentComissionByCreditID(Convert.ToInt32(hfCreditID.Value));
+                //editItemHistoriesEarlyPaymentComission.Period = 1;
+                //editItemHistoriesEarlyPaymentComission.RequestPartialComissionType = 2; //непонятно
+                //editItemHistoriesEarlyPaymentComission.RequestFullPaymentComissionType = 2;
+                //ctlCredit.HistoriesEarlyPaymentComissionUpd(editItemHistoriesEarlyPaymentComission);
                 /*----------------------------------------------------*/
                 /*----------------------------------------------------*/
-                string dateFirstPayment = tbActualDate.Text.Substring(6, 4) + "." + tbActualDate.Text.Substring(3, 2) + "." + tbActualDate.Text.Substring(0, 2);
-                var reqs = dbRWZ.Requests.Where(r => r.RequestID == Convert.ToInt32(hfRequestID.Value)).FirstOrDefault();
+                dateFirstPayment = tbActualDate.Text.Substring(6, 4) + "." + tbActualDate.Text.Substring(3, 2) + "." + tbActualDate.Text.Substring(0, 2);
+                //var reqs = dbRWZ.Requests.Where(r => r.RequestID == Convert.ToInt32(hfRequestID.Value)).FirstOrDefault();
                 //int? groupID = dbRWZ.Users2s.Where(r => r.UserID == usrID).FirstOrDefault().GroupID;
-                int? groupID = reqs.GroupID;
-                int? GroupCode = dbRWZ.Groups.Where(r => r.GroupID == groupID).FirstOrDefault().GroupCode;
-                int mortrageTypeID = 2;
-                if (reqs.GroupID != 110)
+                groupID = request.GroupID;
+                GroupCode = dbRWZ.Groups.Where(r => r.GroupID == groupID).FirstOrDefault().GroupCode;
+                mortrageTypeID = 2;
+
+
+               
+
+
+
+                if (request.GroupID != 110)
                 {
                     GeneralController gctx = new GeneralController();
 
@@ -2205,7 +2408,14 @@ namespace СreditСonveyor.Partners
                     //    //EndDate = 
                     //    Status = 1,
                     //};
-
+                    GeneralController.CreditOfficer creditOfficer = new GeneralController.CreditOfficer()
+                    {
+                        CreditOfficerTypeID = 1,
+                       // CreditOfficerStartDate = Convert.ToDateTime(actdate).AddDays(-1), // creditOfficerStartDate, //Convert.ToDateTime(dateNow).AddDays(-1),  //Convert.ToDateTime("2021-09-19T11:28:42"),  //Convert.ToDateTime(actdate), //dateTimeNow, 
+                       // CreditOfficerEndDate = null, // Convert.ToDateTime(actdate), //dateTimeNow, 
+                        //OfficeID = officeID, //1105,
+                        OfficerID = Convert.ToInt32(credOfficerID), //6804,
+                    };
 
 
                     GeneralController.Guarantor guarantor = new GeneralController.Guarantor()
@@ -2218,7 +2428,7 @@ namespace СreditСonveyor.Partners
                     };
 
                     byte loanStatus = 0;
-                    if ((reqs.RequestStatus == "Утверждено") || (reqs.RequestStatus == "К подписи") || (reqs.RequestStatus == "На выдаче")) loanStatus = 2;
+                    if ((request.RequestStatus == "Утверждено") || (request.RequestStatus == "К подписи") || (request.RequestStatus == "На выдаче")) loanStatus = 2;
 
                     
                     //if (chkbxTypeOfCollateral.Items[0].Selected == true) mortrageTypeID = 17;
@@ -2238,7 +2448,7 @@ namespace СreditСonveyor.Partners
                         IncomeApproveTypeID = 1,
                         RequestCurrencyID = 417,
                         RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text),
-                        //MarketingSourceID = 5,
+                        MarketingSourceID = 1,
                         //RequestDate = Convert.ToDateTime(actdate, //dateTimeNow, 
                         //IssueAccountNo = null,
                         //OfficerUserName = null,
@@ -2252,6 +2462,7 @@ namespace СreditСonveyor.Partners
                         Guarantors = new List<GeneralController.Guarantor>(),
                         Pictures = new List<GeneralController.Picture>(),
                         Partners = new List<GeneralController.Partner>(),
+                        CreditOfficers = new List<GeneralController.CreditOfficer>(),
 
 
                         RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue),
@@ -2264,7 +2475,7 @@ namespace СreditСonveyor.Partners
                         //ParallelRelativeCredit = null,
                         CreditPurpose = "Потребительская",
                         LoanPurposeTypeID = 2,
-                        IssueAccountNo = String.IsNullOrEmpty(reqs.CardAccount) ? null : reqs.CardAccount,
+                        IssueAccountNo = String.IsNullOrEmpty(request.CardAccount) ? null : request.CardAccount,
                         //LoanLocation = "",
                         //Options = null,
                         //ReasonRefinancing = null,
@@ -2343,7 +2554,7 @@ namespace СreditСonveyor.Partners
 
 
                     root.IncomesStructuresActualDates.Add(incomesstructuresactualdate);
-                    //root.Partners.Add(partner);
+                    root.CreditOfficers.Add(creditOfficer);
                     root.Pictures.Add(picture);
                     //root.Guarantors.Add(guarantor);
                     //if (hfGuarantorID.Value != "noselect")
@@ -2353,44 +2564,44 @@ namespace СreditСonveyor.Partners
 
                     //string str = SendPostOBCreateRequest(root);
 
-                  ///////////  string result = gctx.UpdateRequestWithAPI(root);  //кафка
+                  string result = gctx.UpdateRequestWithAPI(root);  //кафка
 
-                    //try
-                    //{
+                    try
+                    {
 
-                    //    respCreateReq dez = JsonConvert.DeserializeObject<respCreateReq>(result.ToString());
-                    //    if (dez.CreditID != null) { }
-                    //    //return dez.CreditID.ToString();
-                    //    else
-                    //    {
-                    //        //return result; 
-                    //        MsgBox("Ошибка:" + result, this.Page, this);
-                    //    }
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    //return ex.ToString();
-                    //    MsgBox("Ошибка:" + ex.ToString(), this.Page, this);
-                    //}
+                        respCreateReq dez = JsonConvert.DeserializeObject<respCreateReq>(result.ToString());
+                        if (dez.CreditID != null) { }
+                        //return dez.CreditID.ToString();
+                        else
+                        {
+                            //return result; 
+                            MsgBox("Ошибка:" + result, this.Page, this);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //return ex.ToString();
+                        MsgBox("Ошибка:" + ex.ToString(), this.Page, this);
+                    }
 
 
                     //GeneralController general = new GeneralController();
                     //general.UpdateToLoanRequest(root, reqs.RequestID); //кафка
 
 
-                    //int CreditsHistoriesID = 0;
-                    //try
-                    //{
-                    //    CreditsHistoriesID = Convert.ToInt32(gctx.getCreditID(result));
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    MsgBox("Ошибка:" + result, this.Page, this);
-                    //    lblError.Text = result;
-                    //    return;
-                    //}
+                    int CreditsHistoriesID = 0;
+                    try
+                    {
+                        CreditsHistoriesID = Convert.ToInt32(gctx.getCreditID(result));
+                    }
+                    catch (Exception ex)
+                    {
+                        MsgBox("Ошибка:" + result, this.Page, this);
+                        lblError.Text = result;
+                        return;
+                    }
                     //savePhoto("edit", CreditsHistoriesID);
-                    savePhoto("edit", Convert.ToInt32(hfCreditID.Value));
+                    //savePhoto("edit", Convert.ToInt32(hfCreditID.Value));
                 }
 
 
@@ -2406,7 +2617,7 @@ namespace СreditСonveyor.Partners
 
                     Request editRequest = new Request();
                     ItemController ctlItem = new ItemController();
-                    editRequest = ctlItem.GetRequestByCreditID(Convert.ToInt32(hfCreditID.Value));
+                    editRequest = ctlItem.GetRequestByRequestID(Convert.ToInt32(hfRequestID.Value));
                     editRequest.CreditPurpose = tbCreditPurpose.Text;
                     editRequest.CreditProduct = ddlProduct.SelectedValue;
                     editRequest.RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue);
@@ -2938,6 +3149,7 @@ namespace СreditСonveyor.Partners
 
         public void editcommand(int id)
         {
+
             divDocuments.Visible = true;
             hideDcbService();
             refreshLogDcbServ();
@@ -3172,7 +3384,124 @@ namespace СreditСonveyor.Partners
                 btnApproved.Visible = false; //
                 btnSignature.Visible = false;
                 /**********************/
+        
 
+                tbSearchINN.Text = lst.IdentificationNumber;
+                tbSerialN.Text = lst.SerialNumber;
+                btnSaveCustomer.Enabled = false;
+                btnCancel.Enabled = false;
+
+
+
+                if (lst.CustomerID != 0)
+                    SearchClientWithInnDocSeriesNumber();
+                else {
+                    btnSaveCustomer.Enabled = true;
+                    databindDDL();
+                    tbSurname.Text = lst.Surname;
+                    tbCustomerName.Text = lst.CustomerName;
+                    tbOtchestvo.Text = lst.Otchestvo;
+                    //if (query.IsResident == true) { rbtIsResident.SelectedIndex = 0; } else { rbtIsResident.SelectedIndex = 1; }
+                    tbIdentificationNumber.Text = lst.IdentificationNumber;
+                    tbDocumentSeries.Text = lst.SerialNumber;
+                    tbIssueAuthority.Text = lst.IssueAuthority;
+                    tbDateOfBirth.Text = Convert.ToDateTime(lst.DateOfBirth).ToString("dd.MM.yyyy");
+                    tbIssueDate.Text = Convert.ToDateTime(lst.IssueDate).ToString("dd.MM.yyyy");
+                    tbValidTill.Text = Convert.ToDateTime(lst.ValidTill).ToString("dd.MM.yyyy");
+                    tbIssueAuthority.Text = lst.IssueAuthority;
+                    
+                    tbContactPhone.Text = lst.ContactPhone1;
+                    hfCustomerID.Value = "noselect";
+
+                    //tbIssueDate.Text = Convert.ToDateTime(query.IssueDate).ToString("dd.MM.yyyy");
+                    // tbValidTill.Text = Convert.ToDateTime(query.DocumentValidTill).ToString("yyyy-MM-dd");
+                    //tbValidTill.Text = Convert.ToDateTime(query.DocumentValidTill).ToString("dd.MM.yyyy");
+                    //if ((query.IsDocUnlimited == false) || (query.IsDocUnlimited is null))
+                    //{
+                    //    tbValidTill.Text = Convert.ToDateTime(query.DocumentValidTill).ToString("dd.MM.yyyy");
+
+                    //    rbtnlistValidTill.Items[0].Selected = true;
+                    //    rbtnlistValidTill.Items[1].Selected = false;
+                    //}
+                    //else
+                    //{
+                    //    rbtnlistValidTill.Items[0].Selected = false;
+                    //    rbtnlistValidTill.Items[1].Selected = true;
+                    //}
+                    //tbIssueAuthority.Text = query.IssueAuthority;
+                    //if (query.Sex == true) { rbtSex.SelectedIndex = 0; } else { rbtSex.SelectedIndex = 1; }
+                    //tbDateOfBirth.Text = Convert.ToDateTime(query.DateOfBirth).ToString("dd.MM.yyyy");
+                    //tbRegistrationStreet.Text = query.RegistrationStreet;
+                    //tbRegistrationHouse.Text = query.RegistrationHouse;
+                    //tbRegistrationFlat.Text = query.RegistrationFlat;
+                    //tbResidenceStreet.Text = query.ResidenceStreet;
+                    //tbResidenceHouse.Text = query.ResidenceHouse;
+                    //tbContactPhone.Text = query.ContactPhone1;
+                    //tbResidenceFlat.Text = query.ResidenceFlat;
+                    //if (ddlDocumentTypeID.Items.Count > 0 && !string.IsNullOrEmpty(query.DocumentTypeID.ToString()))
+                    //    ddlDocumentTypeID.SelectedIndex = ddlDocumentTypeID.Items.IndexOf(ddlDocumentTypeID.Items.FindByValue(query.DocumentTypeID.ToString()));
+                    //if (ddlNationalityID.Items.Count > 0 && !string.IsNullOrEmpty(query.NationalityID.ToString()))
+                    //    ddlNationalityID.SelectedIndex = ddlNationalityID.Items.IndexOf(ddlNationalityID.Items.FindByValue(query.NationalityID.ToString()));
+
+                    //if (ddlBirthCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.BirthCountryID.ToString()))
+                    //    ddlBirthCountryID.SelectedIndex = ddlBirthCountryID.Items.IndexOf(ddlBirthCountryID.Items.FindByValue(query.BirthCountryID.ToString()));
+                    //var BirthCountry = (from u in dbR.Countries where ((u.CountryID == query.BirthCountryID)) select u).ToList().FirstOrDefault();
+                    //if (BirthCountry != null)
+                    //    ddlBirthCountryID.Items.Add(new ListItem { Text = BirthCountry.ShortName, Value = BirthCountry.CountryID.ToString() });
+
+                    //if (ddlRegistrationCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCountryID.ToString()))
+                    //    ddlRegistrationCountryID.SelectedIndex = ddlRegistrationCountryID.Items.IndexOf(ddlRegistrationCountryID.Items.FindByValue(query.RegistrationCountryID.ToString()));
+                    //var RegistrationCountry = (from u in dbR.Countries where ((u.CountryID == query.RegistrationCountryID)) select u).ToList().FirstOrDefault();
+                    //if (RegistrationCountry != null)
+                    //    ddlRegistrationCountryID.Items.Add(new ListItem { Text = RegistrationCountry.ShortName, Value = RegistrationCountry.CountryID.ToString() });
+
+
+
+                    //if (ddlResidenceCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCountryID.ToString()))
+                    //    ddlResidenceCountryID.SelectedIndex = ddlResidenceCountryID.Items.IndexOf(ddlResidenceCountryID.Items.FindByValue(query.ResidenceCountryID.ToString()));
+                    //var ResidenceCountry = (from u in dbR.Countries where ((u.CountryID == query.ResidenceCountryID)) select u).ToList().FirstOrDefault();
+                    //if (ResidenceCountry != null)
+                    //    ddlResidenceCountryID.Items.Add(new ListItem { Text = ResidenceCountry.ShortName, Value = ResidenceCountry.CountryID.ToString() });
+
+
+                    //if (ddlBirthCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.BirthCityID.ToString()))
+                    //    ddlBirthCityName.SelectedIndex = ddlBirthCityName.Items.IndexOf(ddlBirthCityName.Items.FindByValue(query.BirthCityID.ToString()));
+                    //var birthCity = dbR.GetTable<City>().Where(c => c.CityID == query.BirthCityID).FirstOrDefault();
+                    //if (birthCity != null)
+                    //{
+                    //    var region = dbR.GetTable<Zamat.Region>().Where(reg => reg.RegionID == birthCity.RegionID).FirstOrDefault();
+                    //    if (region.RegionName != null)
+                    //    {
+                    //    }
+                    //}
+
+
+                    //if (ddlRegistrationCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCityID.ToString()))
+                    //    ddlRegistrationCityName.SelectedIndex = ddlRegistrationCityName.Items.IndexOf(ddlRegistrationCityName.Items.FindByValue(query.RegistrationCityID.ToString()));
+                    //var RegistrationCity = (from u in dbR.Cities where ((u.CityID == query.RegistrationCityID)) select u).ToList().FirstOrDefault();
+                    ////ddlRegistrationCityName.Items.Add(RegistrationCity.CityName);
+                    //ddlRegistrationCityName.Items.Add(new ListItem { Text = RegistrationCity.CityName, Value = RegistrationCity.CityID.ToString() });
+                    //var registrationCity = dbR.GetTable<City>().Where(c => c.CityID == query.RegistrationCityID).FirstOrDefault();
+                    //if (registrationCity != null)
+                    //{
+                    //    var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == registrationCity.RegionID).FirstOrDefault();
+                    //}
+
+
+                    //if (ddlResidenceCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCityID.ToString()))
+                    //    ddlResidenceCityName.SelectedIndex = ddlResidenceCityName.Items.IndexOf(ddlResidenceCityName.Items.FindByValue(query.ResidenceCityID.ToString()));
+                    //var ResidenceCity = (from u in dbR.Cities where ((u.CityID == query.ResidenceCityID)) select u).ToList().FirstOrDefault();
+                    ////ddlResidenceCityName.Items.Add(ResidenceCity.CityName);
+                    //ddlResidenceCityName.Items.Add(new ListItem { Text = ResidenceCity.CityName, Value = ResidenceCity.CityID.ToString() });
+
+                    //var residenceCity = dbR.GetTable<City>().Where(c => c.CityID == query.ResidenceCityID).FirstOrDefault();
+                    //if (residenceCity != null)
+                    //{
+                    //    var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == residenceCity.RegionID).FirstOrDefault();
+                    //}
+
+                };
+                /***********************/
 
 
                 //txtCardNumber.Text = lst.CardNumber;
@@ -3269,8 +3598,8 @@ namespace СreditСonveyor.Partners
                 //    //BlackListHide();
                 //}
 
-                if (lst.GroupID == 110) { btnProfileNano.Visible = true; }
-                else { btnProfileNano.Visible = false; }
+                //if (lst.GroupID == 110) { btnProfileNano.Visible = true; }
+                //else { btnProfileNano.Visible = false; }
 
 
                 hideDcbService();
@@ -4047,6 +4376,7 @@ namespace СreditСonveyor.Partners
 
         public void clearEditControlsRequest()
         {
+            disableCustomerFields();
             tbCreditPurpose.Text = "";
 
             RadNumTbRequestSumm.Text = "";
@@ -6662,8 +6992,8 @@ namespace СreditСonveyor.Partners
         {
             if (tbDocumentSeries.Text.Length > 3)
             {
-                if (tbDocumentSeries.Text.Substring(0, 2).ToUpper() == "AN") { ddlDocumentTypeID.SelectedIndex = 0; }
-                if (tbDocumentSeries.Text.Substring(0, 2).ToUpper() == "ID") { ddlDocumentTypeID.SelectedIndex = 1; }
+                if (tbDocumentSeries.Text.Substring(0, 2).ToUpper() == "AN") { ddlDocumentTypeID.SelectedIndex = 1; }
+                if (tbDocumentSeries.Text.Substring(0, 2).ToUpper() == "ID") { ddlDocumentTypeID.SelectedIndex = 2; }
             }
         }
 
@@ -6671,8 +7001,8 @@ namespace СreditСonveyor.Partners
         {
             if (tbDocumentSeries.Text.Length > 3)
             {
-                if (tbDocumentSeries.Text.Substring(0, 2).ToUpper() == "AN") { ddlDocumentTypeID.SelectedIndex = 0; }
-                if (tbDocumentSeries.Text.Substring(0, 2).ToUpper() == "ID") { ddlDocumentTypeID.SelectedIndex = 1; }
+                if (tbDocumentSeries.Text.Substring(0, 2).ToUpper() == "AN") { ddlDocumentTypeID.SelectedIndex = 1; }
+                if (tbDocumentSeries.Text.Substring(0, 2).ToUpper() == "ID") { ddlDocumentTypeID.SelectedIndex = 2; }
             }
         }
 
@@ -7753,7 +8083,7 @@ namespace СreditСonveyor.Partners
             dbRWZ.LogDcbServices.Context.SubmitChanges();
         }
 
-        public async void getDocFromCIB(string IdNumber, string FullName, string DateOfBirth, string InternalPassport, string typeReport)
+        public async Task<string> getDocFromCIB(string IdNumber, string FullName, string DateOfBirth, string InternalPassport, string typeReport)
         {
             ServicePointManager.ServerCertificateValidationCallback = (a, b, c, d) => true;
             try
@@ -7765,7 +8095,8 @@ namespace СreditСonveyor.Partners
                     //string json = "{\"userName\": \"user01\" , \"password\": \"password123\"}";
 
 
-                    string json = "{\"userName\": \"" + Session["UserName"].ToString() + "\" , \"password\": \"" + Session["Password"].ToString() + "\"}";
+                    //string json = "{\"userName\": \"" + Session["UserName"].ToString() + "\" , \"password\": \"" + Session["Password"].ToString() + "\"}";
+                    string json = "{\"userName\": \"" + "r.tentiev" + "\" , \"password\": \"" + "Password1@3$" + "\"}";
 
                     var response = await client.PostAsync(connectionStringKIB + "/api/Account/Login", new StringContent(json, Encoding.UTF8, "application/json"));
                     var result = await response.Content.ReadAsStringAsync();
@@ -7773,23 +8104,35 @@ namespace СreditСonveyor.Partners
                     string token = getToken(result);
                     client.Dispose();
                     /**********Запрос КИБ*********/
-                
+
 
                     HttpClient client2 = new HttpClient();
                     client2.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                     client2.BaseAddress = new Uri(connectionStringKIB + "/api/Cib/SmartSearchIndividual");
 
-                    var u = connectionStringKIB + "/api/Cib/SmartSearchIndividual";
-                    string json2 = "{\"IdNumber\": \"12303199400514\" , \"FullName\": \"Жоомарт кызы Зинат\", \"DateOfBirth\": \"1994-03-23\", \"InternalPassport\": \"ID1081023\"}";
+                    var u = connectionStringKIB + "/api/Cib/SoapSmartSearchIndividual";
+                    //string json2 = "{\"IdNumber\": \"12303199400514\" , \"FullName\": \"Жоомарт кызы Зинат\", \"DateOfBirth\": \"1994-03-23\", \"InternalPassport\": \"ID1081023\"}";
+
+                    //var builder = new UriBuilder(u);
+                    //builder.Query = "IdNumber="+ IdNumber + "&FullName=" + FullName + "&DateOfBirth=" + DateOfBirth + "&InternalPassport=" + InternalPassport;
+                    //var url = builder.ToString();
+
+                    //var response2 = await client2.PostAsync(url, new StringContent(json2, Encoding.UTF8, "application/json"));
+                    //var result2 = await response2.Content.ReadAsStringAsync();
+
+                    //client2.Dispose();
+
 
                     var builder = new UriBuilder(u);
-                    builder.Query = "IdNumber="+ IdNumber + "&FullName=" + FullName + "&DateOfBirth=" + DateOfBirth + "&InternalPassport=" + InternalPassport;
+                    builder.Query = "IdNumber=" + IdNumber + "&FullName=" + FullName + "&DateOfBirth=" + DateOfBirth + "&InternalPassport=" + InternalPassport + "&userName=" + Session["UserName"].ToString();
                     var url = builder.ToString();
 
-                    var response2 = await client2.PostAsync(url, new StringContent(json2, Encoding.UTF8, "application/json"));
+                    var response2 = await client2.PostAsync(url, new StringContent("", Encoding.UTF8, "application/json"));
                     var result2 = await response2.Content.ReadAsStringAsync();
 
                     client2.Dispose();
+
+
 
                     if (result2 != "SubjectNotFound")
                     {
@@ -7802,15 +8145,15 @@ namespace СreditСonveyor.Partners
                         client3.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                         client3.BaseAddress = new Uri(connectionStringKIB + "/api/Cib/GetPdfReport");
 
-                        var u3 = connectionStringKIB + "/api/Cib/GetPdfReport";
+                        var u3 = connectionStringKIB + "/api/Cib/SoapGetPdfReport";
                         var json3 = "{\"IdNumber\": \"12303199400514\", \"typeReport\": \"CondensedReportPlus\"}";
 
                         var builder3 = new UriBuilder(u3);
-                        builder3.Query = "IDNumber=" + result2 + "&typeReport=" + typeReport;
+                        builder3.Query = "IDNumber=" + result2 + "&typeReport=" + typeReport + "&userName=" + Session["UserName"].ToString();
                         //builder3.Query = "typeReport=" + "CondensedReportPlus";
                         var url3 = builder3.ToString();
 
-                        var response3 = await client3.PostAsync(url3, new StringContent(json3, Encoding.UTF8, "application/json"));
+                        var response3 = await client3.PostAsync(url3, new StringContent("", Encoding.UTF8, "application/json"));
                         var result3byte = await response3.Content.ReadAsByteArrayAsync();
                         string result3string = await response3.Content.ReadAsStringAsync();
                         string res = JsonConvert.ToString(result3string);
@@ -7820,15 +8163,27 @@ namespace СreditСonveyor.Partners
                         byte[] byteArray = Convert.FromBase64String(result3string);
 
 
+                        //string embed = "<object data=\"{0}\" type=\"application/pdf\" width=\"500px\" height=\"300px\">";
+                        //embed += "If you are unable to view file, you can download from <a href = \"{0}\">here</a>";
+                        //embed += " or download <a target = \"_blank\" href = \"http://get.adobe.com/reader/\">Adobe PDF Reader</a> to view the file.";
+                        //embed += "</object>";
 
-                        Response.Clear();
-                        Response.Buffer = true;
-                        Response.Charset = "";
-                        Response.Cache.SetCacheability(HttpCacheability.NoCache);
-                        Response.ContentType = "application/pdf";
-                        Response.AppendHeader("Content-Disposition", "attachment; filename=" + "MyFile.pdf");
-                        Response.BinaryWrite(byteArray);
-                        Response.Flush();
+                        string embed = "<embed src = \"{0}\" width = \"auto\" height = \"900\" alt = \"pdf\" pluginspage = \"http://www.adobe.com/products/acrobat/readstep2.html\">";
+
+                        ltEmbed.Text = string.Format(embed, ResolveUrl("https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea%20Brochure.pdf"));
+
+                        //string Base64String = "data:application/pdf;base64," + result3string;
+
+
+                        //Скачивание файла
+                        //Response.Clear();
+                        //Response.Buffer = true;
+                        //Response.Charset = "";
+                        //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                        //Response.ContentType = "application/pdf";
+                        //Response.AppendHeader("Content-Disposition", "attachment; filename=" + "MyFile.pdf");
+                        //Response.BinaryWrite(byteArray);
+                        //Response.Flush();
 
 
                         string destinationFile = "";
@@ -7838,6 +8193,8 @@ namespace СreditСonveyor.Partners
                         destinationFile = gctl.fileNameAddExt(IdNumber + "_KIB" + DateTime.Today.Date.ToString("_ddMMyyyy") + ".pdf", destinationFolder, dateRandomdir);
 
                         File.WriteAllBytes(destinationFolder + "\\" + dateRandomdir + "\\" + destinationFile, Convert.FromBase64String(result3string));
+
+
 
                         RequestsFile newRequestFile = new RequestsFile
                         {
@@ -7856,22 +8213,28 @@ namespace СreditСonveyor.Partners
                         };
                         ItemController ctl = new ItemController();
                         ctl.ItemRequestFilesAddItem(newRequestFile);
+                        return result3string;
 
-                    } else MsgBox("Клиент не найден в базе КИБ", this.Page, this);
+                    }
+                    else
+                    {
+                        MsgBox("Клиент не найден в базе КИБ", this.Page, this);
+                        return null;
+                    }
 
                 }
             }
             catch (Exception ex)
             {
                 MsgBox(ex.ToString(), this.Page, this);
+                return null;
             }
-            finally
-            {
+            //finally
+            //{
 
-            }
+            //}
         }
 
-    
 
         public async void getDocFromServDCB(string kindServ)
         {
@@ -8489,23 +8852,56 @@ namespace СreditСonveyor.Partners
 
         protected async void btnKIB_Click(object sender, EventArgs e)
         {
+            //dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+            ////var res = await KIBRequestOB(hfCustomerID.Value, RadNumTbRequestSumm.Text, 1);
+            //var cust = dbR.Customers.Where(x => x.CustomerID == Convert.ToInt32(hfCustomerID.Value)).FirstOrDefault();
+            //if (cust != null)
+            //getDocFromCIB(cust.IdentificationNumber, cust.Surname.Trim() + " " + cust.CustomerName.Trim() + " " + cust.Otchestvo.Trim(), Convert.ToDateTime(cust.DateOfBirth).ToString("yyyy-MM-dd"), cust.DocumentSeries.Trim() + cust.DocumentNo.Trim(), "CreditinfoReportPlus");
+            ////getDocFromCIB("12303199400514", "Жоомарт кызы Зинат", "1994-03-23", "ID1081023");
+            ///
+
+
+             //var res = await KIBRequestOB(hfCustomerID.Value, RadNumTbRequestSumm.Text, 2);
             dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
             //var res = await KIBRequestOB(hfCustomerID.Value, RadNumTbRequestSumm.Text, 1);
             var cust = dbR.Customers.Where(x => x.CustomerID == Convert.ToInt32(hfCustomerID.Value)).FirstOrDefault();
             if (cust != null)
-            getDocFromCIB(cust.IdentificationNumber, cust.Surname.Trim() + " " + cust.CustomerName.Trim() + " " + cust.Otchestvo.Trim(), Convert.ToDateTime(cust.DateOfBirth).ToString("yyyy-MM-dd"), cust.DocumentSeries.Trim() + cust.DocumentNo.Trim(), "CreditinfoReportPlus");
-            //getDocFromCIB("12303199400514", "Жоомарт кызы Зинат", "1994-03-23", "ID1081023");
+            {
+                string pdfFile = await getDocFromCIB(cust.IdentificationNumber, cust.Surname.Trim() + " " + cust.CustomerName.Trim() + " " + cust.Otchestvo.Trim(), Convert.ToDateTime(cust.DateOfBirth).ToString("yyyy-MM-dd"), cust.DocumentSeries.Trim() + cust.DocumentNo.Trim(), "CondensedReportPlus");
+                byte[] data = Convert.FromBase64String(pdfFile);
+
+                string embed = "<embed src = \"{0}\" width = \"100%\" height = \"900\" alt = \"pdf\" pluginspage = \"http://www.adobe.com/products/acrobat/readstep2.html\">";
+                //ltEmbed.Text = "sdsadsa";
+
+                ltEmbed.Text = string.Format(embed, "data:application/pdf;base64," + Convert.ToBase64String(data, 0, data.Length));
+            }
         }
 
         protected async void btnKIB2_Click(object sender, EventArgs e)
         {
+            ////var res = await KIBRequestOB(hfCustomerID.Value, RadNumTbRequestSumm.Text, 2);
+            //dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+            ////var res = await KIBRequestOB(hfCustomerID.Value, RadNumTbRequestSumm.Text, 1);
+            //var cust = dbR.Customers.Where(x => x.CustomerID == Convert.ToInt32(hfCustomerID.Value)).FirstOrDefault();
+            //if (cust != null)
+            //    getDocFromCIB(cust.IdentificationNumber, cust.Surname.Trim() + " " + cust.CustomerName.Trim() + " " + cust.Otchestvo.Trim(), Convert.ToDateTime(cust.DateOfBirth).ToString("yyyy-MM-dd"), cust.DocumentSeries.Trim() + cust.DocumentNo.Trim(), "CondensedReportPlus");
+            ////getDocFromCIB("12303199400514", "Жоомарт кызы Зинат", "1994-03-23", "ID1081023");
+
+
             //var res = await KIBRequestOB(hfCustomerID.Value, RadNumTbRequestSumm.Text, 2);
             dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
             //var res = await KIBRequestOB(hfCustomerID.Value, RadNumTbRequestSumm.Text, 1);
             var cust = dbR.Customers.Where(x => x.CustomerID == Convert.ToInt32(hfCustomerID.Value)).FirstOrDefault();
             if (cust != null)
-                getDocFromCIB(cust.IdentificationNumber, cust.Surname.Trim() + " " + cust.CustomerName.Trim() + " " + cust.Otchestvo.Trim(), Convert.ToDateTime(cust.DateOfBirth).ToString("yyyy-MM-dd"), cust.DocumentSeries.Trim() + cust.DocumentNo.Trim(), "CondensedReportPlus");
-            //getDocFromCIB("12303199400514", "Жоомарт кызы Зинат", "1994-03-23", "ID1081023");
+            {
+                string pdfFile = await getDocFromCIB(cust.IdentificationNumber, cust.Surname.Trim() + " " + cust.CustomerName.Trim() + " " + cust.Otchestvo.Trim(), Convert.ToDateTime(cust.DateOfBirth).ToString("yyyy-MM-dd"), cust.DocumentSeries.Trim() + cust.DocumentNo.Trim(), "CondensedReportPlus");
+                byte[] data = Convert.FromBase64String(pdfFile);
+
+                string embed = "<embed src = \"{0}\" width = \"100%\" height = \"900\" alt = \"pdf\" pluginspage = \"http://www.adobe.com/products/acrobat/readstep2.html\">";
+                //ltEmbed.Text = "sdsadsa";
+
+                ltEmbed.Text = string.Format(embed, "data:application/pdf;base64," + Convert.ToBase64String(data, 0, data.Length));
+            }
         }
 
         //protected void rbtnTypeOfIssue_SelectedIndexChanged(object sender, EventArgs e)
@@ -9200,19 +9596,19 @@ namespace СreditСonveyor.Partners
 
         protected void TbAmountOfDownPayment_TextChanged(object sender, EventArgs e)
         {
-            firstAmountforhfAmountOfDownPayment();
-            double amount10 = (TbAmountOfDownPayment.Text != "") ? Convert.ToDouble(TbAmountOfDownPayment.Text) : 0;
-            double hfamount10 = Convert.ToDouble(hfAmountOfDownPayment.Value);
-            if (amount10 < hfamount10)
-            {
-                RadNumTbRequestSumm.Text = "";
-                //lblAmountOfDownPayment.Text = "Сумма перв.взноса не может быть меньше суммы тарифов";
-            }
-            else
-            {
-                RadNumTbRequestSumm.Text = (Convert.ToDouble(RadNumTbTotalPrice.Text) - amount10).ToString();
-                //    lblAmountOfDownPayment.Text = "";
-            }
+            //firstAmountforhfAmountOfDownPayment();
+            //double amount10 = (TbAmountOfDownPayment.Text != "") ? Convert.ToDouble(TbAmountOfDownPayment.Text) : 0;
+            //double hfamount10 = Convert.ToDouble(hfAmountOfDownPayment.Value);
+            //if (amount10 < hfamount10)
+            //{
+            //    RadNumTbRequestSumm.Text = "";
+                
+            //}
+            //else
+            //{
+            //    RadNumTbRequestSumm.Text = (Convert.ToDouble(RadNumTbTotalPrice.Text) - amount10).ToString();
+                
+            //}
         }
 
         protected void btnAccount_Click(object sender, EventArgs e)
@@ -9230,6 +9626,531 @@ namespace СreditСonveyor.Partners
 
         }
 
+        protected void SearchClientWithCustomerID(int customerId)
+        {
+            btnSaveCustomer.Text = "Прикрепить";
+            disableCustomerFields();
+            dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+            //var query = (from u in dbR.Customers where ((u.IdentificationNumber == tbSearchINN.Text) && (u.DocumentSeries == tbSerialN.Text.Substring(0, 5)) && (u.DocumentNo == tbSerialN.Text.Substring(5, 4))) select u).ToList().FirstOrDefault();
+            var query = (from u in dbR.Customers where (u.CustomerID == customerId) select u).ToList().FirstOrDefault();
+            if (query != null)
+            {
+                pnlCustomer.Visible = true;
+                //pnlCredit.Visible = false;
+                //btnSaveCustomer.Enabled = false;
+                btnCredit.Enabled = true;
+                if (hfChooseClient.Value == "Выбрать клиента") hfCustomerID.Value = query.CustomerID.ToString();
+                if (hfChooseClient.Value == "Выбрать поручителя") hfGuarantorID.Value = query.CustomerID.ToString();
+                if (hfChooseClient.Value == "Выбрать залогодателя") hfPledgerID.Value = query.CustomerID.ToString();
+                //hfCustomerID.Value = query.CustomerID.ToString();
+                tbSurname.Text = query.Surname;
+                tbCustomerName.Text = query.CustomerName;
+                tbOtchestvo.Text = query.Otchestvo;
+                if (query.IsResident == true) { rbtIsResident.SelectedIndex = 0; } else { rbtIsResident.SelectedIndex = 1; }
+                tbIdentificationNumber.Text = query.IdentificationNumber;
+                tbDocumentSeries.Text = query.DocumentSeries + query.DocumentNo;
+                tbIssueDate.Text = Convert.ToDateTime(query.IssueDate).ToString("dd.MM.yyyy");
+                // tbValidTill.Text = Convert.ToDateTime(query.DocumentValidTill).ToString("yyyy-MM-dd");
+                //tbValidTill.Text = Convert.ToDateTime(query.DocumentValidTill).ToString("dd.MM.yyyy");
+                if ((query.IsDocUnlimited == false) || (query.IsDocUnlimited is null))
+                {
+                    tbValidTill.Text = Convert.ToDateTime(query.DocumentValidTill).ToString("dd.MM.yyyy");
+
+                    rbtnlistValidTill.Items[0].Selected = true;
+                    rbtnlistValidTill.Items[1].Selected = false;
+                }
+                else
+                {
+                    rbtnlistValidTill.Items[0].Selected = false;
+                    rbtnlistValidTill.Items[1].Selected = true;
+                }
+                tbIssueAuthority.Text = query.IssueAuthority;
+                if (query.Sex == true) { rbtSex.SelectedIndex = 0; } else { rbtSex.SelectedIndex = 1; }
+                tbDateOfBirth.Text = Convert.ToDateTime(query.DateOfBirth).ToString("dd.MM.yyyy");
+                tbRegistrationStreet.Text = query.RegistrationStreet;
+                tbRegistrationHouse.Text = query.RegistrationHouse;
+                tbRegistrationFlat.Text = query.RegistrationFlat;
+                tbResidenceStreet.Text = query.ResidenceStreet;
+                tbResidenceHouse.Text = query.ResidenceHouse;
+                tbContactPhone.Text = query.ContactPhone1;
+                tbResidenceFlat.Text = query.ResidenceFlat;
+                if (ddlDocumentTypeID.Items.Count > 0 && !string.IsNullOrEmpty(query.DocumentTypeID.ToString()))
+                    ddlDocumentTypeID.SelectedIndex = ddlDocumentTypeID.Items.IndexOf(ddlDocumentTypeID.Items.FindByValue(query.DocumentTypeID.ToString()));
+                if (ddlNationalityID.Items.Count > 0 && !string.IsNullOrEmpty(query.NationalityID.ToString()))
+                    ddlNationalityID.SelectedIndex = ddlNationalityID.Items.IndexOf(ddlNationalityID.Items.FindByValue(query.NationalityID.ToString()));
+
+                if (ddlBirthCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.BirthCountryID.ToString()))
+                    ddlBirthCountryID.SelectedIndex = ddlBirthCountryID.Items.IndexOf(ddlBirthCountryID.Items.FindByValue(query.BirthCountryID.ToString()));
+                var BirthCountry = (from u in dbR.Countries where ((u.CountryID == query.BirthCountryID)) select u).ToList().FirstOrDefault();
+                if (BirthCountry != null)
+                    ddlBirthCountryID.Items.Add(new ListItem { Text = BirthCountry.ShortName, Value = BirthCountry.CountryID.ToString() });
+
+                if (ddlRegistrationCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCountryID.ToString()))
+                    ddlRegistrationCountryID.SelectedIndex = ddlRegistrationCountryID.Items.IndexOf(ddlRegistrationCountryID.Items.FindByValue(query.RegistrationCountryID.ToString()));
+                var RegistrationCountry = (from u in dbR.Countries where ((u.CountryID == query.RegistrationCountryID)) select u).ToList().FirstOrDefault();
+                if (RegistrationCountry != null)
+                    ddlRegistrationCountryID.Items.Add(new ListItem { Text = RegistrationCountry.ShortName, Value = RegistrationCountry.CountryID.ToString() });
+
+
+
+                if (ddlResidenceCountryID.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCountryID.ToString()))
+                    ddlResidenceCountryID.SelectedIndex = ddlResidenceCountryID.Items.IndexOf(ddlResidenceCountryID.Items.FindByValue(query.ResidenceCountryID.ToString()));
+                var ResidenceCountry = (from u in dbR.Countries where ((u.CountryID == query.ResidenceCountryID)) select u).ToList().FirstOrDefault();
+                if (ResidenceCountry != null)
+                    ddlResidenceCountryID.Items.Add(new ListItem { Text = ResidenceCountry.ShortName, Value = ResidenceCountry.CountryID.ToString() });
+
+
+                if (ddlBirthCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.BirthCityID.ToString()))
+                    ddlBirthCityName.SelectedIndex = ddlBirthCityName.Items.IndexOf(ddlBirthCityName.Items.FindByValue(query.BirthCityID.ToString()));
+                var birthCity = dbR.GetTable<City>().Where(c => c.CityID == query.BirthCityID).FirstOrDefault();
+                if (birthCity != null)
+                {
+                    var region = dbR.GetTable<Zamat.Region>().Where(reg => reg.RegionID == birthCity.RegionID).FirstOrDefault();
+                    if (region.RegionName != null)
+                    {
+                    }
+                }
+
+
+                if (ddlRegistrationCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.RegistrationCityID.ToString()))
+                    ddlRegistrationCityName.SelectedIndex = ddlRegistrationCityName.Items.IndexOf(ddlRegistrationCityName.Items.FindByValue(query.RegistrationCityID.ToString()));
+                var RegistrationCity = (from u in dbR.Cities where ((u.CityID == query.RegistrationCityID)) select u).ToList().FirstOrDefault();
+                //ddlRegistrationCityName.Items.Add(RegistrationCity.CityName);
+                ddlRegistrationCityName.Items.Add(new ListItem { Text = RegistrationCity.CityName, Value = RegistrationCity.CityID.ToString() });
+                var registrationCity = dbR.GetTable<City>().Where(c => c.CityID == query.RegistrationCityID).FirstOrDefault();
+                if (registrationCity != null)
+                {
+                    var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == registrationCity.RegionID).FirstOrDefault();
+                }
+
+
+                if (ddlResidenceCityName.Items.Count > 0 && !string.IsNullOrEmpty(query.ResidenceCityID.ToString()))
+                    ddlResidenceCityName.SelectedIndex = ddlResidenceCityName.Items.IndexOf(ddlResidenceCityName.Items.FindByValue(query.ResidenceCityID.ToString()));
+                var ResidenceCity = (from u in dbR.Cities where ((u.CityID == query.ResidenceCityID)) select u).ToList().FirstOrDefault();
+                //ddlResidenceCityName.Items.Add(ResidenceCity.CityName);
+                ddlResidenceCityName.Items.Add(new ListItem { Text = ResidenceCity.CityName, Value = ResidenceCity.CityID.ToString() });
+
+                var residenceCity = dbR.GetTable<City>().Where(c => c.CityID == query.ResidenceCityID).FirstOrDefault();
+                if (residenceCity != null)
+                {
+                    var region = dbR.GetTable<Region>().Where(reg => reg.RegionID == residenceCity.RegionID).FirstOrDefault();
+                }
+
+
+
+
+
+
+            }
+            else
+            {
+                pnlCustomer.Visible = true;
+                //pnlCredit.Visible = false;
+                clearEditControls();
+                btnSaveCustomer.Enabled = true;
+                btnCredit.Enabled = false;
+            }
+        }
+        protected void gvUsers_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int id = Convert.ToInt32(e.CommandArgument);
+            //hfRequestID.Value = id.ToString();
+
+
+            //if (hfRequestsRowID.Value != "")
+            //{
+            //    GridViewRow gvtold = gvRequests.Rows[Convert.ToInt32(hfRequestsRowID.Value)];
+            //    gvtold.BackColor = System.Drawing.Color.Empty;
+            //}
+
+
+            foreach (GridViewRow row in gvUsers.Rows)
+            {
+                row.BackColor = System.Drawing.Color.Empty;
+            }
+
+
+            if (e.CommandName == "Sel")
+            {
+
+
+                ////editcommand(id);
+                //downloadFiles(id);
+                ////refreshfiles();
+                ////refreshGuarantees();
+
+                //gvUsers.BackColor = Color.White;
+
+
+                LinkButton lb = e.CommandSource as LinkButton;
+                GridViewRow gvr = lb.Parent.Parent as GridViewRow;
+                //gvr.BackColor = System.Drawing.Color.Empty;
+                string hex = "#cbceea";
+                Color _color = System.Drawing.ColorTranslator.FromHtml(hex);
+                gvr.BackColor = _color;
+                //hfRequestsRowID.Value = gvr.RowIndex.ToString();
+                ////lbHistory_Click(new object(), new EventArgs());
+                hfSelectCustomerID.Value = id.ToString();
+                SearchClientWithCustomerID(id);
+            }
+        }
+
+        protected async void btnGetWorkPeriodInfoWithSum_Click(object sender, EventArgs e)
+        {
+            dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+            //var res = await KIBRequestOB(hfCustomerID.Value, RadNumTbRequestSumm.Text, 1);
+            var cust = dbR.Customers.Where(x => x.CustomerID == Convert.ToInt32(hfCustomerID.Value)).FirstOrDefault();
+            if (cust != null)
+            {
+                string pdfFile = await getDocFromSucfund(cust.IdentificationNumber, "/api/Socfund/SoapGetWorkPeriodInfoWithSumPdf");
+                byte[] data = Convert.FromBase64String(pdfFile);
+
+                string embed = "<embed src = \"{0}\" width = \"100%\" height = \"900\" alt = \"pdf\" pluginspage = \"http://www.adobe.com/products/acrobat/readstep2.html\">";
+                //ltEmbed.Text = "sdsadsa";
+
+                ltEmbed.Text = string.Format(embed, "data:application/pdf;base64," + Convert.ToBase64String(data, 0, data.Length));
+            }
+        }
+
+        protected async void btnGetPensionInfoWithSum_Click(object sender, EventArgs e)
+        {
+            dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+            //var res = await KIBRequestOB(hfCustomerID.Value, RadNumTbRequestSumm.Text, 1);
+            var cust = dbR.Customers.Where(x => x.CustomerID == Convert.ToInt32(hfCustomerID.Value)).FirstOrDefault();
+            if (cust != null)
+            {
+                string pdfFile = await getDocFromSucfund(cust.IdentificationNumber, "/api/Socfund/SoapGetPensionInfoWithSumPdf");
+                byte[] data = Convert.FromBase64String(pdfFile);
+
+                string embed = "<embed src = \"{0}\" width = \"100%\" height = \"900\" alt = \"pdf\" pluginspage = \"http://www.adobe.com/products/acrobat/readstep2.html\">";
+                //ltEmbed.Text = "sdsadsa";
+
+                ltEmbed.Text = string.Format(embed, "data:application/pdf;base64," + Convert.ToBase64String(data, 0, data.Length));
+            }
+        }
+
+
+
+
+        public async Task<string> getDocFromSucfund(string Pin, string Service)
+        {
+            ServicePointManager.ServerCertificateValidationCallback = (a, b, c, d) => true;
+            try
+            {
+
+                //if (result2 != "SubjectNotFound")
+                {
+                    HttpClient client = new HttpClient();
+
+                    client.BaseAddress = new Uri(connectionStringKIB + "/api/Account/Login");
+                    //string json = "{\"userName\": \"user01\" , \"password\": \"password123\"}";
+
+
+                    //string json = "{\"userName\": \"" + Session["UserName"].ToString() + "\" , \"password\": \"" + Session["Password"].ToString() + "\"}";
+                    string json = "{\"userName\": \"" + "r.tentiev" + "\" , \"password\": \"" + "Password1@3$" + "\"}";
+
+                    var response = await client.PostAsync(connectionStringKIB + "/api/Account/Login", new StringContent(json, Encoding.UTF8, "application/json"));
+                    var result = await response.Content.ReadAsStringAsync();
+                    //string result3 = "res:" + result;
+                    string token = getToken(result);
+                    client.Dispose();
+                    //    /****************************/
+
+
+                    HttpClient client3 = new HttpClient();
+                    client3.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                    client3.BaseAddress = new Uri(connectionStringKIB + Service);
+
+                    var u3 = connectionStringKIB + Service;
+                    //var json3 = "{\"IdNumber\": \"12303199400514\", \"typeReport\": \"CondensedReportPlus\"}";
+
+                    var builder3 = new UriBuilder(u3);
+                    builder3.Query = "Pin=" + Pin + "&userName=" + Session["UserName"].ToString();
+                    //builder3.Query = "typeReport=" + "CondensedReportPlus";
+                    var url3 = builder3.ToString();
+
+                    var response3 = await client3.PostAsync(url3, new StringContent("", Encoding.UTF8, "application/json"));
+                    var result3byte = await response3.Content.ReadAsByteArrayAsync();
+                    string result3string = await response3.Content.ReadAsStringAsync();
+                    string res = JsonConvert.ToString(result3string);
+                    client3.Dispose();
+                    result3string = result3string.Replace("\"", "");
+
+                    byte[] byteArray = Convert.FromBase64String(result3string);
+
+
+                    //string embed = "<object data=\"{0}\" type=\"application/pdf\" width=\"500px\" height=\"300px\">";
+                    //embed += "If you are unable to view file, you can download from <a href = \"{0}\">here</a>";
+                    //embed += " or download <a target = \"_blank\" href = \"http://get.adobe.com/reader/\">Adobe PDF Reader</a> to view the file.";
+                    //embed += "</object>";
+
+                    string embed = "<embed src = \"{0}\" width = \"auto\" height = \"900\" alt = \"pdf\" pluginspage = \"http://www.adobe.com/products/acrobat/readstep2.html\">";
+
+                    ltEmbed.Text = string.Format(embed, ResolveUrl("https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea%20Brochure.pdf"));
+
+                    //string Base64String = "data:application/pdf;base64," + result3string;
+
+
+                    //Скачивание файла
+                    //Response.Clear();
+                    //Response.Buffer = true;
+                    //Response.Charset = "";
+                    //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                    //Response.ContentType = "application/pdf";
+                    //Response.AppendHeader("Content-Disposition", "attachment; filename=" + "MyFile.pdf");
+                    //Response.BinaryWrite(byteArray);
+                    //Response.Flush();
+
+
+                    string destinationFile = "";
+                    string destinationFolder = getDestinationFolder();
+                    GeneralController gctl = new GeneralController();
+                    string dateRandomdir = gctl.DateRandodir(destinationFolder);
+                    destinationFile = gctl.fileNameAddExt(Pin + "_KIB" + DateTime.Today.Date.ToString("_ddMMyyyy") + ".pdf", destinationFolder, dateRandomdir);
+
+                    File.WriteAllBytes(destinationFolder + "\\" + dateRandomdir + "\\" + destinationFile, Convert.FromBase64String(result3string));
+
+
+
+                    RequestsFile newRequestFile = new RequestsFile
+                    {
+                        Name = destinationFile,
+                        RequestID = Convert.ToInt32(Convert.ToInt32(hfRequestID.Value)),
+                        ContentType = "pdf",
+                        //Data = bytes,
+                        //FullName = Server.MapPath("~/") + filedir + "\\" + partnerdir + "\\" + fullfilename,
+                        //FullName = "\\Portals\\0\\" + partnerdir + "\\" + destinationFile,
+                        //FullName2 = fileupl + "\\" + "Portals\\0\\" + partnerdir + "\\" + destinationFile,
+                        FullName = "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                        FullName2 = fileupl + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                        FileDescription = tbFileDescription.Text + " " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"),
+                        IsPhoto = false
+
+                    };
+                    ItemController ctl = new ItemController();
+                    ctl.ItemRequestFilesAddItem(newRequestFile);
+                    return result3string;
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MsgBox(ex.ToString(), this.Page, this);
+                return null;
+            }
+            //finally
+            //{
+
+            //}
+        }
+
+        protected async void btnInitPermSF_Click(object sender, EventArgs e)
+        {
+            DateTime dt1 = DateTime.Now;
+            DateTime endDate = dt1.AddYears(1);
+            endDate = endDate.AddDays(10);
+
+
+
+            //btnInitPermSF.Enabled = false;
+            dbdataDataContext dbR = new dbdataDataContext(connectionStringR);
+
+
+
+
+
+
+            var cust = dbR.Customers.Where(x => x.CustomerID == Convert.ToInt32(hfCustomerID.Value)).FirstOrDefault();
+
+
+            string regCustomerCountry = (cust.RegistrationCountryID != null) ? dbR.Countries.Where(v => v.CountryID == cust.RegistrationCountryID).ToList().FirstOrDefault().ShortName : "";
+            string regCustomerCity = (cust.RegistrationCityID != null) ? dbR.Cities.Where(v => v.CityID == cust.RegistrationCityID).ToList().FirstOrDefault().CityName : "";
+            string regCustomerStreet = dbR.Customers.Where(v => v.CustomerID == cust.CustomerID).ToList().FirstOrDefault().RegistrationStreet;
+            string regCustomerHouse = dbR.Customers.Where(v => v.CustomerID == cust.CustomerID).ToList().FirstOrDefault().RegistrationHouse;
+            string regCustomerFlat = dbR.Customers.Where(v => v.CustomerID == cust.CustomerID).ToList().FirstOrDefault().RegistrationFlat;
+            string RegCustomerAddress = regCustomerCountry + " " + regCustomerCity + " " + regCustomerStreet + " " + regCustomerHouse + " " + regCustomerFlat;
+
+            string resCustomerCountry = (cust.ResidenceCountryID != null) ? dbR.Countries.Where(v => v.CountryID == cust.ResidenceCountryID).ToList().FirstOrDefault().ShortName : "";
+            string resCustomerCity = (cust.ResidenceCityID != null) ? dbR.Cities.Where(v => v.CityID == cust.ResidenceCityID).ToList().FirstOrDefault().CityName : "";
+            string resCustomerStreet = dbR.Customers.Where(v => v.CustomerID == cust.CustomerID).ToList().FirstOrDefault().ResidenceStreet;
+            string resCustomerHouse = dbR.Customers.Where(v => v.CustomerID == cust.CustomerID).ToList().FirstOrDefault().ResidenceHouse;
+            string resCustomerFlat = dbR.Customers.Where(v => v.CustomerID == cust.CustomerID).ToList().FirstOrDefault().ResidenceFlat;
+            string ResCustomerAddress = resCustomerCountry + " " + resCustomerCity + " " + resCustomerStreet + " " + resCustomerHouse + " " + resCustomerFlat;
+
+
+
+            if (cust != null)
+            {
+                var res = await initPerm(cust.IdentificationNumber, cust.ContactPhone1, cust.Surname, cust.CustomerName, cust.Otchestvo, endDate.Date.ToString("yyyy-MM-dd"),
+                ((DateTime)cust.DateOfBirth).ToString("yyyy-MM-dd"), RegCustomerAddress, ResCustomerAddress, cust.DocumentSeries + cust.DocumentNo,
+                ((DateTime)cust.IssueDate).ToString("yyyy-MM-dd"), cust.IssueAuthority, cust.EMail, Session["UserName"].ToString());
+
+
+                MsgBox(res, this.Page, this);
+
+                lblReqForInitPerm.Text = getText(res, "requestId:", ",oneTimePasswordRequired");
+            }
+            else lblReqForInitPerm.Text = "";
+        }
+
+        protected async void btnConfPermSF_Click(object sender, EventArgs e)
+        {
+            ServicePointManager.ServerCertificateValidationCallback = (a, b, c, d) => true;
+            try
+            {
+
+                //if (result2 != "SubjectNotFound")
+                {
+                    HttpClient client = new HttpClient();
+
+                    client.BaseAddress = new Uri(connectionStringKIB + "/api/Account/Login");
+                    //string json = "{\"userName\": \"user01\" , \"password\": \"password123\"}";
+
+
+                    //string json = "{\"userName\": \"" + Session["UserName"].ToString() + "\" , \"password\": \"" + Session["Password"].ToString() + "\"}";
+                    string json = "{\"userName\": \"" + "r.tentiev" + "\" , \"password\": \"" + "Password1@3$" + "\"}";
+
+                    var response = await client.PostAsync(connectionStringKIB + "/api/Account/Login", new StringContent(json, Encoding.UTF8, "application/json"));
+                    var result = await response.Content.ReadAsStringAsync();
+                    //string result3 = "res:" + result;
+                    string token = getToken(result);
+                    client.Dispose();
+                    //    /****************************/
+
+
+                    HttpClient client3 = new HttpClient();
+                    client3.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                    client3.BaseAddress = new Uri(connectionStringKIB + "/api/Socfund/SoapSendConfirmationCodeForPermission");
+
+                    var u3 = connectionStringKIB + "/api/Socfund/SoapSendConfirmationCodeForPermission";
+                    //var json3 = "{\"IdNumber\": \"12303199400514\", \"typeReport\": \"CondensedReportPlus\"}";
+
+                    var builder3 = new UriBuilder(u3);
+                    builder3.Query = "RequestId=" + lblReqForInitPerm.Text + "&Code=" + txtCodePermSF.Text + "&userName=" + Session["UserName"].ToString();
+                    //builder3.Query = "typeReport=" + "CondensedReportPlus";
+                    var url3 = builder3.ToString();
+
+                    var response3 = await client3.PostAsync(url3, new StringContent("", Encoding.UTF8, "application/json"));
+                    var result3byte = await response3.Content.ReadAsByteArrayAsync();
+                    string result3string = await response3.Content.ReadAsStringAsync();
+                    string res = JsonConvert.ToString(result3string);
+                    client3.Dispose();
+                    result3string = result3string.Replace("\"", "");
+                    MsgBox(result3string, this.Page, this);
+                    //byte[] byteArray = Convert.FromBase64String(result3string);
+
+
+                    //return result3string;
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MsgBox(ex.ToString(), this.Page, this);
+                //return null;
+            }
+        }
+
+
+        public async Task<string> initPerm(string Pin, string PhoneNumber, string LastName, string FirstName, string Patronymic, string EndDate, string BirthDate,
+            string PassportAddress, string FactAddress, string PassportNumberAndSeries, string PassportIssuedDate, string PassportIssuedBy, string Email, string userName)
+        {
+            ServicePointManager.ServerCertificateValidationCallback = (a, b, c, d) => true;
+            try
+            {
+
+                //if (result2 != "SubjectNotFound")
+                {
+                    HttpClient client = new HttpClient();
+
+                    client.BaseAddress = new Uri(connectionStringKIB + "/api/Account/Login");
+                    //string json = "{\"userName\": \"user01\" , \"password\": \"password123\"}";
+
+
+                    //string json = "{\"userName\": \"" + Session["UserName"].ToString() + "\" , \"password\": \"" + Session["Password"].ToString() + "\"}";
+                    string json = "{\"userName\": \"" + "r.tentiev" + "\" , \"password\": \"" + "Password1@3$" + "\"}";
+
+                    var response = await client.PostAsync(connectionStringKIB + "/api/Account/Login", new StringContent(json, Encoding.UTF8, "application/json"));
+                    var result = await response.Content.ReadAsStringAsync();
+                    //string result3 = "res:" + result;
+                    string token = getToken(result);
+                    client.Dispose();
+                    //    /****************************/
+
+
+                    HttpClient client3 = new HttpClient();
+                    client3.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                    client3.BaseAddress = new Uri(connectionStringKIB + "/api/Socfund/SoapInitReqForPerm");
+
+                    var u3 = connectionStringKIB + "/api/Socfund/SoapInitReqForPerm";
+                    //var json3 = "{\"IdNumber\": \"12303199400514\", \"typeReport\": \"CondensedReportPlus\"}";
+
+
+
+                    var form = new MultipartFormDataContent();
+
+
+                    var fileStreamContent1 = new StreamContent(FileUpload1.FileContent);
+                    fileStreamContent1.Headers.ContentType = MediaTypeHeaderValue.Parse(FileUpload1.PostedFile.ContentType);
+                    form.Add(fileStreamContent1, name: "filePassportFrontSideImage", FileUpload1.FileName);
+
+                    var fileStreamContent2 = new StreamContent(FileUpload2.FileContent);
+                    fileStreamContent2.Headers.ContentType = MediaTypeHeaderValue.Parse(FileUpload2.PostedFile.ContentType);
+                    form.Add(fileStreamContent2, name: "filePassportBackSideImage", FileUpload2.FileName);
+
+                    //var fileStreamContent3 = new StreamContent(model.SelfieWithPassportImage.OpenReadStream());
+                    //fileStreamContent3.Headers.ContentType = MediaTypeHeaderValue.Parse(model.SelfieWithPassportImage.ContentType);
+                    //form.Add(fileStreamContent3, name: "fileSelfieWithPassportImage", model.SelfieWithPassportImage.FileName);
+
+                    var fileStreamContent3 = new StreamContent(FileUpload3.FileContent);
+                    fileStreamContent3.Headers.ContentType = MediaTypeHeaderValue.Parse(FileUpload3.PostedFile.ContentType);
+                    form.Add(fileStreamContent3, name: "fileSelfieWithPassportImage", FileUpload3.FileName);
+
+                    Email = "rysbekke@gmail.com";
+                    PhoneNumber = PhoneNumber.Trim().Replace(" ", "");
+                    PhoneNumber = PhoneNumber.Substring(1, 12);
+                    var builder3 = new UriBuilder(u3);
+                    builder3.Query = "Pin=" + Pin + "&PhoneNumber=" + PhoneNumber + "&LastName=" + LastName + "&FirstName=" + FirstName + "&Patronymic=" + Patronymic +
+                    "&EndDate=" + EndDate + "&BirthDate=" + BirthDate + "&PassportAddress=" + PassportAddress + "&FactAddress=" + FactAddress +
+                    "&PassportNumberAndSeries=" + PassportNumberAndSeries + "&PassportIssuedDate=" + PassportIssuedDate + "&PassportIssuedBy=" + PassportIssuedBy +
+                    "&Email=" + Email + "&userName=" + userName;
+                    //builder3.Query = "typeReport=" + "CondensedReportPlus";
+                    var url3 = builder3.ToString();
+
+                    //var response3 = await client3.PostAsync(url3, new StringContent("", Encoding.UTF8, "application/json"));
+                    var response3 = await client3.PostAsync(url3, form);
+                    var result3byte = await response3.Content.ReadAsByteArrayAsync();
+                    string result3string = await response3.Content.ReadAsStringAsync();
+                    string res = JsonConvert.ToString(result3string);
+                    client3.Dispose();
+                    result3string = result3string.Replace("\"", "");
+
+                    //byte[] byteArray = Convert.FromBase64String(result3string);
+
+
+
+                    return result3string;
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MsgBox(ex.ToString(), this.Page, this);
+                return null;
+            }
+            //finally
+            //{
+
+            //}
+        }
+
+
         class root3 : GeneralController.Root
         {
             public string IssueAccountNo { get; set; } = "";
@@ -9241,7 +10162,13 @@ namespace СreditСonveyor.Partners
         }
 
 
-
+        protected string getText(string str, string str1, string str2)
+        {
+            int position1 = str.IndexOf(str1) + str1.Length;
+            int position2 = str.IndexOf(str2);
+            var conts = str.Substring(position1, position2 - position1);
+            return conts;
+        }
 
 
     }
