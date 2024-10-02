@@ -47,10 +47,11 @@ namespace СreditСonveyor.Microcredit
         static string connectionStringOBAPIAddress = ConfigurationManager.ConnectionStrings["connectionStringOBAPIAddress"].ToString();
         public string fileupl = ConfigurationManager.ConnectionStrings["fileupl"].ToString();
         public string connectionStringActualDate = ConfigurationManager.ConnectionStrings["connectionStringActualDate"].ToString();
-        
+        public string filedir = ConfigurationManager.ConnectionStrings["filedir"].ToString();
+
         OleDbConnection oledbConn;
         DateTime dateNowServer, dateNow;
-        protected string partnerdir = "Credits\\Beecredits";
+        protected string partnerdir = "MicroCredits";
         string actdate = ""; //88
         
         //string actdate = "2021-09-20T11:28:42"; //86
@@ -2796,7 +2797,7 @@ namespace СreditСonveyor.Microcredit
             string dateRandodir = gtx.DateRandodir(destinationFolder);
             string destinationFile = gtx.copyFileBee(rf.FullName, destinationFolder, dateRandodir);
 
-            string destinationFile2 = "\\" + partnerdir + "\\" + dateRandodir + "\\" + destinationFile;
+            string destinationFile2 = "\\" + filedir + "\\" + partnerdir + "\\" + dateRandodir + "\\" + destinationFile;
 
             //TableController tblCtrl2 = new TableController();
 
@@ -8390,7 +8391,7 @@ namespace СreditСonveyor.Microcredit
         [WebMethod]
         public string getDestinationFolder() //Возврат
         {
-            string destinationFolder = Server.MapPath("~/") + partnerdir; // 1-вариант
+            string destinationFolder = Server.MapPath("~/") + filedir + "\\" + partnerdir; // 1-вариант
             //string destinationFolder = @"E:\Uploadfiles\Credits\Dcb"; // 2-вариант
             //string destinationFolder = @"C:\Uploadfiles\Credits\Dcb"; // 2-вариант
             return destinationFolder;

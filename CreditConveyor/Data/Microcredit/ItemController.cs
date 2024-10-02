@@ -1058,6 +1058,12 @@ namespace СreditСonveyor.Data.Microcredit
             lst.Sheeps = item.Sheeps;
             lst.Horse = item.Horse;
             lst.ExperienceAnimals = item.ExperienceAnimals;
+            lst.TotBalCurrLoans = item.TotBalCurrLoans;
+            lst.TotCountCurrLoans = item.TotCountCurrLoans;
+            lst.TotCountDelays = item.TotCountDelays;
+            lst.MaxDayDelays = item.MaxDayDelays;
+            lst.CountPeople = item.CountPeople;
+            lst.AdditionalConditions = item.AdditionalConditions;
             dbRWZ.Requests.Context.SubmitChanges();
         }
 

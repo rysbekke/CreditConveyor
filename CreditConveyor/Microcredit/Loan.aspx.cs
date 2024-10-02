@@ -42,6 +42,7 @@ using Rectangle = System.Drawing.Rectangle;
 using Org.BouncyCastle.Crypto.IO;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using static СreditСonveyor.Data.GeneralController;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace СreditСonveyor.Microcredit
 {
@@ -57,10 +58,11 @@ namespace СreditСonveyor.Microcredit
         public string fileupl = ConfigurationManager.ConnectionStrings["fileupl"].ToString();
         public string connectionStringActualDate = ConfigurationManager.ConnectionStrings["connectionStringActualDate"].ToString();
         public string connectionStringKIB = ConfigurationManager.ConnectionStrings["connectionStringKIB"].ToString();
+        public string filedir = ConfigurationManager.ConnectionStrings["filedir"].ToString();
 
         OleDbConnection oledbConn;
         DateTime dateNowServer, dateNow;
-        protected string partnerdir = "UploadFiles\\MicroCredits";
+        protected string partnerdir = "MicroCredits";
         string actdate = ""; //88
         
         //string actdate = "2021-09-20T11:28:42"; //86
@@ -1444,7 +1446,7 @@ namespace СreditСonveyor.Microcredit
             i = (stavka != 0) ? stavka / 12 / 100 : 0;
             if (stavka == 0) k = s / n;
             if (stavka == 30.00) k = (((Math.Pow((1 + i), n)) * (i)) * s) / ((Math.Pow((1 + (i)), n)) - 1);
-            int f = 0; int y22 = 50;
+            int f = 1; //int y22 = 50;
             double additionalIncome = (RadNumTbAdditionalIncome.Text != "") ? Convert.ToDouble(RadNumTbAdditionalIncome.Text) : 0;
             double OtherLoans = (RadNumOtherLoans.Text != "") ? Convert.ToDouble(RadNumOtherLoans.Text) : 0;
             if (rbtnBusiness.SelectedIndex == 0)
@@ -1453,7 +1455,7 @@ namespace СreditСonveyor.Microcredit
                 uint CountSalary = Convert.ToUInt32(ddlMonthCount.SelectedItem.Text);
                 decimal AverageMonthSalary = SumMonthSalary / CountSalary;
                 double zp = Convert.ToDouble(AverageMonthSalary);
-                double chp = (zp + additionalIncome) - 7000;
+                double chp = (zp + additionalIncome) - (Convert.ToDouble(txtCountPeople.Text)*1000+5000);
                 double cho = chp - k - OtherLoans;
                 double y1 = 100 * cho / chp;
                 if ((cho < 0) && (chp < 0)) y1 = y1 * (-1);
@@ -1461,9 +1463,9 @@ namespace СreditСonveyor.Microcredit
                 //if ((zp > 50000) || (zp == 50000)) y22 = 50;
                 //if (zp < 50000) y22 = 40;
 
-                if ((y1 >= 40) && (y2 < y22)) f = 1;
-                if (stavka == 0) { if (s > 250000) f = -100000; }
-                else { if (s > 250000) f = -100000; }
+                //if ((y1 >= 40) && (y2 < y22)) f = 1;
+                //if (stavka == 0) { if (s > 250000) f = -100000; }
+                //else { if (s > 250000) f = -100000; }
             }
             if (rbtnBusiness.SelectedIndex == 1)
             {
@@ -1473,7 +1475,7 @@ namespace СreditСonveyor.Microcredit
                 double costprice = Convert.ToDouble(RadNumTbСostPrice.Text);
                 double v = Convert.ToDouble(Revenue) * Convert.ToUInt32(ddlCountWorkDay.SelectedItem.Text);
                 double valp = (costprice == 0) ? v : (v * costprice) / (100 + costprice);
-                double chp = (valp + additionalIncome) - (Convert.ToDouble(RadNumTbOverhead.Text) + Convert.ToDouble(RadNumTbFamilyExpenses.Text));
+                double chp = (valp + additionalIncome) - (Convert.ToDouble(RadNumTbOverhead.Text) + Convert.ToDouble(txtCountPeople.Text)*1000+5000);
                 //if ((valp > 50000) || (valp == 50000)) y22 = 50;
                 //if (valp < 50000) y22 = 40;
                 if (chp > 0)
@@ -1482,12 +1484,12 @@ namespace СreditСonveyor.Microcredit
                     double y1 = 100 * cho / chp;
                     if ((cho < 0) && (chp < 0)) y1 = y1 * (-1);
                     double y2 = 100 * (k + OtherLoans) / (valp + additionalIncome);
-                    if ((y1 >= 40) && (y2 < y22)) f = 1;
+                    //if ((y1 >= 40) && (y2 < y22)) f = 1;
                 }
                 //if (stavka == 0) { if (s > 100000) f = -100000; }
                 //else { if (s > 100000) f = -100000; }
-                if (stavka == 0) { if (s > 100000) f = -100000; }
-                else { if (s > 100000) f = -100000; }
+                //if (stavka == 0) { if (s > 100000) f = -100000; }
+                //else { if (s > 100000) f = -100000; }
             }
             if (rbtnBusiness.SelectedIndex == 2) //Агро
             {
@@ -1497,7 +1499,7 @@ namespace СreditСonveyor.Microcredit
                 double OverheadAgro = Convert.ToDouble(RadNumTbOverheadAgro.Text);
                 OverheadAgro = (OverheadAgro > 0) ? OverheadAgro / 3 : 0;
                 double AddOverheadAgro = Convert.ToDouble(RadNumTbAddOverheadAgro.Text);
-                double FamilyExpensesAgro = Convert.ToDouble(RadNumTbFamilyExpenses.Text);
+                double FamilyExpensesAgro = Convert.ToDouble(txtCountPeople.Text) * 1000 + 5000;
                 double v = Convert.ToDouble(RevenueAgro) / 3 + (Convert.ToDouble(RevenueMilk) * 25);
                 double valp = v - OverheadAgro - AddOverheadAgro;
                 double chp = (valp + additionalIncome) - Convert.ToDouble(FamilyExpensesAgro);
@@ -1509,9 +1511,9 @@ namespace СreditСonveyor.Microcredit
                     double y1 = 100 * cho / chp;
                     if ((cho < 0) && (chp < 0)) y1 = y1 * (-1);
                     double y2 = 100 * (k + OtherLoans) / (valp + additionalIncome);
-                    if ((y1 >= 40) && (y2 < y22)) f = 1;
+                    //if ((y1 >= 40) && (y2 < y22)) f = 1;
                 }
-                if (s > 50000) f = -50000;
+                //if (s > 50000) f = -50000;
             }
             return f;
         }
@@ -1538,7 +1540,7 @@ namespace СreditСonveyor.Microcredit
                             else //не агент значить проверяем скорринг
                             {
                                 int f = issuanceOfCredit();
-                                if (Convert.ToDouble(RadNumTbFamilyExpenses.Text) < 7000) f = -7000;
+                                //if (Convert.ToDouble(RadNumTbFamilyExpenses.Text) < 7000) f = -7000;
                                 if (f == 1)
                                 {
                                     AddRequest();
@@ -1604,7 +1606,7 @@ namespace СreditСonveyor.Microcredit
                             if (ageEndCredit == 2) { MsgBox("Не полностью заполнены паспортные данные клиента в базе Банка, обратитесь к кредитному специалисту", this.Page, this); }
 
                             int f = issuanceOfCredit();
-                            if (Convert.ToDouble(RadNumTbFamilyExpenses.Text) < 7000) f = -7000;
+                            //if (Convert.ToDouble(RadNumTbFamilyExpenses.Text) < 7000) f = -7000;
                             if ((f == 1) && (fage) && (ageEndCredit == 1))
                             {
                                 AddRequest();
@@ -1728,10 +1730,15 @@ namespace СreditСonveyor.Microcredit
             int branchID = dbR.Offices.Where(r => r.ID == officeID).FirstOrDefault().BranchID;
             int? credOfficerID = 4583; //по умолч АЙбек
             credOfficerID = dbRWZ.RequestsRedirect.Where(r => r.branchID == branchID).FirstOrDefault().creditOfficerID;
-            if (usrRoleID == 2)
+            if ((usrRoleID == 2) || (usrRoleID == 5))
             {
-                string username = dbRWZ.Users2s.Where(x => x.UserID == usrID).FirstOrDefault().UserName;
-                credOfficerID = dbR.Users.Where(x => x.UserName == username).FirstOrDefault().UserID;
+                try
+                {
+                    //string username = dbRWZ.Users2s.Where(x => x.UserID == usrID).FirstOrDefault().UserName;
+                    //credOfficerID = dbR.Users.Where(x => x.UserName == username).FirstOrDefault().UserID;
+                    credOfficerID = dbRWZ.Users2s.Where(x => x.UserID == usrID).FirstOrDefault().UserIDOB;
+                }
+                catch { }
             }
             //if ((officeID == 1133) || (officeID == 1134)) credOfficerID = dbRWZ.RequestsRedirect.Where(r => r.officeID == officeID).FirstOrDefault().creditOfficerID;
             hfAgentRoleID.Value = usrRoleID.ToString();
@@ -1947,7 +1954,7 @@ namespace СreditСonveyor.Microcredit
                                         //LoanStatus = 0,
                     CreditID = 0,
                     MortrageTypeID = mortrageTypeID,  //Вид обеспечения 16-приобретаемая имущество
-                    IncomeApproveTypeID = 1,
+                    IncomeApproveTypeID = 3,
                     RequestCurrencyID = 417,
                     RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text),
                     MarketingSourceID = 1,
@@ -1974,6 +1981,7 @@ namespace СreditСonveyor.Microcredit
                     LoanPurposeTypeID = 2,
                     IssueAccountNo = "",
                     LoanLocation = "", //
+                    
                                        //Options = null,
                                        //ReasonRefinancing = null,
                                        //ExternalProgramID = null,
@@ -2083,7 +2091,8 @@ namespace СreditСonveyor.Microcredit
                     //if (rbtnBusiness.SelectedIndex == 1) { fexp = (RadNumTbFamilyExpenses.Text != "") ? Convert.ToDecimal(RadNumTbFamilyExpenses.Text) : 0; comment = txtBusinessComment.Text; }
                     //if (rbtnBusiness.SelectedIndex == 2) { fexp = (RadNumTbFamilyExpensesAgro.Text != "") ? Convert.ToDecimal(RadNumTbFamilyExpensesAgro.Text) : 0; comment = txtAgroComment.Text; }
 
-                    fexp = (RadNumTbFamilyExpenses.Text != "") ? Convert.ToDecimal(RadNumTbFamilyExpenses.Text) : 7000;
+                    //fexp = (RadNumTbFamilyExpenses.Text != "") ? Convert.ToDecimal(RadNumTbFamilyExpenses.Text) : 7000;
+                    fexp = Convert.ToDecimal(txtCountPeople.Text) * 1000 + 5000;
                     //comment = txtBusinessComment.Text;
                     if (rbtnBusiness.SelectedIndex == 1) comment = txtBusinessComment.Text;
                     if (rbtnBusiness.SelectedIndex == 2) comment = txtAgroComment.Text;
@@ -2164,8 +2173,13 @@ namespace СreditСonveyor.Microcredit
                         Sheeps = String.IsNullOrEmpty(txtbxSheeps.Text) ? 0 : Convert.ToInt32(txtbxSheeps.Text),
                         Horse = String.IsNullOrEmpty(txtbxHorse.Text) ? 0 : Convert.ToInt32(txtbxHorse.Text),
                         ExperienceAnimals = String.IsNullOrEmpty(txtbxExperienceAnimals.Text) ? 0 : Convert.ToInt32(txtbxExperienceAnimals.Text),
-                        RequestType = "MK"
-
+                        RequestType = "MK",
+                        TotBalCurrLoans = Convert.ToDecimal(txtTotBalCurrLoans.Text),
+                        TotCountCurrLoans = Convert.ToInt32(txtTotCountCurrLoans.Text),
+                        TotCountDelays = Convert.ToInt32(txtTotCountDelays.Text),
+                        MaxDayDelays = Convert.ToInt32(txtMaxDayDelays.Text),
+                        CountPeople = Convert.ToInt32(txtCountPeople.Text),
+                        AdditionalConditions = txtAdditionalConditions.Text,
                     };
                     
 
@@ -2288,6 +2302,7 @@ namespace СreditСonveyor.Microcredit
             }
             if (hfRequestAction.Value == "edit")
             {
+               
                 if (pnlPhoto.Visible == false) hfPhoto2.Value = "";
                 //DateTime dateTimeServer = dateNowServer;
                 //DateTime dateTimeNow = Convert.ToDateTime(DateTime.Now);
@@ -2327,7 +2342,8 @@ namespace СreditСonveyor.Microcredit
                 //if (rbtnBusiness.SelectedIndex == 1) { fexp = (RadNumTbFamilyExpenses.Text != "") ? Convert.ToDecimal(RadNumTbFamilyExpenses.Text) : 0; comment = txtBusinessComment.Text; }
                 //if (rbtnBusiness.SelectedIndex == 2) { fexp = (RadNumTbFamilyExpensesAgro.Text != "") ? Convert.ToDecimal(RadNumTbFamilyExpensesAgro.Text) : 0; comment = txtAgroComment.Text; }
 
-                fexp = (RadNumTbFamilyExpenses.Text != "") ? Convert.ToDecimal(RadNumTbFamilyExpenses.Text) : 7000;
+                //fexp = (RadNumTbFamilyExpenses.Text != "") ? Convert.ToDecimal(RadNumTbFamilyExpenses.Text) : 7000;
+                fexp = Convert.ToDecimal(txtCountPeople.Text) * 1000 + 5000;
                 //comment = txtBusinessComment.Text;
                 if (rbtnBusiness.SelectedIndex == 1) comment = txtBusinessComment.Text;
                 if (rbtnBusiness.SelectedIndex == 2) comment = txtAgroComment.Text;
@@ -2358,9 +2374,11 @@ namespace СreditСonveyor.Microcredit
                 //int? groupID = reqs.GroupID;
                 //int? GroupCode = dbRWZ.Groups.Where(r => r.GroupID == groupID).FirstOrDefault().GroupCode;
                 int mortrageTypeID = 2;
-                //if (reqs.GroupID != 110)
-                //{
-                    GeneralController gctx = new GeneralController();
+                credOfficerID = dbR.HistoriesOfficers.Where(r => r.CreditID == Convert.ToInt32(hfCreditID.Value)).FirstOrDefault().UserID;
+                   //if (reqs.GroupID != 110)
+
+                   //{
+                   GeneralController gctx = new GeneralController();
 
 
                     GeneralController.IncomesStructure incomesstructure = new GeneralController.IncomesStructure()
@@ -2410,13 +2428,13 @@ namespace СreditСonveyor.Microcredit
 
 
                 GeneralController.Guarantor guarantor = new GeneralController.Guarantor()
-                    {
-                        CustomerID = (hfGuarantorID.Value != "noselect") ? Convert.ToInt32(hfGuarantorID.Value) : 0,
-                        GuaranteeAmount = Convert.ToDecimal(RadNumTbRequestSumm.Text),
-                        StartDate = Convert.ToDateTime(actdate),
-                        //EndDate = 
-                        Status = 1,
-                    };
+                {
+                    CustomerID = (hfGuarantorID.Value != "noselect") ? Convert.ToInt32(hfGuarantorID.Value) : 0,
+                    GuaranteeAmount = Convert.ToDecimal(RadNumTbRequestSumm.Text),
+                    StartDate = Convert.ToDateTime(actdate),
+                    //EndDate = 
+                    Status = 1,
+                };
 
                     byte loanStatus = 0;
                     if ((reqs.RequestStatus == "Утверждено") || (reqs.RequestStatus == "К подписи") || (reqs.RequestStatus == "На выдаче")) loanStatus = 2;
@@ -2436,7 +2454,7 @@ namespace СreditСonveyor.Microcredit
                         LoanStatus = loanStatus,
                         CreditID = Convert.ToInt32(hfCreditID.Value),
                         MortrageTypeID = mortrageTypeID,  //Вид обеспечения 16-приобретаемая имущество
-                        IncomeApproveTypeID = 1,
+                        IncomeApproveTypeID = 3,
                         RequestCurrencyID = 417,
                         RequestSumm = Convert.ToDecimal(RadNumTbRequestSumm.Text),
                         MarketingSourceID = 1,
@@ -2458,7 +2476,7 @@ namespace СreditСonveyor.Microcredit
                         RequestPeriod = Convert.ToByte(ddlRequestPeriod.SelectedValue),
                         RequestRate = Convert.ToDecimal(ddlRequestRate.SelectedItem.Text), //0.0, // Convert.ToDouble(ddlRequestRate.SelectedItem.Text),
 
-                        //PaymentSourceID = 1,
+                        PaymentSourceID = 2,
                         //NonPaymentRisk = null,
                         //CreditFraudStatus = null,
                         //InformationID = null,
@@ -2481,6 +2499,7 @@ namespace СreditСonveyor.Microcredit
                         //RequestReturnComissionType = null,
                         //RequestTrancheIssueComission = null,
                         //RequestTrancheIssueComissionType = null
+                        
                     };
 
                     //GeneralController.RootUpdate root = new GeneralController.RootUpdate()
@@ -2697,6 +2716,13 @@ namespace СreditСonveyor.Microcredit
                     editRequest.Sheeps = String.IsNullOrEmpty(txtbxSheeps.Text) ? 0 : Convert.ToInt32(txtbxSheeps.Text);
                     editRequest.Horse = String.IsNullOrEmpty(txtbxHorse.Text) ? 0 : Convert.ToInt32(txtbxHorse.Text);
                     editRequest.ExperienceAnimals = String.IsNullOrEmpty(txtbxExperienceAnimals.Text) ? 0 : Convert.ToInt32(txtbxExperienceAnimals.Text);
+                    editRequest.TotBalCurrLoans = Convert.ToDecimal(txtTotBalCurrLoans.Text);
+                    editRequest.TotCountCurrLoans = Convert.ToInt32(txtTotCountCurrLoans.Text);
+                    editRequest.TotCountDelays = Convert.ToInt32(txtTotCountDelays.Text);
+                    editRequest.MaxDayDelays = Convert.ToInt32(txtMaxDayDelays.Text);
+                    editRequest.CountPeople = Convert.ToInt32(txtCountPeople.Text);
+                    editRequest.AdditionalConditions = txtAdditionalConditions.Text;
+
                     ctlItem.RequestUpd(editRequest);
                     /*****************************/
                     /*RequestHistory*//*----------------------------------------------------*/
@@ -2796,7 +2822,7 @@ namespace СreditСonveyor.Microcredit
                 //FileUploadControl.SaveAs(destinationFolder + "\\" + dateRandodir + "\\" + destinationFile);
                 //Base64ToImage().Save(Server.MapPath("~/") + "\\" + dateRandodir + "\\" + destinationFile);
                 if (hfPhoto2.Value != "")
-                    Base64ToImage().Save(Server.MapPath("~/") + partnerdir +"\\"+ dateRanmdodir + "\\" + destinationFile);
+                    Base64ToImage().Save(Server.MapPath("~/") + filedir + "\\" + partnerdir +"\\"+ dateRanmdodir + "\\" + destinationFile);
             }
             catch (Exception ex)
             {
@@ -2820,8 +2846,8 @@ namespace СreditСonveyor.Microcredit
                         //FullName2 = fileupl + "\\" + "Portals\\0\\" + partnerdir + "\\" + fullfilename,
                         //FullName = "\\Portals\\0\\" + partnerdir + "\\" + dateRanmdodir + "\\" + destinationFile,
                         //FullName2 = fileupl + "\\" + "Portals\\0\\" + partnerdir + "\\" + dateRanmdodir + "\\" + destinationFile,
-                        FullName = "\\" + partnerdir + "\\" + dateRanmdodir + "\\" + destinationFile,
-                        FullName2 = fileupl + "\\" + partnerdir + "\\" + dateRanmdodir + "\\" + destinationFile,
+                        FullName = "\\" + filedir + "\\" + partnerdir + "\\" + dateRanmdodir + "\\" + destinationFile,
+                        FullName2 = fileupl + "\\" + filedir + "\\" + partnerdir + "\\" + dateRanmdodir + "\\" + destinationFile,
                         //FileDescription = tbFileDescription.Text,
                         FileDescription = descr + " " + tbFileDescription.Text + " " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"),
                         IsPhoto = true
@@ -3068,7 +3094,7 @@ namespace СreditСonveyor.Microcredit
             string dateRandodir = gtx.DateRandodir(destinationFolder);
             string destinationFile = gtx.copyFileBee(rf.FullName, destinationFolder, dateRandodir);
 
-            string destinationFile2 = "\\" + partnerdir + "\\" + dateRandodir + "\\" + destinationFile;
+            string destinationFile2 = "\\" + filedir + "\\" + partnerdir + "\\" + dateRandodir + "\\" + destinationFile;
 
             //TableController tblCtrl2 = new TableController();
 
@@ -3219,7 +3245,8 @@ namespace СreditСonveyor.Microcredit
                 string prod = (lst.CreditProduct == null) ? "" : lst.CreditProduct.ToString();
                 ddlProduct.SelectedIndex = ddlProduct.Items.IndexOf(ddlProduct.Items.FindByValue(prod));
                 ddlProductIndChg();
-                ddlRequestRate.SelectedIndex = ddlRequestRate.Items.IndexOf(ddlRequestRate.Items.FindByValue(lst.RequestRate.ToString()));
+                //ddlRequestRate.SelectedIndex = ddlRequestRate.Items.IndexOf(ddlRequestRate.Items.FindByValue(lst.RequestRate.ToString()));
+                ddlRequestRate.SelectedIndex = ddlRequestRate.Items.IndexOf(ddlRequestRate.Items.FindByValue(lst.RequestRate.Value.ToString()));
                 ddlRequestPeriod.SelectedIndex = ddlRequestPeriod.Items.IndexOf(ddlRequestPeriod.Items.FindByValue(lst.RequestPeriod.ToString()));
 
 
@@ -3257,9 +3284,16 @@ namespace СreditСonveyor.Microcredit
                 lblINN.Text = lst.IdentificationNumber;
                 lblFIO.Text = tbSurname2.Text + " " + tbCustomerName2.Text + " " + tbOtchestvo2.Text;
                 //tbINNOrg.Text = lst.OrganizationINN;
-                chbEmployer.Checked = lst.IsEmployer;
+                chbEmployer.Checked = Convert.ToBoolean(lst.IsEmployer);
                 lblPhone.Text = lst.ContactPhone1;
-                
+
+                txtTotBalCurrLoans.Text = lst.TotBalCurrLoans.ToString();
+                txtTotCountCurrLoans.Text = lst.TotCountCurrLoans.ToString();
+                txtTotCountDelays.Text = lst.TotCountDelays.ToString();
+                txtMaxDayDelays.Text = lst.MaxDayDelays.ToString();
+                txtCountPeople.Text = lst.CountPeople.ToString();
+                txtAdditionalConditions.Text = lst.AdditionalConditions;
+
                 if (lst.isGuarantor == true)
                 {
                     hfGuarantorID.Value = lst.GuarantorID.ToString();
@@ -3316,7 +3350,7 @@ namespace СreditСonveyor.Microcredit
                     RadNumTbAverageMonthSalary.Text = lst.AverageMonthSalary.ToString();
                     RadNumTbSumMonthSalary.Text = lst.SumMonthSalary.ToString();
                     ddlMonthCount.SelectedIndex = ddlMonthCount.Items.IndexOf(ddlMonthCount.Items.FindByValue(lst.CountMonthSalary.ToString()));
-                    RadNumTbFamilyExpenses.Text = lst.FamilyExpenses.ToString();
+                    //RadNumTbFamilyExpenses.Text = lst.FamilyExpenses.ToString();
                     btnSozfondAgree.Enabled = true;
                 }
                 if (lst.Bussiness == 1)
@@ -3331,7 +3365,7 @@ namespace СreditСonveyor.Microcredit
                     ddlCountWorkDay.SelectedIndex = ddlCountWorkDay.Items.IndexOf(ddlCountWorkDay.Items.FindByValue(lst.CountWorkDay.ToString()));
                     RadNumTbСostPrice.Text = lst.СostPrice.ToString();
                     RadNumTbOverhead.Text = lst.Overhead.ToString();
-                    RadNumTbFamilyExpenses.Text = lst.FamilyExpenses.ToString();
+                    //RadNumTbFamilyExpenses.Text = lst.FamilyExpenses.ToString();
                     btnSozfondAgree.Enabled = true;
                 }
                 if (lst.Bussiness == 2)
@@ -3346,7 +3380,7 @@ namespace СreditСonveyor.Microcredit
                     RadNumTbRevenueMilkProd.Text = lst.RevenueMilkProd.ToString();
                     RadNumTbOverheadAgro.Text = lst.OverheadAgro.ToString();
                     RadNumTbAddOverheadAgro.Text = lst.AddOverheadAgro.ToString();
-                    RadNumTbFamilyExpenses.Text = lst.FamilyExpenses.ToString();
+                    //RadNumTbFamilyExpenses.Text = lst.FamilyExpenses.ToString();
                     btnSozfondAgree.Enabled = true;
                 }
                 /***********************/
@@ -4161,7 +4195,7 @@ namespace СreditСonveyor.Microcredit
             //btnForPeriod.Visible = false;
             //btnForPeriodWithHistory.Visible = false;
             //btnForPeriodWithProducts.Visible = false;
-            RadNumTbFamilyExpenses.Text = "7000";
+            //RadNumTbFamilyExpenses.Text = "7000";
             btnSendCreditRequest.Visible = true;
             chbEmployer.Checked = false;
             btnNewRequest.Visible = false;
@@ -4274,7 +4308,7 @@ namespace СreditСonveyor.Microcredit
             ddlCountWorkDay.SelectedIndex = 0;
             RadNumTbСostPrice.Text = "";
             RadNumTbOverhead.Text = "";
-            RadNumTbFamilyExpenses.Text = "";
+            //RadNumTbFamilyExpenses.Text = "";
             RadNumTbAdditionalIncome.Text = "";
             txtBusinessComment.Text = "";
             rbtnBusiness.SelectedIndex = 0;
@@ -4294,8 +4328,14 @@ namespace СreditСonveyor.Microcredit
             RadNumTbRevenueMilkProd.Text = "";
             RadNumTbOverheadAgro.Text = "";
             RadNumTbAddOverheadAgro.Text = "";
-            RadNumTbFamilyExpenses.Text = "";
+            //RadNumTbFamilyExpenses.Text = "";
 
+            txtTotBalCurrLoans.Text = "";
+            txtTotCountCurrLoans.Text = "";
+            txtTotCountDelays.Text = "";
+            txtMaxDayDelays.Text = "";
+            txtCountPeople.Text = "";
+            txtAdditionalConditions.Text = "";
 
 
         }
@@ -4509,8 +4549,8 @@ namespace СreditСonveyor.Microcredit
                                             //FullName = Server.MapPath("~/") + filedir + "\\" + partnerdir + "\\" + fullfilename,
                                             //FullName = "\\Portals\\0\\" + partnerdir + "\\" + destinationFile,
                                             //FullName2 = fileupl + "\\" + "Portals\\0\\" + partnerdir + "\\" + destinationFile,
-                                            FullName = "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
-                                            FullName2 = fileupl + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                                            FullName = "\\" + filedir + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                                            FullName2 = fileupl + "\\" + filedir + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
                                             FileDescription = tbFileDescription.Text + " " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"),
                                             IsPhoto = false
                                  
@@ -4542,11 +4582,11 @@ namespace СreditСonveyor.Microcredit
 
         protected void CheckImageDirs()
         {
-            if (!System.IO.Directory.Exists(Server.MapPath("~/") + partnerdir))
+            if (!System.IO.Directory.Exists(Server.MapPath("~/") + filedir + "\\" + partnerdir))
                 System.IO.Directory.CreateDirectory(Server.MapPath("~/") + partnerdir);
 
-            if (!System.IO.Directory.Exists(Server.MapPath("~/") + partnerdir))
-                System.IO.Directory.CreateDirectory(Server.MapPath("~/") + partnerdir);
+            if (!System.IO.Directory.Exists(Server.MapPath("~/") + filedir + "\\" + partnerdir))
+                System.IO.Directory.CreateDirectory(Server.MapPath("~/") + filedir + "\\" + partnerdir);
         }
 
 
@@ -5091,7 +5131,7 @@ namespace СreditСonveyor.Microcredit
                 Session["CountWorkDay"] = (ddlCountWorkDay.Text == "") ? "0" : ddlCountWorkDay.Text;
                 Session["RadNumTbСostPrice"] = (RadNumTbСostPrice.Text == "") ? "0" : Convert.ToDouble(RadNumTbСostPrice.Text).ToString();
                 Session["RadNumTbOverhead"] = (RadNumTbOverhead.Text == "") ? "0" : Convert.ToDouble(RadNumTbOverhead.Text).ToString();
-                Session["RadNumTbFamilyExpenses"] = (RadNumTbFamilyExpenses.Text == "") ? "0" : Convert.ToDouble(RadNumTbFamilyExpenses.Text).ToString();
+                //Session["RadNumTbFamilyExpenses"] = (RadNumTbFamilyExpenses.Text == "") ? "0" : Convert.ToDouble(RadNumTbFamilyExpenses.Text).ToString();
                 Session["RadNumOtherLoans"] = (RadNumOtherLoans.Text == "") ? "0" : Convert.ToDouble(RadNumOtherLoans.Text).ToString();
                 Response.Redirect("rptProfferNano", true);
             };
@@ -5107,7 +5147,7 @@ namespace СreditСonveyor.Microcredit
                 Session["CountWorkDay"] = (ddlCountWorkDay.Text == "") ? "0" : ddlCountWorkDay.Text;
                 Session["RadNumTbСostPrice"] = (RadNumTbСostPrice.Text == "") ? "0" : Convert.ToDouble(RadNumTbСostPrice.Text).ToString();
                 Session["RadNumTbOverhead"] = (RadNumTbOverhead.Text == "") ? "0" : Convert.ToDouble(RadNumTbOverhead.Text).ToString();
-                Session["RadNumTbFamilyExpenses"] = (RadNumTbFamilyExpenses.Text == "") ? "0" : Convert.ToDouble(RadNumTbFamilyExpenses.Text).ToString();
+                //Session["RadNumTbFamilyExpenses"] = (RadNumTbFamilyExpenses.Text == "") ? "0" : Convert.ToDouble(RadNumTbFamilyExpenses.Text).ToString();
                 Session["RadNumOtherLoans"] = (RadNumOtherLoans.Text == "") ? "0" : Convert.ToDouble(RadNumOtherLoans.Text).ToString();
                 Response.Redirect("rptProffer", true);
             };
@@ -5124,7 +5164,7 @@ namespace СreditСonveyor.Microcredit
                 Session["CountWorkDay"] = (ddlCountWorkDay.Text == "") ? "0" : ddlCountWorkDay.Text;
                 Session["RadNumTbСostPrice"] = (RadNumTbСostPrice.Text == "") ? "0" : Convert.ToDouble(RadNumTbСostPrice.Text).ToString();
                 Session["RadNumTbOverhead"] = (RadNumTbOverhead.Text == "") ? "0" : Convert.ToDouble(RadNumTbOverhead.Text).ToString();
-                Session["RadNumTbFamilyExpenses"] = (RadNumTbFamilyExpenses.Text == "") ? "0" : Convert.ToDouble(RadNumTbFamilyExpenses.Text).ToString();
+                //Session["RadNumTbFamilyExpenses"] = (RadNumTbFamilyExpenses.Text == "") ? "0" : Convert.ToDouble(RadNumTbFamilyExpenses.Text).ToString();
                 Session["RadNumOtherLoans"] = (RadNumOtherLoans.Text == "") ? "0" : Convert.ToDouble(RadNumOtherLoans.Text).ToString();
                 Response.Redirect("rptProfferBusiness", true);
             };
@@ -5144,7 +5184,7 @@ namespace СreditСonveyor.Microcredit
                 Session["RevenueMilkProd"] = (RevenueMilkProd.ToString() == "") ? "0" : RevenueMilkProd.ToString();
                 Session["OverheadAgro"] = (OverheadAgro.ToString() == "") ? "0" : OverheadAgro.ToString();
                 Session["AddOverheadAgro"] = (AddOverheadAgro.ToString() == "") ? "0" : AddOverheadAgro.ToString();
-                Session["RadNumTbFamilyExpensesAgro"] = (RadNumTbFamilyExpenses.Text == "") ? "0" : Convert.ToDouble(RadNumTbFamilyExpenses.Text).ToString();
+                //Session["RadNumTbFamilyExpensesAgro"] = (RadNumTbFamilyExpenses.Text == "") ? "0" : Convert.ToDouble(RadNumTbFamilyExpenses.Text).ToString();
                 Session["RadNumOtherLoans"] = (RadNumOtherLoans.Text == "") ? "0" : Convert.ToDouble(RadNumOtherLoans.Text).ToString();
                 Response.Redirect("rptProfferAgro", true);
             };
@@ -6062,7 +6102,7 @@ namespace СreditСonveyor.Microcredit
                         {
 
                             int age = GetCustomerAge(Convert.ToInt32(hfCustomerID.Value.ToString()));
-                            if ((age > 22) && (age < 66))
+                            if ((age > 18) && (age < 66))
                             {
                                 f = true;
                             }
@@ -6076,6 +6116,8 @@ namespace СreditСonveyor.Microcredit
                             if (f)
                             {
                                 bool fs = scor();
+                                //if (fs == true)
+                                fs = true;
                                 if (fs == true)
                                 {
 
@@ -6138,9 +6180,9 @@ namespace СreditСonveyor.Microcredit
                                 }
                                 else
                                 {
-                                    VerificationRequest();
-                                    btnCancelReqExp_Click(new object(), new EventArgs());
-                                    AddRowToJournal(lst, "Отказано");
+                                    //VerificationRequest();
+                                    //btnCancelReqExp_Click(new object(), new EventArgs());
+                                    //AddRowToJournal(lst, "Отказано");
                                 }
                             }
                             else
@@ -6180,8 +6222,8 @@ namespace СreditСonveyor.Microcredit
                             //else
                             //{
                             //ApprovedRequest();
-                            if (lst.TypeOfIssue == 1)
-                            createCardRequest((int)lst.RequestID, (int)lst.AgentID, (int)lst.AgentRoleID, (int)lst.BranchID, (int)lst.OfficeID, lst.CardNumber);
+                            //if (lst.TypeOfIssue == 1)
+                            //createCardRequest((int)lst.RequestID, (int)lst.AgentID, (int)lst.AgentRoleID, (int)lst.BranchID, (int)lst.OfficeID, lst.CardNumber);
                         }
                     }
                 }
@@ -6439,7 +6481,7 @@ namespace СreditСonveyor.Microcredit
                 uint CountSalary = Convert.ToUInt32(ddlMonthCount.SelectedItem.Text);
                 decimal AverageMonthSalary = SumMonthSalary / CountSalary;
                 double zp = Convert.ToDouble(AverageMonthSalary);
-                double chp = (zp + additionalIncome) - 7000;
+                double chp = (zp + additionalIncome) - Convert.ToDouble(txtCountPeople.Text) * 1000 + 5000;
                 double cho = chp - k - OtherLoans;
                 double y1 = 100 * cho / chp;
                 if ((cho < 0) && (chp < 0)) y1 = y1 * (-1);
@@ -6459,7 +6501,7 @@ namespace СreditСonveyor.Microcredit
                 double costprice = Convert.ToDouble(RadNumTbСostPrice.Text);
                 double v = Convert.ToDouble(Revenue) * Convert.ToUInt32(ddlCountWorkDay.SelectedItem.Text);
                 double valp = (costprice == 0) ? v : (v * costprice) / (100 + costprice);
-                double chp = (valp + additionalIncome) - (Convert.ToDouble(RadNumTbOverhead.Text) + Convert.ToDouble(RadNumTbFamilyExpenses.Text));
+                double chp = (valp + additionalIncome) - (Convert.ToDouble(RadNumTbOverhead.Text) + Convert.ToDouble(txtCountPeople.Text) * 1000 + 5000);
                 //if ((valp > 50000) || (valp == 50000)) y22 = 50;
                 //if (valp < 50000) y22 = 40;
                 if (chp > 0)
@@ -8170,8 +8212,8 @@ namespace СreditСonveyor.Microcredit
                             //FullName = Server.MapPath("~/") + filedir + "\\" + partnerdir + "\\" + fullfilename,
                             //FullName = "\\Portals\\0\\" + partnerdir + "\\" + destinationFile,
                             //FullName2 = fileupl + "\\" + "Portals\\0\\" + partnerdir + "\\" + destinationFile,
-                            FullName = "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
-                            FullName2 = fileupl + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                            FullName = "\\" + filedir + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                            FullName2 = fileupl + "\\" + filedir + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
                             FileDescription = tbFileDescription.Text + " " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"),
                             IsPhoto = false
 
@@ -8289,8 +8331,8 @@ namespace СreditСonveyor.Microcredit
                             //FullName = Server.MapPath("~/") + filedir + "\\" + partnerdir + "\\" + fullfilename,
                             //FullName = "\\Portals\\0\\" + partnerdir + "\\" + destinationFile,
                             //FullName2 = fileupl + "\\" + "Portals\\0\\" + partnerdir + "\\" + destinationFile,
-                            FullName = "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
-                            FullName2 = fileupl + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                            FullName = "\\" + filedir + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                            FullName2 = fileupl + "\\" + filedir + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
                             FileDescription = tbFileDescription.Text + " " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"),
                             IsPhoto = false
 
@@ -8403,8 +8445,8 @@ namespace СreditСonveyor.Microcredit
                         //FullName = Server.MapPath("~/") + filedir + "\\" + partnerdir + "\\" + fullfilename,
                         //FullName = "\\Portals\\0\\" + partnerdir + "\\" + destinationFile,
                         //FullName2 = fileupl + "\\" + "Portals\\0\\" + partnerdir + "\\" + destinationFile,
-                        FullName = "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
-                        FullName2 = fileupl + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                        FullName = "\\" + filedir + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                        FullName2 = fileupl + "\\" + filedir + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
                         FileDescription = tbFileDescription.Text + " " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"),
                         IsPhoto = false
 
@@ -9326,7 +9368,7 @@ namespace СreditСonveyor.Microcredit
         [WebMethod]
         public string getDestinationFolder() //Возврат
         {
-            string destinationFolder = Server.MapPath("~/") + partnerdir; // 1-вариант
+            string destinationFolder = Server.MapPath("~/") + filedir + "\\" + partnerdir; // 1-вариант
             //string destinationFolder = @"E:\Uploadfiles\Credits\Dcb"; // 2-вариант
             //string destinationFolder = @"C:\Uploadfiles\Credits\Dcb"; // 2-вариант
             return destinationFolder;

@@ -51,7 +51,7 @@ namespace СreditСonveyor.Microcredit
                     //lblCreditNomer2.Text = historyItem.AgreementNo;
                     lblCreditNomer3.Text = historyItem.AgreementNo;
                     //lblCreditNomer4.Text = historyItem.AgreementNo;
-                    lblCreditNomer5.Text = historyItem.AgreementNo;
+                    //lblCreditNomer5.Text = historyItem.AgreementNo;
                     lblCreditNomer6.Text = historyItem.AgreementNo;
                     //lblCreditNomer7.Text = historyItem.AgreementNo;
                     //lblCreditNomer8.Text = historyItem.AgreementNo;
@@ -62,7 +62,7 @@ namespace СreditСonveyor.Microcredit
                     //lblAgreementDate2.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy"); //historyItem.IssueDate.ToString();
                     lblAgreementDate3.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
                     //lblAgreementDate4.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
-                    lblAgreementDate5.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
+                    //lblAgreementDate5.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
                     lblAgreementDate6.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
                     lblAgreementDate7.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
                     lblAgreementDate8.Text = (Convert.ToDateTime(issueDate)).Date.ToString("dd.MM.yyyy");
@@ -169,8 +169,8 @@ namespace СreditСonveyor.Microcredit
                     //lblCreditPurpose2.Text = historyCustomerItem.CreditPurpose;
 
                     double approvedRate = Math.Round(Convert.ToDouble(historyItem.ApprovedRate), 1);
-                    lblRequestRate.Text = approvedRate.ToString();
-                    lblRequestRate2.Text = approvedRate.ToString();
+                    //lblRequestRate.Text = approvedRate.ToString();
+                    //lblRequestRate2.Text = approvedRate.ToString();
                     //lblRequestRate3.Text = approvedRate.ToString();
                     lblRequestRate4.Text = approvedRate.ToString();
                     lblRequestRate5.Text = approvedRate.ToString();
@@ -190,20 +190,20 @@ namespace СreditСonveyor.Microcredit
                     string rate1str = num2words.KgsPhrase(Convert.ToDecimal(rate1int));
                     string rate2str = num2words.KgsPhrase(Convert.ToDecimal(rate2int)).ToLower();
 
-                    if (rate2int > 0)
-                    {
-                        lblRequestRateWord.Text = rate1str.Substring(0, (rate1str.Length - 3)) + " и " + rate2str.Substring(0, (rate2str.Length - 3));
-                        lblRequestRateWord2.Text = rate1str.Substring(0, (rate1str.Length - 3)) + " и " + rate2str.Substring(0, (rate2str.Length - 3));
-                    }
-                    else
-                    {
-                        lblRequestRateWord.Text = rate1str.Substring(0, (rate1str.Length - 3));
-                        lblRequestRateWord2.Text = rate1str.Substring(0, (rate1str.Length - 3));
-                    }
+                    //if (rate2int > 0)
+                    //{
+                    //    lblRequestRateWord.Text = rate1str.Substring(0, (rate1str.Length - 3)) + " и " + rate2str.Substring(0, (rate2str.Length - 3));
+                    //    lblRequestRateWord2.Text = rate1str.Substring(0, (rate1str.Length - 3)) + " и " + rate2str.Substring(0, (rate2str.Length - 3));
+                    //}
+                    //else
+                    //{
+                    //    lblRequestRateWord.Text = rate1str.Substring(0, (rate1str.Length - 3));
+                    //    lblRequestRateWord2.Text = rate1str.Substring(0, (rate1str.Length - 3));
+                    //}
 
 
                     var effrate = dbR.CalculateEIR(Convert.ToInt32(hfCreditID.Value), null);
-                    lblRequestRateEffect.Text = String.Format("{0:0.00}", effrate.Value); //.ToString(); //(historyItem.ApprovedRate + 2).ToString(); //Уточнить
+                    //lblRequestRateEffect.Text = String.Format("{0:0.00}", effrate.Value); //.ToString(); //(historyItem.ApprovedRate + 2).ToString(); //Уточнить
                     lblRequestRateYear.Text = String.Format("{0:0.00}", effrate.Value); //.ToString();
                     /*Поручитель*/
                     //var guarantorID = creditCtrl.GuarantorGetItem(Convert.ToInt32(hfCreditID.Value));
@@ -338,8 +338,8 @@ namespace СreditСonveyor.Microcredit
                         //gvProducts.DataBind();
                         //gvProducts2.DataSource = lstRequestsProducts;
                         //gvProducts2.DataBind();
-                        gvProducts3.DataSource = lstRequestsProducts;
-                        gvProducts3.DataBind();
+                        //gvProducts3.DataSource = lstRequestsProducts;
+                        //gvProducts3.DataBind();
                     }
 
 

@@ -43,8 +43,8 @@ namespace СreditСonveyor.Microcredit
         public string connectionStringR = ConfigurationManager.ConnectionStrings["ConnectionStringOBR"].ToString();
         public string connectionStringW = ConfigurationManager.ConnectionStrings["ConnectionStringOBW"].ToString();
         public string connectionStringRWZ = ConfigurationManager.ConnectionStrings["ConnectionStringZ"].ToString();
-        static string connectionStringBee = ConfigurationManager.ConnectionStrings["SendStatusBee"].ToString();
-        static string connectionStringBeeKey = ConfigurationManager.ConnectionStrings["SendStatusBeeKey"].ToString();
+        //static string connectionStringBee = ConfigurationManager.ConnectionStrings["SendStatusBee"].ToString();
+        //static string connectionStringBeeKey = ConfigurationManager.ConnectionStrings["SendStatusBeeKey"].ToString();
         static string connectionStringOBAPIAddress = ConfigurationManager.ConnectionStrings["connectionStringOBAPIAddress"].ToString();
         public string fileupl = ConfigurationManager.ConnectionStrings["fileupl"].ToString();
         public string connectionStringActualDate = ConfigurationManager.ConnectionStrings["connectionStringActualDate"].ToString();
@@ -229,11 +229,13 @@ namespace СreditСonveyor.Microcredit
 
             if (tbDate1b.Text != "")
             {
-                dt1 = tbDate1b.Text.Substring(6, 4) + "." + tbDate1b.Text.Substring(3, 2) + "." + tbDate1b.Text.Substring(0, 2);
+                dt1 = tbDate1b.Text.Substring(6, 4) + "-" + tbDate1b.Text.Substring(3, 2) + "-" + tbDate1b.Text.Substring(0, 2);
+                //dt1 = tbDate1b.Text;
             }
             if (tbDate2b.Text != "")
             {
-                dt2 = tbDate2b.Text.Substring(6, 4) + "." + tbDate2b.Text.Substring(3, 2) + "." + tbDate2b.Text.Substring(0, 2);
+                dt2 = tbDate2b.Text.Substring(6, 4) + "-" + tbDate2b.Text.Substring(3, 2) + "-" + tbDate2b.Text.Substring(0, 2);
+                //dt2 = tbDate2b.Text;
             }
 
             dbdataDataContext dbRWZ = new dbdataDataContext(connectionStringRWZ);
@@ -2875,7 +2877,7 @@ namespace СreditСonveyor.Microcredit
                 tbOtchestvo2.Text = lst.Otchestvo;
                 tbINN2.Text = lst.IdentificationNumber;
                 tbINNOrg.Text = lst.OrganizationINN;
-                chbEmployer.Checked = lst.IsEmployer;
+                chbEmployer.Checked = Convert.ToBoolean(lst.IsEmployer);
 
                 
                 if (lst.isGuarantor == true)
@@ -3043,51 +3045,51 @@ namespace СreditСonveyor.Microcredit
                 //else { chkbxTypeOfCollateral.Items[0].Selected = false; chkbxTypeOfCollateral.Items[1].Selected = false; chkbxTypeOfCollateral.Items[2].Selected = false; }
 
 
-                if ((Convert.ToInt32(Session["RoleID"]) == 2) || (Convert.ToInt32(Session["RoleID"]) == 5)) //Эксперты Капитал)
-                {
-                    tbINNOrg.Visible = true;
-                    lblOrgINN.Visible = true;
-                    var blackListCust = dbRWZ.BlackLists.Where(r => (r.IdentificationNo == tbINN2.Text) && (r.CustomerTypeID == 1)).ToList();
-                    if (blackListCust.Count > 0)
-                    {
-                        gvBlackListCustomers.DataSource = blackListCust;
-                        pnlBlackList.Visible = true; //pnlBlackListOrg.Visible = true; 
-                        //BlackListShow();
+                //if ((Convert.ToInt32(Session["RoleID"]) == 2) || (Convert.ToInt32(Session["RoleID"]) == 5)) //Эксперты Капитал)
+                //{
+                //    tbINNOrg.Visible = true;
+                //    lblOrgINN.Visible = true;
+                //    var blackListCust = dbRWZ.BlackLists.Where(r => (r.IdentificationNo == tbINN2.Text) && (r.CustomerTypeID == 1)).ToList();
+                //    if (blackListCust.Count > 0)
+                //    {
+                //        gvBlackListCustomers.DataSource = blackListCust;
+                //        pnlBlackList.Visible = true; //pnlBlackListOrg.Visible = true; 
+                //        //BlackListShow();
 
-                    }
-                    else
-                    {
-                        gvBlackListCustomers.DataSource = null;
-                        pnlBlackList.Visible = false; ///pnlBlackListOrg.Visible = false;
-                    }
-                    gvBlackListCustomers.DataBind();
+                //    }
+                //    else
+                //    {
+                //        gvBlackListCustomers.DataSource = null;
+                //        pnlBlackList.Visible = false; ///pnlBlackListOrg.Visible = false;
+                //    }
+                //    gvBlackListCustomers.DataBind();
 
-                    var blackListOrg = dbRWZ.BlackLists.Where(r => (r.IdentificationNo == tbINNOrg.Text) && (r.CustomerTypeID == 2)).ToList();
-                    if (blackListOrg.Count > 0)
-                    {
-                        gvBlackListOrg.DataSource = blackListOrg;
-                        pnlBlackListOrg.Visible = true;
-                        //lblBlacListOrg.Visible = true;
-                        //BlackListShow();
-                    }
-                    else
-                    {
-                        pnlBlackListOrg.Visible = false;
-                        gvBlackListOrg.DataSource = null;
-                        //lblBlacListOrg.Visible = false;
-                    }
-                    gvBlackListOrg.DataBind();
+                //    var blackListOrg = dbRWZ.BlackLists.Where(r => (r.IdentificationNo == tbINNOrg.Text) && (r.CustomerTypeID == 2)).ToList();
+                //    if (blackListOrg.Count > 0)
+                //    {
+                //        gvBlackListOrg.DataSource = blackListOrg;
+                //        pnlBlackListOrg.Visible = true;
+                //        //lblBlacListOrg.Visible = true;
+                //        //BlackListShow();
+                //    }
+                //    else
+                //    {
+                //        pnlBlackListOrg.Visible = false;
+                //        gvBlackListOrg.DataSource = null;
+                //        //lblBlacListOrg.Visible = false;
+                //    }
+                //    gvBlackListOrg.DataBind();
 
 
-                }
-                else
-                {
-                    tbINNOrg.Visible = false;
-                    lblOrgINN.Visible = false;
-                    pnlBlackList.Visible = false;
-                    pnlBlackListOrg.Visible = false;
-                    //BlackListHide();
-                }
+                //}
+                //else
+                //{
+                //    tbINNOrg.Visible = false;
+                //    lblOrgINN.Visible = false;
+                //    pnlBlackList.Visible = false;
+                //    pnlBlackListOrg.Visible = false;
+                //    //BlackListHide();
+                //}
 
                 if (lst.GroupID == 110) { btnProfileNano.Visible = true; }
                 else { btnProfileNano.Visible = false; }
@@ -3579,14 +3581,14 @@ namespace СreditСonveyor.Microcredit
         //    lblBlacListCust.Visible = true;
         //}
 
-        public void BlackListHide()
-        {
-            pnlBlackList.Visible = false; pnlBlackListOrg.Visible = false;
-            tbINNOrg.Visible = false; lblOrgINN.Visible = false;
-            //RequiredFieldValidator5.Visible = false;
-            RegularExpressionValidator14.Visible = false;
-            lblBlacListCust.Visible = false;
-        }
+        //public void BlackListHide()
+        //{
+        //    pnlBlackList.Visible = false; pnlBlackListOrg.Visible = false;
+        //    tbINNOrg.Visible = false; lblOrgINN.Visible = false;
+        //    //RequiredFieldValidator5.Visible = false;
+        //    RegularExpressionValidator14.Visible = false;
+        //    lblBlacListCust.Visible = false;
+        //}
 
         protected void btnCustomerSearch_Click(object sender, EventArgs e)
         {
@@ -3829,7 +3831,7 @@ namespace СreditСonveyor.Microcredit
 
             //pnlBlackList.Visible = false;
             //pnlBlackListOrg.Visible = false;
-            BlackListHide();
+            //BlackListHide();
             btnUpdFIO.Visible = false;
 
             /**/
@@ -5138,18 +5140,18 @@ namespace СreditСonveyor.Microcredit
                     //System.Windows.Forms.MessageBox.Show(strOB);
                 }
                 //********отправляем статус в билайн
-                string str = await SendStatusBee(lst.CreditID.ToString(), "REFUSED_BY_CLIENT");
+                //string str = await SendStatusBee(lst.CreditID.ToString(), "REFUSED_BY_CLIENT");
 
-                if (str == "200")
-                {
-                    CancelRequest();
-                }
-                else
-                {
-                    //****//  DotNetNuke.UI.Skins.Skin.AddModuleMessage(this, "Ошибка при отправке статусов в Нуртелеком", DotNetNuke.UI.Skins.Controls.ModuleMessage.ModuleMessageType.RedError);
-                    //System.Windows.Forms.MessageBox.Show("Ошибка при отправке статусов в Билайн");
-                    MsgBox("Ошибка при отправке статусов в Билайн", this.Page, this);
-                }
+                //if (str == "200")
+                //{
+                //    CancelRequest();
+                //}
+                //else
+                //{
+                //    //****//  DotNetNuke.UI.Skins.Skin.AddModuleMessage(this, "Ошибка при отправке статусов в Нуртелеком", DotNetNuke.UI.Skins.Controls.ModuleMessage.ModuleMessageType.RedError);
+                //    //System.Windows.Forms.MessageBox.Show("Ошибка при отправке статусов в Билайн");
+                //    MsgBox("Ошибка при отправке статусов в Билайн", this.Page, this);
+                //}
 
             }
             else
@@ -5362,7 +5364,7 @@ namespace СreditСonveyor.Microcredit
                 }
 
                 //********отправляем статус в билайн
-                var result = await SendStatusBee(lst.CreditID.ToString(), "DECLINED");
+                //var result = await SendStatusBee(lst.CreditID.ToString(), "DECLINED");
                 //var data = (Newtonsoft.Json.Linq.JObject)Newtonsoft.Json.JsonConvert.DeserializeObject(result);
                 //var data = await Task.Run(() => Newtonsoft.Json.JsonConvert.DeserializeObject(result));
                 //dynamic data = JObject.Parse(str);
@@ -5373,17 +5375,17 @@ namespace СreditСonveyor.Microcredit
                 //var list = await Task.Run(() => JsonConvert.DeserializeObject<List<MyObject>>(response.Content));
                 //string str = data.statusCode.ToString();
                 //if (result == "200")
-                if ((result == "200") && (strOB == "200"))
-                {
-                    AddRowToJournal(lst, "Отказано");
-                    CancelRequestExp();
-                }
-                else
-                {
-                    //*****// DotNetNuke.UI.Skins.Skin.AddModuleMessage(this, "Ошибка при отправке статусов в Нуртелеком", DotNetNuke.UI.Skins.Controls.ModuleMessage.ModuleMessageType.RedError);
-                    //System.Windows.Forms.MessageBox.Show("Ошибка при отправке статусов в Нуртелеком");
-                    MsgBox("Ошибка при отправке статусов в Нуртелеком", this.Page, this);
-                }
+                //if ((result == "200") && (strOB == "200"))
+                //{
+                //    AddRowToJournal(lst, "Отказано");
+                //    CancelRequestExp();
+                //}
+                //else
+                //{
+                //    //*****// DotNetNuke.UI.Skins.Skin.AddModuleMessage(this, "Ошибка при отправке статусов в Нуртелеком", DotNetNuke.UI.Skins.Controls.ModuleMessage.ModuleMessageType.RedError);
+                //    //System.Windows.Forms.MessageBox.Show("Ошибка при отправке статусов в Нуртелеком");
+                //    MsgBox("Ошибка при отправке статусов в Нуртелеком", this.Page, this);
+                //}
             }
             else
             {
@@ -5953,46 +5955,7 @@ namespace СreditСonveyor.Microcredit
 
 
 
-        public async System.Threading.Tasks.Task<string> SendStatusBee(string CreditID, string Status)
-        {
-            ServicePointManager.ServerCertificateValidationCallback = (a, b, c, d) => true;
-            try
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    var byteArray = Encoding.ASCII.GetBytes(connectionStringBeeKey);
-                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
-
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    //string json = "{\"state\": \"ISSUED_BY\"}";
-                    string json = "{\"state\": \"" + Status + "\"}";
-                    //var response = await client.PostAsync("https://umai-stage.balance.kg/mcm-api/dos/applications/10001/status" + CreditID, new StringContent(json, Encoding.UTF8, "application/json"));
-                    //var response = await client.PostAsync("https://umai-stage.balance.kg/mcm-api/dos/applications/10001/status", new StringContent(json, Encoding.UTF8, "application/json"));
-                    var response = await client.PostAsync(connectionStringBee + CreditID + "/status", new StringContent(json, Encoding.UTF8, "application/json"));
-
-                    var result = await response.Content.ReadAsStringAsync();
-                    JObject obj = JObject.Parse(result);
-                    string status = obj["status"].ToString();
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        if (status == "SUCCESS")
-                            result = "200";
-                    }
-                    //var status = result.Where;
-                    return result;
-                }
-            }
-            catch (Exception ex)
-            {
-                //TextBox1.Text = TextBox1.Text + ex.Message;
-                return "error";
-            }
-            finally
-            {
-                //TextBox1.Text = TextBox1.Text + Response.ToString();
-                //return "";
-            }
-        }
+     
 
         public async System.Threading.Tasks.Task<string> ApprovedRequestOB(string CustomerID, string CreditID)
         {

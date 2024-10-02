@@ -34,7 +34,7 @@ namespace СreditСonveyor.Microcredit
             //Double RadNumTbRevenue = Convert.ToDouble(Session["RadNumTbRevenue"].ToString());
             Double RadNumTbСostPrice = Convert.ToDouble(Session["RadNumTbСostPrice"].ToString());
             Double RadNumTbOverhead = Convert.ToDouble(Session["RadNumTbOverhead"].ToString());
-            Double RadNumTbFamilyExpenses = Convert.ToDouble(Session["RadNumTbFamilyExpenses"].ToString());
+            //Double RadNumTbFamilyExpenses = Convert.ToDouble(Session["RadNumTbFamilyExpenses"].ToString());
             Double RadNumOtherLoans = Convert.ToDouble(Session["RadNumOtherLoans"].ToString());
             CreditController creditCtrl = new CreditController();
             SysController sysCtrl = new SysController();
@@ -89,9 +89,9 @@ namespace СreditСonveyor.Microcredit
                 
             }
 
-
+            lblINN.Text = customers.IdentificationNumber;
             lblCustomerFIO.Text = customers.Surname + " " + customers.CustomerName + " " + customers.Otchestvo;
-            lblCustomerFIO2.Text = customers.Surname + " " + customers.CustomerName + " " + customers.Otchestvo;
+           
             lblCustomerRegAddress.Text = registrationCityName + " " + customers.RegistrationStreet + " " + customers.RegistrationHouse + " " + customers.RegistrationFlat;
             lblCustomerResAddress.Text = residenceCityName + " " + customers.ResidenceStreet + " " + customers.ResidenceHouse + " " + customers.ResidenceFlat;
             lblContactPhone1.Text = customers.ContactPhone1;
@@ -100,6 +100,8 @@ namespace СreditСonveyor.Microcredit
             lblAverageMonthSalary.Text = dbRWZ.Requests.Where(r => r.RequestID == RequestID).FirstOrDefault().AverageMonthSalary.ToString();
             lblAverageMonthSalary2.Text = dbRWZ.Requests.Where(r => r.RequestID == RequestID).FirstOrDefault().AverageMonthSalary.ToString();
             Double RadNumTbAverageMonthSalary = Convert.ToDouble(request.AverageMonthSalary);
+
+            lblPurpose.Text = request.CreditPurpose.ToString();
 
             //var lstRequestsProducts = dbRWZ.RequestsProducts.Where(r => r.RequestID == RequestID);
             //if (lstRequestsProducts != null)
@@ -118,15 +120,14 @@ namespace СreditСonveyor.Microcredit
             //lblTotalSum.Text = request.RequestSumm.ToString();
 
 
-            lblRequestSumm.Text = request.RequestSumm.ToString();
-            lblRequestPeriod.Text = request.RequestPeriod.ToString();
+           
             lblRequestSumm2.Text = request.RequestSumm.ToString();
             lblRequestPeriod2.Text = request.RequestPeriod.ToString();
             //lblAmountDownPayment.Text = requests.AmountDownPayment.ToString(); собственные средства клиента
-            lblYearPercent.Text = request.RequestRate.ToString();
+            
             lblRate.Text = request.RequestRate.ToString();
-            lblFamilyExpenses.Text = "7000"; //requests.FamilyExpenses.ToString();
-            lblTotalСonsumption.Text = "7000"; //requests.FamilyExpenses.ToString();
+            lblFamilyExpenses.Text = (request.CountPeople * 1000 + 5000).ToString();
+            lblTotalСonsumption.Text = (request.CountPeople * 1000 + 5000).ToString(); //requests.FamilyExpenses.ToString();
             lblAdditionalIncom.Text = request.AdditionalIncome.ToString();
             lblSeller.Text = dbRWZ.Groups.Where(g => g.GroupID == request.GroupID).FirstOrDefault().GroupName;
 
@@ -139,39 +140,38 @@ namespace СreditСonveyor.Microcredit
             if ((request.RequestRate == 0) && (request.RequestPeriod == 9)) { commision = 0; NameOfCredit = "0-0-9"; }
             if ((request.RequestRate == 0) && (request.RequestPeriod == 12)) { commision = 0; NameOfCredit = "0-0-12"; }
             if (request.IsEmployer == true) commision = 0;
-            lblComission.Text = commision.ToString();
-            lblNameOfCredit.Text = NameOfCredit;
+          
             /**/
 
             double s = Convert.ToDouble(request.RequestSumm);
             double n = Convert.ToDouble(request.RequestPeriod);
             double i, k = 0;
-            int y22 = 40;
+            //int y22 = 40;
 
             double stavka = Convert.ToDouble(request.RequestRate);
             i = (stavka != 0) ? stavka / 12 / 100 : 0;
             if ((stavka == 0)) k = s / n;
             if (stavka != 0) k = (((Math.Pow((1 + i), n)) * (i)) * s) / ((Math.Pow((1 + (i)), n)) - 1);
-            bool f = false;
+            //bool f = false;
             bool zarplat = true;
 
             if (zarplat)
             {
                 zp = Convert.ToDouble(RadNumTbAverageMonthSalary);
-                if ((zp > 50000) || (zp == 50000)) y22 = 50;
-                if (zp < 50000) y22 = 40;
+                //if ((zp > 50000) || (zp == 50000)) y22 = 50;
+                //if (zp < 50000) y22 = 40;
                 OtherLoans = Convert.ToDouble(RadNumOtherLoans);
-                chp = (zp + Convert.ToDouble(request.AdditionalIncome)) - 7000;
+                chp = (zp + Convert.ToDouble(request.AdditionalIncome)) - Convert.ToDouble(request.CountPeople*1000 + 5000);
                 cho = chp - k;
                 cho = cho - OtherLoans;
                 y1 = 100 * cho / chp;
                 if ((cho < 0) && (chp < 0)) y1 = y1 * (-1);
                 y2 = 100 * (k + OtherLoans) / (zp + Convert.ToDouble(request.AdditionalIncome));
-                if ((y1 >= 20) && (y2 < y22)) f = true;
-                if (y1 >= 20) lblIssuanceOfCredit.Text = "да, выдача кредита возможно";
-                else lblIssuanceOfCredit.Text = "нет, выдача кредита невозможно";
-                if (y2 < y22) lblIssuanceOfCredit2.Text = "да, выдача кредита возможно";
-                else lblIssuanceOfCredit2.Text = "нет, выдача кредита невозможно";
+                //if ((y1 >= 20) && (y2 < y22)) f = true;
+                //if (y1 >= 20) lblIssuanceOfCredit.Text = "да, выдача кредита возможно";
+                //else lblIssuanceOfCredit.Text = "нет, выдача кредита невозможно";
+                //if (y2 < y22) lblIssuanceOfCredit2.Text = "да, выдача кредита возможно";
+                //else lblIssuanceOfCredit2.Text = "нет, выдача кредита невозможно";
             }
             //else  
             //{
@@ -197,33 +197,30 @@ namespace СreditСonveyor.Microcredit
             //if (f) lblIssuanceOfCredit.Text = "да, выдача кредита возможно";
             //else lblIssuanceOfCredit.Text = "нет, выдача кредита невозможно";
             lblBranch.Text = dbR.Branches.Where(r => r.ID == request.BranchID).FirstOrDefault().Name;
-            lblRequestN.Text = request.RequestID.ToString();
-            // Соколов, Жумашева, Молдогазиева, Сейдилда уулу Амантур, Сандиева
-            if ((usrID == 6075) || //Соколов
-                                   //(usrID == 6521) || //Жумашева
-                (usrID == 6536) ||  //Молдогазиева
-                (usrID == 6977) || //Сейдилда уулу
-                //(usrID == 6249) || //Сандиева
-                (usrID == 7552) || //Гриценко
-                (usrID == 4562) ||//Абдыкасымова
-                (usrID == 7141) || //Сыдыкова
-                (usrID == 4445)) //Халикова
-            {
-                lblReqDecision.Text = "РЕШЕНИЕ УПОЛНОМОЧЕННОГО ЛИЦА ";
-                lblDecision1.Text = "Уполномоченное лицо";
-                lblDecision2.Text = "";
-                lblDecision3.Text = "";
-                lblDecision4.Text = "";
-            }
+            lblRequestN.Text = request.CreditID.ToString();
+
+            lblTotBalCurrLoans.Text = request.TotBalCurrLoans.ToString();
+            lblTotCountCurrLoans.Text = request.TotCountCurrLoans.ToString();
+            lblTotCountDelays.Text = request.TotCountDelays.ToString();
+            lblMaxDayDelays.Text = request.MaxDayDelays.ToString();
+            lblAdditionalConditions.Text = request.AdditionalConditions;
+
+            lblA.Text = (y1 < 40) ? "0" : "25";
+            lblB.Text = (y2 > 50) ? "0" : "25";
+            if (request.TotCountCurrLoans > 3) lblC.Text = "0";
+            if (request.TotCountCurrLoans == 3) lblC.Text = "10";
+            if (request.TotCountCurrLoans == 2) lblC.Text = "15";
+            if (request.TotCountCurrLoans == 1) lblC.Text = "20";
+            if (request.TotCountCurrLoans == 0) lblC.Text = "25";
+
+            if ((request.TotCountDelays == 0) && (request.MaxDayDelays == 0)) lblD.Text = "25";
             else
             {
-                lblReqDecision.Text = "РЕШЕНИЕ КРЕДИТНОГО КОМИТЕТА _______________ ";
-                lblDecision1.Text = "Председатель Кредитного комитета";
-                lblDecision2.Text = "Член Кредитного комитета";
-                lblDecision3.Text = "Член Кредитного комитета";
-                lblDecision4.Text = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Секретарь КК&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ФИО";
+                if ((request.TotCountDelays > 10) || (request.MaxDayDelays > 10)) lblD.Text = "-25";
+                else lblD.Text = "15";
             }
-
+            lblABCD.Text = (Convert.ToInt32(lblA.Text) + Convert.ToInt32(lblB.Text) + Convert.ToInt32(lblC.Text) + Convert.ToInt32(lblD.Text)).ToString();
+            lblSolution.Text = (Convert.ToInt32(lblABCD.Text) < 66) ? "Отказано" : "Одобрено";
             refreshGuarantees(request.RequestID);
         }
 

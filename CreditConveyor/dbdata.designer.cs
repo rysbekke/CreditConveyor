@@ -10871,7 +10871,7 @@ namespace Zamat
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="VarBinary(MAX)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary Data
 		{
 			get
@@ -13295,7 +13295,7 @@ namespace Zamat
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="VarBinary(MAX)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary Data
 		{
 			get
@@ -21063,7 +21063,7 @@ namespace Zamat
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="VarBinary(MAX)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary Data
 		{
 			get
@@ -29584,7 +29584,7 @@ namespace Zamat
 		
 		private System.Nullable<int> _CountMonthSalary;
 		
-		private bool _IsEmployer;
+		private System.Nullable<bool> _IsEmployer;
 		
 		private System.Nullable<decimal> _SumMonthSalaryGuar;
 		
@@ -29690,6 +29690,18 @@ namespace Zamat
 		
 		private string _Email;
 		
+		private System.Nullable<decimal> _TotBalCurrLoans;
+		
+		private System.Nullable<int> _TotCountCurrLoans;
+		
+		private System.Nullable<int> _TotCountDelays;
+		
+		private System.Nullable<int> _MaxDayDelays;
+		
+		private System.Nullable<int> _CountPeople;
+		
+		private string _AdditionalConditions;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -29790,7 +29802,7 @@ namespace Zamat
     partial void OnMonthlyInstallmentChanged();
     partial void OnCountMonthSalaryChanging(System.Nullable<int> value);
     partial void OnCountMonthSalaryChanged();
-    partial void OnIsEmployerChanging(bool value);
+    partial void OnIsEmployerChanging(System.Nullable<bool> value);
     partial void OnIsEmployerChanged();
     partial void OnSumMonthSalaryGuarChanging(System.Nullable<decimal> value);
     partial void OnSumMonthSalaryGuarChanged();
@@ -29896,6 +29908,18 @@ namespace Zamat
     partial void OnIssueAuthorityChanged();
     partial void OnEmailChanging(string value);
     partial void OnEmailChanged();
+    partial void OnTotBalCurrLoansChanging(System.Nullable<decimal> value);
+    partial void OnTotBalCurrLoansChanged();
+    partial void OnTotCountCurrLoansChanging(System.Nullable<int> value);
+    partial void OnTotCountCurrLoansChanged();
+    partial void OnTotCountDelaysChanging(System.Nullable<int> value);
+    partial void OnTotCountDelaysChanged();
+    partial void OnMaxDayDelaysChanging(System.Nullable<int> value);
+    partial void OnMaxDayDelaysChanged();
+    partial void OnCountPeopleChanging(System.Nullable<int> value);
+    partial void OnCountPeopleChanged();
+    partial void OnAdditionalConditionsChanging(string value);
+    partial void OnAdditionalConditionsChanged();
     #endregion
 		
 		public Request()
@@ -30863,8 +30887,8 @@ namespace Zamat
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsEmployer", DbType="Bit NOT NULL")]
-		public bool IsEmployer
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsEmployer", DbType="Bit")]
+		public System.Nullable<bool> IsEmployer
 		{
 			get
 			{
@@ -31919,6 +31943,126 @@ namespace Zamat
 					this._Email = value;
 					this.SendPropertyChanged("Email");
 					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotBalCurrLoans", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> TotBalCurrLoans
+		{
+			get
+			{
+				return this._TotBalCurrLoans;
+			}
+			set
+			{
+				if ((this._TotBalCurrLoans != value))
+				{
+					this.OnTotBalCurrLoansChanging(value);
+					this.SendPropertyChanging();
+					this._TotBalCurrLoans = value;
+					this.SendPropertyChanged("TotBalCurrLoans");
+					this.OnTotBalCurrLoansChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotCountCurrLoans", DbType="Int")]
+		public System.Nullable<int> TotCountCurrLoans
+		{
+			get
+			{
+				return this._TotCountCurrLoans;
+			}
+			set
+			{
+				if ((this._TotCountCurrLoans != value))
+				{
+					this.OnTotCountCurrLoansChanging(value);
+					this.SendPropertyChanging();
+					this._TotCountCurrLoans = value;
+					this.SendPropertyChanged("TotCountCurrLoans");
+					this.OnTotCountCurrLoansChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotCountDelays", DbType="Int")]
+		public System.Nullable<int> TotCountDelays
+		{
+			get
+			{
+				return this._TotCountDelays;
+			}
+			set
+			{
+				if ((this._TotCountDelays != value))
+				{
+					this.OnTotCountDelaysChanging(value);
+					this.SendPropertyChanging();
+					this._TotCountDelays = value;
+					this.SendPropertyChanged("TotCountDelays");
+					this.OnTotCountDelaysChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaxDayDelays", DbType="Int")]
+		public System.Nullable<int> MaxDayDelays
+		{
+			get
+			{
+				return this._MaxDayDelays;
+			}
+			set
+			{
+				if ((this._MaxDayDelays != value))
+				{
+					this.OnMaxDayDelaysChanging(value);
+					this.SendPropertyChanging();
+					this._MaxDayDelays = value;
+					this.SendPropertyChanged("MaxDayDelays");
+					this.OnMaxDayDelaysChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CountPeople", DbType="Int")]
+		public System.Nullable<int> CountPeople
+		{
+			get
+			{
+				return this._CountPeople;
+			}
+			set
+			{
+				if ((this._CountPeople != value))
+				{
+					this.OnCountPeopleChanging(value);
+					this.SendPropertyChanging();
+					this._CountPeople = value;
+					this.SendPropertyChanged("CountPeople");
+					this.OnCountPeopleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdditionalConditions", DbType="NVarChar(200)")]
+		public string AdditionalConditions
+		{
+			get
+			{
+				return this._AdditionalConditions;
+			}
+			set
+			{
+				if ((this._AdditionalConditions != value))
+				{
+					this.OnAdditionalConditionsChanging(value);
+					this.SendPropertyChanging();
+					this._AdditionalConditions = value;
+					this.SendPropertyChanged("AdditionalConditions");
+					this.OnAdditionalConditionsChanged();
 				}
 			}
 		}

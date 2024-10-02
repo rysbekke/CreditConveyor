@@ -254,7 +254,7 @@
         <asp:HiddenField ID="hfRequestsRowID" runat="server" />
         <asp:Label ID="lblError" runat="server" Text="" Font-Size="Larger" ForeColor="Red"></asp:Label>
 		<br />
-        <asp:Panel ID="pnlBlackList" runat="server" Visible="False">
+      <%--  <asp:Panel ID="pnlBlackList" runat="server" Visible="False">
                                         
                                         <asp:Label ID="lblBlacListCust" runat="server" Text="Клиент в черном списке!!!" Font-Size="Larger" ForeColor="Red"></asp:Label>
                                         <asp:GridView ID="gvBlackListCustomers" runat="server" AutoGenerateColumns="False">
@@ -279,9 +279,7 @@
                                         <asp:Label ID="lblBlacListOrg" runat="server" Text="Организация в черном списке!!!" Font-Size="Larger" ForeColor="Red"></asp:Label>
                                         <asp:GridView ID="gvBlackListOrg" runat="server" AutoGenerateColumns="False">
                                             <Columns>
-                                             <%--<asp:BoundField DataField="Surname" HeaderText="Фамилия" />
-                                             <asp:BoundField DataField="PersonName" HeaderText="Имя" />
-                                             <asp:BoundField DataField="Otchestvo" HeaderText="Отчество" />--%>
+                                            
                                              <asp:BoundField DataField="CompanyName" HeaderText="Организация" />
                                              <asp:BoundField DataField="PassportNo" HeaderText="Свидетельство №" />
                                              <asp:BoundField DataField="PassportIssueDate" HeaderText="Дата рег. в МЮ" dataformatstring="{0:dd/MM/yyyy}"/>
@@ -293,9 +291,9 @@
                                             <RowStyle BackColor="White" ForeColor="red" />
                                         </asp:GridView>
         </asp:Panel>
-        <br />       
+        <br />       --%>
 
-        <asp:Label ID="lblMsgBox" runat="server" Text="" Font-Size="Larger" ForeColor="Red" Visible="false"></asp:Label>    
+       <%-- <asp:Label ID="lblMsgBox" runat="server" Text="" Font-Size="Larger" ForeColor="Red" Visible="false"></asp:Label>    --%>
         <br />
         <asp:Label ID="lblMessageClient" runat="server" ForeColor="Red"></asp:Label>
 
@@ -1111,7 +1109,7 @@
             <br />
             <br />
             <hr />
-            <p style="color:green">DCB-Сервисы</p>
+            <p style="color:green">Сервисы</p>
             <asp:Button ID="btnPassport" runat="server" Text="Проверить паспорт" OnClick="btnPassport_Click" />
             <br />
             <br />

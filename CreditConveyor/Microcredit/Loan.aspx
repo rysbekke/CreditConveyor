@@ -197,7 +197,7 @@
                       
                        </div>     
                        
-                 <asp:Panel ID="pnlGuarantor" runat="server" Visible="false">
+                 <asp:Panel ID="pnlGuarantor" runat="server" Visible="true">
                             <table>
                             <tr>
 				                <td></td>
@@ -207,7 +207,7 @@
                                 <td></td>
                                 <td>
                                     <a href="#customer2" id="customer2" data-tab='customer'><b>Выбрать поручителя</b></a>
-                                    <asp:Button ID="btnGuarantSearch" runat="server" class="btn btn-primary" Text="Выбрать поручителя" OnClick="btnGuarantSearch_Click" Visible="false" /><br />
+                                    <asp:Button ID="btnGuarantSearch" runat="server" class="btn btn-primary" Text="Выбрать поручителя" OnClick="btnGuarantSearch_Click" Visible="False" /><br />
                                 </td>
                             </tr>
 				            <tr>
@@ -420,8 +420,9 @@
                       <div class="row">
                             Продукт:
      		                <asp:DropDownList ID="ddlProduct" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProduct_SelectedIndexChanged" class="form-control">
-                                        <asp:ListItem Value="92">Потребительский кредит</asp:ListItem>
-                                        <asp:ListItem Value="153">Рассрочка</asp:ListItem>  
+                                 <asp:ListItem Value="153">Рассрочка</asp:ListItem>        
+                                 <asp:ListItem Value="92">Потребительский кредит</asp:ListItem>
+                                        
                                         <%--<asp:ListItem Value="135">Сотрудникам</asp:ListItem>--%>
                                     </asp:DropDownList>
                                 
@@ -429,7 +430,11 @@
                       <div class="row">
                             % Cтавка:
 				            <asp:DropDownList ID="ddlRequestRate" runat="server" OnSelectedIndexChanged="ddlRequestRate_SelectedIndexChanged" AutoPostBack="True" class="form-control">
-                               <asp:ListItem Value="30" Selected="True" >30</asp:ListItem>
+                               <asp:ListItem Value="28,00">28,00</asp:ListItem>
+                               <asp:ListItem Value="29,00">29,00</asp:ListItem>
+                                <asp:ListItem Value="30,00">30,00</asp:ListItem>
+                                <asp:ListItem Value="31,00">31,00</asp:ListItem>
+                                <asp:ListItem Value="32,00" Selected="True">32,00</asp:ListItem>
                             </asp:DropDownList>
                                 
                       </div>
@@ -454,12 +459,12 @@
                                 <asp:ListItem Value="16"></asp:ListItem>
                                 <asp:ListItem Value="17"></asp:ListItem>
                                 <asp:ListItem Value="18"></asp:ListItem>
-                                <asp:ListItem Value="19"></asp:ListItem>
+                   <%--             <asp:ListItem Value="19"></asp:ListItem>
                                 <asp:ListItem Value="20"></asp:ListItem>
                                 <asp:ListItem Value="21"></asp:ListItem>
                                 <asp:ListItem Value="22"></asp:ListItem>
                                 <asp:ListItem Value="23"></asp:ListItem>
-                                <asp:ListItem Value="24"></asp:ListItem>
+                                <asp:ListItem Value="24"></asp:ListItem>--%>
                               
 						            </asp:DropDownList>
                                     </ContentTemplate>
@@ -641,7 +646,7 @@
 									
 								</div>
                                 <div class="row">
-                                    <asp:Label ID="lblBusinessComment" runat="server" Text="Комментарии по бизнесу :</label>"></asp:Label>
+                                    <asp:Label ID="lblBusinessComment" runat="server" Text="Комментарии по бизнесу :"></asp:Label>
                                     <asp:TextBox ID="txtBusinessComment" runat="server" class="form-control" TextMode="MultiLine" Rows="8" Width="300px" style = "resize:none" ></asp:TextBox>
                                     
                                 </div>
@@ -710,7 +715,7 @@
 								</div>
                                 <div class="row">
                                        
-                                       <asp:Label ID="Label1" runat="server" Text="Комментарии по бизнесу :</label>"></asp:Label>
+                                       <asp:Label ID="Label1" runat="server" Text="Комментарии по бизнесу :"></asp:Label>
                                        <asp:TextBox ID="txtAgroComment" runat="server" class="form-control" TextMode="MultiLine" Rows="8" Width="300px" style = "resize:none"></asp:TextBox>
                                        
                                 </div>
@@ -720,22 +725,46 @@
                            </ContentTemplate>
                      </asp:UpdatePanel>
 
-                                <div class="row">
+                               <%-- <div class="row">
 									Семейные расходы
                                         <asp:TextBox ID="RadNumTbFamilyExpenses" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="22" ClientIDMode="Static" onchange="demo.RadNumTbFamilyExpenses()">7000</asp:TextBox>
 										<asp:RequiredFieldValidator ID="rfFamilyExpenses" runat="server" ErrorMessage="Ошибка!" ValidationGroup="SaveRequest" ControlToValidate="RadNumTbFamilyExpenses" CssClass="SaveRequest"></asp:RequiredFieldValidator>
                                     
-								</div>
+								</div>--%>
                                 <div class="row">
 									Дополнительные доходы:
                                         <asp:TextBox ID="RadNumTbAdditionalIncome" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="22" ClientIDMode="Static" onchange="demo.RadNumTbAdditionalIncome()"></asp:TextBox>
                                     
                                 </div>
                                 <div class="row">
-                                    <asp:Label ID="lblOtherLoans" runat="server" Text="Взносы по др.кредитам:</label>"></asp:Label>
+                                    <asp:Label ID="lblOtherLoans" runat="server" Text="Взносы по др.кредитам:"></asp:Label>
                                     <asp:TextBox ID="RadNumOtherLoans" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="23" Visible="true" ClientIDMode="Static" onchange="demo.RadNumOtherLoans()"></asp:TextBox>
                                     
                                 </div>
+<div class="row">
+    <asp:Label ID="lblTotBalCurrLoans" runat="server" Text="Общее сальдо текущих кредитов:"></asp:Label>
+    <asp:TextBox ID="txtTotBalCurrLoans" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="23" Visible="true" ClientIDMode="Static" onchange="demo.RadNumOtherLoans()"></asp:TextBox>
+</div>
+<div class="row">
+    <asp:Label ID="lblTotCountCurrLoans" runat="server" Text="Общее кол-во текущих кредитов:"></asp:Label>
+    <asp:TextBox ID="txtTotCountCurrLoans" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="23" Visible="true" ClientIDMode="Static" onchange="demo.RadNumOtherLoans()"></asp:TextBox>
+</div>
+<div class="row">
+    <asp:Label ID="lblTotCountDelays" runat="server" Text="Общее кол-во просрочек:"></asp:Label>
+    <asp:TextBox ID="txtTotCountDelays" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="23" Visible="true" ClientIDMode="Static" onchange="demo.RadNumOtherLoans()"></asp:TextBox>
+</div>
+<div class="row">
+    <asp:Label ID="lblMaxDayDelays" runat="server" Text="Макс кол-во дней в проссрочке:"></asp:Label>
+    <asp:TextBox ID="txtMaxDayDelays" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="23" Visible="true" ClientIDMode="Static" onchange="demo.RadNumOtherLoans()"></asp:TextBox>
+</div>
+<div class="row">
+    <asp:Label ID="lblCountPeople" runat="server" Text="Кол-во проживающих людей:"></asp:Label>
+    <asp:TextBox ID="txtCountPeople" runat="server" class="form-control" Value="0" EmptyMessage="0.00" Type="Currency" MinValue="0" TabIndex="23" Visible="true" ClientIDMode="Static" onchange="demo.RadNumOtherLoans()"></asp:TextBox>
+</div>
+<div class="row">
+    <asp:Label ID="lblAdditionalConditions" runat="server" Text="Дополнительные условия:"></asp:Label>
+    <asp:TextBox ID="txtAdditionalConditions" runat="server" class="form-control" EmptyMessage="" TabIndex="23" Visible="true" ClientIDMode="Static" onchange="demo.RadNumOtherLoans()"></asp:TextBox>
+</div>
            
                         <br />
 

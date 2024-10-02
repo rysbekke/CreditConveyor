@@ -47,16 +47,17 @@ namespace СreditСonveyor.Partners
         static string connectionStringOBAPIAddress = ConfigurationManager.ConnectionStrings["connectionStringOBAPIAddress"].ToString();
         public string fileupl = ConfigurationManager.ConnectionStrings["fileupl"].ToString();
         public string connectionStringActualDate = ConfigurationManager.ConnectionStrings["connectionStringActualDate"].ToString();
-        
+        public string filedir = ConfigurationManager.ConnectionStrings["filedir"].ToString();
         OleDbConnection oledbConn;
         DateTime dateNowServer, dateNow;
-        protected string partnerdir = "Credits\\Beecredits";
+        protected string partnerdir = "Partners";
         string actdate = ""; //88
         
         //string actdate = "2021-09-20T11:28:42"; //86
         //string actdate = "2021-11-25T11:28:42"; //Кола
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             try
             {
                 check_security();

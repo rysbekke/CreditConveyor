@@ -204,7 +204,9 @@
     <Content Include="js\chosen.jquery.min.js" />
     <Content Include="js\select2.js" />
     <Content Include="js\jquery.mask.min.js" />
+    <Content Include="Microcredit\Microcopy.aspx" />
     <Content Include="Microcredit\rptAgreesPartner.aspx" />
+    <Content Include="Microcredit\rptProffer2.aspx" />
     <Content Include="Partners\actAssessment.aspx" />
     <Content Include="Partners\Loan.aspx" />
     <Content Include="Partners\Loans.aspx" />
@@ -431,12 +433,26 @@
     <Compile Include="Errors.aspx.designer.cs">
       <DependentUpon>Errors.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Microcredit\Microcopy.aspx.cs">
+      <DependentUpon>Microcopy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Microcredit\Microcopy.aspx.designer.cs">
+      <DependentUpon>Microcopy.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Microcredit\rptAgreesPartner.aspx.cs">
       <DependentUpon>rptAgreesPartner.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Microcredit\rptAgreesPartner.aspx.designer.cs">
       <DependentUpon>rptAgreesPartner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Microcredit\rptProffer2.aspx.cs">
+      <DependentUpon>rptProffer2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Microcredit\rptProffer2.aspx.designer.cs">
+      <DependentUpon>rptProffer2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Partners\actAssessment.aspx.cs">
       <DependentUpon>actAssessment.aspx</DependentUpon>

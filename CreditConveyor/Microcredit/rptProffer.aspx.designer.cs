@@ -78,6 +78,15 @@ namespace СreditСonveyor.Microcredit
         protected global::System.Web.UI.WebControls.Label lblCustomerFIO;
 
         /// <summary>
+        /// lblINN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblINN;
+
+        /// <summary>
         /// lblCustomerRegAddress control.
         /// </summary>
         /// <remarks>
@@ -130,6 +139,150 @@ namespace СreditСonveyor.Microcredit
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSeller;
+
+        /// <summary>
+        /// lblRequestPeriod2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRequestPeriod2;
+
+        /// <summary>
+        /// lblRequestSumm2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRequestSumm2;
+
+        /// <summary>
+        /// lblRate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRate;
+
+        /// <summary>
+        /// lblK2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblK2;
+
+        /// <summary>
+        /// lblPurpose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPurpose;
+
+        /// <summary>
+        /// lblAdditionalConditions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAdditionalConditions;
+
+        /// <summary>
+        /// chkbxTypeOfCollateral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList chkbxTypeOfCollateral;
+
+        /// <summary>
+        /// pnlGuarantor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlGuarantor;
+
+        /// <summary>
+        /// lblGuarantorFIO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblGuarantorFIO;
+
+        /// <summary>
+        /// lblGuarantorINN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblGuarantorINN;
+
+        /// <summary>
+        /// lblWork control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblWork;
+
+        /// <summary>
+        /// lblPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPhone;
+
+        /// <summary>
+        /// pnlGuarantees control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlGuarantees;
+
+        /// <summary>
+        /// lblPledgerFIO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPledgerFIO;
+
+        /// <summary>
+        /// lblPledgerINN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPledgerINN;
+
+        /// <summary>
+        /// gvGuarantees control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvGuarantees;
 
         /// <summary>
         /// lblAverageMonthSalary control.
@@ -222,15 +375,6 @@ namespace СreditСonveyor.Microcredit
         protected global::System.Web.UI.WebControls.Label lblY1;
 
         /// <summary>
-        /// lblIssuanceOfCredit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIssuanceOfCredit;
-
-        /// <summary>
         /// lblY2 control.
         /// </summary>
         /// <remarks>
@@ -240,219 +384,111 @@ namespace СreditСonveyor.Microcredit
         protected global::System.Web.UI.WebControls.Label lblY2;
 
         /// <summary>
-        /// lblIssuanceOfCredit2 control.
+        /// lblTotBalCurrLoans control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIssuanceOfCredit2;
+        protected global::System.Web.UI.WebControls.Label lblTotBalCurrLoans;
 
         /// <summary>
-        /// lblRequestPeriod2 control.
+        /// lblTotCountCurrLoans control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRequestPeriod2;
+        protected global::System.Web.UI.WebControls.Label lblTotCountCurrLoans;
 
         /// <summary>
-        /// lblRequestSumm2 control.
+        /// lblTotCountDelays control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRequestSumm2;
+        protected global::System.Web.UI.WebControls.Label lblTotCountDelays;
 
         /// <summary>
-        /// lblRate control.
+        /// lblMaxDayDelays control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRate;
+        protected global::System.Web.UI.WebControls.Label lblMaxDayDelays;
 
         /// <summary>
-        /// lblK2 control.
+        /// lblA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblK2;
+        protected global::System.Web.UI.WebControls.Label lblA;
 
         /// <summary>
-        /// chkbxTypeOfCollateral control.
+        /// lblB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList chkbxTypeOfCollateral;
+        protected global::System.Web.UI.WebControls.Label lblB;
 
         /// <summary>
-        /// pnlGuarantor control.
+        /// lblC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlGuarantor;
+        protected global::System.Web.UI.WebControls.Label lblC;
 
         /// <summary>
-        /// lblGuarantorFIO control.
+        /// lblD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGuarantorFIO;
+        protected global::System.Web.UI.WebControls.Label lblD;
 
         /// <summary>
-        /// lblGuarantorINN control.
+        /// lblABCD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGuarantorINN;
+        protected global::System.Web.UI.WebControls.Label lblABCD;
 
         /// <summary>
-        /// pnlGuarantees control.
+        /// lblSolution control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlGuarantees;
+        protected global::System.Web.UI.WebControls.Label lblSolution;
 
         /// <summary>
-        /// lblPledgerFIO control.
+        /// lblSpecialist control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPledgerFIO;
+        protected global::System.Web.UI.WebControls.Label lblSpecialist;
 
         /// <summary>
-        /// lblPledgerINN control.
+        /// lblBoss control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPledgerINN;
-
-        /// <summary>
-        /// gvGuarantees control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvGuarantees;
-
-        /// <summary>
-        /// lblReqDecision control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblReqDecision;
-
-        /// <summary>
-        /// lblCustomerFIO2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCustomerFIO2;
-
-        /// <summary>
-        /// lblNameOfCredit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNameOfCredit;
-
-        /// <summary>
-        /// lblRequestSumm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRequestSumm;
-
-        /// <summary>
-        /// lblRequestPeriod control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRequestPeriod;
-
-        /// <summary>
-        /// lblYearPercent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblYearPercent;
-
-        /// <summary>
-        /// lblComission control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblComission;
-
-        /// <summary>
-        /// lblDecision1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDecision1;
-
-        /// <summary>
-        /// lblDecision2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDecision2;
-
-        /// <summary>
-        /// lblDecision3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDecision3;
-
-        /// <summary>
-        /// lblDecision4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDecision4;
+        protected global::System.Web.UI.WebControls.Label lblBoss;
     }
 }

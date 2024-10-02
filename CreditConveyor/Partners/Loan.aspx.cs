@@ -51,16 +51,18 @@ namespace СreditСonveyor.Partners
         public string fileupl = ConfigurationManager.ConnectionStrings["fileupl"].ToString();
         public string connectionStringActualDate = ConfigurationManager.ConnectionStrings["connectionStringActualDate"].ToString();
         public string connectionStringKIB = ConfigurationManager.ConnectionStrings["connectionStringKIB"].ToString();
+        public string filedir = ConfigurationManager.ConnectionStrings["filedir"].ToString();
 
         OleDbConnection oledbConn;
         DateTime dateNowServer, dateNow;
-        protected string partnerdir = "UploadFiles\\Partners";
+        protected string partnerdir = "Partners";
         string actdate = ""; //88
         
         //string actdate = "2021-09-20T11:28:42"; //86
         //string actdate = "2021-11-25T11:28:42"; //Кола
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             try
             {
                 Image1.ImageUrl = "data:image/jpeg;base64," + hfPhoto2.Value;
@@ -2803,7 +2805,7 @@ namespace СreditСonveyor.Partners
                 //FileUploadControl.SaveAs(destinationFolder + "\\" + dateRandodir + "\\" + destinationFile);
                 //Base64ToImage().Save(Server.MapPath("~/") + "\\" + dateRandodir + "\\" + destinationFile);
                 if (hfPhoto2.Value != "")
-                    Base64ToImage().Save(Server.MapPath("~/") + partnerdir +"\\"+ dateRanmdodir + "\\" + destinationFile);
+                    Base64ToImage().Save(Server.MapPath("~/") + filedir + "\\" + partnerdir +"\\"+ dateRanmdodir + "\\" + destinationFile);
             }
             catch (Exception ex)
             {
@@ -2827,8 +2829,8 @@ namespace СreditСonveyor.Partners
                         //FullName2 = fileupl + "\\" + "Portals\\0\\" + partnerdir + "\\" + fullfilename,
                         //FullName = "\\Portals\\0\\" + partnerdir + "\\" + dateRanmdodir + "\\" + destinationFile,
                         //FullName2 = fileupl + "\\" + "Portals\\0\\" + partnerdir + "\\" + dateRanmdodir + "\\" + destinationFile,
-                        FullName = "\\" + partnerdir + "\\" + dateRanmdodir + "\\" + destinationFile,
-                        FullName2 = fileupl + "\\" + partnerdir + "\\" + dateRanmdodir + "\\" + destinationFile,
+                        FullName = "\\" + filedir + "\\" + partnerdir + "\\" + dateRanmdodir + "\\" + destinationFile,
+                        FullName2 = fileupl + "\\" + filedir + "\\" + partnerdir + "\\" + dateRanmdodir + "\\" + destinationFile,
                         //FileDescription = tbFileDescription.Text,
                         FileDescription = descr + " " + tbFileDescription.Text + " " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"),
                         IsPhoto = true
@@ -3075,7 +3077,7 @@ namespace СreditСonveyor.Partners
             string dateRandodir = gtx.DateRandodir(destinationFolder);
             string destinationFile = gtx.copyFileBee(rf.FullName, destinationFolder, dateRandodir);
 
-            string destinationFile2 = "\\" + partnerdir + "\\" + dateRandodir + "\\" + destinationFile;
+            string destinationFile2 = "\\" + filedir + "\\" + partnerdir + "\\" + dateRandodir + "\\" + destinationFile;
 
             //TableController tblCtrl2 = new TableController();
 
@@ -3267,7 +3269,7 @@ namespace СreditСonveyor.Partners
                 //lblINN.Text = tbINN2.Text;
 
                 //tbINNOrg.Text = lst.OrganizationINN;
-                chbEmployer.Checked = lst.IsEmployer;
+                chbEmployer.Checked = Convert.ToBoolean(lst.IsEmployer);
                 lblPhone.Text = lst.ContactPhone1;
                 
                 //if (lst.isGuarantor == true)
@@ -4628,8 +4630,8 @@ namespace СreditСonveyor.Partners
                                             //FullName = Server.MapPath("~/") + filedir + "\\" + partnerdir + "\\" + fullfilename,
                                             //FullName = "\\Portals\\0\\" + partnerdir + "\\" + destinationFile,
                                             //FullName2 = fileupl + "\\" + "Portals\\0\\" + partnerdir + "\\" + destinationFile,
-                                            FullName = "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
-                                            FullName2 = fileupl + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                                            FullName = "\\" + filedir + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                                            FullName2 = fileupl + "\\" + filedir + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
                                             FileDescription = tbFileDescription.Text + " " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"),
                                             IsPhoto = false
                                  
@@ -8205,8 +8207,8 @@ namespace СreditСonveyor.Partners
                             //FullName = Server.MapPath("~/") + filedir + "\\" + partnerdir + "\\" + fullfilename,
                             //FullName = "\\Portals\\0\\" + partnerdir + "\\" + destinationFile,
                             //FullName2 = fileupl + "\\" + "Portals\\0\\" + partnerdir + "\\" + destinationFile,
-                            FullName = "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
-                            FullName2 = fileupl + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                            FullName = "\\" + filedir + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                            FullName2 = fileupl + "\\" + filedir + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
                             FileDescription = tbFileDescription.Text + " " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"),
                             IsPhoto = false
 
@@ -8973,7 +8975,7 @@ namespace СreditСonveyor.Partners
         [WebMethod]
         public string getDestinationFolder() //Возврат
         {
-            string destinationFolder = Server.MapPath("~/") + partnerdir; // 1-вариант
+            string destinationFolder = Server.MapPath("~/") + filedir + "\\" + partnerdir; // 1-вариант
             //string destinationFolder = @"E:\Uploadfiles\Credits\Dcb"; // 2-вариант
             //string destinationFolder = @"C:\Uploadfiles\Credits\Dcb"; // 2-вариант
             return destinationFolder;
@@ -9921,8 +9923,8 @@ namespace СreditСonveyor.Partners
                         //FullName = Server.MapPath("~/") + filedir + "\\" + partnerdir + "\\" + fullfilename,
                         //FullName = "\\Portals\\0\\" + partnerdir + "\\" + destinationFile,
                         //FullName2 = fileupl + "\\" + "Portals\\0\\" + partnerdir + "\\" + destinationFile,
-                        FullName = "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
-                        FullName2 = fileupl + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                        FullName = "\\" + filedir + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
+                        FullName2 = fileupl + "\\" + filedir + "\\" + partnerdir + "\\" + dateRandomdir + "\\" + destinationFile,
                         FileDescription = tbFileDescription.Text + " " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"),
                         IsPhoto = false
 

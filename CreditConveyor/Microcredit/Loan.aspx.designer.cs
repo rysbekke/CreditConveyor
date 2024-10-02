@@ -870,24 +870,6 @@ namespace СreditСonveyor.Microcredit
         protected global::System.Web.UI.WebControls.TextBox txtAgroComment;
 
         /// <summary>
-        /// RadNumTbFamilyExpenses control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox RadNumTbFamilyExpenses;
-
-        /// <summary>
-        /// rfFamilyExpenses control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfFamilyExpenses;
-
-        /// <summary>
         /// RadNumTbAdditionalIncome control.
         /// </summary>
         /// <remarks>
@@ -913,6 +895,114 @@ namespace СreditСonveyor.Microcredit
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox RadNumOtherLoans;
+
+        /// <summary>
+        /// lblTotBalCurrLoans control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotBalCurrLoans;
+
+        /// <summary>
+        /// txtTotBalCurrLoans control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTotBalCurrLoans;
+
+        /// <summary>
+        /// lblTotCountCurrLoans control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotCountCurrLoans;
+
+        /// <summary>
+        /// txtTotCountCurrLoans control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTotCountCurrLoans;
+
+        /// <summary>
+        /// lblTotCountDelays control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotCountDelays;
+
+        /// <summary>
+        /// txtTotCountDelays control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTotCountDelays;
+
+        /// <summary>
+        /// lblMaxDayDelays control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMaxDayDelays;
+
+        /// <summary>
+        /// txtMaxDayDelays control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMaxDayDelays;
+
+        /// <summary>
+        /// lblCountPeople control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCountPeople;
+
+        /// <summary>
+        /// txtCountPeople control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCountPeople;
+
+        /// <summary>
+        /// lblAdditionalConditions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAdditionalConditions;
+
+        /// <summary>
+        /// txtAdditionalConditions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAdditionalConditions;
 
         /// <summary>
         /// hfNote control.

@@ -922,7 +922,7 @@ namespace СreditСonveyor.Data
             public List<CreditOfficer> CreditOfficers { get; set; }
             public int RequestPeriod { get; set; }
             public decimal RequestRate { get; set; }
-            //public int PaymentSourceID { get; set; }
+            public int PaymentSourceID { get; set; }
             //public object NonPaymentRisk { get; set; }
             //public object CreditFraudStatus { get; set; }
             //public object ParallelRelativeCredit { get; set; }

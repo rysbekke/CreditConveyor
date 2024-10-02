@@ -393,69 +393,6 @@ namespace СreditСonveyor.Microcredit
         protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
-        /// pnlBlackList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlBlackList;
-
-        /// <summary>
-        /// lblBlacListCust control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBlacListCust;
-
-        /// <summary>
-        /// gvBlackListCustomers control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvBlackListCustomers;
-
-        /// <summary>
-        /// pnlBlackListOrg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlBlackListOrg;
-
-        /// <summary>
-        /// lblBlacListOrg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBlacListOrg;
-
-        /// <summary>
-        /// gvBlackListOrg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvBlackListOrg;
-
-        /// <summary>
-        /// lblMsgBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMsgBox;
-
-        /// <summary>
         /// lblMessageClient control.
         /// </summary>
         /// <remarks>

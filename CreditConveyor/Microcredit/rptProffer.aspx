@@ -46,7 +46,7 @@ body {font-size:12px;}
         table.line {border:1px solid #000000;padding:0 10px;}
         .width165{width:165px;}  
         .auto-style1 {
-            height: 15px;
+            height: 16px;
         }
         </style>
 <div style = "width:720px;text-align:justify;">
@@ -58,14 +58,19 @@ body {font-size:12px;}
 
 </div>
 
-<div class="centre"><b>Предложение на Кредитный комитет</b></div>
+<div class="centre"><b>Скоринговое заключение</b></div>
 <div class="centre">(источник погашения - заработная плата)<br />
         </div>
-Данные о клиенте:<br />
-        <table class="line">
+<div class="centre">Информация о клиенте:</div>
+    
+  <table class="line">
     <tr>
         <td>Ф.И.О.</td>
         <td><asp:Label ID="lblCustomerFIO" runat="server" Text=""></asp:Label></td>
+    </tr>
+    <tr>
+        <td>ИНН</td>
+        <td><asp:Label ID="lblINN" runat="server" Text=""></asp:Label></td>
     </tr>
     <tr>
         <td>Адрес прописки</td>
@@ -91,88 +96,11 @@ body {font-size:12px;}
         <td>Продавец:</td>
         <td><asp:Label ID="lblSeller" runat="server"></asp:Label></td>
     </tr>
-</table>        										
-<div class="centre">
-    Расчет платежеспособности клиента<br />
-        </div>
-<table class="line">
-    <tr>
-        <th>Наименование статьи</th>
-        <th>Показатели за месяц, сом</th>
-        <th>Комментарии к статьям</th>
-    </tr>
-    <tr>
-        <td>Среднемес.зар. плата клиента:</td>
-        <td><asp:Label ID="lblAverageMonthSalary" runat="server" Text=""></asp:Label></td>
-        <td>Зарплата клиента</td>
-    </tr>
-    <tr>
-        <td>Доп.доход:</td>
-        <td><asp:Label ID="lblAdditionalIncom" runat="server" Text=""></asp:Label></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>ИТОГО ДОХОДОВ</td>
-        <td><asp:Label ID="lblAverageMonthSalary2" runat="server" Text=""></asp:Label></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Семейные расходы</td>
-        <td><asp:Label ID="lblFamilyExpenses" runat="server" Text=""></asp:Label></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>ИТОГО РАСХОДОВ </td>
-        <td><asp:Label ID="lblTotalСonsumption" runat="server" Text=""></asp:Label></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>ЧИСТАЯ ПРИБЫЛЬ</td>
-        <td>
-            <asp:Label ID="lblChp" runat="server" Text=""></asp:Label>
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Взнос банку ОАО &quot;КапиталБанк&quot;</td>
-        <td>
-            <asp:Label ID="lblK" runat="server" Text=""></asp:Label>
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Взносы по другим кредитам:</td>
-        <td>
-            <asp:Label ID="lblOtherLoans" runat="server" Text=""></asp:Label>
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>ЧИСТЫЙ ОСТАТОК ДЕНЕГ</td>
-        <td>
-            <asp:Label ID="lblCho" runat="server" Text=""></asp:Label>
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Чистый остаток в %&nbsp; соотношении</td>
-        <td>
-            <asp:Label ID="lblY1" runat="server" Text=""></asp:Label>
-        </td>
-        <td>
-            <asp:Label ID="lblIssuanceOfCredit" runat="server" Text=""></asp:Label></td>
-    </tr>
-    <tr>
-        <td>Соотношение ежемесячных платежей по кредиту на совокупный доход</td>
-        <td>
-            <asp:Label ID="lblY2" runat="server" Text=""></asp:Label>
-        </td>
-        <td><asp:Label ID="lblIssuanceOfCredit2" runat="server" Text=""></asp:Label></td>
-    </tr>
-</table>
-<div class="centre">
-    Заключение:</div>
-Данные о финансировании:
+</table> 
+ 
+    <br />
+
+<div class="centre">Информация о кредите:</div>
 <table class="line">
     <tr>
         <td>Срок кредита</td>
@@ -201,6 +129,20 @@ body {font-size:12px;}
         </td>
         <td>сом</td>
     </tr>
+    <tr>
+        <td>Цель кредита</td>
+        <td>
+            <asp:Label ID="lblPurpose" runat="server" Text=""></asp:Label>
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+    <td>Дополнительные условия</td>
+    <td>
+        <asp:Label ID="lblAdditionalConditions" runat="server" Text=""></asp:Label>
+    </td>
+    <td></td>
+</tr>
 </table>
 <div class="centre">
     <br />
@@ -212,23 +154,24 @@ body {font-size:12px;}
 
                 </asp:CheckBoxList>
     <br />
-
-    <asp:Panel ID="pnlGuarantor" runat="server" Visible="false">
+    
+    <asp:Panel ID="pnlGuarantor" runat="server" Visible="true">
+        <div class="centre">Поручительство</div>
                 <table class="line">
                 <tr>
-					<td><label>Поручитель</label></td>
-                    <td></td>
-                    
+					<td><label>ФИО</label></td>
+                    <td><label>ИНН:</label></td>
+                    <td><label>Место работы:</label></td>
+                    <td><label>Телефон:</label></td>
 				</tr>
 				<tr>
-					<td><label>ФИО:</label></td>
-                    <td><asp:Label ID="lblGuarantorFIO" runat="server" Text=""></asp:Label></td>
-                    
-				</tr>
-				<tr>
-					<td><label>ИНН:</label></td>
+		            <td><asp:Label ID="lblGuarantorFIO" runat="server" Text=""></asp:Label></td>
                     <td><asp:Label ID="lblGuarantorINN" runat="server" Text=""></asp:Label></td>
+                    <td><asp:Label ID="lblWork" runat="server" Text=""></asp:Label></td>
+                    <td><asp:Label ID="lblPhone" runat="server" Text=""></asp:Label></td>
+                    
 				</tr>
+				
                   <%--<tr>
                     <td>Адрес прописки</td>
                     <td><asp:Label ID="lblGurantorRegAddress" runat="server"></asp:Label></td>
@@ -266,7 +209,7 @@ body {font-size:12px;}
     
                 <br />
                 
-                 Акт оценки залогового имущества</div>
+                 Акт оценки залогового имущества
 
 
 <asp:GridView ID="gvGuarantees" runat="server" AutoGenerateColumns="false"  ShowHeader="true" ShowFooter = "true"  DataKeyNames="ID" Width="584px" >
@@ -281,123 +224,185 @@ body {font-size:12px;}
 										</Columns>
 									</asp:GridView>
   
-
-      </asp:Panel> 
+</asp:Panel>  
+     </div>
 
     <br />
-   
 
 
 
-        <br />
-        Ф.И.О. кредитного сотрудника:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Подпись:										
-        <br />
-        На основе проведённого анализа и изложенной информации предлагаю:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Утвердить&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Отказать<br />
-        <br />
-        <asp:Label ID="lblReqDecision" runat="server" Text="РЕШЕНИЕ КРЕДИТНОГО КОМИТЕТА _______________"></asp:Label>№_____&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; от _____/__________2022 г.<br />
-Утвердить выдачу кредита без изменения условий:														
-        <br />
-        <br />
+
+<div class="centre">Финансовые данные</div>
 <table class="line">
+  
     <tr>
-        <td>ФИО:</td>
-        <td><asp:Label ID="lblCustomerFIO2" runat="server"></asp:Label></td>
-        <td></td>
+        <td>Среднемес.зар. плата клиента:</td>
+        <td><asp:Label ID="lblAverageMonthSalary" runat="server" Text=""></asp:Label></td>
+       
     </tr>
     <tr>
-        <td>Вид кредита:</td>
-        <td>Потребительский кредит &nbsp;<asp:Label ID="lblNameOfCredit" runat="server" Text="КапиталБанк"></asp:Label></td>
-        <td></td>
+        <td>Доп.доход:</td>
+        <td><asp:Label ID="lblAdditionalIncom" runat="server" Text=""></asp:Label></td>
+       
     </tr>
     <tr>
-        <td>Сумма кредита</td>
+        <td>ИТОГО ДОХОДОВ</td>
+        <td><asp:Label ID="lblAverageMonthSalary2" runat="server" Text=""></asp:Label></td>
+       
+    </tr>
+    <tr>
+        <td>Семейные расходы</td>
+        <td><asp:Label ID="lblFamilyExpenses" runat="server" Text=""></asp:Label></td>
+        
+    </tr>
+    <tr>
+        <td>ИТОГО РАСХОДОВ </td>
+        <td><asp:Label ID="lblTotalСonsumption" runat="server" Text=""></asp:Label></td>
+        
+    </tr>
+    <tr>
+        <td>ЧИСТАЯ ПРИБЫЛЬ</td>
         <td>
-            <asp:Label ID="lblRequestSumm" runat="server"></asp:Label>
+            <asp:Label ID="lblChp" runat="server" Text=""></asp:Label>
         </td>
-        <td>сом</td>
+        
     </tr>
     <tr>
-        <td>Срок кредита:</td>
+        <td>Взнос банку ОАО &quot;КапиталБанк&quot;</td>
         <td>
-            <asp:Label ID="lblRequestPeriod" runat="server"></asp:Label>
+            <asp:Label ID="lblK" runat="server" Text=""></asp:Label>
         </td>
-        <td>мес.</td>
+       
     </tr>
     <tr>
-        <td>Годовая процентная ставка:</td>
-        <td><asp:Label ID="lblYearPercent" runat="server"></asp:Label></td>
-        <td>%</td>
-    </tr>
-        <tr>
-        <td>Порядок оплаты процентов:</td>
-        <td>Ежемесячно</td>
-        <td>сом</td>
-    </tr>
-    <tr>
-        <td>Порядок основного долга:</td>
-        <td>Ежемесячно аннуитетными платежами</td>
-        <td>сом</td>
-    </tr>
-    <tr>
-        <td>Комиссия за выдачу кредита:</td>
+        <td>Взносы по другим кредитам:</td>
         <td>
-            <asp:Label ID="lblComission" runat="server" Text=""></asp:Label>
+            <asp:Label ID="lblOtherLoans" runat="server" Text=""></asp:Label>
         </td>
-        <td>сом</td>
+       
+    </tr>
+    <tr>
+        <td>ЧИСТЫЙ ОСТАТОК ДЕНЕГ</td>
+        <td>
+            <asp:Label ID="lblCho" runat="server" Text=""></asp:Label>
+        </td>
+       
+    </tr>
+    <tr>
+        <td>Чистый остаток в %&nbsp; соотношении</td>
+        <td>
+            <asp:Label ID="lblY1" runat="server" Text=""></asp:Label>
+        </td>
+       
+    </tr>
+    <tr>
+        <td>Соотношение ежемесячных платежей по кредиту на совокупный доход</td>
+        <td>
+            <asp:Label ID="lblY2" runat="server" Text=""></asp:Label>
+        </td>
+        
     </tr>
 </table>
-								
-														
-        <br />
-        Отказать в выдаче кредита по следующим причинам:<br />
     <br />
-														
+
+<div class="centre">Кредитная история</div>
 <table class="line">
+ <tr>
+    <td>Общее сальдо текущих кредитов</td>
+    <td>
+        <asp:Label ID="lblTotBalCurrLoans" runat="server" Text=""></asp:Label>
+    </td>
+ </tr>
+ <tr>
+    <td>Общее количество текущих кредитов</td>
+    <td>
+        <asp:Label ID="lblTotCountCurrLoans" runat="server" Text=""></asp:Label>
+    </td>
+ </tr>
+ <tr>
+    <td>Общее количество просрочек</td>
+    <td>
+        <asp:Label ID="lblTotCountDelays" runat="server" Text=""></asp:Label>
+    </td>
+ </tr>
+ <tr>
+    <td>Максимальное количество дней в проссрочке</td>
+    <td>
+        <asp:Label ID="lblMaxDayDelays" runat="server" Text=""></asp:Label>
+    </td>
+ </tr>
+</table>
+    <br />
+
+<div class="centre">Заключение</div>
+<div class="centre">Кредитный рейтинг</div>
+<table class="line">
+ <tr>
+    <td>A</td>
+    <td>Количество баллов по коэффициенту покрытия взноса</td>
+    <td>
+        <asp:Label ID="lblA" runat="server" Text=""></asp:Label>
+    </td>
+ </tr>
+ <tr>
+    <td>B</td>
+    <td>Количество баллов по соотношению планируемых ежемесячных платежей по кредиту</td>
+    <td>
+        <asp:Label ID="lblB" runat="server" Text=""></asp:Label>
+    </td>
+ </tr>
+ <tr>
+    <td>C</td>
+    <td>Количество баллов по количеству текущих параллельных кредитов</td>
+    <td>
+        <asp:Label ID="lblC" runat="server" Text=""></asp:Label>
+    </td>
+ </tr>
+ <tr>
+    <td>D</td>
+    <td>Количество баллов по Кредитной истории</td>
+    <td>
+        <asp:Label ID="lblD" runat="server" Text=""></asp:Label>
+    </td>
+ </tr>
+ <tr>
+    <td></td>
+    <td>Итого баллов по кредитному рейтингу</td>
+    <td>
+        <asp:Label ID="lblABCD" runat="server" Text=""></asp:Label>
+    </td>
+ </tr>
+ <tr>
+    <td></td>
+    <td>Решение</td>
+    <td>
+        <asp:Label ID="lblSolution" runat="server" Text=""></asp:Label>
+    </td>
+ </tr>
+</table>
+
+    <br />
+
+<table>
     <tr>
-        <td>Кредитный комитет</td>
-        <td>Ф.И.О.</td>
-        <td>За</td>
-        <td>Против</td>
-        <td>Примечание</td>
+        <td>Специалист Отдела Кредитования:</td>
+        <td></td>
+        <td><asp:Label ID="lblSpecialist" runat="server" Text=""></asp:Label></td>
     </tr>
     <tr>
-        <td>
-            <asp:Label ID="lblDecision1" runat="server" Text="Председатель Кредитного комитета"></asp:Label>
-        </td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>Начальник Отдела Кредитования/Зав Сектором кредитования</td>
+        <td></td>
+        <td><asp:Label ID="lblBoss" runat="server" Text=""></asp:Label></td>
     </tr>
-    <tr>
-        <td>
-            <asp:Label ID="lblDecision2" runat="server" Text="Член Кредитного комитета"></asp:Label>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>
-            <asp:Label ID="lblDecision3" runat="server" Text="Член Кредитного комитета"></asp:Label>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-</table>														
-        <br />
-        <br />
-        <asp:Label ID="lblDecision4" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Секретарь КК&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ФИО"></asp:Label>
-        <br />
-        <br />
+</table>   
+
+
+
         														
 
     </div>
 </div>
-<%--</asp:Panel>--%>
+
     </form>
 </body>
 </html>

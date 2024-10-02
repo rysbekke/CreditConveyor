@@ -102,9 +102,9 @@ namespace СreditСonveyor.Account
             {
                 case SignInStatus.Success: //успешная авторизация
                     /***********/
-                    logAuthUnBlock(); //Разблакировка логов пользователя
+                    logAuthUnBlock(); //Разблокировка логов пользователя
                     /*************/
-                    unBlockUser(); //Разблакировка пользователя
+                    unBlockUser(); //Разблокировка пользователя
                     /**************/
                     LogAuthorization logAuth3 = new LogAuthorization() //Логи авторизации
                     {
@@ -563,7 +563,7 @@ namespace СreditСonveyor.Account
                 bool f = false;
                 foreach (var role in rolesID)
                 {
-                    if ((role.RoleID == 158) || (role.RoleID == 159)) { f = true; roleID = role.RoleID; }
+                    if ((role.RoleID == 158) || (role.RoleID == 159) || (role.RoleID == 160) || (role.RoleID == 161) || (role.RoleID == 162)) { f = true; roleID = role.RoleID; }
                 }
                 if (f)
                 {
